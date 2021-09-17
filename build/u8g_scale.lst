@@ -1,0 +1,915 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g_scale.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g_dev_scale_2x2_fn,"ax",%progbits
+  22              		.align	2
+  23              		.global	u8g_dev_scale_2x2_fn
+  24              		.thumb
+  25              		.thumb_func
+  27              	u8g_dev_scale_2x2_fn:
+  28              	.LFB2:
+  29              		.file 1 "u8glib/u8g_scale.c"
+   1:u8glib/u8g_scale.c **** /*
+   2:u8glib/u8g_scale.c **** 
+   3:u8glib/u8g_scale.c ****   u8g_scale.c
+   4:u8glib/u8g_scale.c **** 
+   5:u8glib/u8g_scale.c ****   Universal 8bit Graphics Library
+   6:u8glib/u8g_scale.c ****   
+   7:u8glib/u8g_scale.c ****   Copyright (c) 2012, olikraus@gmail.com
+   8:u8glib/u8g_scale.c ****   All rights reserved.
+   9:u8glib/u8g_scale.c **** 
+  10:u8glib/u8g_scale.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  11:u8glib/u8g_scale.c ****   are permitted provided that the following conditions are met:
+  12:u8glib/u8g_scale.c **** 
+  13:u8glib/u8g_scale.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  14:u8glib/u8g_scale.c ****     of conditions and the following disclaimer.
+  15:u8glib/u8g_scale.c ****     
+  16:u8glib/u8g_scale.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  17:u8glib/u8g_scale.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  18:u8glib/u8g_scale.c ****     materials provided with the distribution.
+  19:u8glib/u8g_scale.c **** 
+  20:u8glib/u8g_scale.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  21:u8glib/u8g_scale.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  22:u8glib/u8g_scale.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  23:u8glib/u8g_scale.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  24:u8glib/u8g_scale.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  25:u8glib/u8g_scale.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  26:u8glib/u8g_scale.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  27:u8glib/u8g_scale.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  28:u8glib/u8g_scale.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  29:u8glib/u8g_scale.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 2
+
+
+  30:u8glib/u8g_scale.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  31:u8glib/u8g_scale.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  32:u8glib/u8g_scale.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  33:u8glib/u8g_scale.c **** 
+  34:u8glib/u8g_scale.c ****   Scale screen by some constant factors. Usefull for making bigger fonts wiht less
+  35:u8glib/u8g_scale.c ****   memory consumption
+  36:u8glib/u8g_scale.c ****     
+  37:u8glib/u8g_scale.c **** */
+  38:u8glib/u8g_scale.c **** 
+  39:u8glib/u8g_scale.c **** #include "u8g.h"
+  40:u8glib/u8g_scale.c **** 
+  41:u8glib/u8g_scale.c **** uint8_t u8g_dev_scale_2x2_fn(u8g_t *u8g, u8g_dev_t *dev, uint8_t msg, void *arg);
+  42:u8glib/u8g_scale.c **** 
+  43:u8glib/u8g_scale.c **** 
+  44:u8glib/u8g_scale.c **** u8g_dev_t u8g_dev_scale = { u8g_dev_scale_2x2_fn, NULL, NULL };
+  45:u8glib/u8g_scale.c **** 
+  46:u8glib/u8g_scale.c **** void u8g_UndoScale(u8g_t *u8g)
+  47:u8glib/u8g_scale.c **** {
+  48:u8glib/u8g_scale.c ****   if ( u8g->dev != &u8g_dev_scale )
+  49:u8glib/u8g_scale.c ****     return;
+  50:u8glib/u8g_scale.c ****   u8g->dev = u8g_dev_scale.dev_mem;
+  51:u8glib/u8g_scale.c ****   u8g_UpdateDimension(u8g);
+  52:u8glib/u8g_scale.c **** }
+  53:u8glib/u8g_scale.c **** 
+  54:u8glib/u8g_scale.c **** void u8g_SetScale2x2(u8g_t *u8g)
+  55:u8glib/u8g_scale.c **** {
+  56:u8glib/u8g_scale.c ****   if ( u8g->dev != &u8g_dev_scale )
+  57:u8glib/u8g_scale.c ****   {
+  58:u8glib/u8g_scale.c ****     u8g_dev_scale.dev_mem = u8g->dev;
+  59:u8glib/u8g_scale.c ****     u8g->dev = &u8g_dev_scale;
+  60:u8glib/u8g_scale.c ****   }
+  61:u8glib/u8g_scale.c ****   u8g_dev_scale.dev_fn = u8g_dev_scale_2x2_fn;
+  62:u8glib/u8g_scale.c ****   u8g_UpdateDimension(u8g);
+  63:u8glib/u8g_scale.c **** }
+  64:u8glib/u8g_scale.c **** 
+  65:u8glib/u8g_scale.c **** 
+  66:u8glib/u8g_scale.c **** uint8_t u8g_dev_scale_2x2_fn(u8g_t *u8g, u8g_dev_t *dev, uint8_t msg, void *arg)
+  67:u8glib/u8g_scale.c **** {
+  30              		.loc 1 67 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 8
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              	.LVL0:
+  35 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 36
+  38              		.cfi_offset 4, -36
+  39              		.cfi_offset 5, -32
+  40              		.cfi_offset 6, -28
+  41              		.cfi_offset 7, -24
+  42              		.cfi_offset 8, -20
+  43              		.cfi_offset 9, -16
+  44              		.cfi_offset 10, -12
+  45              		.cfi_offset 11, -8
+  46              		.cfi_offset 14, -4
+  47 0004 83B0     		sub	sp, sp, #12
+  48              	.LCFI1:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 3
+
+
+  49              		.cfi_def_cfa_offset 48
+  50 0006 0090     		str	r0, [sp]
+  51 0008 1646     		mov	r6, r2
+  52 000a 1C46     		mov	r4, r3
+  68:u8glib/u8g_scale.c ****   u8g_dev_t *chain = (u8g_dev_t *)(dev->dev_mem);
+  53              		.loc 1 68 0
+  54 000c D1F80480 		ldr	r8, [r1, #4]
+  55              	.LVL1:
+  69:u8glib/u8g_scale.c ****   uint8_t pixel;
+  70:u8glib/u8g_scale.c ****   uint16_t scaled_pixel;
+  71:u8glib/u8g_scale.c ****   uint8_t i;
+  72:u8glib/u8g_scale.c ****   uint8_t dir;
+  73:u8glib/u8g_scale.c ****   u8g_uint_t x, y, xx,yy;
+  74:u8glib/u8g_scale.c ****   
+  75:u8glib/u8g_scale.c ****   switch(msg)
+  56              		.loc 1 75 0
+  57 0010 A2F11703 		sub	r3, r2, #23
+  58              	.LVL2:
+  59 0014 302B     		cmp	r3, #48
+  60 0016 1AD8     		bhi	.L2
+  61 0018 DFE803F0 		tbb	[pc, r3]
+  62              	.LVL3:
+  63              	.L4:
+  64 001c 30       		.byte	(.L3-.L4)/2
+  65 001d 19       		.byte	(.L2-.L4)/2
+  66 001e 19       		.byte	(.L2-.L4)/2
+  67 001f 19       		.byte	(.L2-.L4)/2
+  68 0020 19       		.byte	(.L2-.L4)/2
+  69 0021 19       		.byte	(.L2-.L4)/2
+  70 0022 19       		.byte	(.L2-.L4)/2
+  71 0023 19       		.byte	(.L2-.L4)/2
+  72 0024 19       		.byte	(.L2-.L4)/2
+  73 0025 19       		.byte	(.L2-.L4)/2
+  74 0026 19       		.byte	(.L2-.L4)/2
+  75 0027 19       		.byte	(.L2-.L4)/2
+  76 0028 19       		.byte	(.L2-.L4)/2
+  77 0029 19       		.byte	(.L2-.L4)/2
+  78 002a 19       		.byte	(.L2-.L4)/2
+  79 002b 19       		.byte	(.L2-.L4)/2
+  80 002c 19       		.byte	(.L2-.L4)/2
+  81 002d 19       		.byte	(.L2-.L4)/2
+  82 002e 19       		.byte	(.L2-.L4)/2
+  83 002f 19       		.byte	(.L2-.L4)/2
+  84 0030 19       		.byte	(.L2-.L4)/2
+  85 0031 19       		.byte	(.L2-.L4)/2
+  86 0032 19       		.byte	(.L2-.L4)/2
+  87 0033 19       		.byte	(.L2-.L4)/2
+  88 0034 19       		.byte	(.L2-.L4)/2
+  89 0035 19       		.byte	(.L2-.L4)/2
+  90 0036 19       		.byte	(.L2-.L4)/2
+  91 0037 44       		.byte	(.L5-.L4)/2
+  92 0038 19       		.byte	(.L2-.L4)/2
+  93 0039 19       		.byte	(.L2-.L4)/2
+  94 003a 19       		.byte	(.L2-.L4)/2
+  95 003b 19       		.byte	(.L2-.L4)/2
+  96 003c 19       		.byte	(.L2-.L4)/2
+  97 003d 19       		.byte	(.L2-.L4)/2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 4
+
+
+  98 003e 19       		.byte	(.L2-.L4)/2
+  99 003f 19       		.byte	(.L2-.L4)/2
+ 100 0040 7A       		.byte	(.L6-.L4)/2
+ 101 0041 19       		.byte	(.L2-.L4)/2
+ 102 0042 19       		.byte	(.L2-.L4)/2
+ 103 0043 19       		.byte	(.L2-.L4)/2
+ 104 0044 19       		.byte	(.L2-.L4)/2
+ 105 0045 19       		.byte	(.L2-.L4)/2
+ 106 0046 19       		.byte	(.L2-.L4)/2
+ 107 0047 19       		.byte	(.L2-.L4)/2
+ 108 0048 19       		.byte	(.L2-.L4)/2
+ 109 0049 19       		.byte	(.L2-.L4)/2
+ 110 004a 19       		.byte	(.L2-.L4)/2
+ 111 004b 20       		.byte	(.L7-.L4)/2
+ 112 004c 28       		.byte	(.L8-.L4)/2
+ 113 004d 00       		.p2align 1
+ 114              	.L2:
+  76:u8glib/u8g_scale.c ****   {
+  77:u8glib/u8g_scale.c ****     default:
+  78:u8glib/u8g_scale.c ****       return u8g_call_dev_fn(u8g, chain, msg, arg);
+ 115              		.loc 1 78 0
+ 116 004e 2346     		mov	r3, r4
+ 117 0050 3246     		mov	r2, r6
+ 118 0052 4146     		mov	r1, r8
+ 119              	.LVL4:
+ 120 0054 0098     		ldr	r0, [sp]
+ 121              	.LVL5:
+ 122 0056 FFF7FEFF 		bl	u8g_call_dev_fn
+ 123              	.LVL6:
+ 124 005a E1E0     		b	.L9
+ 125              	.LVL7:
+ 126              	.L7:
+  79:u8glib/u8g_scale.c ****     case U8G_DEV_MSG_GET_WIDTH:
+  80:u8glib/u8g_scale.c ****       *((u8g_uint_t *)arg) = u8g_GetWidthLL(u8g, chain) / 2;
+ 127              		.loc 1 80 0
+ 128 005c 4146     		mov	r1, r8
+ 129              	.LVL8:
+ 130 005e 0098     		ldr	r0, [sp]
+ 131              	.LVL9:
+ 132 0060 FFF7FEFF 		bl	u8g_GetWidthLL
+ 133              	.LVL10:
+ 134 0064 4008     		lsrs	r0, r0, #1
+ 135 0066 2070     		strb	r0, [r4]
+  81:u8glib/u8g_scale.c ****       break;
+  82:u8glib/u8g_scale.c ****     case U8G_DEV_MSG_GET_HEIGHT:
+  83:u8glib/u8g_scale.c ****       *((u8g_uint_t *)arg) = u8g_GetHeightLL(u8g, chain) / 2;
+  84:u8glib/u8g_scale.c ****       break;
+  85:u8glib/u8g_scale.c ****     case U8G_DEV_MSG_GET_PAGE_BOX:
+  86:u8glib/u8g_scale.c ****       /* get page size from next device in the chain */
+  87:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);
+  88:u8glib/u8g_scale.c ****       ((u8g_box_t *)arg)->x0 /= 2;
+  89:u8glib/u8g_scale.c ****       ((u8g_box_t *)arg)->x1 /= 2;
+  90:u8glib/u8g_scale.c ****       ((u8g_box_t *)arg)->y0 /= 2;
+  91:u8glib/u8g_scale.c ****       ((u8g_box_t *)arg)->y1 /= 2;
+  92:u8glib/u8g_scale.c ****       return 1;
+  93:u8glib/u8g_scale.c ****     case U8G_DEV_MSG_SET_PIXEL:
+  94:u8glib/u8g_scale.c ****       x = ((u8g_dev_arg_pixel_t *)arg)->x;
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 5
+
+
+  95:u8glib/u8g_scale.c ****       x *= 2;
+  96:u8glib/u8g_scale.c ****       y = ((u8g_dev_arg_pixel_t *)arg)->y;
+  97:u8glib/u8g_scale.c ****       y *= 2;
+  98:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = x;
+  99:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 100:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);
+ 101:u8glib/u8g_scale.c ****       x++;
+ 102:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = x;
+ 103:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 104:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);
+ 105:u8glib/u8g_scale.c ****       y++;
+ 106:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = x;
+ 107:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 108:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);
+ 109:u8glib/u8g_scale.c ****       x--;
+ 110:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = x;
+ 111:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 112:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);    
+ 113:u8glib/u8g_scale.c ****       break;
+ 114:u8glib/u8g_scale.c ****     case U8G_DEV_MSG_SET_8PIXEL:
+ 115:u8glib/u8g_scale.c ****       pixel = ((u8g_dev_arg_pixel_t *)arg)->pixel;
+ 116:u8glib/u8g_scale.c ****       dir = ((u8g_dev_arg_pixel_t *)arg)->dir;
+ 117:u8glib/u8g_scale.c ****       scaled_pixel = 0;
+ 118:u8glib/u8g_scale.c ****       for( i = 0; i < 8; i++ )
+ 119:u8glib/u8g_scale.c ****       {
+ 120:u8glib/u8g_scale.c **** 	scaled_pixel<<=2;
+ 121:u8glib/u8g_scale.c **** 	if ( pixel & 128 )
+ 122:u8glib/u8g_scale.c **** 	{
+ 123:u8glib/u8g_scale.c **** 	  scaled_pixel |= 3;
+ 124:u8glib/u8g_scale.c **** 	}
+ 125:u8glib/u8g_scale.c **** 	pixel<<=1;
+ 126:u8glib/u8g_scale.c ****       }
+ 127:u8glib/u8g_scale.c ****       x = ((u8g_dev_arg_pixel_t *)arg)->x;
+ 128:u8glib/u8g_scale.c ****       x *= 2;
+ 129:u8glib/u8g_scale.c ****       xx = x;
+ 130:u8glib/u8g_scale.c ****       y = ((u8g_dev_arg_pixel_t *)arg)->y;
+ 131:u8glib/u8g_scale.c ****       y *= 2;
+ 132:u8glib/u8g_scale.c ****       yy = y;
+ 133:u8glib/u8g_scale.c ****       if ( ((u8g_dev_arg_pixel_t *)arg)->dir & 1 )
+ 134:u8glib/u8g_scale.c ****       {
+ 135:u8glib/u8g_scale.c **** 	xx++;
+ 136:u8glib/u8g_scale.c ****       }
+ 137:u8glib/u8g_scale.c ****       else
+ 138:u8glib/u8g_scale.c ****       {
+ 139:u8glib/u8g_scale.c **** 	yy++;
+ 140:u8glib/u8g_scale.c ****       }
+ 141:u8glib/u8g_scale.c ****       
+ 142:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->pixel = scaled_pixel>>8;      
+ 143:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = x;
+ 144:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 145:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->dir = dir;
+ 146:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);    
+ 147:u8glib/u8g_scale.c **** 
+ 148:u8glib/u8g_scale.c ****       
+ 149:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = xx;
+ 150:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = yy;
+ 151:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->dir = dir;
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 6
+
+
+ 152:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);    
+ 153:u8glib/u8g_scale.c ****       
+ 154:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->pixel = scaled_pixel&255;
+ 155:u8glib/u8g_scale.c ****       //((u8g_dev_arg_pixel_t *)arg)->pixel = 0x00;
+ 156:u8glib/u8g_scale.c ****       switch(dir)
+ 157:u8glib/u8g_scale.c ****       {
+ 158:u8glib/u8g_scale.c **** 	case 0:
+ 159:u8glib/u8g_scale.c ****  	  x+=8;
+ 160:u8glib/u8g_scale.c **** 	  xx+=8;
+ 161:u8glib/u8g_scale.c **** 	  break;
+ 162:u8glib/u8g_scale.c **** 	case 1:
+ 163:u8glib/u8g_scale.c **** 	  y+=8;
+ 164:u8glib/u8g_scale.c **** 	  yy+=8;
+ 165:u8glib/u8g_scale.c **** 	  break;
+ 166:u8glib/u8g_scale.c **** 	case 2:
+ 167:u8glib/u8g_scale.c **** 	  x-=8;
+ 168:u8glib/u8g_scale.c **** 	  xx-=8;
+ 169:u8glib/u8g_scale.c **** 	  break;
+ 170:u8glib/u8g_scale.c **** 	case 3:
+ 171:u8glib/u8g_scale.c **** 	  y-=8;
+ 172:u8glib/u8g_scale.c **** 	  yy-=8;
+ 173:u8glib/u8g_scale.c **** 	  break;
+ 174:u8glib/u8g_scale.c ****       }
+ 175:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = x;
+ 176:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 177:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->dir = dir;
+ 178:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);    
+ 179:u8glib/u8g_scale.c ****       
+ 180:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = xx;
+ 181:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = yy;
+ 182:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->dir = dir;
+ 183:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);    
+ 184:u8glib/u8g_scale.c ****       break;
+ 185:u8glib/u8g_scale.c ****   }
+ 186:u8glib/u8g_scale.c ****   return 1;
+ 136              		.loc 1 186 0
+ 137 0068 0120     		movs	r0, #1
+  81:u8glib/u8g_scale.c ****       break;
+ 138              		.loc 1 81 0
+ 139 006a D9E0     		b	.L9
+ 140              	.LVL11:
+ 141              	.L8:
+  83:u8glib/u8g_scale.c ****       break;
+ 142              		.loc 1 83 0
+ 143 006c 4146     		mov	r1, r8
+ 144              	.LVL12:
+ 145 006e 0098     		ldr	r0, [sp]
+ 146              	.LVL13:
+ 147 0070 FFF7FEFF 		bl	u8g_GetHeightLL
+ 148              	.LVL14:
+ 149 0074 4008     		lsrs	r0, r0, #1
+ 150 0076 2070     		strb	r0, [r4]
+ 151              		.loc 1 186 0
+ 152 0078 0120     		movs	r0, #1
+  84:u8glib/u8g_scale.c ****     case U8G_DEV_MSG_GET_PAGE_BOX:
+ 153              		.loc 1 84 0
+ 154 007a D1E0     		b	.L9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 7
+
+
+ 155              	.LVL15:
+ 156              	.L3:
+  87:u8glib/u8g_scale.c ****       ((u8g_box_t *)arg)->x0 /= 2;
+ 157              		.loc 1 87 0
+ 158 007c 2346     		mov	r3, r4
+ 159 007e 3246     		mov	r2, r6
+ 160 0080 4146     		mov	r1, r8
+ 161              	.LVL16:
+ 162 0082 0098     		ldr	r0, [sp]
+ 163              	.LVL17:
+ 164 0084 FFF7FEFF 		bl	u8g_call_dev_fn
+ 165              	.LVL18:
+  88:u8glib/u8g_scale.c ****       ((u8g_box_t *)arg)->x1 /= 2;
+ 166              		.loc 1 88 0
+ 167 0088 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 168 008a 5B08     		lsrs	r3, r3, #1
+ 169 008c 2370     		strb	r3, [r4]
+  89:u8glib/u8g_scale.c ****       ((u8g_box_t *)arg)->y0 /= 2;
+ 170              		.loc 1 89 0
+ 171 008e A378     		ldrb	r3, [r4, #2]	@ zero_extendqisi2
+ 172 0090 5B08     		lsrs	r3, r3, #1
+ 173 0092 A370     		strb	r3, [r4, #2]
+  90:u8glib/u8g_scale.c ****       ((u8g_box_t *)arg)->y1 /= 2;
+ 174              		.loc 1 90 0
+ 175 0094 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 176 0096 5B08     		lsrs	r3, r3, #1
+ 177 0098 6370     		strb	r3, [r4, #1]
+  91:u8glib/u8g_scale.c ****       return 1;
+ 178              		.loc 1 91 0
+ 179 009a E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ 180 009c 5B08     		lsrs	r3, r3, #1
+ 181 009e E370     		strb	r3, [r4, #3]
+  92:u8glib/u8g_scale.c ****     case U8G_DEV_MSG_SET_PIXEL:
+ 182              		.loc 1 92 0
+ 183 00a0 0120     		movs	r0, #1
+ 184 00a2 BDE0     		b	.L9
+ 185              	.LVL19:
+ 186              	.L5:
+  94:u8glib/u8g_scale.c ****       x *= 2;
+ 187              		.loc 1 94 0
+ 188 00a4 94F80090 		ldrb	r9, [r4]	@ zero_extendqisi2
+ 189              	.LVL20:
+  95:u8glib/u8g_scale.c ****       y = ((u8g_dev_arg_pixel_t *)arg)->y;
+ 190              		.loc 1 95 0
+ 191 00a8 4FEA4909 		lsl	r9, r9, #1
+ 192              	.LVL21:
+ 193 00ac 5FFA89F9 		uxtb	r9, r9
+ 194              	.LVL22:
+  96:u8glib/u8g_scale.c ****       y *= 2;
+ 195              		.loc 1 96 0
+ 196 00b0 6578     		ldrb	r5, [r4, #1]	@ zero_extendqisi2
+ 197              	.LVL23:
+  97:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = x;
+ 198              		.loc 1 97 0
+ 199 00b2 6D00     		lsls	r5, r5, #1
+ 200              	.LVL24:
+ 201 00b4 EDB2     		uxtb	r5, r5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 8
+
+
+ 202              	.LVL25:
+  98:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 203              		.loc 1 98 0
+ 204 00b6 84F80090 		strb	r9, [r4]
+  99:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);
+ 205              		.loc 1 99 0
+ 206 00ba 6570     		strb	r5, [r4, #1]
+ 100:u8glib/u8g_scale.c ****       x++;
+ 207              		.loc 1 100 0
+ 208 00bc 2346     		mov	r3, r4
+ 209 00be 3246     		mov	r2, r6
+ 210 00c0 4146     		mov	r1, r8
+ 211              	.LVL26:
+ 212 00c2 009F     		ldr	r7, [sp]
+ 213 00c4 3846     		mov	r0, r7
+ 214              	.LVL27:
+ 215 00c6 FFF7FEFF 		bl	u8g_call_dev_fn
+ 216              	.LVL28:
+ 101:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = x;
+ 217              		.loc 1 101 0
+ 218 00ca 09F1010A 		add	r10, r9, #1
+ 219 00ce 5FFA8AFA 		uxtb	r10, r10
+ 220              	.LVL29:
+ 102:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 221              		.loc 1 102 0
+ 222 00d2 84F800A0 		strb	r10, [r4]
+ 103:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);
+ 223              		.loc 1 103 0
+ 224 00d6 6570     		strb	r5, [r4, #1]
+ 104:u8glib/u8g_scale.c ****       y++;
+ 225              		.loc 1 104 0
+ 226 00d8 2346     		mov	r3, r4
+ 227 00da 3246     		mov	r2, r6
+ 228 00dc 4146     		mov	r1, r8
+ 229 00de 3846     		mov	r0, r7
+ 230 00e0 FFF7FEFF 		bl	u8g_call_dev_fn
+ 231              	.LVL30:
+ 105:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = x;
+ 232              		.loc 1 105 0
+ 233 00e4 0135     		adds	r5, r5, #1
+ 234              	.LVL31:
+ 235 00e6 EDB2     		uxtb	r5, r5
+ 236              	.LVL32:
+ 106:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 237              		.loc 1 106 0
+ 238 00e8 84F800A0 		strb	r10, [r4]
+ 107:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);
+ 239              		.loc 1 107 0
+ 240 00ec 6570     		strb	r5, [r4, #1]
+ 108:u8glib/u8g_scale.c ****       x--;
+ 241              		.loc 1 108 0
+ 242 00ee 2346     		mov	r3, r4
+ 243 00f0 3246     		mov	r2, r6
+ 244 00f2 4146     		mov	r1, r8
+ 245 00f4 3846     		mov	r0, r7
+ 246 00f6 FFF7FEFF 		bl	u8g_call_dev_fn
+ 247              	.LVL33:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 9
+
+
+ 110:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 248              		.loc 1 110 0
+ 249 00fa 84F80090 		strb	r9, [r4]
+ 111:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);    
+ 250              		.loc 1 111 0
+ 251 00fe 6570     		strb	r5, [r4, #1]
+ 112:u8glib/u8g_scale.c ****       break;
+ 252              		.loc 1 112 0
+ 253 0100 2346     		mov	r3, r4
+ 254 0102 3246     		mov	r2, r6
+ 255 0104 4146     		mov	r1, r8
+ 256 0106 3846     		mov	r0, r7
+ 257 0108 FFF7FEFF 		bl	u8g_call_dev_fn
+ 258              	.LVL34:
+ 259              		.loc 1 186 0
+ 260 010c 0120     		movs	r0, #1
+ 113:u8glib/u8g_scale.c ****     case U8G_DEV_MSG_SET_8PIXEL:
+ 261              		.loc 1 113 0
+ 262 010e 87E0     		b	.L9
+ 263              	.LVL35:
+ 264              	.L6:
+ 115:u8glib/u8g_scale.c ****       dir = ((u8g_dev_arg_pixel_t *)arg)->dir;
+ 265              		.loc 1 115 0
+ 266 0110 A278     		ldrb	r2, [r4, #2]	@ zero_extendqisi2
+ 267              	.LVL36:
+ 116:u8glib/u8g_scale.c ****       scaled_pixel = 0;
+ 268              		.loc 1 116 0
+ 269 0112 94F803B0 		ldrb	fp, [r4, #3]	@ zero_extendqisi2
+ 270              	.LVL37:
+ 118:u8glib/u8g_scale.c ****       {
+ 271              		.loc 1 118 0
+ 272 0116 0023     		movs	r3, #0
+ 117:u8glib/u8g_scale.c ****       for( i = 0; i < 8; i++ )
+ 273              		.loc 1 117 0
+ 274 0118 1D46     		mov	r5, r3
+ 118:u8glib/u8g_scale.c ****       {
+ 275              		.loc 1 118 0
+ 276 011a 0AE0     		b	.L10
+ 277              	.LVL38:
+ 278              	.L12:
+ 120:u8glib/u8g_scale.c **** 	if ( pixel & 128 )
+ 279              		.loc 1 120 0
+ 280 011c AD00     		lsls	r5, r5, #2
+ 281              	.LVL39:
+ 282 011e ADB2     		uxth	r5, r5
+ 283              	.LVL40:
+ 121:u8glib/u8g_scale.c **** 	{
+ 284              		.loc 1 121 0
+ 285 0120 12F0800F 		tst	r2, #128
+ 286 0124 01D0     		beq	.L11
+ 123:u8glib/u8g_scale.c **** 	}
+ 287              		.loc 1 123 0
+ 288 0126 45F00305 		orr	r5, r5, #3
+ 289              	.LVL41:
+ 290              	.L11:
+ 125:u8glib/u8g_scale.c ****       }
+ 291              		.loc 1 125 0 discriminator 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 10
+
+
+ 292 012a 5200     		lsls	r2, r2, #1
+ 293              	.LVL42:
+ 294 012c D2B2     		uxtb	r2, r2
+ 295              	.LVL43:
+ 118:u8glib/u8g_scale.c ****       {
+ 296              		.loc 1 118 0 discriminator 2
+ 297 012e 0133     		adds	r3, r3, #1
+ 298              	.LVL44:
+ 299 0130 DBB2     		uxtb	r3, r3
+ 300              	.LVL45:
+ 301              	.L10:
+ 118:u8glib/u8g_scale.c ****       {
+ 302              		.loc 1 118 0 is_stmt 0 discriminator 1
+ 303 0132 072B     		cmp	r3, #7
+ 304 0134 F2D9     		bls	.L12
+ 127:u8glib/u8g_scale.c ****       x *= 2;
+ 305              		.loc 1 127 0 is_stmt 1
+ 306 0136 94F800A0 		ldrb	r10, [r4]	@ zero_extendqisi2
+ 307              	.LVL46:
+ 128:u8glib/u8g_scale.c ****       xx = x;
+ 308              		.loc 1 128 0
+ 309 013a 4FEA4A0A 		lsl	r10, r10, #1
+ 310              	.LVL47:
+ 311 013e 5FFA8AFA 		uxtb	r10, r10
+ 312              	.LVL48:
+ 130:u8glib/u8g_scale.c ****       y *= 2;
+ 313              		.loc 1 130 0
+ 314 0142 94F80190 		ldrb	r9, [r4, #1]	@ zero_extendqisi2
+ 315              	.LVL49:
+ 131:u8glib/u8g_scale.c ****       yy = y;
+ 316              		.loc 1 131 0
+ 317 0146 4FEA4909 		lsl	r9, r9, #1
+ 318              	.LVL50:
+ 319 014a 5FFA89F9 		uxtb	r9, r9
+ 320              	.LVL51:
+ 133:u8glib/u8g_scale.c ****       {
+ 321              		.loc 1 133 0
+ 322 014e 1BF0010F 		tst	fp, #1
+ 323 0152 05D0     		beq	.L13
+ 135:u8glib/u8g_scale.c ****       }
+ 324              		.loc 1 135 0
+ 325 0154 0AF10103 		add	r3, r10, #1
+ 326              	.LVL52:
+ 327 0158 DBB2     		uxtb	r3, r3
+ 328 015a 0193     		str	r3, [sp, #4]
+ 329              	.LVL53:
+ 132:u8glib/u8g_scale.c ****       if ( ((u8g_dev_arg_pixel_t *)arg)->dir & 1 )
+ 330              		.loc 1 132 0
+ 331 015c 4F46     		mov	r7, r9
+ 332 015e 04E0     		b	.L14
+ 333              	.LVL54:
+ 334              	.L13:
+ 139:u8glib/u8g_scale.c ****       }
+ 335              		.loc 1 139 0
+ 336 0160 09F10103 		add	r3, r9, #1
+ 337              	.LVL55:
+ 338 0164 DFB2     		uxtb	r7, r3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 11
+
+
+ 339              	.LVL56:
+ 129:u8glib/u8g_scale.c ****       y = ((u8g_dev_arg_pixel_t *)arg)->y;
+ 340              		.loc 1 129 0
+ 341 0166 CDF804A0 		str	r10, [sp, #4]
+ 342              	.LVL57:
+ 343              	.L14:
+ 142:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = x;
+ 344              		.loc 1 142 0
+ 345 016a 2B0A     		lsrs	r3, r5, #8
+ 346 016c A370     		strb	r3, [r4, #2]
+ 143:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 347              		.loc 1 143 0
+ 348 016e 84F800A0 		strb	r10, [r4]
+ 144:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->dir = dir;
+ 349              		.loc 1 144 0
+ 350 0172 84F80190 		strb	r9, [r4, #1]
+ 146:u8glib/u8g_scale.c **** 
+ 351              		.loc 1 146 0
+ 352 0176 2346     		mov	r3, r4
+ 353 0178 3246     		mov	r2, r6
+ 354              	.LVL58:
+ 355 017a 4146     		mov	r1, r8
+ 356              	.LVL59:
+ 357 017c 0098     		ldr	r0, [sp]
+ 358              	.LVL60:
+ 359 017e FFF7FEFF 		bl	u8g_call_dev_fn
+ 360              	.LVL61:
+ 149:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = yy;
+ 361              		.loc 1 149 0
+ 362 0182 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 363 0186 2370     		strb	r3, [r4]
+ 150:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->dir = dir;
+ 364              		.loc 1 150 0
+ 365 0188 6770     		strb	r7, [r4, #1]
+ 151:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);    
+ 366              		.loc 1 151 0
+ 367 018a 84F803B0 		strb	fp, [r4, #3]
+ 152:u8glib/u8g_scale.c ****       
+ 368              		.loc 1 152 0
+ 369 018e 2346     		mov	r3, r4
+ 370 0190 3246     		mov	r2, r6
+ 371 0192 4146     		mov	r1, r8
+ 372 0194 0098     		ldr	r0, [sp]
+ 373 0196 FFF7FEFF 		bl	u8g_call_dev_fn
+ 374              	.LVL62:
+ 154:u8glib/u8g_scale.c ****       //((u8g_dev_arg_pixel_t *)arg)->pixel = 0x00;
+ 375              		.loc 1 154 0
+ 376 019a A570     		strb	r5, [r4, #2]
+ 156:u8glib/u8g_scale.c ****       {
+ 377              		.loc 1 156 0
+ 378 019c BBF1030F 		cmp	fp, #3
+ 379 01a0 24D8     		bhi	.L15
+ 380 01a2 DFE80BF0 		tbb	[pc, fp]
+ 381              	.L17:
+ 382 01a6 02       		.byte	(.L16-.L17)/2
+ 383 01a7 0B       		.byte	(.L18-.L17)/2
+ 384 01a8 13       		.byte	(.L19-.L17)/2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 12
+
+
+ 385 01a9 1C       		.byte	(.L20-.L17)/2
+ 386              		.p2align 1
+ 387              	.L16:
+ 159:u8glib/u8g_scale.c **** 	  xx+=8;
+ 388              		.loc 1 159 0
+ 389 01aa 0AF1080A 		add	r10, r10, #8
+ 390              	.LVL63:
+ 391 01ae 5FFA8AFA 		uxtb	r10, r10
+ 392              	.LVL64:
+ 160:u8glib/u8g_scale.c **** 	  break;
+ 393              		.loc 1 160 0
+ 394 01b2 019B     		ldr	r3, [sp, #4]
+ 395 01b4 0833     		adds	r3, r3, #8
+ 396 01b6 DBB2     		uxtb	r3, r3
+ 397 01b8 0193     		str	r3, [sp, #4]
+ 398              	.LVL65:
+ 161:u8glib/u8g_scale.c **** 	case 1:
+ 399              		.loc 1 161 0
+ 400 01ba 17E0     		b	.L15
+ 401              	.L18:
+ 163:u8glib/u8g_scale.c **** 	  yy+=8;
+ 402              		.loc 1 163 0
+ 403 01bc 09F10809 		add	r9, r9, #8
+ 404              	.LVL66:
+ 405 01c0 5FFA89F9 		uxtb	r9, r9
+ 406              	.LVL67:
+ 164:u8glib/u8g_scale.c **** 	  break;
+ 407              		.loc 1 164 0
+ 408 01c4 07F10803 		add	r3, r7, #8
+ 409 01c8 DFB2     		uxtb	r7, r3
+ 410              	.LVL68:
+ 165:u8glib/u8g_scale.c **** 	case 2:
+ 411              		.loc 1 165 0
+ 412 01ca 0FE0     		b	.L15
+ 413              	.L19:
+ 167:u8glib/u8g_scale.c **** 	  xx-=8;
+ 414              		.loc 1 167 0
+ 415 01cc AAF1080A 		sub	r10, r10, #8
+ 416              	.LVL69:
+ 417 01d0 5FFA8AFA 		uxtb	r10, r10
+ 418              	.LVL70:
+ 168:u8glib/u8g_scale.c **** 	  break;
+ 419              		.loc 1 168 0
+ 420 01d4 019B     		ldr	r3, [sp, #4]
+ 421 01d6 083B     		subs	r3, r3, #8
+ 422 01d8 DBB2     		uxtb	r3, r3
+ 423 01da 0193     		str	r3, [sp, #4]
+ 424              	.LVL71:
+ 169:u8glib/u8g_scale.c **** 	case 3:
+ 425              		.loc 1 169 0
+ 426 01dc 06E0     		b	.L15
+ 427              	.L20:
+ 171:u8glib/u8g_scale.c **** 	  yy-=8;
+ 428              		.loc 1 171 0
+ 429 01de A9F10809 		sub	r9, r9, #8
+ 430              	.LVL72:
+ 431 01e2 5FFA89F9 		uxtb	r9, r9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 13
+
+
+ 432              	.LVL73:
+ 172:u8glib/u8g_scale.c **** 	  break;
+ 433              		.loc 1 172 0
+ 434 01e6 A7F10803 		sub	r3, r7, #8
+ 435 01ea DFB2     		uxtb	r7, r3
+ 436              	.LVL74:
+ 437              	.L15:
+ 175:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
+ 438              		.loc 1 175 0
+ 439 01ec 84F800A0 		strb	r10, [r4]
+ 176:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->dir = dir;
+ 440              		.loc 1 176 0
+ 441 01f0 84F80190 		strb	r9, [r4, #1]
+ 177:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);    
+ 442              		.loc 1 177 0
+ 443 01f4 84F803B0 		strb	fp, [r4, #3]
+ 178:u8glib/u8g_scale.c ****       
+ 444              		.loc 1 178 0
+ 445 01f8 2346     		mov	r3, r4
+ 446 01fa 3246     		mov	r2, r6
+ 447 01fc 4146     		mov	r1, r8
+ 448 01fe 009D     		ldr	r5, [sp]
+ 449              	.LVL75:
+ 450 0200 2846     		mov	r0, r5
+ 451 0202 FFF7FEFF 		bl	u8g_call_dev_fn
+ 452              	.LVL76:
+ 180:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = yy;
+ 453              		.loc 1 180 0
+ 454 0206 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 455 020a 2370     		strb	r3, [r4]
+ 181:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->dir = dir;
+ 456              		.loc 1 181 0
+ 457 020c 6770     		strb	r7, [r4, #1]
+ 182:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);    
+ 458              		.loc 1 182 0
+ 459 020e 84F803B0 		strb	fp, [r4, #3]
+ 183:u8glib/u8g_scale.c ****       break;
+ 460              		.loc 1 183 0
+ 461 0212 2346     		mov	r3, r4
+ 462 0214 3246     		mov	r2, r6
+ 463 0216 4146     		mov	r1, r8
+ 464 0218 2846     		mov	r0, r5
+ 465 021a FFF7FEFF 		bl	u8g_call_dev_fn
+ 466              	.LVL77:
+ 467              		.loc 1 186 0
+ 468 021e 0120     		movs	r0, #1
+ 469              	.LVL78:
+ 470              	.L9:
+ 187:u8glib/u8g_scale.c **** }
+ 471              		.loc 1 187 0
+ 472 0220 03B0     		add	sp, sp, #12
+ 473              	.LCFI2:
+ 474              		.cfi_def_cfa_offset 36
+ 475              	.LVL79:
+ 476              		@ sp needed
+ 477 0222 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 478              		.cfi_endproc
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 14
+
+
+ 479              	.LFE2:
+ 481 0226 00BF     		.section	.text.u8g_UndoScale,"ax",%progbits
+ 482              		.align	2
+ 483              		.global	u8g_UndoScale
+ 484              		.thumb
+ 485              		.thumb_func
+ 487              	u8g_UndoScale:
+ 488              	.LFB0:
+  47:u8glib/u8g_scale.c ****   if ( u8g->dev != &u8g_dev_scale )
+ 489              		.loc 1 47 0
+ 490              		.cfi_startproc
+ 491              		@ args = 0, pretend = 0, frame = 0
+ 492              		@ frame_needed = 0, uses_anonymous_args = 0
+ 493              	.LVL80:
+ 494 0000 08B5     		push	{r3, lr}
+ 495              	.LCFI3:
+ 496              		.cfi_def_cfa_offset 8
+ 497              		.cfi_offset 3, -8
+ 498              		.cfi_offset 14, -4
+  48:u8glib/u8g_scale.c ****     return;
+ 499              		.loc 1 48 0
+ 500 0002 4268     		ldr	r2, [r0, #4]
+ 501 0004 034B     		ldr	r3, .L25
+ 502 0006 9A42     		cmp	r2, r3
+ 503 0008 03D1     		bne	.L22
+  50:u8glib/u8g_scale.c ****   u8g_UpdateDimension(u8g);
+ 504              		.loc 1 50 0
+ 505 000a 5B68     		ldr	r3, [r3, #4]
+ 506 000c 4360     		str	r3, [r0, #4]
+  51:u8glib/u8g_scale.c **** }
+ 507              		.loc 1 51 0
+ 508 000e FFF7FEFF 		bl	u8g_UpdateDimension
+ 509              	.LVL81:
+ 510              	.L22:
+ 511 0012 08BD     		pop	{r3, pc}
+ 512              	.L26:
+ 513              		.align	2
+ 514              	.L25:
+ 515 0014 00000000 		.word	.LANCHOR0
+ 516              		.cfi_endproc
+ 517              	.LFE0:
+ 519              		.section	.text.u8g_SetScale2x2,"ax",%progbits
+ 520              		.align	2
+ 521              		.global	u8g_SetScale2x2
+ 522              		.thumb
+ 523              		.thumb_func
+ 525              	u8g_SetScale2x2:
+ 526              	.LFB1:
+  55:u8glib/u8g_scale.c ****   if ( u8g->dev != &u8g_dev_scale )
+ 527              		.loc 1 55 0
+ 528              		.cfi_startproc
+ 529              		@ args = 0, pretend = 0, frame = 0
+ 530              		@ frame_needed = 0, uses_anonymous_args = 0
+ 531              	.LVL82:
+ 532 0000 08B5     		push	{r3, lr}
+ 533              	.LCFI4:
+ 534              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 15
+
+
+ 535              		.cfi_offset 3, -8
+ 536              		.cfi_offset 14, -4
+  56:u8glib/u8g_scale.c ****   {
+ 537              		.loc 1 56 0
+ 538 0002 4368     		ldr	r3, [r0, #4]
+ 539 0004 054A     		ldr	r2, .L30
+ 540 0006 9342     		cmp	r3, r2
+ 541 0008 01D0     		beq	.L28
+  58:u8glib/u8g_scale.c ****     u8g->dev = &u8g_dev_scale;
+ 542              		.loc 1 58 0
+ 543 000a 5360     		str	r3, [r2, #4]
+  59:u8glib/u8g_scale.c ****   }
+ 544              		.loc 1 59 0
+ 545 000c 4260     		str	r2, [r0, #4]
+ 546              	.L28:
+  61:u8glib/u8g_scale.c ****   u8g_UpdateDimension(u8g);
+ 547              		.loc 1 61 0
+ 548 000e 044A     		ldr	r2, .L30+4
+ 549 0010 024B     		ldr	r3, .L30
+ 550 0012 1A60     		str	r2, [r3]
+  62:u8glib/u8g_scale.c **** }
+ 551              		.loc 1 62 0
+ 552 0014 FFF7FEFF 		bl	u8g_UpdateDimension
+ 553              	.LVL83:
+ 554 0018 08BD     		pop	{r3, pc}
+ 555              	.L31:
+ 556 001a 00BF     		.align	2
+ 557              	.L30:
+ 558 001c 00000000 		.word	.LANCHOR0
+ 559 0020 00000000 		.word	u8g_dev_scale_2x2_fn
+ 560              		.cfi_endproc
+ 561              	.LFE1:
+ 563              		.global	u8g_dev_scale
+ 564              		.section	.data.u8g_dev_scale,"aw",%progbits
+ 565              		.align	2
+ 566              		.set	.LANCHOR0,. + 0
+ 569              	u8g_dev_scale:
+ 570 0000 00000000 		.word	u8g_dev_scale_2x2_fn
+ 571 0004 00000000 		.word	0
+ 572 0008 00000000 		.word	0
+ 573              		.text
+ 574              	.Letext0:
+ 575              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 576              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 577              		.file 4 "u8glib/u8g.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqCUu07.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g_scale.c
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:22     .text.u8g_dev_scale_2x2_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:27     .text.u8g_dev_scale_2x2_fn:00000000 u8g_dev_scale_2x2_fn
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:64     .text.u8g_dev_scale_2x2_fn:0000001c $d
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:382    .text.u8g_dev_scale_2x2_fn:000001a6 $d
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:386    .text.u8g_dev_scale_2x2_fn:000001aa $t
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:482    .text.u8g_UndoScale:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:487    .text.u8g_UndoScale:00000000 u8g_UndoScale
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:515    .text.u8g_UndoScale:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:520    .text.u8g_SetScale2x2:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:525    .text.u8g_SetScale2x2:00000000 u8g_SetScale2x2
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:558    .text.u8g_SetScale2x2:0000001c $d
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:569    .data.u8g_dev_scale:00000000 u8g_dev_scale
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:565    .data.u8g_dev_scale:00000000 $d
+                     .debug_frame:00000010 $d
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:113    .text.u8g_dev_scale_2x2_fn:0000004d $d
+C:\Users\master\AppData\Local\Temp\ccqCUu07.s:113    .text.u8g_dev_scale_2x2_fn:0000004e $t
+
+UNDEFINED SYMBOLS
+u8g_call_dev_fn
+u8g_GetWidthLL
+u8g_GetHeightLL
+u8g_UpdateDimension

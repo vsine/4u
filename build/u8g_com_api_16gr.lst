@@ -1,0 +1,424 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc7BQwh8.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g_com_api_16gr.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g_WriteByteBWTo16GrDevice,"ax",%progbits
+  22              		.align	2
+  23              		.global	u8g_WriteByteBWTo16GrDevice
+  24              		.thumb
+  25              		.thumb_func
+  27              	u8g_WriteByteBWTo16GrDevice:
+  28              	.LFB0:
+  29              		.file 1 "u8glib/u8g_com_api_16gr.c"
+   1:u8glib/u8g_com_api_16gr.c **** /*
+   2:u8glib/u8g_com_api_16gr.c **** 
+   3:u8glib/u8g_com_api_16gr.c ****   u8g_com_api_16gr.c
+   4:u8glib/u8g_com_api_16gr.c ****   
+   5:u8glib/u8g_com_api_16gr.c ****   Extension of the com api for devices with 16 graylevels (4 bit per pixel).
+   6:u8glib/u8g_com_api_16gr.c ****   This should fit to the 8h and 16h architectures (pb8v1, pb8v2, pb16v1, pb16v2), 
+   7:u8glib/u8g_com_api_16gr.c ****   mainly intended for SSD OLEDs
+   8:u8glib/u8g_com_api_16gr.c **** 
+   9:u8glib/u8g_com_api_16gr.c ****   Universal 8bit Graphics Library
+  10:u8glib/u8g_com_api_16gr.c ****   
+  11:u8glib/u8g_com_api_16gr.c ****   Copyright (c) 2011, olikraus@gmail.com
+  12:u8glib/u8g_com_api_16gr.c ****   All rights reserved.
+  13:u8glib/u8g_com_api_16gr.c **** 
+  14:u8glib/u8g_com_api_16gr.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  15:u8glib/u8g_com_api_16gr.c ****   are permitted provided that the following conditions are met:
+  16:u8glib/u8g_com_api_16gr.c **** 
+  17:u8glib/u8g_com_api_16gr.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  18:u8glib/u8g_com_api_16gr.c ****     of conditions and the following disclaimer.
+  19:u8glib/u8g_com_api_16gr.c ****     
+  20:u8glib/u8g_com_api_16gr.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  21:u8glib/u8g_com_api_16gr.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  22:u8glib/u8g_com_api_16gr.c ****     materials provided with the distribution.
+  23:u8glib/u8g_com_api_16gr.c **** 
+  24:u8glib/u8g_com_api_16gr.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  25:u8glib/u8g_com_api_16gr.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  26:u8glib/u8g_com_api_16gr.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  27:u8glib/u8g_com_api_16gr.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  28:u8glib/u8g_com_api_16gr.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  29:u8glib/u8g_com_api_16gr.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc7BQwh8.s 			page 2
+
+
+  30:u8glib/u8g_com_api_16gr.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  31:u8glib/u8g_com_api_16gr.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  32:u8glib/u8g_com_api_16gr.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  33:u8glib/u8g_com_api_16gr.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  34:u8glib/u8g_com_api_16gr.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  35:u8glib/u8g_com_api_16gr.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  36:u8glib/u8g_com_api_16gr.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  37:u8glib/u8g_com_api_16gr.c ****   
+  38:u8glib/u8g_com_api_16gr.c ****   
+  39:u8glib/u8g_com_api_16gr.c **** */
+  40:u8glib/u8g_com_api_16gr.c **** 
+  41:u8glib/u8g_com_api_16gr.c **** #include "u8g.h"
+  42:u8glib/u8g_com_api_16gr.c **** 
+  43:u8glib/u8g_com_api_16gr.c **** /* interpret b as a monochrome bit pattern, write value 15 for high bit and value 0 for a low bit *
+  44:u8glib/u8g_com_api_16gr.c **** /* topbit (msb) is sent last */
+  45:u8glib/u8g_com_api_16gr.c **** /* example: b = 0x083 will send 0xff, 0x00, 0x00, 0xf0 */
+  46:u8glib/u8g_com_api_16gr.c **** uint8_t u8g_WriteByteBWTo16GrDevice(u8g_t *u8g, u8g_dev_t *dev, uint8_t b)
+  47:u8glib/u8g_com_api_16gr.c **** {
+  30              		.loc 1 47 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              	.LVL0:
+  35 0000 38B5     		push	{r3, r4, r5, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 3, -16
+  39              		.cfi_offset 4, -12
+  40              		.cfi_offset 5, -8
+  41              		.cfi_offset 14, -4
+  48:u8glib/u8g_com_api_16gr.c ****   static uint8_t buf[4];
+  49:u8glib/u8g_com_api_16gr.c ****   static uint8_t map[4] = { 0, 0x00f, 0x0f0, 0x0ff };
+  50:u8glib/u8g_com_api_16gr.c ****   buf [3] = map[b & 3];
+  42              		.loc 1 50 0
+  43 0002 02F00303 		and	r3, r2, #3
+  44 0006 0B4C     		ldr	r4, .L3
+  45 0008 E55C     		ldrb	r5, [r4, r3]	@ zero_extendqisi2
+  46 000a 0B4B     		ldr	r3, .L3+4
+  47 000c DD70     		strb	r5, [r3, #3]
+  51:u8glib/u8g_com_api_16gr.c ****   b>>=2;
+  48              		.loc 1 51 0
+  49 000e 9208     		lsrs	r2, r2, #2
+  50              	.LVL1:
+  52:u8glib/u8g_com_api_16gr.c ****   buf [2] = map[b & 3];
+  51              		.loc 1 52 0
+  52 0010 02F00305 		and	r5, r2, #3
+  53 0014 655D     		ldrb	r5, [r4, r5]	@ zero_extendqisi2
+  54 0016 9D70     		strb	r5, [r3, #2]
+  53:u8glib/u8g_com_api_16gr.c ****   b>>=2;
+  55              		.loc 1 53 0
+  56 0018 9208     		lsrs	r2, r2, #2
+  57              	.LVL2:
+  54:u8glib/u8g_com_api_16gr.c ****   buf [1] = map[b & 3];
+  58              		.loc 1 54 0
+  59 001a 02F00305 		and	r5, r2, #3
+  60 001e 655D     		ldrb	r5, [r4, r5]	@ zero_extendqisi2
+  61 0020 5D70     		strb	r5, [r3, #1]
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc7BQwh8.s 			page 3
+
+
+  62              	.LVL3:
+  55:u8glib/u8g_com_api_16gr.c ****   b>>=2;
+  56:u8glib/u8g_com_api_16gr.c ****   buf [0] = map[b & 3];
+  63              		.loc 1 56 0
+  64 0022 9208     		lsrs	r2, r2, #2
+  65              	.LVL4:
+  66 0024 A25C     		ldrb	r2, [r4, r2]	@ zero_extendqisi2
+  67 0026 1A70     		strb	r2, [r3]
+  57:u8glib/u8g_com_api_16gr.c ****   return dev->com_fn(u8g, U8G_COM_MSG_WRITE_SEQ, 4, buf);
+  68              		.loc 1 57 0
+  69 0028 8C68     		ldr	r4, [r1, #8]
+  70 002a 0422     		movs	r2, #4
+  71 002c 0621     		movs	r1, #6
+  72              	.LVL5:
+  73 002e A047     		blx	r4
+  74              	.LVL6:
+  58:u8glib/u8g_com_api_16gr.c **** }
+  75              		.loc 1 58 0
+  76 0030 38BD     		pop	{r3, r4, r5, pc}
+  77              	.L4:
+  78 0032 00BF     		.align	2
+  79              	.L3:
+  80 0034 00000000 		.word	.LANCHOR0
+  81 0038 00000000 		.word	.LANCHOR1
+  82              		.cfi_endproc
+  83              	.LFE0:
+  85              		.section	.text.u8g_WriteSequenceBWTo16GrDevice,"ax",%progbits
+  86              		.align	2
+  87              		.global	u8g_WriteSequenceBWTo16GrDevice
+  88              		.thumb
+  89              		.thumb_func
+  91              	u8g_WriteSequenceBWTo16GrDevice:
+  92              	.LFB1:
+  59:u8glib/u8g_com_api_16gr.c **** 
+  60:u8glib/u8g_com_api_16gr.c **** uint8_t u8g_WriteSequenceBWTo16GrDevice(u8g_t *u8g, u8g_dev_t *dev, uint8_t cnt, uint8_t *ptr)
+  61:u8glib/u8g_com_api_16gr.c **** {
+  93              		.loc 1 61 0
+  94              		.cfi_startproc
+  95              		@ args = 0, pretend = 0, frame = 0
+  96              		@ frame_needed = 0, uses_anonymous_args = 0
+  97              	.LVL7:
+  98 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  99              	.LCFI1:
+ 100              		.cfi_def_cfa_offset 24
+ 101              		.cfi_offset 3, -24
+ 102              		.cfi_offset 4, -20
+ 103              		.cfi_offset 5, -16
+ 104              		.cfi_offset 6, -12
+ 105              		.cfi_offset 7, -8
+ 106              		.cfi_offset 14, -4
+ 107 0002 0746     		mov	r7, r0
+ 108 0004 0E46     		mov	r6, r1
+ 109 0006 1446     		mov	r4, r2
+ 110              	.LVL8:
+ 111              	.L7:
+  62:u8glib/u8g_com_api_16gr.c ****   do
+  63:u8glib/u8g_com_api_16gr.c ****   {
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc7BQwh8.s 			page 4
+
+
+  64:u8glib/u8g_com_api_16gr.c ****     if ( u8g_WriteByteBWTo16GrDevice(u8g, dev, *ptr++) == 0 )
+ 112              		.loc 1 64 0
+ 113 0008 5D1C     		adds	r5, r3, #1
+ 114              	.LVL9:
+ 115 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 116 000c 3146     		mov	r1, r6
+ 117 000e 3846     		mov	r0, r7
+ 118 0010 FFF7FEFF 		bl	u8g_WriteByteBWTo16GrDevice
+ 119              	.LVL10:
+ 120 0014 0346     		mov	r3, r0
+ 121 0016 28B1     		cbz	r0, .L6
+  65:u8glib/u8g_com_api_16gr.c ****       return 0;
+  66:u8glib/u8g_com_api_16gr.c ****     cnt--;
+ 122              		.loc 1 66 0
+ 123 0018 621E     		subs	r2, r4, #1
+ 124              	.LVL11:
+  64:u8glib/u8g_com_api_16gr.c ****       return 0;
+ 125              		.loc 1 64 0
+ 126 001a 2B46     		mov	r3, r5
+  67:u8glib/u8g_com_api_16gr.c ****   } while( cnt != 0 );
+ 127              		.loc 1 67 0
+ 128 001c 12F0FF04 		ands	r4, r2, #255
+ 129 0020 F2D1     		bne	.L7
+  68:u8glib/u8g_com_api_16gr.c ****   return 1;
+ 130              		.loc 1 68 0
+ 131 0022 0123     		movs	r3, #1
+ 132              	.LVL12:
+ 133              	.L6:
+  69:u8glib/u8g_com_api_16gr.c **** }
+ 134              		.loc 1 69 0
+ 135 0024 1846     		mov	r0, r3
+ 136 0026 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 137              		.cfi_endproc
+ 138              	.LFE1:
+ 140              		.section	.text.u8g_WriteByte4LTo16GrDevice,"ax",%progbits
+ 141              		.align	2
+ 142              		.global	u8g_WriteByte4LTo16GrDevice
+ 143              		.thumb
+ 144              		.thumb_func
+ 146              	u8g_WriteByte4LTo16GrDevice:
+ 147              	.LFB2:
+  70:u8glib/u8g_com_api_16gr.c **** 
+  71:u8glib/u8g_com_api_16gr.c **** /* interpret b as a 4L bit pattern, write values 0x000, 0x004, 0x008, 0x00c */
+  72:u8glib/u8g_com_api_16gr.c **** uint8_t u8g_WriteByte4LTo16GrDevice(u8g_t *u8g, u8g_dev_t *dev, uint8_t b)
+  73:u8glib/u8g_com_api_16gr.c **** {
+ 148              		.loc 1 73 0
+ 149              		.cfi_startproc
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152              	.LVL13:
+ 153 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 154              	.LCFI2:
+ 155              		.cfi_def_cfa_offset 24
+ 156              		.cfi_offset 4, -24
+ 157              		.cfi_offset 5, -20
+ 158              		.cfi_offset 6, -16
+ 159              		.cfi_offset 7, -12
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc7BQwh8.s 			page 5
+
+
+ 160              		.cfi_offset 8, -8
+ 161              		.cfi_offset 14, -4
+ 162 0004 8046     		mov	r8, r0
+ 163 0006 0E46     		mov	r6, r1
+ 164              	.LVL14:
+  74:u8glib/u8g_com_api_16gr.c ****   //static uint8_t map[16] = { 0x000, 0x004, 0x008, 0x00c, 0x040, 0x044, 0x048, 0x04c, 0x080, 0x084
+  75:u8glib/u8g_com_api_16gr.c ****   //static uint8_t map[16] = { 0x000, 0x004, 0x00a, 0x00f, 0x040, 0x044, 0x04a, 0x04f, 0x0a0, 0x0a4
+  76:u8glib/u8g_com_api_16gr.c ****   static uint8_t map[16] = { 0x000, 0x040, 0x0a0, 0x0f0, 0x004, 0x044, 0x0a4, 0x0f4, 0x00a, 0x04a, 
+  77:u8glib/u8g_com_api_16gr.c ****   uint8_t bb;
+  78:u8glib/u8g_com_api_16gr.c ****   bb = b;
+  79:u8glib/u8g_com_api_16gr.c ****   bb &= 15;
+ 165              		.loc 1 79 0
+ 166 0008 02F00F01 		and	r1, r2, #15
+ 167              	.LVL15:
+  80:u8glib/u8g_com_api_16gr.c ****   b>>=4;
+ 168              		.loc 1 80 0
+ 169 000c 1409     		lsrs	r4, r2, #4
+ 170              	.LVL16:
+  81:u8glib/u8g_com_api_16gr.c ****   dev->com_fn(u8g, U8G_COM_MSG_WRITE_BYTE, map[bb], NULL);
+ 171              		.loc 1 81 0
+ 172 000e B768     		ldr	r7, [r6, #8]
+ 173 0010 064D     		ldr	r5, .L11
+ 174 0012 0023     		movs	r3, #0
+ 175 0014 6A5C     		ldrb	r2, [r5, r1]	@ zero_extendqisi2
+ 176 0016 0521     		movs	r1, #5
+ 177              	.LVL17:
+ 178 0018 B847     		blx	r7
+ 179              	.LVL18:
+  82:u8glib/u8g_com_api_16gr.c ****   return dev->com_fn(u8g, U8G_COM_MSG_WRITE_BYTE, map[b], NULL);
+ 180              		.loc 1 82 0
+ 181 001a B668     		ldr	r6, [r6, #8]
+ 182              	.LVL19:
+ 183 001c 0023     		movs	r3, #0
+ 184 001e 2A5D     		ldrb	r2, [r5, r4]	@ zero_extendqisi2
+ 185 0020 0521     		movs	r1, #5
+ 186 0022 4046     		mov	r0, r8
+ 187 0024 B047     		blx	r6
+ 188              	.LVL20:
+  83:u8glib/u8g_com_api_16gr.c **** }
+ 189              		.loc 1 83 0
+ 190 0026 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 191              	.LVL21:
+ 192              	.L12:
+ 193 002a 00BF     		.align	2
+ 194              	.L11:
+ 195 002c 00000000 		.word	.LANCHOR2
+ 196              		.cfi_endproc
+ 197              	.LFE2:
+ 199              		.section	.text.u8g_WriteSequence4LTo16GrDevice,"ax",%progbits
+ 200              		.align	2
+ 201              		.global	u8g_WriteSequence4LTo16GrDevice
+ 202              		.thumb
+ 203              		.thumb_func
+ 205              	u8g_WriteSequence4LTo16GrDevice:
+ 206              	.LFB3:
+  84:u8glib/u8g_com_api_16gr.c **** 
+  85:u8glib/u8g_com_api_16gr.c **** uint8_t u8g_WriteSequence4LTo16GrDevice(u8g_t *u8g, u8g_dev_t *dev, uint8_t cnt, uint8_t *ptr)
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc7BQwh8.s 			page 6
+
+
+  86:u8glib/u8g_com_api_16gr.c **** {
+ 207              		.loc 1 86 0
+ 208              		.cfi_startproc
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 0, uses_anonymous_args = 0
+ 211              	.LVL22:
+ 212 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 213              	.LCFI3:
+ 214              		.cfi_def_cfa_offset 24
+ 215              		.cfi_offset 3, -24
+ 216              		.cfi_offset 4, -20
+ 217              		.cfi_offset 5, -16
+ 218              		.cfi_offset 6, -12
+ 219              		.cfi_offset 7, -8
+ 220              		.cfi_offset 14, -4
+ 221 0002 0746     		mov	r7, r0
+ 222 0004 0E46     		mov	r6, r1
+ 223 0006 1446     		mov	r4, r2
+ 224              	.LVL23:
+ 225              	.L15:
+  87:u8glib/u8g_com_api_16gr.c ****   do
+  88:u8glib/u8g_com_api_16gr.c ****   {
+  89:u8glib/u8g_com_api_16gr.c ****     if ( u8g_WriteByte4LTo16GrDevice(u8g, dev, *ptr++) == 0 )
+ 226              		.loc 1 89 0
+ 227 0008 5D1C     		adds	r5, r3, #1
+ 228              	.LVL24:
+ 229 000a 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 230 000c 3146     		mov	r1, r6
+ 231 000e 3846     		mov	r0, r7
+ 232 0010 FFF7FEFF 		bl	u8g_WriteByte4LTo16GrDevice
+ 233              	.LVL25:
+ 234 0014 0346     		mov	r3, r0
+ 235 0016 28B1     		cbz	r0, .L14
+  90:u8glib/u8g_com_api_16gr.c ****       return 0;
+  91:u8glib/u8g_com_api_16gr.c ****     cnt--;
+ 236              		.loc 1 91 0
+ 237 0018 621E     		subs	r2, r4, #1
+ 238              	.LVL26:
+  89:u8glib/u8g_com_api_16gr.c ****       return 0;
+ 239              		.loc 1 89 0
+ 240 001a 2B46     		mov	r3, r5
+  92:u8glib/u8g_com_api_16gr.c ****   } while( cnt != 0 );
+ 241              		.loc 1 92 0
+ 242 001c 12F0FF04 		ands	r4, r2, #255
+ 243 0020 F2D1     		bne	.L15
+  93:u8glib/u8g_com_api_16gr.c ****   return 1;
+ 244              		.loc 1 93 0
+ 245 0022 0123     		movs	r3, #1
+ 246              	.LVL27:
+ 247              	.L14:
+  94:u8glib/u8g_com_api_16gr.c **** }
+ 248              		.loc 1 94 0
+ 249 0024 1846     		mov	r0, r3
+ 250 0026 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 251              		.cfi_endproc
+ 252              	.LFE3:
+ 254              		.section	.rodata.map.5883,"a",%progbits
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc7BQwh8.s 			page 7
+
+
+ 255              		.align	2
+ 256              		.set	.LANCHOR2,. + 0
+ 259              	map.5883:
+ 260 0000 00       		.byte	0
+ 261 0001 40       		.byte	64
+ 262 0002 A0       		.byte	-96
+ 263 0003 F0       		.byte	-16
+ 264 0004 04       		.byte	4
+ 265 0005 44       		.byte	68
+ 266 0006 A4       		.byte	-92
+ 267 0007 F4       		.byte	-12
+ 268 0008 0A       		.byte	10
+ 269 0009 4A       		.byte	74
+ 270 000a AA       		.byte	-86
+ 271 000b FA       		.byte	-6
+ 272 000c 0F       		.byte	15
+ 273 000d 4F       		.byte	79
+ 274 000e AF       		.byte	-81
+ 275 000f FF       		.byte	-1
+ 276              		.section	.bss.buf.5868,"aw",%nobits
+ 277              		.align	2
+ 278              		.set	.LANCHOR1,. + 0
+ 281              	buf.5868:
+ 282 0000 00000000 		.space	4
+ 283              		.section	.rodata.map.5869,"a",%progbits
+ 284              		.align	2
+ 285              		.set	.LANCHOR0,. + 0
+ 288              	map.5869:
+ 289 0000 00       		.byte	0
+ 290 0001 0F       		.byte	15
+ 291 0002 F0       		.byte	-16
+ 292 0003 FF       		.byte	-1
+ 293              		.text
+ 294              	.Letext0:
+ 295              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 296              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 297              		.file 4 "u8glib/u8g.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc7BQwh8.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g_com_api_16gr.c
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:22     .text.u8g_WriteByteBWTo16GrDevice:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:27     .text.u8g_WriteByteBWTo16GrDevice:00000000 u8g_WriteByteBWTo16GrDevice
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:80     .text.u8g_WriteByteBWTo16GrDevice:00000034 $d
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:86     .text.u8g_WriteSequenceBWTo16GrDevice:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:91     .text.u8g_WriteSequenceBWTo16GrDevice:00000000 u8g_WriteSequenceBWTo16GrDevice
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:141    .text.u8g_WriteByte4LTo16GrDevice:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:146    .text.u8g_WriteByte4LTo16GrDevice:00000000 u8g_WriteByte4LTo16GrDevice
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:195    .text.u8g_WriteByte4LTo16GrDevice:0000002c $d
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:200    .text.u8g_WriteSequence4LTo16GrDevice:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:205    .text.u8g_WriteSequence4LTo16GrDevice:00000000 u8g_WriteSequence4LTo16GrDevice
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:255    .rodata.map.5883:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:259    .rodata.map.5883:00000000 map.5883
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:277    .bss.buf.5868:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:281    .bss.buf.5868:00000000 buf.5868
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:284    .rodata.map.5869:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc7BQwh8.s:288    .rodata.map.5869:00000000 map.5869
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

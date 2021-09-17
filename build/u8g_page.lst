@@ -1,0 +1,263 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccRfr2u7.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g_page.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g_page_First,"ax",%progbits
+  22              		.align	2
+  23              		.global	u8g_page_First
+  24              		.thumb
+  25              		.thumb_func
+  27              	u8g_page_First:
+  28              	.LFB1:
+  29              		.file 1 "u8glib/u8g_page.c"
+   1:u8glib/u8g_page.c **** /*
+   2:u8glib/u8g_page.c **** 
+   3:u8glib/u8g_page.c ****   u8g_page.c
+   4:u8glib/u8g_page.c ****   
+   5:u8glib/u8g_page.c ****   page helper functions, only called by the dev handler.
+   6:u8glib/u8g_page.c **** 
+   7:u8glib/u8g_page.c ****   Universal 8bit Graphics Library
+   8:u8glib/u8g_page.c ****   
+   9:u8glib/u8g_page.c ****   Copyright (c) 2011, olikraus@gmail.com
+  10:u8glib/u8g_page.c ****   All rights reserved.
+  11:u8glib/u8g_page.c **** 
+  12:u8glib/u8g_page.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  13:u8glib/u8g_page.c ****   are permitted provided that the following conditions are met:
+  14:u8glib/u8g_page.c **** 
+  15:u8glib/u8g_page.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  16:u8glib/u8g_page.c ****     of conditions and the following disclaimer.
+  17:u8glib/u8g_page.c ****     
+  18:u8glib/u8g_page.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  19:u8glib/u8g_page.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  20:u8glib/u8g_page.c ****     materials provided with the distribution.
+  21:u8glib/u8g_page.c **** 
+  22:u8glib/u8g_page.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  23:u8glib/u8g_page.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  24:u8glib/u8g_page.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  25:u8glib/u8g_page.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  26:u8glib/u8g_page.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  27:u8glib/u8g_page.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  28:u8glib/u8g_page.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:u8glib/u8g_page.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccRfr2u7.s 			page 2
+
+
+  30:u8glib/u8g_page.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  31:u8glib/u8g_page.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  32:u8glib/u8g_page.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  33:u8glib/u8g_page.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  34:u8glib/u8g_page.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  35:u8glib/u8g_page.c ****   
+  36:u8glib/u8g_page.c ****   
+  37:u8glib/u8g_page.c **** */
+  38:u8glib/u8g_page.c **** 
+  39:u8glib/u8g_page.c **** #include "u8g.h"
+  40:u8glib/u8g_page.c **** 
+  41:u8glib/u8g_page.c **** /*
+  42:u8glib/u8g_page.c ****   setup page count structure
+  43:u8glib/u8g_page.c ****   conditions: page_height <= total_height
+  44:u8glib/u8g_page.c **** */
+  45:u8glib/u8g_page.c **** void u8g_page_Init(u8g_page_t *p, u8g_uint_t page_height, u8g_uint_t total_height )
+  46:u8glib/u8g_page.c **** {
+  47:u8glib/u8g_page.c ****   p->page_height = page_height;
+  48:u8glib/u8g_page.c ****   p->total_height = total_height;
+  49:u8glib/u8g_page.c ****   p->page = 0;
+  50:u8glib/u8g_page.c ****   u8g_page_First(p);
+  51:u8glib/u8g_page.c **** }
+  52:u8glib/u8g_page.c **** 
+  53:u8glib/u8g_page.c **** void u8g_page_First(u8g_page_t *p)
+  54:u8glib/u8g_page.c **** {
+  30              		.loc 1 54 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  35              	.LVL0:
+  55:u8glib/u8g_page.c ****   p->page_y0 = 0;
+  36              		.loc 1 55 0
+  37 0000 0022     		movs	r2, #0
+  38 0002 8270     		strb	r2, [r0, #2]
+  56:u8glib/u8g_page.c ****   p->page_y1 = p->page_height;
+  39              		.loc 1 56 0
+  40 0004 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+  57:u8glib/u8g_page.c ****   p->page_y1--;
+  41              		.loc 1 57 0
+  42 0006 013B     		subs	r3, r3, #1
+  43 0008 C370     		strb	r3, [r0, #3]
+  58:u8glib/u8g_page.c ****   p->page = 0;
+  44              		.loc 1 58 0
+  45 000a 0271     		strb	r2, [r0, #4]
+  46 000c 7047     		bx	lr
+  47              		.cfi_endproc
+  48              	.LFE1:
+  50 000e 00BF     		.section	.text.u8g_page_Init,"ax",%progbits
+  51              		.align	2
+  52              		.global	u8g_page_Init
+  53              		.thumb
+  54              		.thumb_func
+  56              	u8g_page_Init:
+  57              	.LFB0:
+  46:u8glib/u8g_page.c ****   p->page_height = page_height;
+  58              		.loc 1 46 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccRfr2u7.s 			page 3
+
+
+  59              		.cfi_startproc
+  60              		@ args = 0, pretend = 0, frame = 0
+  61              		@ frame_needed = 0, uses_anonymous_args = 0
+  62              	.LVL1:
+  63 0000 08B5     		push	{r3, lr}
+  64              	.LCFI0:
+  65              		.cfi_def_cfa_offset 8
+  66              		.cfi_offset 3, -8
+  67              		.cfi_offset 14, -4
+  47:u8glib/u8g_page.c ****   p->total_height = total_height;
+  68              		.loc 1 47 0
+  69 0002 0170     		strb	r1, [r0]
+  48:u8glib/u8g_page.c ****   p->page = 0;
+  70              		.loc 1 48 0
+  71 0004 4270     		strb	r2, [r0, #1]
+  49:u8glib/u8g_page.c ****   u8g_page_First(p);
+  72              		.loc 1 49 0
+  73 0006 0022     		movs	r2, #0
+  74              	.LVL2:
+  75 0008 0271     		strb	r2, [r0, #4]
+  50:u8glib/u8g_page.c **** }
+  76              		.loc 1 50 0
+  77 000a FFF7FEFF 		bl	u8g_page_First
+  78              	.LVL3:
+  79 000e 08BD     		pop	{r3, pc}
+  80              		.cfi_endproc
+  81              	.LFE0:
+  83              		.section	.text.u8g_page_Next,"ax",%progbits
+  84              		.align	2
+  85              		.global	u8g_page_Next
+  86              		.thumb
+  87              		.thumb_func
+  89              	u8g_page_Next:
+  90              	.LFB2:
+  59:u8glib/u8g_page.c **** }
+  60:u8glib/u8g_page.c **** 
+  61:u8glib/u8g_page.c **** uint8_t u8g_page_Next(u8g_page_t * p)
+  62:u8glib/u8g_page.c **** {
+  91              		.loc 1 62 0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 0
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95              		@ link register save eliminated.
+  96              	.LVL4:
+  97 0000 10B4     		push	{r4}
+  98              	.LCFI1:
+  99              		.cfi_def_cfa_offset 4
+ 100              		.cfi_offset 4, -4
+  63:u8glib/u8g_page.c ****   register u8g_uint_t y1;
+  64:u8glib/u8g_page.c ****   p->page_y0 += p->page_height;
+ 101              		.loc 1 64 0
+ 102 0002 0478     		ldrb	r4, [r0]	@ zero_extendqisi2
+ 103 0004 8378     		ldrb	r3, [r0, #2]	@ zero_extendqisi2
+ 104 0006 2344     		add	r3, r3, r4
+ 105 0008 DBB2     		uxtb	r3, r3
+ 106 000a 8370     		strb	r3, [r0, #2]
+  65:u8glib/u8g_page.c ****   if ( p->page_y0 >= p->total_height )
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccRfr2u7.s 			page 4
+
+
+ 107              		.loc 1 65 0
+ 108 000c 4178     		ldrb	r1, [r0, #1]	@ zero_extendqisi2
+ 109 000e 8B42     		cmp	r3, r1
+ 110 0010 0CD2     		bcs	.L7
+  66:u8glib/u8g_page.c ****     return 0;
+  67:u8glib/u8g_page.c ****   p->page++;
+ 111              		.loc 1 67 0
+ 112 0012 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2
+ 113 0014 0133     		adds	r3, r3, #1
+ 114 0016 0371     		strb	r3, [r0, #4]
+  68:u8glib/u8g_page.c ****   y1 = p->page_y1;
+ 115              		.loc 1 68 0
+ 116 0018 C278     		ldrb	r2, [r0, #3]	@ zero_extendqisi2
+ 117              	.LVL5:
+  69:u8glib/u8g_page.c ****   y1 += p->page_height;
+ 118              		.loc 1 69 0
+ 119 001a A318     		adds	r3, r4, r2
+ 120 001c DBB2     		uxtb	r3, r3
+ 121              	.LVL6:
+  70:u8glib/u8g_page.c ****   if ( y1 >= p->total_height )
+ 122              		.loc 1 70 0
+ 123 001e 9942     		cmp	r1, r3
+ 124 0020 01D8     		bhi	.L6
+ 125              	.LVL7:
+  71:u8glib/u8g_page.c ****   {
+  72:u8glib/u8g_page.c ****     y1 = p->total_height;
+  73:u8glib/u8g_page.c ****     y1--;
+ 126              		.loc 1 73 0
+ 127 0022 4B1E     		subs	r3, r1, #1
+ 128 0024 DBB2     		uxtb	r3, r3
+ 129              	.LVL8:
+ 130              	.L6:
+  74:u8glib/u8g_page.c ****   }
+  75:u8glib/u8g_page.c ****   p->page_y1 = y1;
+ 131              		.loc 1 75 0
+ 132 0026 C370     		strb	r3, [r0, #3]
+  76:u8glib/u8g_page.c ****   
+  77:u8glib/u8g_page.c ****   return 1;
+ 133              		.loc 1 77 0
+ 134 0028 0120     		movs	r0, #1
+ 135              	.LVL9:
+ 136 002a 00E0     		b	.L5
+ 137              	.LVL10:
+ 138              	.L7:
+  66:u8glib/u8g_page.c ****   p->page++;
+ 139              		.loc 1 66 0
+ 140 002c 0020     		movs	r0, #0
+ 141              	.LVL11:
+ 142              	.L5:
+  78:u8glib/u8g_page.c **** }
+ 143              		.loc 1 78 0
+ 144 002e 5DF8044B 		ldr	r4, [sp], #4
+ 145              	.LCFI2:
+ 146              		.cfi_restore 4
+ 147              		.cfi_def_cfa_offset 0
+ 148 0032 7047     		bx	lr
+ 149              		.cfi_endproc
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccRfr2u7.s 			page 5
+
+
+ 150              	.LFE2:
+ 152              		.text
+ 153              	.Letext0:
+ 154              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 155              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 156              		.file 4 "u8glib/u8g.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccRfr2u7.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g_page.c
+C:\Users\master\AppData\Local\Temp\ccRfr2u7.s:22     .text.u8g_page_First:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccRfr2u7.s:27     .text.u8g_page_First:00000000 u8g_page_First
+C:\Users\master\AppData\Local\Temp\ccRfr2u7.s:51     .text.u8g_page_Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccRfr2u7.s:56     .text.u8g_page_Init:00000000 u8g_page_Init
+C:\Users\master\AppData\Local\Temp\ccRfr2u7.s:84     .text.u8g_page_Next:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccRfr2u7.s:89     .text.u8g_page_Next:00000000 u8g_page_Next
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,769 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g_pb8h8.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g_pb8h8_set_pixel,"ax",%progbits
+  22              		.align	2
+  23              		.thumb
+  24              		.thumb_func
+  26              	u8g_pb8h8_set_pixel:
+  27              	.LFB2:
+  28              		.file 1 "u8glib/u8g_pb8h8.c"
+   1:u8glib/u8g_pb8h8.c **** /*
+   2:u8glib/u8g_pb8h8.c **** 
+   3:u8glib/u8g_pb8h8.c ****   u8g_pb8h8.c
+   4:u8glib/u8g_pb8h8.c ****   
+   5:u8glib/u8g_pb8h8.c ****   8 lines per page, horizontal, 8 bits per pixel
+   6:u8glib/u8g_pb8h8.c ****   (22 May 2013: might also support any number of lines --> needs to be checked)
+   7:u8glib/u8g_pb8h8.c ****   
+   8:u8glib/u8g_pb8h8.c ****   Universal 8bit Graphics Library
+   9:u8glib/u8g_pb8h8.c ****   
+  10:u8glib/u8g_pb8h8.c ****   Copyright (c) 2012, olikraus@gmail.com
+  11:u8glib/u8g_pb8h8.c ****   All rights reserved.
+  12:u8glib/u8g_pb8h8.c **** 
+  13:u8glib/u8g_pb8h8.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  14:u8glib/u8g_pb8h8.c ****   are permitted provided that the following conditions are met:
+  15:u8glib/u8g_pb8h8.c **** 
+  16:u8glib/u8g_pb8h8.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  17:u8glib/u8g_pb8h8.c ****     of conditions and the following disclaimer.
+  18:u8glib/u8g_pb8h8.c ****     
+  19:u8glib/u8g_pb8h8.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  20:u8glib/u8g_pb8h8.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  21:u8glib/u8g_pb8h8.c ****     materials provided with the distribution.
+  22:u8glib/u8g_pb8h8.c **** 
+  23:u8glib/u8g_pb8h8.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  24:u8glib/u8g_pb8h8.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  25:u8glib/u8g_pb8h8.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  26:u8glib/u8g_pb8h8.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  27:u8glib/u8g_pb8h8.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  28:u8glib/u8g_pb8h8.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  29:u8glib/u8g_pb8h8.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  30:u8glib/u8g_pb8h8.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 2
+
+
+  31:u8glib/u8g_pb8h8.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  32:u8glib/u8g_pb8h8.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  33:u8glib/u8g_pb8h8.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  34:u8glib/u8g_pb8h8.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  35:u8glib/u8g_pb8h8.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  36:u8glib/u8g_pb8h8.c **** 
+  37:u8glib/u8g_pb8h8.c **** 
+  38:u8glib/u8g_pb8h8.c **** struct _u8g_pb_t
+  39:u8glib/u8g_pb8h8.c **** {
+  40:u8glib/u8g_pb8h8.c ****   u8g_page_t p;
+  41:u8glib/u8g_pb8h8.c ****   u8g_uint_t width;
+  42:u8glib/u8g_pb8h8.c ****   void *buf;
+  43:u8glib/u8g_pb8h8.c **** };
+  44:u8glib/u8g_pb8h8.c **** typedef struct _u8g_pb_t u8g_pb_t;
+  45:u8glib/u8g_pb8h8.c **** 
+  46:u8glib/u8g_pb8h8.c **** 
+  47:u8glib/u8g_pb8h8.c **** uint8_t u8g_index_color_8h8_buf[WIDTH*PAGE_HEIGHT] U8G_NOCOMMON ; 
+  48:u8glib/u8g_pb8h8.c **** u8g_pb_t u8g_index_color_8h8_pb = { {PAGE_HEIGHT, HEIGHT, 0, 0, 0},  WIDTH, u8g_index_color_8h8_buf
+  49:u8glib/u8g_pb8h8.c **** u8g_dev_t name = { dev_fn, &u8g_index_color_8h8_pb, com_fn }
+  50:u8glib/u8g_pb8h8.c **** 
+  51:u8glib/u8g_pb8h8.c **** */
+  52:u8glib/u8g_pb8h8.c **** 
+  53:u8glib/u8g_pb8h8.c **** #include "u8g.h"
+  54:u8glib/u8g_pb8h8.c **** 
+  55:u8glib/u8g_pb8h8.c **** /*
+  56:u8glib/u8g_pb8h8.c **** #define WIDTH_BITS 7
+  57:u8glib/u8g_pb8h8.c **** #define WIDTH (1<<WIDTH_BITS)
+  58:u8glib/u8g_pb8h8.c **** #define PAGE_HEIGHT_BITS 3
+  59:u8glib/u8g_pb8h8.c **** #define PAGE_HEIGHT (1<<PAGE_HEIGHT_BITS)
+  60:u8glib/u8g_pb8h8.c **** */
+  61:u8glib/u8g_pb8h8.c **** 
+  62:u8glib/u8g_pb8h8.c **** void u8g_pb8h8_Clear(u8g_pb_t *b)
+  63:u8glib/u8g_pb8h8.c **** {
+  64:u8glib/u8g_pb8h8.c ****   uint8_t *ptr = (uint8_t *)b->buf;
+  65:u8glib/u8g_pb8h8.c ****   uint8_t *end_ptr = ptr;
+  66:u8glib/u8g_pb8h8.c ****   uint8_t cnt = b->p.page_height;
+  67:u8glib/u8g_pb8h8.c ****   end_ptr += b->width*cnt;
+  68:u8glib/u8g_pb8h8.c ****   /*
+  69:u8glib/u8g_pb8h8.c ****   do
+  70:u8glib/u8g_pb8h8.c ****   {
+  71:u8glib/u8g_pb8h8.c ****     end_ptr += b->width;
+  72:u8glib/u8g_pb8h8.c ****     cnt--;
+  73:u8glib/u8g_pb8h8.c ****   } while( cnt > 0 );
+  74:u8glib/u8g_pb8h8.c ****   */
+  75:u8glib/u8g_pb8h8.c ****   do
+  76:u8glib/u8g_pb8h8.c ****   {
+  77:u8glib/u8g_pb8h8.c ****     *ptr++ = 0;
+  78:u8glib/u8g_pb8h8.c ****   } while( ptr != end_ptr );
+  79:u8glib/u8g_pb8h8.c **** }
+  80:u8glib/u8g_pb8h8.c **** 
+  81:u8glib/u8g_pb8h8.c **** 
+  82:u8glib/u8g_pb8h8.c **** void u8g_pb8h8_Init(u8g_pb_t *b, void *buf, u8g_uint_t width)
+  83:u8glib/u8g_pb8h8.c **** {
+  84:u8glib/u8g_pb8h8.c ****   b->buf = buf;
+  85:u8glib/u8g_pb8h8.c ****   b->width = width;
+  86:u8glib/u8g_pb8h8.c ****   u8g_pb8h8_Clear(b);
+  87:u8glib/u8g_pb8h8.c **** }
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 3
+
+
+  88:u8glib/u8g_pb8h8.c **** 
+  89:u8glib/u8g_pb8h8.c **** static void u8g_pb8h8_set_pixel(u8g_pb_t *b, u8g_uint_t x, u8g_uint_t y, uint8_t color_index)
+  90:u8glib/u8g_pb8h8.c **** {
+  29              		.loc 1 90 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34              	.LVL0:
+  35 0000 30B4     		push	{r4, r5}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 5, -4
+  91:u8glib/u8g_pb8h8.c ****   uint16_t tmp;
+  92:u8glib/u8g_pb8h8.c ****   uint8_t *ptr = b->buf;
+  40              		.loc 1 92 0
+  41 0002 8568     		ldr	r5, [r0, #8]
+  42              	.LVL1:
+  93:u8glib/u8g_pb8h8.c ****   y -= b->p.page_y0;
+  43              		.loc 1 93 0
+  44 0004 8478     		ldrb	r4, [r0, #2]	@ zero_extendqisi2
+  45 0006 121B     		subs	r2, r2, r4
+  46              	.LVL2:
+  94:u8glib/u8g_pb8h8.c ****   tmp = y;
+  47              		.loc 1 94 0
+  48 0008 D2B2     		uxtb	r2, r2
+  49              	.LVL3:
+  95:u8glib/u8g_pb8h8.c ****   tmp *= b->width;
+  50              		.loc 1 95 0
+  51 000a 4479     		ldrb	r4, [r0, #5]	@ zero_extendqisi2
+  52              	.LVL4:
+  96:u8glib/u8g_pb8h8.c ****   tmp += x;
+  53              		.loc 1 96 0
+  54 000c 04FB0211 		mla	r1, r4, r2, r1
+  55              	.LVL5:
+  56 0010 8AB2     		uxth	r2, r1
+  57              	.LVL6:
+  97:u8glib/u8g_pb8h8.c ****   ptr += tmp;
+  98:u8glib/u8g_pb8h8.c ****   *ptr = color_index;
+  58              		.loc 1 98 0
+  59 0012 AB54     		strb	r3, [r5, r2]
+  99:u8glib/u8g_pb8h8.c **** }
+  60              		.loc 1 99 0
+  61 0014 30BC     		pop	{r4, r5}
+  62              	.LCFI1:
+  63              		.cfi_restore 5
+  64              		.cfi_restore 4
+  65              		.cfi_def_cfa_offset 0
+  66              	.LVL7:
+  67 0016 7047     		bx	lr
+  68              		.cfi_endproc
+  69              	.LFE2:
+  71              		.section	.text.u8g_pb8h8_Clear,"ax",%progbits
+  72              		.align	2
+  73              		.global	u8g_pb8h8_Clear
+  74              		.thumb
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 4
+
+
+  75              		.thumb_func
+  77              	u8g_pb8h8_Clear:
+  78              	.LFB0:
+  63:u8glib/u8g_pb8h8.c ****   uint8_t *ptr = (uint8_t *)b->buf;
+  79              		.loc 1 63 0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83              		@ link register save eliminated.
+  84              	.LVL8:
+  64:u8glib/u8g_pb8h8.c ****   uint8_t *end_ptr = ptr;
+  85              		.loc 1 64 0
+  86 0000 8368     		ldr	r3, [r0, #8]
+  87              	.LVL9:
+  66:u8glib/u8g_pb8h8.c ****   end_ptr += b->width*cnt;
+  88              		.loc 1 66 0
+  89 0002 0178     		ldrb	r1, [r0]	@ zero_extendqisi2
+  90              	.LVL10:
+  67:u8glib/u8g_pb8h8.c ****   /*
+  91              		.loc 1 67 0
+  92 0004 4279     		ldrb	r2, [r0, #5]	@ zero_extendqisi2
+  93 0006 01FB0230 		mla	r0, r1, r2, r3
+  94              	.LVL11:
+  95              	.L4:
+  77:u8glib/u8g_pb8h8.c ****   } while( ptr != end_ptr );
+  96              		.loc 1 77 0 discriminator 1
+  97 000a 5A1C     		adds	r2, r3, #1
+  98              	.LVL12:
+  99 000c 0021     		movs	r1, #0
+ 100 000e 1970     		strb	r1, [r3]
+ 101 0010 1346     		mov	r3, r2
+  78:u8glib/u8g_pb8h8.c **** }
+ 102              		.loc 1 78 0 discriminator 1
+ 103 0012 9042     		cmp	r0, r2
+ 104 0014 F9D1     		bne	.L4
+  79:u8glib/u8g_pb8h8.c **** 
+ 105              		.loc 1 79 0
+ 106 0016 7047     		bx	lr
+ 107              		.cfi_endproc
+ 108              	.LFE0:
+ 110              		.section	.text.u8g_pb8h8_Init,"ax",%progbits
+ 111              		.align	2
+ 112              		.global	u8g_pb8h8_Init
+ 113              		.thumb
+ 114              		.thumb_func
+ 116              	u8g_pb8h8_Init:
+ 117              	.LFB1:
+  83:u8glib/u8g_pb8h8.c ****   b->buf = buf;
+ 118              		.loc 1 83 0
+ 119              		.cfi_startproc
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122              	.LVL13:
+ 123 0000 08B5     		push	{r3, lr}
+ 124              	.LCFI2:
+ 125              		.cfi_def_cfa_offset 8
+ 126              		.cfi_offset 3, -8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 5
+
+
+ 127              		.cfi_offset 14, -4
+  84:u8glib/u8g_pb8h8.c ****   b->width = width;
+ 128              		.loc 1 84 0
+ 129 0002 8160     		str	r1, [r0, #8]
+  85:u8glib/u8g_pb8h8.c ****   u8g_pb8h8_Clear(b);
+ 130              		.loc 1 85 0
+ 131 0004 4271     		strb	r2, [r0, #5]
+  86:u8glib/u8g_pb8h8.c **** }
+ 132              		.loc 1 86 0
+ 133 0006 FFF7FEFF 		bl	u8g_pb8h8_Clear
+ 134              	.LVL14:
+ 135 000a 08BD     		pop	{r3, pc}
+ 136              		.cfi_endproc
+ 137              	.LFE1:
+ 139              		.section	.text.u8g_pb8h8_SetPixel,"ax",%progbits
+ 140              		.align	2
+ 141              		.global	u8g_pb8h8_SetPixel
+ 142              		.thumb
+ 143              		.thumb_func
+ 145              	u8g_pb8h8_SetPixel:
+ 146              	.LFB3:
+ 100:u8glib/u8g_pb8h8.c **** 
+ 101:u8glib/u8g_pb8h8.c **** void u8g_pb8h8_SetPixel(u8g_pb_t *b, const u8g_dev_arg_pixel_t * const arg_pixel)
+ 102:u8glib/u8g_pb8h8.c **** {
+ 147              		.loc 1 102 0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151              	.LVL15:
+ 103:u8glib/u8g_pb8h8.c ****   if ( arg_pixel->y < b->p.page_y0 )
+ 152              		.loc 1 103 0
+ 153 0000 4A78     		ldrb	r2, [r1, #1]	@ zero_extendqisi2
+ 154 0002 8378     		ldrb	r3, [r0, #2]	@ zero_extendqisi2
+ 155 0004 9A42     		cmp	r2, r3
+ 156 0006 0CD3     		bcc	.L10
+ 104:u8glib/u8g_pb8h8.c ****     return;
+ 105:u8glib/u8g_pb8h8.c ****   if ( arg_pixel->y > b->p.page_y1 )
+ 157              		.loc 1 105 0
+ 158 0008 C378     		ldrb	r3, [r0, #3]	@ zero_extendqisi2
+ 159 000a 9A42     		cmp	r2, r3
+ 160 000c 09D8     		bhi	.L10
+ 102:u8glib/u8g_pb8h8.c ****   if ( arg_pixel->y < b->p.page_y0 )
+ 161              		.loc 1 102 0
+ 162 000e 10B5     		push	{r4, lr}
+ 163              	.LCFI3:
+ 164              		.cfi_def_cfa_offset 8
+ 165              		.cfi_offset 4, -8
+ 166              		.cfi_offset 14, -4
+ 106:u8glib/u8g_pb8h8.c ****     return;
+ 107:u8glib/u8g_pb8h8.c ****   if ( arg_pixel->x >= b->width )
+ 167              		.loc 1 107 0
+ 168 0010 0C78     		ldrb	r4, [r1]	@ zero_extendqisi2
+ 169 0012 4379     		ldrb	r3, [r0, #5]	@ zero_extendqisi2
+ 170 0014 9C42     		cmp	r4, r3
+ 171 0016 03D2     		bcs	.L7
+ 108:u8glib/u8g_pb8h8.c ****     return;
+ 109:u8glib/u8g_pb8h8.c ****   u8g_pb8h8_set_pixel(b, arg_pixel->x, arg_pixel->y, arg_pixel->color);
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 6
+
+
+ 172              		.loc 1 109 0
+ 173 0018 0B79     		ldrb	r3, [r1, #4]	@ zero_extendqisi2
+ 174 001a 2146     		mov	r1, r4
+ 175              	.LVL16:
+ 176 001c FFF7FEFF 		bl	u8g_pb8h8_set_pixel
+ 177              	.LVL17:
+ 178              	.L7:
+ 179 0020 10BD     		pop	{r4, pc}
+ 180              	.LVL18:
+ 181              	.L10:
+ 182              	.LCFI4:
+ 183              		.cfi_def_cfa_offset 0
+ 184              		.cfi_restore 4
+ 185              		.cfi_restore 14
+ 186 0022 7047     		bx	lr
+ 187              		.cfi_endproc
+ 188              	.LFE3:
+ 190              		.section	.text.u8g_pb8h8_Set8Pixel,"ax",%progbits
+ 191              		.align	2
+ 192              		.global	u8g_pb8h8_Set8Pixel
+ 193              		.thumb
+ 194              		.thumb_func
+ 196              	u8g_pb8h8_Set8Pixel:
+ 197              	.LFB4:
+ 110:u8glib/u8g_pb8h8.c **** }
+ 111:u8glib/u8g_pb8h8.c **** 
+ 112:u8glib/u8g_pb8h8.c **** 
+ 113:u8glib/u8g_pb8h8.c **** void u8g_pb8h8_Set8Pixel(u8g_pb_t *b, u8g_dev_arg_pixel_t *arg_pixel)
+ 114:u8glib/u8g_pb8h8.c **** {
+ 198              		.loc 1 114 0
+ 199              		.cfi_startproc
+ 200              		@ args = 0, pretend = 0, frame = 0
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202              	.LVL19:
+ 203 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 204              	.LCFI5:
+ 205              		.cfi_def_cfa_offset 24
+ 206              		.cfi_offset 4, -24
+ 207              		.cfi_offset 5, -20
+ 208              		.cfi_offset 6, -16
+ 209              		.cfi_offset 7, -12
+ 210              		.cfi_offset 8, -8
+ 211              		.cfi_offset 14, -4
+ 212 0004 8046     		mov	r8, r0
+ 213 0006 0D46     		mov	r5, r1
+ 115:u8glib/u8g_pb8h8.c ****   register uint8_t pixel = arg_pixel->pixel;
+ 214              		.loc 1 115 0
+ 215 0008 8C78     		ldrb	r4, [r1, #2]	@ zero_extendqisi2
+ 216              	.LVL20:
+ 116:u8glib/u8g_pb8h8.c ****   u8g_uint_t dx = 0;
+ 117:u8glib/u8g_pb8h8.c ****   u8g_uint_t dy = 0;
+ 118:u8glib/u8g_pb8h8.c ****   
+ 119:u8glib/u8g_pb8h8.c ****   switch( arg_pixel->dir )
+ 217              		.loc 1 119 0
+ 218 000a CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
+ 219 000c 032B     		cmp	r3, #3
+ 220 000e 03D8     		bhi	.L12
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 7
+
+
+ 221 0010 DFE803F0 		tbb	[pc, r3]
+ 222              	.L14:
+ 223 0014 0E       		.byte	(.L20-.L14)/2
+ 224 0015 05       		.byte	(.L15-.L14)/2
+ 225 0016 08       		.byte	(.L16-.L14)/2
+ 226 0017 0B       		.byte	(.L17-.L14)/2
+ 227              		.p2align 1
+ 228              	.L12:
+ 117:u8glib/u8g_pb8h8.c ****   
+ 229              		.loc 1 117 0
+ 230 0018 0026     		movs	r6, #0
+ 116:u8glib/u8g_pb8h8.c ****   u8g_uint_t dx = 0;
+ 231              		.loc 1 116 0
+ 232 001a 3746     		mov	r7, r6
+ 233 001c 0AE0     		b	.L19
+ 234              	.L15:
+ 235              	.LVL21:
+ 120:u8glib/u8g_pb8h8.c ****   {
+ 121:u8glib/u8g_pb8h8.c ****     case 0: dx++; break;
+ 122:u8glib/u8g_pb8h8.c ****     case 1: dy++; break;
+ 236              		.loc 1 122 0
+ 237 001e 0126     		movs	r6, #1
+ 116:u8glib/u8g_pb8h8.c ****   u8g_uint_t dy = 0;
+ 238              		.loc 1 116 0
+ 239 0020 0027     		movs	r7, #0
+ 240              		.loc 1 122 0
+ 241 0022 07E0     		b	.L19
+ 242              	.LVL22:
+ 243              	.L16:
+ 117:u8glib/u8g_pb8h8.c ****   
+ 244              		.loc 1 117 0
+ 245 0024 0026     		movs	r6, #0
+ 123:u8glib/u8g_pb8h8.c ****     case 2: dx--; break;
+ 246              		.loc 1 123 0
+ 247 0026 FF27     		movs	r7, #255
+ 248 0028 04E0     		b	.L19
+ 249              	.LVL23:
+ 250              	.L17:
+ 124:u8glib/u8g_pb8h8.c ****     case 3: dy--; break;
+ 251              		.loc 1 124 0
+ 252 002a FF26     		movs	r6, #255
+ 116:u8glib/u8g_pb8h8.c ****   u8g_uint_t dy = 0;
+ 253              		.loc 1 116 0
+ 254 002c 0027     		movs	r7, #0
+ 255              		.loc 1 124 0
+ 256 002e 01E0     		b	.L19
+ 257              	.LVL24:
+ 258              	.L20:
+ 117:u8glib/u8g_pb8h8.c ****   
+ 259              		.loc 1 117 0
+ 260 0030 0026     		movs	r6, #0
+ 121:u8glib/u8g_pb8h8.c ****     case 1: dy++; break;
+ 261              		.loc 1 121 0
+ 262 0032 0127     		movs	r7, #1
+ 263              	.LVL25:
+ 264              	.L19:
+ 125:u8glib/u8g_pb8h8.c ****   }
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 8
+
+
+ 126:u8glib/u8g_pb8h8.c ****   
+ 127:u8glib/u8g_pb8h8.c ****   do
+ 128:u8glib/u8g_pb8h8.c ****   {
+ 129:u8glib/u8g_pb8h8.c ****     if ( pixel & 128 )
+ 265              		.loc 1 129 0
+ 266 0034 14F0800F 		tst	r4, #128
+ 267 0038 03D0     		beq	.L18
+ 130:u8glib/u8g_pb8h8.c ****       u8g_pb8h8_SetPixel(b, arg_pixel);
+ 268              		.loc 1 130 0
+ 269 003a 2946     		mov	r1, r5
+ 270 003c 4046     		mov	r0, r8
+ 271 003e FFF7FEFF 		bl	u8g_pb8h8_SetPixel
+ 272              	.LVL26:
+ 273              	.L18:
+ 131:u8glib/u8g_pb8h8.c ****     arg_pixel->x += dx;
+ 274              		.loc 1 131 0
+ 275 0042 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 276 0044 3B44     		add	r3, r3, r7
+ 277 0046 2B70     		strb	r3, [r5]
+ 132:u8glib/u8g_pb8h8.c ****     arg_pixel->y += dy;
+ 278              		.loc 1 132 0
+ 279 0048 6B78     		ldrb	r3, [r5, #1]	@ zero_extendqisi2
+ 280 004a 3344     		add	r3, r3, r6
+ 281 004c 6B70     		strb	r3, [r5, #1]
+ 133:u8glib/u8g_pb8h8.c ****     pixel <<= 1;
+ 282              		.loc 1 133 0
+ 283 004e 6400     		lsls	r4, r4, #1
+ 284              	.LVL27:
+ 134:u8glib/u8g_pb8h8.c ****   } while( pixel != 0  );  
+ 285              		.loc 1 134 0
+ 286 0050 14F0FF04 		ands	r4, r4, #255
+ 287              	.LVL28:
+ 288 0054 EED1     		bne	.L19
+ 135:u8glib/u8g_pb8h8.c **** }
+ 289              		.loc 1 135 0
+ 290 0056 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 291              		.cfi_endproc
+ 292              	.LFE4:
+ 294 005a 00BF     		.section	.text.u8g_dev_pb8h8_base_fn,"ax",%progbits
+ 295              		.align	2
+ 296              		.global	u8g_dev_pb8h8_base_fn
+ 297              		.thumb
+ 298              		.thumb_func
+ 300              	u8g_dev_pb8h8_base_fn:
+ 301              	.LFB5:
+ 136:u8glib/u8g_pb8h8.c **** 
+ 137:u8glib/u8g_pb8h8.c **** 
+ 138:u8glib/u8g_pb8h8.c **** uint8_t u8g_dev_pb8h8_base_fn(u8g_t *u8g, u8g_dev_t *dev, uint8_t msg, void *arg)
+ 139:u8glib/u8g_pb8h8.c **** {
+ 302              		.loc 1 139 0
+ 303              		.cfi_startproc
+ 304              		@ args = 0, pretend = 0, frame = 0
+ 305              		@ frame_needed = 0, uses_anonymous_args = 0
+ 306              	.LVL29:
+ 307 0000 38B5     		push	{r3, r4, r5, lr}
+ 308              	.LCFI6:
+ 309              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 9
+
+
+ 310              		.cfi_offset 3, -16
+ 311              		.cfi_offset 4, -12
+ 312              		.cfi_offset 5, -8
+ 313              		.cfi_offset 14, -4
+ 314 0002 1D46     		mov	r5, r3
+ 140:u8glib/u8g_pb8h8.c ****   u8g_pb_t *pb = (u8g_pb_t *)(dev->dev_mem);
+ 315              		.loc 1 140 0
+ 316 0004 4C68     		ldr	r4, [r1, #4]
+ 317              	.LVL30:
+ 141:u8glib/u8g_pb8h8.c ****   switch(msg)
+ 318              		.loc 1 141 0
+ 319 0006 143A     		subs	r2, r2, #20
+ 320              	.LVL31:
+ 321 0008 342A     		cmp	r2, #52
+ 322 000a 4FD8     		bhi	.L33
+ 323 000c DFE802F0 		tbb	[pc, r2]
+ 324              	.LVL32:
+ 325              	.L25:
+ 326 0010 2E       		.byte	(.L24-.L25)/2
+ 327 0011 36       		.byte	(.L26-.L25)/2
+ 328 0012 4E       		.byte	(.L33-.L25)/2
+ 329 0013 40       		.byte	(.L27-.L25)/2
+ 330 0014 4E       		.byte	(.L33-.L25)/2
+ 331 0015 4E       		.byte	(.L33-.L25)/2
+ 332 0016 4E       		.byte	(.L33-.L25)/2
+ 333 0017 4E       		.byte	(.L33-.L25)/2
+ 334 0018 4E       		.byte	(.L33-.L25)/2
+ 335 0019 4E       		.byte	(.L33-.L25)/2
+ 336 001a 4E       		.byte	(.L33-.L25)/2
+ 337 001b 4E       		.byte	(.L33-.L25)/2
+ 338 001c 4E       		.byte	(.L33-.L25)/2
+ 339 001d 4E       		.byte	(.L33-.L25)/2
+ 340 001e 4E       		.byte	(.L33-.L25)/2
+ 341 001f 4E       		.byte	(.L33-.L25)/2
+ 342 0020 4E       		.byte	(.L33-.L25)/2
+ 343 0021 4E       		.byte	(.L33-.L25)/2
+ 344 0022 4E       		.byte	(.L33-.L25)/2
+ 345 0023 4E       		.byte	(.L33-.L25)/2
+ 346 0024 4E       		.byte	(.L33-.L25)/2
+ 347 0025 4E       		.byte	(.L33-.L25)/2
+ 348 0026 4E       		.byte	(.L33-.L25)/2
+ 349 0027 4E       		.byte	(.L33-.L25)/2
+ 350 0028 4E       		.byte	(.L33-.L25)/2
+ 351 0029 4E       		.byte	(.L33-.L25)/2
+ 352 002a 4E       		.byte	(.L33-.L25)/2
+ 353 002b 4E       		.byte	(.L33-.L25)/2
+ 354 002c 4E       		.byte	(.L33-.L25)/2
+ 355 002d 4E       		.byte	(.L33-.L25)/2
+ 356 002e 28       		.byte	(.L28-.L25)/2
+ 357 002f 4E       		.byte	(.L33-.L25)/2
+ 358 0030 4E       		.byte	(.L33-.L25)/2
+ 359 0031 4E       		.byte	(.L33-.L25)/2
+ 360 0032 4E       		.byte	(.L33-.L25)/2
+ 361 0033 4E       		.byte	(.L33-.L25)/2
+ 362 0034 4E       		.byte	(.L33-.L25)/2
+ 363 0035 4E       		.byte	(.L33-.L25)/2
+ 364 0036 4E       		.byte	(.L33-.L25)/2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 10
+
+
+ 365 0037 1D       		.byte	(.L29-.L25)/2
+ 366 0038 4E       		.byte	(.L33-.L25)/2
+ 367 0039 4E       		.byte	(.L33-.L25)/2
+ 368 003a 4E       		.byte	(.L33-.L25)/2
+ 369 003b 4E       		.byte	(.L33-.L25)/2
+ 370 003c 4E       		.byte	(.L33-.L25)/2
+ 371 003d 4E       		.byte	(.L33-.L25)/2
+ 372 003e 4E       		.byte	(.L33-.L25)/2
+ 373 003f 4E       		.byte	(.L33-.L25)/2
+ 374 0040 4E       		.byte	(.L33-.L25)/2
+ 375 0041 4E       		.byte	(.L33-.L25)/2
+ 376 0042 46       		.byte	(.L30-.L25)/2
+ 377 0043 4A       		.byte	(.L31-.L25)/2
+ 378 0044 1B       		.byte	(.L32-.L25)/2
+ 379 0045 00       		.p2align 1
+ 380              	.L32:
+ 142:u8glib/u8g_pb8h8.c ****   {
+ 143:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_SET_8PIXEL:
+ 144:u8glib/u8g_pb8h8.c ****       if ( u8g_pb_Is8PixelVisible(pb, (u8g_dev_arg_pixel_t *)arg) )
+ 145:u8glib/u8g_pb8h8.c ****         u8g_pb8h8_Set8Pixel(pb, (u8g_dev_arg_pixel_t *)arg);
+ 146:u8glib/u8g_pb8h8.c ****       break;
+ 147:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_SET_PIXEL:
+ 148:u8glib/u8g_pb8h8.c ****       u8g_pb8h8_SetPixel(pb, (u8g_dev_arg_pixel_t *)arg);
+ 149:u8glib/u8g_pb8h8.c ****       break;
+ 150:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_INIT:
+ 151:u8glib/u8g_pb8h8.c ****       break;
+ 152:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_STOP:
+ 153:u8glib/u8g_pb8h8.c ****       break;
+ 154:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_PAGE_FIRST:
+ 155:u8glib/u8g_pb8h8.c ****       u8g_pb8h8_Clear(pb);
+ 156:u8glib/u8g_pb8h8.c ****       u8g_page_First(&(pb->p));
+ 157:u8glib/u8g_pb8h8.c ****       break;
+ 158:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_PAGE_NEXT:
+ 159:u8glib/u8g_pb8h8.c ****       if ( u8g_page_Next(&(pb->p)) == 0 )
+ 160:u8glib/u8g_pb8h8.c ****         return 0;
+ 161:u8glib/u8g_pb8h8.c ****       u8g_pb8h8_Clear(pb);
+ 162:u8glib/u8g_pb8h8.c ****       break;
+ 163:u8glib/u8g_pb8h8.c **** #ifdef U8G_DEV_MSG_IS_BBX_INTERSECTION
+ 164:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_IS_BBX_INTERSECTION:
+ 165:u8glib/u8g_pb8h8.c ****       return u8g_pb_IsIntersection(pb, (u8g_dev_arg_bbx_t *)arg);
+ 166:u8glib/u8g_pb8h8.c **** #endif
+ 167:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_GET_PAGE_BOX:
+ 168:u8glib/u8g_pb8h8.c ****       u8g_pb_GetPageBox(pb, (u8g_box_t *)arg);
+ 169:u8glib/u8g_pb8h8.c ****       break;
+ 170:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_GET_WIDTH:
+ 171:u8glib/u8g_pb8h8.c ****       *((u8g_uint_t *)arg) = pb->width;
+ 172:u8glib/u8g_pb8h8.c ****       break;
+ 173:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_GET_HEIGHT:
+ 174:u8glib/u8g_pb8h8.c ****       *((u8g_uint_t *)arg) = pb->p.total_height;
+ 175:u8glib/u8g_pb8h8.c ****       break;
+ 176:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_SET_COLOR_ENTRY:
+ 177:u8glib/u8g_pb8h8.c ****       break;
+ 178:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_SET_XY_CB:
+ 179:u8glib/u8g_pb8h8.c ****       break;
+ 180:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_GET_MODE:
+ 181:u8glib/u8g_pb8h8.c ****       return U8G_MODE_R3G3B2;
+ 381              		.loc 1 181 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 11
+
+
+ 382 0046 2823     		movs	r3, #40
+ 383 0048 33E0     		b	.L23
+ 384              	.L29:
+ 144:u8glib/u8g_pb8h8.c ****         u8g_pb8h8_Set8Pixel(pb, (u8g_dev_arg_pixel_t *)arg);
+ 385              		.loc 1 144 0
+ 386 004a 2946     		mov	r1, r5
+ 387              	.LVL33:
+ 388 004c 2046     		mov	r0, r4
+ 389              	.LVL34:
+ 390 004e FFF7FEFF 		bl	u8g_pb_Is8PixelVisible
+ 391              	.LVL35:
+ 392 0052 68B3     		cbz	r0, .L34
+ 145:u8glib/u8g_pb8h8.c ****       break;
+ 393              		.loc 1 145 0
+ 394 0054 2946     		mov	r1, r5
+ 395 0056 2046     		mov	r0, r4
+ 396 0058 FFF7FEFF 		bl	u8g_pb8h8_Set8Pixel
+ 397              	.LVL36:
+ 182:u8glib/u8g_pb8h8.c ****   }
+ 183:u8glib/u8g_pb8h8.c ****   return 1;
+ 398              		.loc 1 183 0
+ 399 005c 0123     		movs	r3, #1
+ 400 005e 28E0     		b	.L23
+ 401              	.LVL37:
+ 402              	.L28:
+ 148:u8glib/u8g_pb8h8.c ****       break;
+ 403              		.loc 1 148 0
+ 404 0060 2946     		mov	r1, r5
+ 405              	.LVL38:
+ 406 0062 2046     		mov	r0, r4
+ 407              	.LVL39:
+ 408 0064 FFF7FEFF 		bl	u8g_pb8h8_SetPixel
+ 409              	.LVL40:
+ 410              		.loc 1 183 0
+ 411 0068 0123     		movs	r3, #1
+ 149:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_INIT:
+ 412              		.loc 1 149 0
+ 413 006a 22E0     		b	.L23
+ 414              	.LVL41:
+ 415              	.L24:
+ 155:u8glib/u8g_pb8h8.c ****       u8g_page_First(&(pb->p));
+ 416              		.loc 1 155 0
+ 417 006c 2046     		mov	r0, r4
+ 418              	.LVL42:
+ 419 006e FFF7FEFF 		bl	u8g_pb8h8_Clear
+ 420              	.LVL43:
+ 156:u8glib/u8g_pb8h8.c ****       break;
+ 421              		.loc 1 156 0
+ 422 0072 2046     		mov	r0, r4
+ 423 0074 FFF7FEFF 		bl	u8g_page_First
+ 424              	.LVL44:
+ 425              		.loc 1 183 0
+ 426 0078 0123     		movs	r3, #1
+ 157:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_PAGE_NEXT:
+ 427              		.loc 1 157 0
+ 428 007a 1AE0     		b	.L23
+ 429              	.LVL45:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 12
+
+
+ 430              	.L26:
+ 159:u8glib/u8g_pb8h8.c ****         return 0;
+ 431              		.loc 1 159 0
+ 432 007c 2046     		mov	r0, r4
+ 433              	.LVL46:
+ 434 007e FFF7FEFF 		bl	u8g_page_Next
+ 435              	.LVL47:
+ 436 0082 0346     		mov	r3, r0
+ 437 0084 A8B1     		cbz	r0, .L23
+ 161:u8glib/u8g_pb8h8.c ****       break;
+ 438              		.loc 1 161 0
+ 439 0086 2046     		mov	r0, r4
+ 440 0088 FFF7FEFF 		bl	u8g_pb8h8_Clear
+ 441              	.LVL48:
+ 442              		.loc 1 183 0
+ 443 008c 0123     		movs	r3, #1
+ 162:u8glib/u8g_pb8h8.c **** #ifdef U8G_DEV_MSG_IS_BBX_INTERSECTION
+ 444              		.loc 1 162 0
+ 445 008e 10E0     		b	.L23
+ 446              	.LVL49:
+ 447              	.L27:
+ 168:u8glib/u8g_pb8h8.c ****       break;
+ 448              		.loc 1 168 0
+ 449 0090 2946     		mov	r1, r5
+ 450              	.LVL50:
+ 451 0092 2046     		mov	r0, r4
+ 452              	.LVL51:
+ 453 0094 FFF7FEFF 		bl	u8g_pb_GetPageBox
+ 454              	.LVL52:
+ 455              		.loc 1 183 0
+ 456 0098 0123     		movs	r3, #1
+ 169:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_GET_WIDTH:
+ 457              		.loc 1 169 0
+ 458 009a 0AE0     		b	.L23
+ 459              	.LVL53:
+ 460              	.L30:
+ 171:u8glib/u8g_pb8h8.c ****       break;
+ 461              		.loc 1 171 0
+ 462 009c 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 463 009e 2B70     		strb	r3, [r5]
+ 464              		.loc 1 183 0
+ 465 00a0 0123     		movs	r3, #1
+ 172:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_GET_HEIGHT:
+ 466              		.loc 1 172 0
+ 467 00a2 06E0     		b	.L23
+ 468              	.L31:
+ 174:u8glib/u8g_pb8h8.c ****       break;
+ 469              		.loc 1 174 0
+ 470 00a4 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 471 00a6 2B70     		strb	r3, [r5]
+ 472              		.loc 1 183 0
+ 473 00a8 0123     		movs	r3, #1
+ 175:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_SET_COLOR_ENTRY:
+ 474              		.loc 1 175 0
+ 475 00aa 02E0     		b	.L23
+ 476              	.L33:
+ 477              		.loc 1 183 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 13
+
+
+ 478 00ac 0123     		movs	r3, #1
+ 479 00ae 00E0     		b	.L23
+ 480              	.LVL54:
+ 481              	.L34:
+ 482 00b0 0123     		movs	r3, #1
+ 483              	.L23:
+ 184:u8glib/u8g_pb8h8.c **** }
+ 484              		.loc 1 184 0
+ 485 00b2 1846     		mov	r0, r3
+ 486 00b4 38BD     		pop	{r3, r4, r5, pc}
+ 487              		.cfi_endproc
+ 488              	.LFE5:
+ 490 00b6 00BF     		.text
+ 491              	.Letext0:
+ 492              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 493              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 494              		.file 4 "u8glib/u8g.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaXTNoP.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g_pb8h8.c
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:22     .text.u8g_pb8h8_set_pixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:26     .text.u8g_pb8h8_set_pixel:00000000 u8g_pb8h8_set_pixel
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:72     .text.u8g_pb8h8_Clear:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:77     .text.u8g_pb8h8_Clear:00000000 u8g_pb8h8_Clear
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:111    .text.u8g_pb8h8_Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:116    .text.u8g_pb8h8_Init:00000000 u8g_pb8h8_Init
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:140    .text.u8g_pb8h8_SetPixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:145    .text.u8g_pb8h8_SetPixel:00000000 u8g_pb8h8_SetPixel
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:191    .text.u8g_pb8h8_Set8Pixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:196    .text.u8g_pb8h8_Set8Pixel:00000000 u8g_pb8h8_Set8Pixel
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:223    .text.u8g_pb8h8_Set8Pixel:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:227    .text.u8g_pb8h8_Set8Pixel:00000018 $t
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:295    .text.u8g_dev_pb8h8_base_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:300    .text.u8g_dev_pb8h8_base_fn:00000000 u8g_dev_pb8h8_base_fn
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:326    .text.u8g_dev_pb8h8_base_fn:00000010 $d
+                     .debug_frame:00000010 $d
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:379    .text.u8g_dev_pb8h8_base_fn:00000045 $d
+C:\Users\master\AppData\Local\Temp\ccaXTNoP.s:379    .text.u8g_dev_pb8h8_base_fn:00000046 $t
+
+UNDEFINED SYMBOLS
+u8g_pb_Is8PixelVisible
+u8g_page_First
+u8g_page_Next
+u8g_pb_GetPageBox

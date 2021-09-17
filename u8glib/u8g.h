@@ -54,9 +54,7 @@ typedef signed short int16_t;
 #include <stdint.h>
 #endif
 
-#if defined(__AVR__)
-#include <avr/pgmspace.h>
-#endif 
+
 
 /* 
   use the com interface directly on any systems which are not AVR or ARDUINO 

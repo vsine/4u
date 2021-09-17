@@ -1,0 +1,716 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g_virtual_screen.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g_dev_vs_fn,"ax",%progbits
+  22              		.align	2
+  23              		.global	u8g_dev_vs_fn
+  24              		.thumb
+  25              		.thumb_func
+  27              	u8g_dev_vs_fn:
+  28              	.LFB0:
+  29              		.file 1 "u8glib/u8g_virtual_screen.c"
+   1:u8glib/u8g_virtual_screen.c **** /*
+   2:u8glib/u8g_virtual_screen.c **** 
+   3:u8glib/u8g_virtual_screen.c ****   u8g_virtual_screen.c
+   4:u8glib/u8g_virtual_screen.c **** 
+   5:u8glib/u8g_virtual_screen.c ****   Universal 8bit Graphics Library
+   6:u8glib/u8g_virtual_screen.c ****   
+   7:u8glib/u8g_virtual_screen.c ****   Copyright (c) 2012, olikraus@gmail.com
+   8:u8glib/u8g_virtual_screen.c ****   All rights reserved.
+   9:u8glib/u8g_virtual_screen.c **** 
+  10:u8glib/u8g_virtual_screen.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  11:u8glib/u8g_virtual_screen.c ****   are permitted provided that the following conditions are met:
+  12:u8glib/u8g_virtual_screen.c **** 
+  13:u8glib/u8g_virtual_screen.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  14:u8glib/u8g_virtual_screen.c ****     of conditions and the following disclaimer.
+  15:u8glib/u8g_virtual_screen.c ****     
+  16:u8glib/u8g_virtual_screen.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  17:u8glib/u8g_virtual_screen.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  18:u8glib/u8g_virtual_screen.c ****     materials provided with the distribution.
+  19:u8glib/u8g_virtual_screen.c **** 
+  20:u8glib/u8g_virtual_screen.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  21:u8glib/u8g_virtual_screen.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  22:u8glib/u8g_virtual_screen.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  23:u8glib/u8g_virtual_screen.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  24:u8glib/u8g_virtual_screen.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  25:u8glib/u8g_virtual_screen.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  26:u8glib/u8g_virtual_screen.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  27:u8glib/u8g_virtual_screen.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  28:u8glib/u8g_virtual_screen.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  29:u8glib/u8g_virtual_screen.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 2
+
+
+  30:u8glib/u8g_virtual_screen.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  31:u8glib/u8g_virtual_screen.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  32:u8glib/u8g_virtual_screen.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  33:u8glib/u8g_virtual_screen.c ****   
+  34:u8glib/u8g_virtual_screen.c ****   
+  35:u8glib/u8g_virtual_screen.c **** */
+  36:u8glib/u8g_virtual_screen.c **** 
+  37:u8glib/u8g_virtual_screen.c **** #include "u8g.h"
+  38:u8glib/u8g_virtual_screen.c **** 
+  39:u8glib/u8g_virtual_screen.c **** struct _u8g_vs_t
+  40:u8glib/u8g_virtual_screen.c **** {
+  41:u8glib/u8g_virtual_screen.c ****   u8g_uint_t x;
+  42:u8glib/u8g_virtual_screen.c ****   u8g_uint_t y;
+  43:u8glib/u8g_virtual_screen.c ****   u8g_t *u8g;
+  44:u8glib/u8g_virtual_screen.c **** };
+  45:u8glib/u8g_virtual_screen.c **** typedef struct _u8g_vs_t u8g_vs_t;
+  46:u8glib/u8g_virtual_screen.c **** 
+  47:u8glib/u8g_virtual_screen.c **** #define U8g_VS_MAX 4
+  48:u8glib/u8g_virtual_screen.c **** uint8_t u8g_vs_cnt = 0;
+  49:u8glib/u8g_virtual_screen.c **** u8g_vs_t u8g_vs_list[U8g_VS_MAX]; 
+  50:u8glib/u8g_virtual_screen.c **** uint8_t u8g_vs_current;
+  51:u8glib/u8g_virtual_screen.c **** u8g_uint_t u8g_vs_width;
+  52:u8glib/u8g_virtual_screen.c **** u8g_uint_t u8g_vs_height;
+  53:u8glib/u8g_virtual_screen.c **** 
+  54:u8glib/u8g_virtual_screen.c **** uint8_t u8g_dev_vs_fn(u8g_t *u8g, u8g_dev_t *dev, uint8_t msg, void *arg)
+  55:u8glib/u8g_virtual_screen.c **** {
+  30              		.loc 1 55 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              	.LVL0:
+  35 0000 70B5     		push	{r4, r5, r6, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 4, -16
+  39              		.cfi_offset 5, -12
+  40              		.cfi_offset 6, -8
+  41              		.cfi_offset 14, -4
+  42 0002 1646     		mov	r6, r2
+  43 0004 1D46     		mov	r5, r3
+  56:u8glib/u8g_virtual_screen.c ****   switch(msg)
+  44              		.loc 1 56 0
+  45 0006 A2F11403 		sub	r3, r2, #20
+  46              	.LVL1:
+  47 000a 332B     		cmp	r3, #51
+  48 000c 27D8     		bhi	.L14
+  49 000e DFE803F0 		tbb	[pc, r3]
+  50              	.LVL2:
+  51              	.L4:
+  52 0012 2D       		.byte	(.L3-.L4)/2
+  53 0013 3D       		.byte	(.L5-.L4)/2
+  54 0014 26       		.byte	(.L14-.L4)/2
+  55 0015 6C       		.byte	(.L6-.L4)/2
+  56 0016 26       		.byte	(.L14-.L4)/2
+  57 0017 26       		.byte	(.L14-.L4)/2
+  58 0018 26       		.byte	(.L14-.L4)/2
+  59 0019 26       		.byte	(.L14-.L4)/2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 3
+
+
+  60 001a 26       		.byte	(.L14-.L4)/2
+  61 001b 26       		.byte	(.L14-.L4)/2
+  62 001c 26       		.byte	(.L14-.L4)/2
+  63 001d 26       		.byte	(.L14-.L4)/2
+  64 001e 26       		.byte	(.L14-.L4)/2
+  65 001f 26       		.byte	(.L14-.L4)/2
+  66 0020 26       		.byte	(.L14-.L4)/2
+  67 0021 26       		.byte	(.L14-.L4)/2
+  68 0022 26       		.byte	(.L14-.L4)/2
+  69 0023 26       		.byte	(.L14-.L4)/2
+  70 0024 26       		.byte	(.L14-.L4)/2
+  71 0025 26       		.byte	(.L14-.L4)/2
+  72 0026 26       		.byte	(.L14-.L4)/2
+  73 0027 26       		.byte	(.L14-.L4)/2
+  74 0028 26       		.byte	(.L14-.L4)/2
+  75 0029 26       		.byte	(.L14-.L4)/2
+  76 002a 26       		.byte	(.L14-.L4)/2
+  77 002b 26       		.byte	(.L14-.L4)/2
+  78 002c 26       		.byte	(.L14-.L4)/2
+  79 002d 26       		.byte	(.L14-.L4)/2
+  80 002e 26       		.byte	(.L14-.L4)/2
+  81 002f 26       		.byte	(.L14-.L4)/2
+  82 0030 9B       		.byte	(.L7-.L4)/2
+  83 0031 26       		.byte	(.L14-.L4)/2
+  84 0032 26       		.byte	(.L14-.L4)/2
+  85 0033 26       		.byte	(.L14-.L4)/2
+  86 0034 26       		.byte	(.L14-.L4)/2
+  87 0035 26       		.byte	(.L14-.L4)/2
+  88 0036 26       		.byte	(.L14-.L4)/2
+  89 0037 26       		.byte	(.L14-.L4)/2
+  90 0038 26       		.byte	(.L14-.L4)/2
+  91 0039 9B       		.byte	(.L7-.L4)/2
+  92 003a 26       		.byte	(.L14-.L4)/2
+  93 003b 26       		.byte	(.L14-.L4)/2
+  94 003c 26       		.byte	(.L14-.L4)/2
+  95 003d 26       		.byte	(.L14-.L4)/2
+  96 003e 26       		.byte	(.L14-.L4)/2
+  97 003f 26       		.byte	(.L14-.L4)/2
+  98 0040 26       		.byte	(.L14-.L4)/2
+  99 0041 26       		.byte	(.L14-.L4)/2
+ 100 0042 26       		.byte	(.L14-.L4)/2
+ 101 0043 26       		.byte	(.L14-.L4)/2
+ 102 0044 62       		.byte	(.L8-.L4)/2
+ 103 0045 67       		.byte	(.L9-.L4)/2
+ 104              		.p2align 1
+ 105              	.L10:
+ 106              	.LBB2:
+  57:u8glib/u8g_virtual_screen.c ****   {
+  58:u8glib/u8g_virtual_screen.c ****     default:
+  59:u8glib/u8g_virtual_screen.c ****       {
+  60:u8glib/u8g_virtual_screen.c **** 	uint8_t i;
+  61:u8glib/u8g_virtual_screen.c **** 	for( i = 0; i < u8g_vs_cnt; i++ )
+  62:u8glib/u8g_virtual_screen.c **** 	{
+  63:u8glib/u8g_virtual_screen.c **** 	  u8g_call_dev_fn(u8g_vs_list[i].u8g, u8g_vs_list[i].u8g->dev, msg, arg);
+ 107              		.loc 1 63 0 discriminator 3
+ 108 0046 504B     		ldr	r3, .L20
+ 109 0048 03EBC403 		add	r3, r3, r4, lsl #3
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 4
+
+
+ 110 004c 5868     		ldr	r0, [r3, #4]
+ 111 004e 2B46     		mov	r3, r5
+ 112 0050 3246     		mov	r2, r6
+ 113 0052 4168     		ldr	r1, [r0, #4]
+ 114 0054 FFF7FEFF 		bl	u8g_call_dev_fn
+ 115              	.LVL3:
+  61:u8glib/u8g_virtual_screen.c **** 	{
+ 116              		.loc 1 61 0 discriminator 3
+ 117 0058 0134     		adds	r4, r4, #1
+ 118              	.LVL4:
+ 119 005a E4B2     		uxtb	r4, r4
+ 120              	.LVL5:
+ 121 005c 00E0     		b	.L2
+ 122              	.LVL6:
+ 123              	.L14:
+ 124              	.LBE2:
+  56:u8glib/u8g_virtual_screen.c ****   switch(msg)
+ 125              		.loc 1 56 0
+ 126 005e 0024     		movs	r4, #0
+ 127              	.LVL7:
+ 128              	.L2:
+ 129              	.LBB3:
+  61:u8glib/u8g_virtual_screen.c **** 	{
+ 130              		.loc 1 61 0 discriminator 1
+ 131 0060 4A4B     		ldr	r3, .L20+4
+ 132 0062 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 133 0064 9C42     		cmp	r4, r3
+ 134 0066 EED3     		bcc	.L10
+ 135              	.LBE3:
+  64:u8glib/u8g_virtual_screen.c **** 	}
+  65:u8glib/u8g_virtual_screen.c ****       }
+  66:u8glib/u8g_virtual_screen.c ****       return 1;
+ 136              		.loc 1 66 0
+ 137 0068 0120     		movs	r0, #1
+ 138 006a 70BD     		pop	{r4, r5, r6, pc}
+ 139              	.LVL8:
+ 140              	.L3:
+  67:u8glib/u8g_virtual_screen.c ****     case U8G_DEV_MSG_PAGE_FIRST:
+  68:u8glib/u8g_virtual_screen.c ****       u8g_vs_current = 0;
+ 141              		.loc 1 68 0
+ 142 006c 0022     		movs	r2, #0
+ 143 006e 484B     		ldr	r3, .L20+8
+ 144 0070 1A70     		strb	r2, [r3]
+  69:u8glib/u8g_virtual_screen.c ****       if ( u8g_vs_cnt != 0 )
+ 145              		.loc 1 69 0
+ 146 0072 464B     		ldr	r3, .L20+4
+ 147 0074 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 148              	.LVL9:
+ 149 0076 0028     		cmp	r0, #0
+ 150 0078 00F08480 		beq	.L11
+  70:u8glib/u8g_virtual_screen.c **** 	return u8g_call_dev_fn(u8g_vs_list[u8g_vs_current].u8g, u8g_vs_list[u8g_vs_current].u8g->dev, msg,
+ 151              		.loc 1 70 0
+ 152 007c 424B     		ldr	r3, .L20
+ 153 007e 5868     		ldr	r0, [r3, #4]
+ 154 0080 2B46     		mov	r3, r5
+ 155 0082 3246     		mov	r2, r6
+ 156 0084 4168     		ldr	r1, [r0, #4]
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 5
+
+
+ 157              	.LVL10:
+ 158 0086 FFF7FEFF 		bl	u8g_call_dev_fn
+ 159              	.LVL11:
+ 160 008a 70BD     		pop	{r4, r5, r6, pc}
+ 161              	.LVL12:
+ 162              	.L5:
+ 163              	.LBB4:
+  71:u8glib/u8g_virtual_screen.c ****       return 0;
+  72:u8glib/u8g_virtual_screen.c ****     case U8G_DEV_MSG_PAGE_NEXT:
+  73:u8glib/u8g_virtual_screen.c ****       {	
+  74:u8glib/u8g_virtual_screen.c **** 	uint8_t ret = 0;
+  75:u8glib/u8g_virtual_screen.c **** 	if ( u8g_vs_cnt != 0 )
+ 164              		.loc 1 75 0
+ 165 008c 3F4B     		ldr	r3, .L20+4
+ 166 008e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 167 0090 5BB1     		cbz	r3, .L15
+  76:u8glib/u8g_virtual_screen.c **** 	  ret = u8g_call_dev_fn(u8g_vs_list[u8g_vs_current].u8g, u8g_vs_list[u8g_vs_current].u8g->dev, msg
+ 168              		.loc 1 76 0
+ 169 0092 3F4B     		ldr	r3, .L20+8
+ 170 0094 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 171 0096 3C4B     		ldr	r3, .L20
+ 172 0098 03EBC203 		add	r3, r3, r2, lsl #3
+ 173 009c 5868     		ldr	r0, [r3, #4]
+ 174              	.LVL13:
+ 175 009e 2B46     		mov	r3, r5
+ 176 00a0 3246     		mov	r2, r6
+ 177 00a2 4168     		ldr	r1, [r0, #4]
+ 178              	.LVL14:
+ 179 00a4 FFF7FEFF 		bl	u8g_call_dev_fn
+ 180              	.LVL15:
+ 181 00a8 00E0     		b	.L12
+ 182              	.LVL16:
+ 183              	.L15:
+  74:u8glib/u8g_virtual_screen.c **** 	if ( u8g_vs_cnt != 0 )
+ 184              		.loc 1 74 0
+ 185 00aa 0020     		movs	r0, #0
+ 186              	.LVL17:
+ 187              	.L12:
+  77:u8glib/u8g_virtual_screen.c **** 	if ( ret != 0 )
+ 188              		.loc 1 77 0
+ 189 00ac 0028     		cmp	r0, #0
+ 190 00ae 69D1     		bne	.L11
+  78:u8glib/u8g_virtual_screen.c **** 	  return ret;
+  79:u8glib/u8g_virtual_screen.c **** 	u8g_vs_current++;	/* next device */
+ 191              		.loc 1 79 0
+ 192 00b0 374A     		ldr	r2, .L20+8
+ 193 00b2 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 194 00b4 0133     		adds	r3, r3, #1
+ 195 00b6 DBB2     		uxtb	r3, r3
+ 196 00b8 1370     		strb	r3, [r2]
+  80:u8glib/u8g_virtual_screen.c **** 	if ( u8g_vs_current >= u8g_vs_cnt )  /* reached end? */
+ 197              		.loc 1 80 0
+ 198 00ba 344A     		ldr	r2, .L20+4
+ 199 00bc 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 200 00be 9342     		cmp	r3, r2
+ 201 00c0 5DD2     		bcs	.L17
+  81:u8glib/u8g_virtual_screen.c **** 	  return 0;
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 6
+
+
+  82:u8glib/u8g_virtual_screen.c **** 	return u8g_call_dev_fn(u8g_vs_list[u8g_vs_current].u8g, u8g_vs_list[u8g_vs_current].u8g->dev, U8G_
+ 202              		.loc 1 82 0
+ 203 00c2 314A     		ldr	r2, .L20
+ 204 00c4 02EBC303 		add	r3, r2, r3, lsl #3
+ 205 00c8 5868     		ldr	r0, [r3, #4]
+ 206              	.LVL18:
+ 207 00ca 2B46     		mov	r3, r5
+ 208 00cc 1422     		movs	r2, #20
+ 209 00ce 4168     		ldr	r1, [r0, #4]
+ 210 00d0 FFF7FEFF 		bl	u8g_call_dev_fn
+ 211              	.LVL19:
+ 212 00d4 70BD     		pop	{r4, r5, r6, pc}
+ 213              	.LVL20:
+ 214              	.L8:
+ 215              	.LBE4:
+  83:u8glib/u8g_virtual_screen.c ****       }
+  84:u8glib/u8g_virtual_screen.c ****     case U8G_DEV_MSG_GET_WIDTH:
+  85:u8glib/u8g_virtual_screen.c ****       *((u8g_uint_t *)arg) = u8g_vs_width;
+ 216              		.loc 1 85 0
+ 217 00d6 2F4B     		ldr	r3, .L20+12
+ 218 00d8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 219 00da 2B70     		strb	r3, [r5]
+  86:u8glib/u8g_virtual_screen.c ****       break;
+  87:u8glib/u8g_virtual_screen.c ****     case U8G_DEV_MSG_GET_HEIGHT:
+  88:u8glib/u8g_virtual_screen.c ****       *((u8g_uint_t *)arg) = u8g_vs_height;
+  89:u8glib/u8g_virtual_screen.c ****       break;
+  90:u8glib/u8g_virtual_screen.c ****     case U8G_DEV_MSG_GET_PAGE_BOX:
+  91:u8glib/u8g_virtual_screen.c ****       if ( u8g_vs_current < u8g_vs_cnt )
+  92:u8glib/u8g_virtual_screen.c ****       {
+  93:u8glib/u8g_virtual_screen.c **** 	u8g_call_dev_fn(u8g_vs_list[u8g_vs_current].u8g, u8g_vs_list[u8g_vs_current].u8g->dev, msg, arg);
+  94:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->x0 += u8g_vs_list[u8g_vs_current].x;
+  95:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->x1 += u8g_vs_list[u8g_vs_current].x;
+  96:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->y0 += u8g_vs_list[u8g_vs_current].y;
+  97:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->y1 += u8g_vs_list[u8g_vs_current].y;
+  98:u8glib/u8g_virtual_screen.c ****       }
+  99:u8glib/u8g_virtual_screen.c ****       else
+ 100:u8glib/u8g_virtual_screen.c ****       {
+ 101:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->x0 = 0;
+ 102:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->x1 = 0;
+ 103:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->y0 = 0;
+ 104:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->y1 = 0;
+ 105:u8glib/u8g_virtual_screen.c ****       }
+ 106:u8glib/u8g_virtual_screen.c ****       return 1;
+ 107:u8glib/u8g_virtual_screen.c ****     case U8G_DEV_MSG_SET_PIXEL:
+ 108:u8glib/u8g_virtual_screen.c ****     case U8G_DEV_MSG_SET_8PIXEL:
+ 109:u8glib/u8g_virtual_screen.c ****       if ( u8g_vs_current < u8g_vs_cnt )
+ 110:u8glib/u8g_virtual_screen.c ****       {
+ 111:u8glib/u8g_virtual_screen.c ****         ((u8g_dev_arg_pixel_t *)arg)->x -= u8g_vs_list[u8g_vs_current].x;
+ 112:u8glib/u8g_virtual_screen.c ****         ((u8g_dev_arg_pixel_t *)arg)->y -= u8g_vs_list[u8g_vs_current].y;
+ 113:u8glib/u8g_virtual_screen.c **** 	return u8g_call_dev_fn(u8g_vs_list[u8g_vs_current].u8g, u8g_vs_list[u8g_vs_current].u8g->dev, msg,
+ 114:u8glib/u8g_virtual_screen.c ****       }
+ 115:u8glib/u8g_virtual_screen.c ****       break;
+ 116:u8glib/u8g_virtual_screen.c ****   }
+ 117:u8glib/u8g_virtual_screen.c ****   return 1;
+ 220              		.loc 1 117 0
+ 221 00dc 0120     		movs	r0, #1
+ 222              	.LVL21:
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 7
+
+
+  86:u8glib/u8g_virtual_screen.c ****       break;
+ 223              		.loc 1 86 0
+ 224 00de 70BD     		pop	{r4, r5, r6, pc}
+ 225              	.LVL22:
+ 226              	.L9:
+  88:u8glib/u8g_virtual_screen.c ****       break;
+ 227              		.loc 1 88 0
+ 228 00e0 2D4B     		ldr	r3, .L20+16
+ 229 00e2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 230 00e4 2B70     		strb	r3, [r5]
+ 231              		.loc 1 117 0
+ 232 00e6 0120     		movs	r0, #1
+ 233              	.LVL23:
+  89:u8glib/u8g_virtual_screen.c ****     case U8G_DEV_MSG_GET_PAGE_BOX:
+ 234              		.loc 1 89 0
+ 235 00e8 70BD     		pop	{r4, r5, r6, pc}
+ 236              	.LVL24:
+ 237              	.L6:
+  91:u8glib/u8g_virtual_screen.c ****       {
+ 238              		.loc 1 91 0
+ 239 00ea 294B     		ldr	r3, .L20+8
+ 240 00ec 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 241 00ee 274A     		ldr	r2, .L20+4
+ 242 00f0 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 243 00f2 9342     		cmp	r3, r2
+ 244 00f4 21D2     		bcs	.L13
+  93:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->x0 += u8g_vs_list[u8g_vs_current].x;
+ 245              		.loc 1 93 0
+ 246 00f6 244C     		ldr	r4, .L20
+ 247 00f8 04EBC303 		add	r3, r4, r3, lsl #3
+ 248 00fc 5868     		ldr	r0, [r3, #4]
+ 249              	.LVL25:
+ 250 00fe 2B46     		mov	r3, r5
+ 251 0100 3246     		mov	r2, r6
+ 252 0102 4168     		ldr	r1, [r0, #4]
+ 253              	.LVL26:
+ 254 0104 FFF7FEFF 		bl	u8g_call_dev_fn
+ 255              	.LVL27:
+  94:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->x1 += u8g_vs_list[u8g_vs_current].x;
+ 256              		.loc 1 94 0
+ 257 0108 214A     		ldr	r2, .L20+8
+ 258 010a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 259 010c 14F83310 		ldrb	r1, [r4, r3, lsl #3]	@ zero_extendqisi2
+ 260 0110 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 261 0112 0B44     		add	r3, r3, r1
+ 262 0114 2B70     		strb	r3, [r5]
+  95:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->y0 += u8g_vs_list[u8g_vs_current].y;
+ 263              		.loc 1 95 0
+ 264 0116 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 265 0118 14F83210 		ldrb	r1, [r4, r2, lsl #3]	@ zero_extendqisi2
+ 266 011c AB78     		ldrb	r3, [r5, #2]	@ zero_extendqisi2
+ 267 011e 0B44     		add	r3, r3, r1
+ 268 0120 AB70     		strb	r3, [r5, #2]
+  96:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->y1 += u8g_vs_list[u8g_vs_current].y;
+ 269              		.loc 1 96 0
+ 270 0122 04EBC204 		add	r4, r4, r2, lsl #3
+ 271 0126 6278     		ldrb	r2, [r4, #1]	@ zero_extendqisi2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 8
+
+
+ 272 0128 6B78     		ldrb	r3, [r5, #1]	@ zero_extendqisi2
+ 273 012a 1344     		add	r3, r3, r2
+ 274 012c 6B70     		strb	r3, [r5, #1]
+  97:u8glib/u8g_virtual_screen.c ****       }
+ 275              		.loc 1 97 0
+ 276 012e 6278     		ldrb	r2, [r4, #1]	@ zero_extendqisi2
+ 277 0130 EB78     		ldrb	r3, [r5, #3]	@ zero_extendqisi2
+ 278 0132 1344     		add	r3, r3, r2
+ 279 0134 EB70     		strb	r3, [r5, #3]
+ 106:u8glib/u8g_virtual_screen.c ****     case U8G_DEV_MSG_SET_PIXEL:
+ 280              		.loc 1 106 0
+ 281 0136 0120     		movs	r0, #1
+ 282 0138 70BD     		pop	{r4, r5, r6, pc}
+ 283              	.LVL28:
+ 284              	.L13:
+ 101:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->x1 = 0;
+ 285              		.loc 1 101 0
+ 286 013a 0023     		movs	r3, #0
+ 287 013c 2B70     		strb	r3, [r5]
+ 102:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->y0 = 0;
+ 288              		.loc 1 102 0
+ 289 013e AB70     		strb	r3, [r5, #2]
+ 103:u8glib/u8g_virtual_screen.c **** 	((u8g_box_t *)arg)->y1 = 0;
+ 290              		.loc 1 103 0
+ 291 0140 6B70     		strb	r3, [r5, #1]
+ 104:u8glib/u8g_virtual_screen.c ****       }
+ 292              		.loc 1 104 0
+ 293 0142 EB70     		strb	r3, [r5, #3]
+ 106:u8glib/u8g_virtual_screen.c ****     case U8G_DEV_MSG_SET_PIXEL:
+ 294              		.loc 1 106 0
+ 295 0144 0120     		movs	r0, #1
+ 296              	.LVL29:
+ 297 0146 70BD     		pop	{r4, r5, r6, pc}
+ 298              	.LVL30:
+ 299              	.L7:
+ 109:u8glib/u8g_virtual_screen.c ****       {
+ 300              		.loc 1 109 0
+ 301 0148 114B     		ldr	r3, .L20+8
+ 302 014a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 303 014c 0F4A     		ldr	r2, .L20+4
+ 304 014e 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 305 0150 9342     		cmp	r3, r2
+ 306 0152 16D2     		bcs	.L18
+ 111:u8glib/u8g_virtual_screen.c ****         ((u8g_dev_arg_pixel_t *)arg)->y -= u8g_vs_list[u8g_vs_current].y;
+ 307              		.loc 1 111 0
+ 308 0154 0C4A     		ldr	r2, .L20
+ 309 0156 12F83310 		ldrb	r1, [r2, r3, lsl #3]	@ zero_extendqisi2
+ 310              	.LVL31:
+ 311 015a 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 312 015c 5B1A     		subs	r3, r3, r1
+ 313 015e 2B70     		strb	r3, [r5]
+ 112:u8glib/u8g_virtual_screen.c **** 	return u8g_call_dev_fn(u8g_vs_list[u8g_vs_current].u8g, u8g_vs_list[u8g_vs_current].u8g->dev, msg,
+ 314              		.loc 1 112 0
+ 315 0160 0B4B     		ldr	r3, .L20+8
+ 316 0162 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 317 0164 02EBC303 		add	r3, r2, r3, lsl #3
+ 318 0168 5978     		ldrb	r1, [r3, #1]	@ zero_extendqisi2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 9
+
+
+ 319 016a 6A78     		ldrb	r2, [r5, #1]	@ zero_extendqisi2
+ 320 016c 521A     		subs	r2, r2, r1
+ 321 016e 6A70     		strb	r2, [r5, #1]
+ 113:u8glib/u8g_virtual_screen.c ****       }
+ 322              		.loc 1 113 0
+ 323 0170 5868     		ldr	r0, [r3, #4]
+ 324              	.LVL32:
+ 325 0172 2B46     		mov	r3, r5
+ 326 0174 3246     		mov	r2, r6
+ 327 0176 4168     		ldr	r1, [r0, #4]
+ 328 0178 FFF7FEFF 		bl	u8g_call_dev_fn
+ 329              	.LVL33:
+ 330 017c 70BD     		pop	{r4, r5, r6, pc}
+ 331              	.LVL34:
+ 332              	.L17:
+ 333              	.LBB5:
+  81:u8glib/u8g_virtual_screen.c **** 	return u8g_call_dev_fn(u8g_vs_list[u8g_vs_current].u8g, u8g_vs_list[u8g_vs_current].u8g->dev, U8G_
+ 334              		.loc 1 81 0
+ 335 017e 0020     		movs	r0, #0
+ 336              	.LVL35:
+ 337 0180 70BD     		pop	{r4, r5, r6, pc}
+ 338              	.LVL36:
+ 339              	.L18:
+ 340              	.LBE5:
+ 341              		.loc 1 117 0
+ 342 0182 0120     		movs	r0, #1
+ 343              	.LVL37:
+ 344              	.L11:
+ 118:u8glib/u8g_virtual_screen.c **** }
+ 345              		.loc 1 118 0
+ 346 0184 70BD     		pop	{r4, r5, r6, pc}
+ 347              	.LVL38:
+ 348              	.L21:
+ 349 0186 00BF     		.align	2
+ 350              	.L20:
+ 351 0188 00000000 		.word	u8g_vs_list
+ 352 018c 00000000 		.word	.LANCHOR0
+ 353 0190 00000000 		.word	u8g_vs_current
+ 354 0194 00000000 		.word	u8g_vs_width
+ 355 0198 00000000 		.word	u8g_vs_height
+ 356              		.cfi_endproc
+ 357              	.LFE0:
+ 359              		.section	.text.u8g_SetVirtualScreenDimension,"ax",%progbits
+ 360              		.align	2
+ 361              		.global	u8g_SetVirtualScreenDimension
+ 362              		.thumb
+ 363              		.thumb_func
+ 365              	u8g_SetVirtualScreenDimension:
+ 366              	.LFB1:
+ 119:u8glib/u8g_virtual_screen.c **** 
+ 120:u8glib/u8g_virtual_screen.c **** 
+ 121:u8glib/u8g_virtual_screen.c **** 
+ 122:u8glib/u8g_virtual_screen.c **** u8g_dev_t u8g_dev_vs = { u8g_dev_vs_fn, NULL, NULL };
+ 123:u8glib/u8g_virtual_screen.c **** 
+ 124:u8glib/u8g_virtual_screen.c **** void u8g_SetVirtualScreenDimension(u8g_t *vs_u8g, u8g_uint_t width, u8g_uint_t height)
+ 125:u8glib/u8g_virtual_screen.c **** {
+ 367              		.loc 1 125 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 10
+
+
+ 368              		.cfi_startproc
+ 369              		@ args = 0, pretend = 0, frame = 0
+ 370              		@ frame_needed = 0, uses_anonymous_args = 0
+ 371              		@ link register save eliminated.
+ 372              	.LVL39:
+ 126:u8glib/u8g_virtual_screen.c ****   if ( vs_u8g->dev != &u8g_dev_vs )
+ 373              		.loc 1 126 0
+ 374 0000 4068     		ldr	r0, [r0, #4]
+ 375              	.LVL40:
+ 376 0002 044B     		ldr	r3, .L24
+ 377 0004 9842     		cmp	r0, r3
+ 378 0006 03D1     		bne	.L22
+ 127:u8glib/u8g_virtual_screen.c ****     return; 	/* abort if there is no a virtual screen device */
+ 128:u8glib/u8g_virtual_screen.c ****   u8g_vs_width = width;
+ 379              		.loc 1 128 0
+ 380 0008 034B     		ldr	r3, .L24+4
+ 381 000a 1970     		strb	r1, [r3]
+ 129:u8glib/u8g_virtual_screen.c ****   u8g_vs_height = height;  
+ 382              		.loc 1 129 0
+ 383 000c 034B     		ldr	r3, .L24+8
+ 384 000e 1A70     		strb	r2, [r3]
+ 385              	.L22:
+ 386 0010 7047     		bx	lr
+ 387              	.L25:
+ 388 0012 00BF     		.align	2
+ 389              	.L24:
+ 390 0014 00000000 		.word	.LANCHOR1
+ 391 0018 00000000 		.word	u8g_vs_width
+ 392 001c 00000000 		.word	u8g_vs_height
+ 393              		.cfi_endproc
+ 394              	.LFE1:
+ 396              		.section	.text.u8g_AddToVirtualScreen,"ax",%progbits
+ 397              		.align	2
+ 398              		.global	u8g_AddToVirtualScreen
+ 399              		.thumb
+ 400              		.thumb_func
+ 402              	u8g_AddToVirtualScreen:
+ 403              	.LFB2:
+ 130:u8glib/u8g_virtual_screen.c **** }
+ 131:u8glib/u8g_virtual_screen.c **** 
+ 132:u8glib/u8g_virtual_screen.c **** uint8_t u8g_AddToVirtualScreen(u8g_t *vs_u8g, u8g_uint_t x, u8g_uint_t y, u8g_t *child_u8g)
+ 133:u8glib/u8g_virtual_screen.c **** {
+ 404              		.loc 1 133 0
+ 405              		.cfi_startproc
+ 406              		@ args = 0, pretend = 0, frame = 0
+ 407              		@ frame_needed = 0, uses_anonymous_args = 0
+ 408              		@ link register save eliminated.
+ 409              	.LVL41:
+ 410 0000 30B4     		push	{r4, r5}
+ 411              	.LCFI1:
+ 412              		.cfi_def_cfa_offset 8
+ 413              		.cfi_offset 4, -8
+ 414              		.cfi_offset 5, -4
+ 134:u8glib/u8g_virtual_screen.c ****   if ( vs_u8g->dev != &u8g_dev_vs )
+ 415              		.loc 1 134 0
+ 416 0002 4468     		ldr	r4, [r0, #4]
+ 417 0004 0B48     		ldr	r0, .L31
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 11
+
+
+ 418              	.LVL42:
+ 419 0006 8442     		cmp	r4, r0
+ 420 0008 0FD1     		bne	.L28
+ 135:u8glib/u8g_virtual_screen.c ****     return 0; 	/* abort if there is no a virtual screen device */
+ 136:u8glib/u8g_virtual_screen.c ****   if ( u8g_vs_cnt >= U8g_VS_MAX )
+ 421              		.loc 1 136 0
+ 422 000a 0B48     		ldr	r0, .L31+4
+ 423 000c 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+ 424 000e 0328     		cmp	r0, #3
+ 425 0010 0DD8     		bhi	.L29
+ 137:u8glib/u8g_virtual_screen.c ****     return 0;  	/* maximum number of  child u8g's reached */
+ 138:u8glib/u8g_virtual_screen.c ****   u8g_vs_list[u8g_vs_cnt].u8g = child_u8g;
+ 426              		.loc 1 138 0
+ 427 0012 0A4D     		ldr	r5, .L31+8
+ 428 0014 05EBC004 		add	r4, r5, r0, lsl #3
+ 429 0018 6360     		str	r3, [r4, #4]
+ 139:u8glib/u8g_virtual_screen.c ****   u8g_vs_list[u8g_vs_cnt].x = x;
+ 430              		.loc 1 139 0
+ 431 001a 05F83010 		strb	r1, [r5, r0, lsl #3]
+ 140:u8glib/u8g_virtual_screen.c ****   u8g_vs_list[u8g_vs_cnt].y = y;
+ 432              		.loc 1 140 0
+ 433 001e 6270     		strb	r2, [r4, #1]
+ 141:u8glib/u8g_virtual_screen.c ****   u8g_vs_cnt++;
+ 434              		.loc 1 141 0
+ 435 0020 0130     		adds	r0, r0, #1
+ 436 0022 054B     		ldr	r3, .L31+4
+ 437              	.LVL43:
+ 438 0024 1870     		strb	r0, [r3]
+ 142:u8glib/u8g_virtual_screen.c ****   return 1;
+ 439              		.loc 1 142 0
+ 440 0026 0120     		movs	r0, #1
+ 441 0028 02E0     		b	.L27
+ 442              	.LVL44:
+ 443              	.L28:
+ 135:u8glib/u8g_virtual_screen.c ****   if ( u8g_vs_cnt >= U8g_VS_MAX )
+ 444              		.loc 1 135 0
+ 445 002a 0020     		movs	r0, #0
+ 446 002c 00E0     		b	.L27
+ 447              	.L29:
+ 137:u8glib/u8g_virtual_screen.c ****   u8g_vs_list[u8g_vs_cnt].u8g = child_u8g;
+ 448              		.loc 1 137 0
+ 449 002e 0020     		movs	r0, #0
+ 450              	.LVL45:
+ 451              	.L27:
+ 143:u8glib/u8g_virtual_screen.c **** }
+ 452              		.loc 1 143 0
+ 453 0030 30BC     		pop	{r4, r5}
+ 454              	.LCFI2:
+ 455              		.cfi_restore 5
+ 456              		.cfi_restore 4
+ 457              		.cfi_def_cfa_offset 0
+ 458 0032 7047     		bx	lr
+ 459              	.L32:
+ 460              		.align	2
+ 461              	.L31:
+ 462 0034 00000000 		.word	.LANCHOR1
+ 463 0038 00000000 		.word	.LANCHOR0
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 12
+
+
+ 464 003c 00000000 		.word	u8g_vs_list
+ 465              		.cfi_endproc
+ 466              	.LFE2:
+ 468              		.global	u8g_dev_vs
+ 469              		.comm	u8g_vs_height,1,1
+ 470              		.comm	u8g_vs_width,1,1
+ 471              		.comm	u8g_vs_current,1,1
+ 472              		.comm	u8g_vs_list,32,4
+ 473              		.global	u8g_vs_cnt
+ 474              		.section	.bss.u8g_vs_cnt,"aw",%nobits
+ 475              		.set	.LANCHOR0,. + 0
+ 478              	u8g_vs_cnt:
+ 479 0000 00       		.space	1
+ 480              		.section	.data.u8g_dev_vs,"aw",%progbits
+ 481              		.align	2
+ 482              		.set	.LANCHOR1,. + 0
+ 485              	u8g_dev_vs:
+ 486 0000 00000000 		.word	u8g_dev_vs_fn
+ 487 0004 00000000 		.word	0
+ 488 0008 00000000 		.word	0
+ 489              		.text
+ 490              	.Letext0:
+ 491              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 492              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 493              		.file 4 "u8glib/u8g.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3FG4iB.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g_virtual_screen.c
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:22     .text.u8g_dev_vs_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:27     .text.u8g_dev_vs_fn:00000000 u8g_dev_vs_fn
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:52     .text.u8g_dev_vs_fn:00000012 $d
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:104    .text.u8g_dev_vs_fn:00000046 $t
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:351    .text.u8g_dev_vs_fn:00000188 $d
+                            *COM*:00000020 u8g_vs_list
+                            *COM*:00000001 u8g_vs_current
+                            *COM*:00000001 u8g_vs_width
+                            *COM*:00000001 u8g_vs_height
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:360    .text.u8g_SetVirtualScreenDimension:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:365    .text.u8g_SetVirtualScreenDimension:00000000 u8g_SetVirtualScreenDimension
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:390    .text.u8g_SetVirtualScreenDimension:00000014 $d
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:397    .text.u8g_AddToVirtualScreen:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:402    .text.u8g_AddToVirtualScreen:00000000 u8g_AddToVirtualScreen
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:462    .text.u8g_AddToVirtualScreen:00000034 $d
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:485    .data.u8g_dev_vs:00000000 u8g_dev_vs
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:478    .bss.u8g_vs_cnt:00000000 u8g_vs_cnt
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:479    .bss.u8g_vs_cnt:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc3FG4iB.s:481    .data.u8g_dev_vs:00000000 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+u8g_call_dev_fn

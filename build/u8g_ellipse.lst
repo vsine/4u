@@ -1,0 +1,1452 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g_ellipse.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g_draw_ellipse_section,"ax",%progbits
+  22              		.align	2
+  23              		.thumb
+  24              		.thumb_func
+  26              	u8g_draw_ellipse_section:
+  27              	.LFB0:
+  28              		.file 1 "u8glib/u8g_ellipse.c"
+   1:u8glib/u8g_ellipse.c **** /*
+   2:u8glib/u8g_ellipse.c **** 
+   3:u8glib/u8g_ellipse.c ****   u8g_ellipse.c
+   4:u8glib/u8g_ellipse.c **** 
+   5:u8glib/u8g_ellipse.c ****   Utility to draw empty and filled ellipses.
+   6:u8glib/u8g_ellipse.c ****   
+   7:u8glib/u8g_ellipse.c ****   Universal 8bit Graphics Library
+   8:u8glib/u8g_ellipse.c ****   
+   9:u8glib/u8g_ellipse.c ****   Copyright (c) 2011, bjthom@gmail.com
+  10:u8glib/u8g_ellipse.c ****   All rights reserved.
+  11:u8glib/u8g_ellipse.c **** 
+  12:u8glib/u8g_ellipse.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  13:u8glib/u8g_ellipse.c ****   are permitted provided that the following conditions are met:
+  14:u8glib/u8g_ellipse.c **** 
+  15:u8glib/u8g_ellipse.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  16:u8glib/u8g_ellipse.c ****     of conditions and the following disclaimer.
+  17:u8glib/u8g_ellipse.c ****     
+  18:u8glib/u8g_ellipse.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  19:u8glib/u8g_ellipse.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  20:u8glib/u8g_ellipse.c ****     materials provided with the distribution.
+  21:u8glib/u8g_ellipse.c **** 
+  22:u8glib/u8g_ellipse.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  23:u8glib/u8g_ellipse.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  24:u8glib/u8g_ellipse.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  25:u8glib/u8g_ellipse.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  26:u8glib/u8g_ellipse.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  27:u8glib/u8g_ellipse.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  28:u8glib/u8g_ellipse.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:u8glib/u8g_ellipse.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  30:u8glib/u8g_ellipse.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 2
+
+
+  31:u8glib/u8g_ellipse.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  32:u8glib/u8g_ellipse.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  33:u8glib/u8g_ellipse.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  34:u8glib/u8g_ellipse.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  35:u8glib/u8g_ellipse.c ****   
+  36:u8glib/u8g_ellipse.c ****   Addition to the U8G Library as of 02/29/12
+  37:u8glib/u8g_ellipse.c ****   Adapted from Bresenham's Algorithm and the following websites:
+  38:u8glib/u8g_ellipse.c **** 	http://free.pages.at/easyfilter/bresenham.html
+  39:u8glib/u8g_ellipse.c **** 	http://homepage.smc.edu/kennedy_john/belipse.pdf
+  40:u8glib/u8g_ellipse.c ****   
+  41:u8glib/u8g_ellipse.c **** */
+  42:u8glib/u8g_ellipse.c **** 
+  43:u8glib/u8g_ellipse.c **** #include "u8g.h"
+  44:u8glib/u8g_ellipse.c **** 
+  45:u8glib/u8g_ellipse.c **** 
+  46:u8glib/u8g_ellipse.c **** #ifdef WORK_IN_PROGRESS
+  47:u8glib/u8g_ellipse.c **** 
+  48:u8glib/u8g_ellipse.c **** void u8g_DrawEllipseRect(u8g_t *u8g, u8g_uint_t x0, u8g_uint_t y0, u8g_uint_t x1, u8g_uint_t y1)
+  49:u8glib/u8g_ellipse.c **** {
+  50:u8glib/u8g_ellipse.c **** 	int a = abs(x1 - x0);
+  51:u8glib/u8g_ellipse.c **** 	int b = abs(y1 - y0);	//get diameters
+  52:u8glib/u8g_ellipse.c **** 	int b1 = b&1;
+  53:u8glib/u8g_ellipse.c **** 	long dx = 4*(1-a)*b*b;
+  54:u8glib/u8g_ellipse.c **** 	long dy = 4*(b1+1)*a*a;
+  55:u8glib/u8g_ellipse.c **** 	long err = dx+dy+b1*a*a;
+  56:u8glib/u8g_ellipse.c **** 	long e2;
+  57:u8glib/u8g_ellipse.c **** 	
+  58:u8glib/u8g_ellipse.c **** 	if (x0 > x1) { x0 = x1; x1 += a; }
+  59:u8glib/u8g_ellipse.c **** 	if (y0 > y1) { y0 = y1; } 
+  60:u8glib/u8g_ellipse.c **** 	y0 += (b+1)/2;
+  61:u8glib/u8g_ellipse.c **** 	y1 = y0-b1;
+  62:u8glib/u8g_ellipse.c **** 	a *= 8*a;
+  63:u8glib/u8g_ellipse.c **** 	b1 = 8*b*b;
+  64:u8glib/u8g_ellipse.c **** 	
+  65:u8glib/u8g_ellipse.c **** 	do {
+  66:u8glib/u8g_ellipse.c **** 		u8g_DrawPixel(u8g, x1, y0);
+  67:u8glib/u8g_ellipse.c **** 		u8g_DrawPixel(u8g, x0, y0);
+  68:u8glib/u8g_ellipse.c **** 		u8g_DrawPixel(u8g, x0, y1);
+  69:u8glib/u8g_ellipse.c **** 		u8g_DrawPixel(u8g, x1, y1);
+  70:u8glib/u8g_ellipse.c **** 		e2 = 2*err;
+  71:u8glib/u8g_ellipse.c **** 		if (e2 >= dx) {
+  72:u8glib/u8g_ellipse.c **** 			x0++;
+  73:u8glib/u8g_ellipse.c **** 			x1--;
+  74:u8glib/u8g_ellipse.c **** 			err += dx += b1;
+  75:u8glib/u8g_ellipse.c **** 		}
+  76:u8glib/u8g_ellipse.c **** 		if (e2 <= dy) {
+  77:u8glib/u8g_ellipse.c **** 			y0++;
+  78:u8glib/u8g_ellipse.c **** 			y1--;
+  79:u8glib/u8g_ellipse.c **** 			err += dy += a;
+  80:u8glib/u8g_ellipse.c **** 		}
+  81:u8glib/u8g_ellipse.c **** 	} while (x0 <= x1);
+  82:u8glib/u8g_ellipse.c **** 	
+  83:u8glib/u8g_ellipse.c **** 	while (y0-y1 < b) {
+  84:u8glib/u8g_ellipse.c **** 		u8g_DrawPixel(u8g, x0-1, y0);
+  85:u8glib/u8g_ellipse.c **** 		u8g_DrawPixel(u8g, x1+1, y0++);
+  86:u8glib/u8g_ellipse.c **** 		u8g_DrawPixel(u8g, x0-1, y1);
+  87:u8glib/u8g_ellipse.c **** 		u8g_DrawPixel(u8g, x1+1, y1--);
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 3
+
+
+  88:u8glib/u8g_ellipse.c **** 	}
+  89:u8glib/u8g_ellipse.c **** }
+  90:u8glib/u8g_ellipse.c **** 
+  91:u8glib/u8g_ellipse.c **** void u8g_DrawEllipse(u8g_t *u8g, u8g_uint_t x0, u8g_uint_t y0, u8g_uint_t xr, u8g_uint_t yr)
+  92:u8glib/u8g_ellipse.c **** {
+  93:u8glib/u8g_ellipse.c **** 	u8g_DrawPixel(u8g, x0, y0+yr);
+  94:u8glib/u8g_ellipse.c **** 	u8g_DrawPixel(u8g, x0, y0-yr);
+  95:u8glib/u8g_ellipse.c **** 	u8g_DrawPixel(u8g, x0+xr, y0);
+  96:u8glib/u8g_ellipse.c **** 	u8g_DrawPixel(u8g, x0-xr, y0);
+  97:u8glib/u8g_ellipse.c **** }
+  98:u8glib/u8g_ellipse.c **** 
+  99:u8glib/u8g_ellipse.c **** #endif
+ 100:u8glib/u8g_ellipse.c **** 
+ 101:u8glib/u8g_ellipse.c **** #if defined(U8G_16BIT)
+ 102:u8glib/u8g_ellipse.c **** typedef  int32_t u8g_long_t;
+ 103:u8glib/u8g_ellipse.c **** #else
+ 104:u8glib/u8g_ellipse.c **** typedef  int16_t u8g_long_t;
+ 105:u8glib/u8g_ellipse.c **** #endif
+ 106:u8glib/u8g_ellipse.c **** 
+ 107:u8glib/u8g_ellipse.c **** 
+ 108:u8glib/u8g_ellipse.c **** /*
+ 109:u8glib/u8g_ellipse.c ****   Source: 
+ 110:u8glib/u8g_ellipse.c ****     ftp://pc.fk0.name/pub/books/programming/bezier-ellipse.pdf
+ 111:u8glib/u8g_ellipse.c ****     Foley, Computer Graphics, p 90
+ 112:u8glib/u8g_ellipse.c **** */
+ 113:u8glib/u8g_ellipse.c **** static void u8g_draw_ellipse_section(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, u8g_uint_t x0, u8g_uin
+ 114:u8glib/u8g_ellipse.c **** static void u8g_draw_ellipse_section(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, u8g_uint_t x0, u8g_uin
+ 115:u8glib/u8g_ellipse.c **** {
+  29              		.loc 1 115 0
+  30              		.cfi_startproc
+  31              		@ args = 8, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              	.LVL0:
+  34 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 32
+  37              		.cfi_offset 3, -32
+  38              		.cfi_offset 4, -28
+  39              		.cfi_offset 5, -24
+  40              		.cfi_offset 6, -20
+  41              		.cfi_offset 7, -16
+  42              		.cfi_offset 8, -12
+  43              		.cfi_offset 9, -8
+  44              		.cfi_offset 14, -4
+  45 0004 0746     		mov	r7, r0
+  46 0006 8846     		mov	r8, r1
+  47 0008 1646     		mov	r6, r2
+  48 000a 1D46     		mov	r5, r3
+  49 000c 9DF82090 		ldrb	r9, [sp, #32]	@ zero_extendqisi2
+  50 0010 9DF82440 		ldrb	r4, [sp, #36]	@ zero_extendqisi2
+ 116:u8glib/u8g_ellipse.c ****     /* upper right */
+ 117:u8glib/u8g_ellipse.c ****     if ( option & U8G_DRAW_UPPER_RIGHT )
+  51              		.loc 1 117 0
+  52 0014 14F0010F 		tst	r4, #1
+  53 0018 06D0     		beq	.L2
+ 118:u8glib/u8g_ellipse.c ****     {
+ 119:u8glib/u8g_ellipse.c ****       u8g_DrawPixel(u8g, x0 + x, y0 - y);
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 4
+
+
+  54              		.loc 1 119 0
+  55 001a C2EB0902 		rsb	r2, r2, r9
+  56              	.LVL1:
+  57 001e 5918     		adds	r1, r3, r1
+  58              	.LVL2:
+  59 0020 D2B2     		uxtb	r2, r2
+  60 0022 C9B2     		uxtb	r1, r1
+  61 0024 FFF7FEFF 		bl	u8g_DrawPixel
+  62              	.LVL3:
+  63              	.L2:
+ 120:u8glib/u8g_ellipse.c ****     }
+ 121:u8glib/u8g_ellipse.c ****     
+ 122:u8glib/u8g_ellipse.c ****     /* upper left */
+ 123:u8glib/u8g_ellipse.c ****     if ( option & U8G_DRAW_UPPER_LEFT )
+  64              		.loc 1 123 0
+  65 0028 14F0020F 		tst	r4, #2
+  66 002c 08D0     		beq	.L3
+ 124:u8glib/u8g_ellipse.c ****     {
+ 125:u8glib/u8g_ellipse.c ****       u8g_DrawPixel(u8g, x0 - x, y0 - y);
+  67              		.loc 1 125 0
+  68 002e C6EB0902 		rsb	r2, r6, r9
+  69 0032 C8EB0501 		rsb	r1, r8, r5
+  70 0036 D2B2     		uxtb	r2, r2
+  71 0038 C9B2     		uxtb	r1, r1
+  72 003a 3846     		mov	r0, r7
+  73 003c FFF7FEFF 		bl	u8g_DrawPixel
+  74              	.LVL4:
+  75              	.L3:
+ 126:u8glib/u8g_ellipse.c ****     }
+ 127:u8glib/u8g_ellipse.c ****     
+ 128:u8glib/u8g_ellipse.c ****     /* lower right */
+ 129:u8glib/u8g_ellipse.c ****     if ( option & U8G_DRAW_LOWER_RIGHT )
+  76              		.loc 1 129 0
+  77 0040 14F0080F 		tst	r4, #8
+  78 0044 08D0     		beq	.L4
+ 130:u8glib/u8g_ellipse.c ****     {
+ 131:u8glib/u8g_ellipse.c ****       u8g_DrawPixel(u8g, x0 + x, y0 + y);
+  79              		.loc 1 131 0
+  80 0046 09EB0602 		add	r2, r9, r6
+  81 004a 05EB0801 		add	r1, r5, r8
+  82 004e D2B2     		uxtb	r2, r2
+  83 0050 C9B2     		uxtb	r1, r1
+  84 0052 3846     		mov	r0, r7
+  85 0054 FFF7FEFF 		bl	u8g_DrawPixel
+  86              	.LVL5:
+  87              	.L4:
+ 132:u8glib/u8g_ellipse.c ****     }
+ 133:u8glib/u8g_ellipse.c ****     
+ 134:u8glib/u8g_ellipse.c ****     /* lower left */
+ 135:u8glib/u8g_ellipse.c ****     if ( option & U8G_DRAW_LOWER_LEFT )
+  88              		.loc 1 135 0
+  89 0058 14F0040F 		tst	r4, #4
+  90 005c 08D0     		beq	.L1
+ 136:u8glib/u8g_ellipse.c ****     {
+ 137:u8glib/u8g_ellipse.c ****       u8g_DrawPixel(u8g, x0 - x, y0 + y);
+  91              		.loc 1 137 0
+  92 005e 09EB0602 		add	r2, r9, r6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 5
+
+
+  93 0062 C8EB0501 		rsb	r1, r8, r5
+  94 0066 D2B2     		uxtb	r2, r2
+  95 0068 C9B2     		uxtb	r1, r1
+  96 006a 3846     		mov	r0, r7
+  97 006c FFF7FEFF 		bl	u8g_DrawPixel
+  98              	.LVL6:
+  99              	.L1:
+ 100 0070 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 101              		.cfi_endproc
+ 102              	.LFE0:
+ 104              		.section	.text.u8g_draw_filled_ellipse_section,"ax",%progbits
+ 105              		.align	2
+ 106              		.thumb
+ 107              		.thumb_func
+ 109              	u8g_draw_filled_ellipse_section:
+ 110              	.LFB3:
+ 138:u8glib/u8g_ellipse.c ****     }
+ 139:u8glib/u8g_ellipse.c **** }
+ 140:u8glib/u8g_ellipse.c **** 
+ 141:u8glib/u8g_ellipse.c **** void u8g_draw_ellipse(u8g_t *u8g, u8g_uint_t x0, u8g_uint_t y0, u8g_uint_t rx, u8g_uint_t ry, uint8
+ 142:u8glib/u8g_ellipse.c **** {
+ 143:u8glib/u8g_ellipse.c ****   u8g_uint_t x, y;
+ 144:u8glib/u8g_ellipse.c ****   u8g_long_t xchg, ychg;
+ 145:u8glib/u8g_ellipse.c ****   u8g_long_t err;
+ 146:u8glib/u8g_ellipse.c ****   u8g_long_t rxrx2;
+ 147:u8glib/u8g_ellipse.c ****   u8g_long_t ryry2;
+ 148:u8glib/u8g_ellipse.c ****   u8g_long_t stopx, stopy;
+ 149:u8glib/u8g_ellipse.c ****   
+ 150:u8glib/u8g_ellipse.c ****   rxrx2 = rx;
+ 151:u8glib/u8g_ellipse.c ****   rxrx2 *= rx;
+ 152:u8glib/u8g_ellipse.c ****   rxrx2 *= 2;
+ 153:u8glib/u8g_ellipse.c ****   
+ 154:u8glib/u8g_ellipse.c ****   ryry2 = ry;
+ 155:u8glib/u8g_ellipse.c ****   ryry2 *= ry;
+ 156:u8glib/u8g_ellipse.c ****   ryry2 *= 2;
+ 157:u8glib/u8g_ellipse.c ****   
+ 158:u8glib/u8g_ellipse.c ****   x = rx;
+ 159:u8glib/u8g_ellipse.c ****   y = 0;
+ 160:u8glib/u8g_ellipse.c ****   
+ 161:u8glib/u8g_ellipse.c ****   xchg = 1;
+ 162:u8glib/u8g_ellipse.c ****   xchg -= rx;
+ 163:u8glib/u8g_ellipse.c ****   xchg -= rx;
+ 164:u8glib/u8g_ellipse.c ****   xchg *= ry;
+ 165:u8glib/u8g_ellipse.c ****   xchg *= ry;
+ 166:u8glib/u8g_ellipse.c ****   
+ 167:u8glib/u8g_ellipse.c ****   ychg = rx;
+ 168:u8glib/u8g_ellipse.c ****   ychg *= rx;
+ 169:u8glib/u8g_ellipse.c ****   
+ 170:u8glib/u8g_ellipse.c ****   err = 0;
+ 171:u8glib/u8g_ellipse.c ****   
+ 172:u8glib/u8g_ellipse.c ****   stopx = ryry2;
+ 173:u8glib/u8g_ellipse.c ****   stopx *= rx;
+ 174:u8glib/u8g_ellipse.c ****   stopy = 0;
+ 175:u8glib/u8g_ellipse.c ****   
+ 176:u8glib/u8g_ellipse.c ****   while( stopx >= stopy )
+ 177:u8glib/u8g_ellipse.c ****   {
+ 178:u8glib/u8g_ellipse.c ****     u8g_draw_ellipse_section(u8g, x, y, x0, y0, option);
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 6
+
+
+ 179:u8glib/u8g_ellipse.c ****     y++;
+ 180:u8glib/u8g_ellipse.c ****     stopy += rxrx2;
+ 181:u8glib/u8g_ellipse.c ****     err += ychg;
+ 182:u8glib/u8g_ellipse.c ****     ychg += rxrx2;
+ 183:u8glib/u8g_ellipse.c ****     if ( 2*err+xchg > 0 )
+ 184:u8glib/u8g_ellipse.c ****     {
+ 185:u8glib/u8g_ellipse.c ****       x--;
+ 186:u8glib/u8g_ellipse.c ****       stopx -= ryry2;
+ 187:u8glib/u8g_ellipse.c ****       err += xchg;
+ 188:u8glib/u8g_ellipse.c ****       xchg += ryry2;      
+ 189:u8glib/u8g_ellipse.c ****     }
+ 190:u8glib/u8g_ellipse.c ****   }
+ 191:u8glib/u8g_ellipse.c **** 
+ 192:u8glib/u8g_ellipse.c ****   x = 0;
+ 193:u8glib/u8g_ellipse.c ****   y = ry;
+ 194:u8glib/u8g_ellipse.c ****   
+ 195:u8glib/u8g_ellipse.c ****   xchg = ry;
+ 196:u8glib/u8g_ellipse.c ****   xchg *= ry;
+ 197:u8glib/u8g_ellipse.c ****   
+ 198:u8glib/u8g_ellipse.c ****   ychg = 1;
+ 199:u8glib/u8g_ellipse.c ****   ychg -= ry;
+ 200:u8glib/u8g_ellipse.c ****   ychg -= ry;
+ 201:u8glib/u8g_ellipse.c ****   ychg *= rx;
+ 202:u8glib/u8g_ellipse.c ****   ychg *= rx;
+ 203:u8glib/u8g_ellipse.c ****   
+ 204:u8glib/u8g_ellipse.c ****   err = 0;
+ 205:u8glib/u8g_ellipse.c ****   
+ 206:u8glib/u8g_ellipse.c ****   stopx = 0;
+ 207:u8glib/u8g_ellipse.c **** 
+ 208:u8glib/u8g_ellipse.c ****   stopy = rxrx2;
+ 209:u8glib/u8g_ellipse.c ****   stopy *= ry;
+ 210:u8glib/u8g_ellipse.c ****   
+ 211:u8glib/u8g_ellipse.c **** 
+ 212:u8glib/u8g_ellipse.c ****   while( stopx <= stopy )
+ 213:u8glib/u8g_ellipse.c ****   {
+ 214:u8glib/u8g_ellipse.c ****     u8g_draw_ellipse_section(u8g, x, y, x0, y0, option);
+ 215:u8glib/u8g_ellipse.c ****     x++;
+ 216:u8glib/u8g_ellipse.c ****     stopx += ryry2;
+ 217:u8glib/u8g_ellipse.c ****     err += xchg;
+ 218:u8glib/u8g_ellipse.c ****     xchg += ryry2;
+ 219:u8glib/u8g_ellipse.c ****     if ( 2*err+ychg > 0 )
+ 220:u8glib/u8g_ellipse.c ****     {
+ 221:u8glib/u8g_ellipse.c ****       y--;
+ 222:u8glib/u8g_ellipse.c ****       stopy -= rxrx2;
+ 223:u8glib/u8g_ellipse.c ****       err += ychg;
+ 224:u8glib/u8g_ellipse.c ****       ychg += rxrx2;
+ 225:u8glib/u8g_ellipse.c ****     }
+ 226:u8glib/u8g_ellipse.c ****   }
+ 227:u8glib/u8g_ellipse.c ****   
+ 228:u8glib/u8g_ellipse.c **** }
+ 229:u8glib/u8g_ellipse.c **** 
+ 230:u8glib/u8g_ellipse.c **** void u8g_DrawEllipse(u8g_t *u8g, u8g_uint_t x0, u8g_uint_t y0, u8g_uint_t rx, u8g_uint_t ry, uint8_
+ 231:u8glib/u8g_ellipse.c **** {
+ 232:u8glib/u8g_ellipse.c ****   /* check for bounding box */
+ 233:u8glib/u8g_ellipse.c ****   {
+ 234:u8glib/u8g_ellipse.c ****     u8g_uint_t rxp, rxp2;
+ 235:u8glib/u8g_ellipse.c ****     u8g_uint_t ryp, ryp2;
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 7
+
+
+ 236:u8glib/u8g_ellipse.c ****     
+ 237:u8glib/u8g_ellipse.c ****     rxp = rx;
+ 238:u8glib/u8g_ellipse.c ****     rxp++;
+ 239:u8glib/u8g_ellipse.c ****     rxp2 = rxp;
+ 240:u8glib/u8g_ellipse.c ****     rxp2 *= 2;
+ 241:u8glib/u8g_ellipse.c **** 
+ 242:u8glib/u8g_ellipse.c ****     ryp = ry;
+ 243:u8glib/u8g_ellipse.c ****     ryp++;
+ 244:u8glib/u8g_ellipse.c ****     ryp2 = ryp;
+ 245:u8glib/u8g_ellipse.c ****     ryp2 *= 2;
+ 246:u8glib/u8g_ellipse.c ****     
+ 247:u8glib/u8g_ellipse.c ****     if ( u8g_IsBBXIntersection(u8g, x0-rxp, y0-ryp, rxp2, ryp2) == 0)
+ 248:u8glib/u8g_ellipse.c ****       return;    
+ 249:u8glib/u8g_ellipse.c ****   }
+ 250:u8glib/u8g_ellipse.c ****   
+ 251:u8glib/u8g_ellipse.c ****   u8g_draw_ellipse(u8g, x0, y0, rx, ry, option);
+ 252:u8glib/u8g_ellipse.c **** }
+ 253:u8glib/u8g_ellipse.c **** 
+ 254:u8glib/u8g_ellipse.c **** static void u8g_draw_filled_ellipse_section(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, u8g_uint_t x0, 
+ 255:u8glib/u8g_ellipse.c **** static void u8g_draw_filled_ellipse_section(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, u8g_uint_t x0, 
+ 256:u8glib/u8g_ellipse.c **** {
+ 111              		.loc 1 256 0
+ 112              		.cfi_startproc
+ 113              		@ args = 8, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115              	.LVL7:
+ 116 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 117              	.LCFI1:
+ 118              		.cfi_def_cfa_offset 32
+ 119              		.cfi_offset 3, -32
+ 120              		.cfi_offset 4, -28
+ 121              		.cfi_offset 5, -24
+ 122              		.cfi_offset 6, -20
+ 123              		.cfi_offset 7, -16
+ 124              		.cfi_offset 8, -12
+ 125              		.cfi_offset 9, -8
+ 126              		.cfi_offset 14, -4
+ 127 0004 0746     		mov	r7, r0
+ 128 0006 8946     		mov	r9, r1
+ 129 0008 1546     		mov	r5, r2
+ 130 000a 1E46     		mov	r6, r3
+ 131 000c 9DF82080 		ldrb	r8, [sp, #32]	@ zero_extendqisi2
+ 132 0010 9DF82440 		ldrb	r4, [sp, #36]	@ zero_extendqisi2
+ 257:u8glib/u8g_ellipse.c ****     /* upper right */
+ 258:u8glib/u8g_ellipse.c ****     if ( option & U8G_DRAW_UPPER_RIGHT )
+ 133              		.loc 1 258 0
+ 134 0014 14F0010F 		tst	r4, #1
+ 135 0018 08D0     		beq	.L8
+ 259:u8glib/u8g_ellipse.c ****     {
+ 260:u8glib/u8g_ellipse.c ****       u8g_DrawVLine(u8g, x0+x, y0-y, y+1);
+ 136              		.loc 1 260 0
+ 137 001a 531C     		adds	r3, r2, #1
+ 138              	.LVL8:
+ 139 001c C2EB0802 		rsb	r2, r2, r8
+ 140              	.LVL9:
+ 141 0020 7118     		adds	r1, r6, r1
+ 142              	.LVL10:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 8
+
+
+ 143 0022 DBB2     		uxtb	r3, r3
+ 144 0024 D2B2     		uxtb	r2, r2
+ 145 0026 C9B2     		uxtb	r1, r1
+ 146 0028 FFF7FEFF 		bl	u8g_DrawVLine
+ 147              	.LVL11:
+ 148              	.L8:
+ 261:u8glib/u8g_ellipse.c ****     }
+ 262:u8glib/u8g_ellipse.c ****     
+ 263:u8glib/u8g_ellipse.c ****     /* upper left */
+ 264:u8glib/u8g_ellipse.c ****     if ( option & U8G_DRAW_UPPER_LEFT )
+ 149              		.loc 1 264 0
+ 150 002c 14F0020F 		tst	r4, #2
+ 151 0030 0AD0     		beq	.L9
+ 265:u8glib/u8g_ellipse.c ****     {
+ 266:u8glib/u8g_ellipse.c ****       u8g_DrawVLine(u8g, x0-x, y0-y, y+1);
+ 152              		.loc 1 266 0
+ 153 0032 6B1C     		adds	r3, r5, #1
+ 154 0034 C5EB0802 		rsb	r2, r5, r8
+ 155 0038 C9EB0601 		rsb	r1, r9, r6
+ 156 003c DBB2     		uxtb	r3, r3
+ 157 003e D2B2     		uxtb	r2, r2
+ 158 0040 C9B2     		uxtb	r1, r1
+ 159 0042 3846     		mov	r0, r7
+ 160 0044 FFF7FEFF 		bl	u8g_DrawVLine
+ 161              	.LVL12:
+ 162              	.L9:
+ 267:u8glib/u8g_ellipse.c ****     }
+ 268:u8glib/u8g_ellipse.c ****     
+ 269:u8glib/u8g_ellipse.c ****     /* lower right */
+ 270:u8glib/u8g_ellipse.c ****     if ( option & U8G_DRAW_LOWER_RIGHT )
+ 163              		.loc 1 270 0
+ 164 0048 14F0080F 		tst	r4, #8
+ 165 004c 08D0     		beq	.L10
+ 271:u8glib/u8g_ellipse.c ****     {
+ 272:u8glib/u8g_ellipse.c ****       u8g_DrawVLine(u8g, x0+x, y0, y+1);
+ 166              		.loc 1 272 0
+ 167 004e 6B1C     		adds	r3, r5, #1
+ 168 0050 06EB0901 		add	r1, r6, r9
+ 169 0054 DBB2     		uxtb	r3, r3
+ 170 0056 4246     		mov	r2, r8
+ 171 0058 C9B2     		uxtb	r1, r1
+ 172 005a 3846     		mov	r0, r7
+ 173 005c FFF7FEFF 		bl	u8g_DrawVLine
+ 174              	.LVL13:
+ 175              	.L10:
+ 273:u8glib/u8g_ellipse.c ****     }
+ 274:u8glib/u8g_ellipse.c ****     
+ 275:u8glib/u8g_ellipse.c ****     /* lower left */
+ 276:u8glib/u8g_ellipse.c ****     if ( option & U8G_DRAW_LOWER_LEFT )
+ 176              		.loc 1 276 0
+ 177 0060 14F0040F 		tst	r4, #4
+ 178 0064 08D0     		beq	.L7
+ 277:u8glib/u8g_ellipse.c ****     {
+ 278:u8glib/u8g_ellipse.c ****       u8g_DrawVLine(u8g, x0-x, y0, y+1);
+ 179              		.loc 1 278 0
+ 180 0066 6B1C     		adds	r3, r5, #1
+ 181 0068 C9EB0601 		rsb	r1, r9, r6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 9
+
+
+ 182 006c DBB2     		uxtb	r3, r3
+ 183 006e 4246     		mov	r2, r8
+ 184 0070 C9B2     		uxtb	r1, r1
+ 185 0072 3846     		mov	r0, r7
+ 186 0074 FFF7FEFF 		bl	u8g_DrawVLine
+ 187              	.LVL14:
+ 188              	.L7:
+ 189 0078 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 190              		.cfi_endproc
+ 191              	.LFE3:
+ 193              		.section	.text.u8g_draw_ellipse,"ax",%progbits
+ 194              		.align	2
+ 195              		.global	u8g_draw_ellipse
+ 196              		.thumb
+ 197              		.thumb_func
+ 199              	u8g_draw_ellipse:
+ 200              	.LFB1:
+ 142:u8glib/u8g_ellipse.c ****   u8g_uint_t x, y;
+ 201              		.loc 1 142 0
+ 202              		.cfi_startproc
+ 203              		@ args = 8, pretend = 0, frame = 40
+ 204              		@ frame_needed = 0, uses_anonymous_args = 0
+ 205              	.LVL15:
+ 206 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 207              	.LCFI2:
+ 208              		.cfi_def_cfa_offset 36
+ 209              		.cfi_offset 4, -36
+ 210              		.cfi_offset 5, -32
+ 211              		.cfi_offset 6, -28
+ 212              		.cfi_offset 7, -24
+ 213              		.cfi_offset 8, -20
+ 214              		.cfi_offset 9, -16
+ 215              		.cfi_offset 10, -12
+ 216              		.cfi_offset 11, -8
+ 217              		.cfi_offset 14, -4
+ 218 0004 8DB0     		sub	sp, sp, #52
+ 219              	.LCFI3:
+ 220              		.cfi_def_cfa_offset 88
+ 221 0006 0590     		str	r0, [sp, #20]
+ 222 0008 0691     		str	r1, [sp, #24]
+ 223 000a 0792     		str	r2, [sp, #28]
+ 224 000c 9946     		mov	r9, r3
+ 225 000e 9DF85830 		ldrb	r3, [sp, #88]	@ zero_extendqisi2
+ 226              	.LVL16:
+ 227 0012 1846     		mov	r0, r3
+ 228              	.LVL17:
+ 229 0014 0393     		str	r3, [sp, #12]
+ 230 0016 9DF85C30 		ldrb	r3, [sp, #92]	@ zero_extendqisi2
+ 231 001a 0893     		str	r3, [sp, #32]
+ 232              	.LVL18:
+ 151:u8glib/u8g_ellipse.c ****   rxrx2 *= 2;
+ 233              		.loc 1 151 0
+ 234 001c 1FFA89F3 		uxth	r3, r9
+ 235 0020 1946     		mov	r1, r3
+ 236              	.LVL19:
+ 237 0022 0993     		str	r3, [sp, #36]
+ 238 0024 03FB03F3 		mul	r3, r3, r3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 10
+
+
+ 239              	.LVL20:
+ 152:u8glib/u8g_ellipse.c ****   
+ 240              		.loc 1 152 0
+ 241 0028 4FEA430A 		lsl	r10, r3, #1
+ 242 002c 1FFA8AFA 		uxth	r10, r10
+ 243              	.LVL21:
+ 155:u8glib/u8g_ellipse.c ****   ryry2 *= 2;
+ 244              		.loc 1 155 0
+ 245 0030 82B2     		uxth	r2, r0
+ 246              	.LVL22:
+ 247 0032 1446     		mov	r4, r2
+ 248 0034 0A92     		str	r2, [sp, #40]
+ 249 0036 02FB02F2 		mul	r2, r2, r2
+ 250 003a 0B92     		str	r2, [sp, #44]
+ 251              	.LVL23:
+ 156:u8glib/u8g_ellipse.c ****   
+ 252              		.loc 1 156 0
+ 253 003c 4FEA420B 		lsl	fp, r2, #1
+ 254 0040 1FFA8BFB 		uxth	fp, fp
+ 255              	.LVL24:
+ 162:u8glib/u8g_ellipse.c ****   xchg -= rx;
+ 256              		.loc 1 162 0
+ 257 0044 C1F10105 		rsb	r5, r1, #1
+ 258 0048 ADB2     		uxth	r5, r5
+ 259              	.LVL25:
+ 163:u8glib/u8g_ellipse.c ****   xchg *= ry;
+ 260              		.loc 1 163 0
+ 261 004a 6D1A     		subs	r5, r5, r1
+ 262              	.LVL26:
+ 263 004c ADB2     		uxth	r5, r5
+ 264              	.LVL27:
+ 164:u8glib/u8g_ellipse.c ****   xchg *= ry;
+ 265              		.loc 1 164 0
+ 266 004e 14FB05F5 		smulbb	r5, r4, r5
+ 267              	.LVL28:
+ 268 0052 ADB2     		uxth	r5, r5
+ 269              	.LVL29:
+ 165:u8glib/u8g_ellipse.c ****   
+ 270              		.loc 1 165 0
+ 271 0054 14FB05F5 		smulbb	r5, r4, r5
+ 272              	.LVL30:
+ 273 0058 2DB2     		sxth	r5, r5
+ 274              	.LVL31:
+ 168:u8glib/u8g_ellipse.c ****   
+ 275              		.loc 1 168 0
+ 276 005a 1BB2     		sxth	r3, r3
+ 277 005c 0493     		str	r3, [sp, #16]
+ 278              	.LVL32:
+ 173:u8glib/u8g_ellipse.c ****   stopy = 0;
+ 279              		.loc 1 173 0
+ 280 005e 11FB0BF8 		smulbb	r8, r1, fp
+ 281 0062 0FFA88F8 		sxth	r8, r8
+ 282              	.LVL33:
+ 174:u8glib/u8g_ellipse.c ****   
+ 283              		.loc 1 174 0
+ 284 0066 0026     		movs	r6, #0
+ 170:u8glib/u8g_ellipse.c ****   
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 11
+
+
+ 285              		.loc 1 170 0
+ 286 0068 3446     		mov	r4, r6
+ 159:u8glib/u8g_ellipse.c ****   
+ 287              		.loc 1 159 0
+ 288 006a 3746     		mov	r7, r6
+ 176:u8glib/u8g_ellipse.c ****   {
+ 289              		.loc 1 176 0
+ 290 006c 26E0     		b	.L14
+ 291              	.LVL34:
+ 292              	.L16:
+ 178:u8glib/u8g_ellipse.c ****     y++;
+ 293              		.loc 1 178 0
+ 294 006e 089B     		ldr	r3, [sp, #32]
+ 295 0070 0193     		str	r3, [sp, #4]
+ 296 0072 079B     		ldr	r3, [sp, #28]
+ 297 0074 0093     		str	r3, [sp]
+ 298 0076 069B     		ldr	r3, [sp, #24]
+ 299 0078 3A46     		mov	r2, r7
+ 300 007a 4946     		mov	r1, r9
+ 301 007c 0598     		ldr	r0, [sp, #20]
+ 302 007e FFF7FEFF 		bl	u8g_draw_ellipse_section
+ 303              	.LVL35:
+ 179:u8glib/u8g_ellipse.c ****     stopy += rxrx2;
+ 304              		.loc 1 179 0
+ 305 0082 0137     		adds	r7, r7, #1
+ 306              	.LVL36:
+ 307 0084 FFB2     		uxtb	r7, r7
+ 308              	.LVL37:
+ 180:u8glib/u8g_ellipse.c ****     err += ychg;
+ 309              		.loc 1 180 0
+ 310 0086 5644     		add	r6, r6, r10
+ 311              	.LVL38:
+ 312 0088 36B2     		sxth	r6, r6
+ 313              	.LVL39:
+ 181:u8glib/u8g_ellipse.c ****     ychg += rxrx2;
+ 314              		.loc 1 181 0
+ 315 008a BDF81020 		ldrh	r2, [sp, #16]
+ 316 008e 1444     		add	r4, r4, r2
+ 317              	.LVL40:
+ 318 0090 A3B2     		uxth	r3, r4
+ 319 0092 1CB2     		sxth	r4, r3
+ 320              	.LVL41:
+ 182:u8glib/u8g_ellipse.c ****     if ( 2*err+xchg > 0 )
+ 321              		.loc 1 182 0
+ 322 0094 5244     		add	r2, r2, r10
+ 323 0096 12B2     		sxth	r2, r2
+ 324 0098 0492     		str	r2, [sp, #16]
+ 325              	.LVL42:
+ 183:u8glib/u8g_ellipse.c ****     {
+ 326              		.loc 1 183 0
+ 327 009a 05EB4402 		add	r2, r5, r4, lsl #1
+ 328 009e 002A     		cmp	r2, #0
+ 329 00a0 0CDD     		ble	.L14
+ 185:u8glib/u8g_ellipse.c ****       stopx -= ryry2;
+ 330              		.loc 1 185 0
+ 331 00a2 09F1FF39 		add	r9, r9, #-1
+ 332              	.LVL43:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 12
+
+
+ 333 00a6 5FFA89F9 		uxtb	r9, r9
+ 334              	.LVL44:
+ 186:u8glib/u8g_ellipse.c ****       err += xchg;
+ 335              		.loc 1 186 0
+ 336 00aa CBEB0808 		rsb	r8, fp, r8
+ 337              	.LVL45:
+ 338 00ae 0FFA88F8 		sxth	r8, r8
+ 339              	.LVL46:
+ 187:u8glib/u8g_ellipse.c ****       xchg += ryry2;      
+ 340              		.loc 1 187 0
+ 341 00b2 ADB2     		uxth	r5, r5
+ 342 00b4 5C19     		adds	r4, r3, r5
+ 343              	.LVL47:
+ 344 00b6 24B2     		sxth	r4, r4
+ 345              	.LVL48:
+ 188:u8glib/u8g_ellipse.c ****     }
+ 346              		.loc 1 188 0
+ 347 00b8 5D44     		add	r5, r5, fp
+ 348              	.LVL49:
+ 349 00ba 2DB2     		sxth	r5, r5
+ 350              	.LVL50:
+ 351              	.L14:
+ 176:u8glib/u8g_ellipse.c ****   {
+ 352              		.loc 1 176 0
+ 353 00bc B045     		cmp	r8, r6
+ 354 00be D6DA     		bge	.L16
+ 355              	.LVL51:
+ 196:u8glib/u8g_ellipse.c ****   
+ 356              		.loc 1 196 0
+ 357 00c0 BDF92C60 		ldrsh	r6, [sp, #44]
+ 358              	.LVL52:
+ 199:u8glib/u8g_ellipse.c ****   ychg -= ry;
+ 359              		.loc 1 199 0
+ 360 00c4 0A9A     		ldr	r2, [sp, #40]
+ 361 00c6 1346     		mov	r3, r2
+ 362 00c8 C2F10105 		rsb	r5, r2, #1
+ 363 00cc ADB2     		uxth	r5, r5
+ 364              	.LVL53:
+ 200:u8glib/u8g_ellipse.c ****   ychg *= rx;
+ 365              		.loc 1 200 0
+ 366 00ce AD1A     		subs	r5, r5, r2
+ 367              	.LVL54:
+ 368 00d0 ADB2     		uxth	r5, r5
+ 369              	.LVL55:
+ 201:u8glib/u8g_ellipse.c ****   ychg *= rx;
+ 370              		.loc 1 201 0
+ 371 00d2 099A     		ldr	r2, [sp, #36]
+ 372 00d4 12FB05F5 		smulbb	r5, r2, r5
+ 373              	.LVL56:
+ 374 00d8 ADB2     		uxth	r5, r5
+ 375              	.LVL57:
+ 202:u8glib/u8g_ellipse.c ****   
+ 376              		.loc 1 202 0
+ 377 00da 12FB05F5 		smulbb	r5, r2, r5
+ 378              	.LVL58:
+ 379 00de 2DB2     		sxth	r5, r5
+ 380              	.LVL59:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 13
+
+
+ 209:u8glib/u8g_ellipse.c ****   
+ 381              		.loc 1 209 0
+ 382 00e0 1AFB03F8 		smulbb	r8, r10, r3
+ 383 00e4 0FFA88F8 		sxth	r8, r8
+ 384              	.LVL60:
+ 206:u8glib/u8g_ellipse.c **** 
+ 385              		.loc 1 206 0
+ 386 00e8 0027     		movs	r7, #0
+ 204:u8glib/u8g_ellipse.c ****   
+ 387              		.loc 1 204 0
+ 388 00ea 3C46     		mov	r4, r7
+ 192:u8glib/u8g_ellipse.c ****   y = ry;
+ 389              		.loc 1 192 0
+ 390 00ec B946     		mov	r9, r7
+ 212:u8glib/u8g_ellipse.c ****   {
+ 391              		.loc 1 212 0
+ 392 00ee 26E0     		b	.L17
+ 393              	.LVL61:
+ 394              	.L19:
+ 214:u8glib/u8g_ellipse.c ****     x++;
+ 395              		.loc 1 214 0
+ 396 00f0 089B     		ldr	r3, [sp, #32]
+ 397 00f2 0193     		str	r3, [sp, #4]
+ 398 00f4 079B     		ldr	r3, [sp, #28]
+ 399 00f6 0093     		str	r3, [sp]
+ 400 00f8 069B     		ldr	r3, [sp, #24]
+ 401 00fa 039A     		ldr	r2, [sp, #12]
+ 402 00fc 4946     		mov	r1, r9
+ 403 00fe 0598     		ldr	r0, [sp, #20]
+ 404 0100 FFF7FEFF 		bl	u8g_draw_ellipse_section
+ 405              	.LVL62:
+ 215:u8glib/u8g_ellipse.c ****     stopx += ryry2;
+ 406              		.loc 1 215 0
+ 407 0104 09F10109 		add	r9, r9, #1
+ 408              	.LVL63:
+ 409 0108 5FFA89F9 		uxtb	r9, r9
+ 410              	.LVL64:
+ 216:u8glib/u8g_ellipse.c ****     err += xchg;
+ 411              		.loc 1 216 0
+ 412 010c 5F44     		add	r7, r7, fp
+ 413              	.LVL65:
+ 414 010e 3FB2     		sxth	r7, r7
+ 415              	.LVL66:
+ 217:u8glib/u8g_ellipse.c ****     xchg += ryry2;
+ 416              		.loc 1 217 0
+ 417 0110 B6B2     		uxth	r6, r6
+ 418 0112 3444     		add	r4, r4, r6
+ 419              	.LVL67:
+ 420 0114 A3B2     		uxth	r3, r4
+ 421 0116 1CB2     		sxth	r4, r3
+ 422              	.LVL68:
+ 218:u8glib/u8g_ellipse.c ****     if ( 2*err+ychg > 0 )
+ 423              		.loc 1 218 0
+ 424 0118 5E44     		add	r6, r6, fp
+ 425              	.LVL69:
+ 426 011a 36B2     		sxth	r6, r6
+ 427              	.LVL70:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 14
+
+
+ 219:u8glib/u8g_ellipse.c ****     {
+ 428              		.loc 1 219 0
+ 429 011c 05EB4402 		add	r2, r5, r4, lsl #1
+ 430 0120 002A     		cmp	r2, #0
+ 431 0122 0CDD     		ble	.L17
+ 221:u8glib/u8g_ellipse.c ****       stopy -= rxrx2;
+ 432              		.loc 1 221 0
+ 433 0124 039A     		ldr	r2, [sp, #12]
+ 434 0126 013A     		subs	r2, r2, #1
+ 435 0128 D2B2     		uxtb	r2, r2
+ 436 012a 0392     		str	r2, [sp, #12]
+ 437              	.LVL71:
+ 222:u8glib/u8g_ellipse.c ****       err += ychg;
+ 438              		.loc 1 222 0
+ 439 012c CAEB0808 		rsb	r8, r10, r8
+ 440              	.LVL72:
+ 441 0130 0FFA88F8 		sxth	r8, r8
+ 442              	.LVL73:
+ 223:u8glib/u8g_ellipse.c ****       ychg += rxrx2;
+ 443              		.loc 1 223 0
+ 444 0134 ADB2     		uxth	r5, r5
+ 445 0136 5C19     		adds	r4, r3, r5
+ 446              	.LVL74:
+ 447 0138 24B2     		sxth	r4, r4
+ 448              	.LVL75:
+ 224:u8glib/u8g_ellipse.c ****     }
+ 449              		.loc 1 224 0
+ 450 013a 5544     		add	r5, r5, r10
+ 451              	.LVL76:
+ 452 013c 2DB2     		sxth	r5, r5
+ 453              	.LVL77:
+ 454              	.L17:
+ 212:u8glib/u8g_ellipse.c ****   {
+ 455              		.loc 1 212 0
+ 456 013e 4745     		cmp	r7, r8
+ 457 0140 D6DD     		ble	.L19
+ 228:u8glib/u8g_ellipse.c **** 
+ 458              		.loc 1 228 0
+ 459 0142 0DB0     		add	sp, sp, #52
+ 460              	.LCFI4:
+ 461              		.cfi_def_cfa_offset 36
+ 462              		@ sp needed
+ 463 0144 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 464              		.cfi_endproc
+ 465              	.LFE1:
+ 467              		.section	.text.u8g_DrawEllipse,"ax",%progbits
+ 468              		.align	2
+ 469              		.global	u8g_DrawEllipse
+ 470              		.thumb
+ 471              		.thumb_func
+ 473              	u8g_DrawEllipse:
+ 474              	.LFB2:
+ 231:u8glib/u8g_ellipse.c ****   /* check for bounding box */
+ 475              		.loc 1 231 0
+ 476              		.cfi_startproc
+ 477              		@ args = 8, pretend = 0, frame = 0
+ 478              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 15
+
+
+ 479              	.LVL78:
+ 480 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 481              	.LCFI5:
+ 482              		.cfi_def_cfa_offset 24
+ 483              		.cfi_offset 4, -24
+ 484              		.cfi_offset 5, -20
+ 485              		.cfi_offset 6, -16
+ 486              		.cfi_offset 7, -12
+ 487              		.cfi_offset 8, -8
+ 488              		.cfi_offset 14, -4
+ 489 0004 82B0     		sub	sp, sp, #8
+ 490              	.LCFI6:
+ 491              		.cfi_def_cfa_offset 32
+ 492 0006 8046     		mov	r8, r0
+ 493 0008 0C46     		mov	r4, r1
+ 494 000a 1546     		mov	r5, r2
+ 495 000c 1E46     		mov	r6, r3
+ 496 000e 9DF82070 		ldrb	r7, [sp, #32]	@ zero_extendqisi2
+ 497              	.LVL79:
+ 498              	.LBB2:
+ 238:u8glib/u8g_ellipse.c ****     rxp2 = rxp;
+ 499              		.loc 1 238 0
+ 500 0012 591C     		adds	r1, r3, #1
+ 501              	.LVL80:
+ 502 0014 C9B2     		uxtb	r1, r1
+ 503              	.LVL81:
+ 240:u8glib/u8g_ellipse.c **** 
+ 504              		.loc 1 240 0
+ 505 0016 4FEA410E 		lsl	lr, r1, #1
+ 506              	.LVL82:
+ 243:u8glib/u8g_ellipse.c ****     ryp2 = ryp;
+ 507              		.loc 1 243 0
+ 508 001a 7A1C     		adds	r2, r7, #1
+ 509              	.LVL83:
+ 510 001c D2B2     		uxtb	r2, r2
+ 511              	.LVL84:
+ 245:u8glib/u8g_ellipse.c ****     
+ 512              		.loc 1 245 0
+ 513 001e 5300     		lsls	r3, r2, #1
+ 514              	.LVL85:
+ 515 0020 DBB2     		uxtb	r3, r3
+ 516              	.LVL86:
+ 247:u8glib/u8g_ellipse.c ****       return;    
+ 517              		.loc 1 247 0
+ 518 0022 AA1A     		subs	r2, r5, r2
+ 519              	.LVL87:
+ 520 0024 611A     		subs	r1, r4, r1
+ 521              	.LVL88:
+ 522 0026 0093     		str	r3, [sp]
+ 523 0028 0EF0FE03 		and	r3, lr, #254
+ 524              	.LVL89:
+ 525 002c D2B2     		uxtb	r2, r2
+ 526 002e C9B2     		uxtb	r1, r1
+ 527 0030 FFF7FEFF 		bl	u8g_IsBBXIntersection
+ 528              	.LVL90:
+ 529 0034 48B1     		cbz	r0, .L21
+ 530              	.LBE2:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 16
+
+
+ 251:u8glib/u8g_ellipse.c **** }
+ 531              		.loc 1 251 0
+ 532 0036 9DF82430 		ldrb	r3, [sp, #36]	@ zero_extendqisi2
+ 533 003a 0193     		str	r3, [sp, #4]
+ 534 003c 0097     		str	r7, [sp]
+ 535 003e 3346     		mov	r3, r6
+ 536 0040 2A46     		mov	r2, r5
+ 537 0042 2146     		mov	r1, r4
+ 538 0044 4046     		mov	r0, r8
+ 539 0046 FFF7FEFF 		bl	u8g_draw_ellipse
+ 540              	.LVL91:
+ 541              	.L21:
+ 252:u8glib/u8g_ellipse.c **** 
+ 542              		.loc 1 252 0
+ 543 004a 02B0     		add	sp, sp, #8
+ 544              	.LCFI7:
+ 545              		.cfi_def_cfa_offset 24
+ 546              		@ sp needed
+ 547 004c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 548              		.cfi_endproc
+ 549              	.LFE2:
+ 551              		.section	.text.u8g_draw_filled_ellipse,"ax",%progbits
+ 552              		.align	2
+ 553              		.global	u8g_draw_filled_ellipse
+ 554              		.thumb
+ 555              		.thumb_func
+ 557              	u8g_draw_filled_ellipse:
+ 558              	.LFB4:
+ 279:u8glib/u8g_ellipse.c ****     }
+ 280:u8glib/u8g_ellipse.c **** }
+ 281:u8glib/u8g_ellipse.c **** 
+ 282:u8glib/u8g_ellipse.c **** void u8g_draw_filled_ellipse(u8g_t *u8g, u8g_uint_t x0, u8g_uint_t y0, u8g_uint_t rx, u8g_uint_t ry
+ 283:u8glib/u8g_ellipse.c **** {
+ 559              		.loc 1 283 0
+ 560              		.cfi_startproc
+ 561              		@ args = 8, pretend = 0, frame = 40
+ 562              		@ frame_needed = 0, uses_anonymous_args = 0
+ 563              	.LVL92:
+ 564 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 565              	.LCFI8:
+ 566              		.cfi_def_cfa_offset 36
+ 567              		.cfi_offset 4, -36
+ 568              		.cfi_offset 5, -32
+ 569              		.cfi_offset 6, -28
+ 570              		.cfi_offset 7, -24
+ 571              		.cfi_offset 8, -20
+ 572              		.cfi_offset 9, -16
+ 573              		.cfi_offset 10, -12
+ 574              		.cfi_offset 11, -8
+ 575              		.cfi_offset 14, -4
+ 576 0004 8DB0     		sub	sp, sp, #52
+ 577              	.LCFI9:
+ 578              		.cfi_def_cfa_offset 88
+ 579 0006 0590     		str	r0, [sp, #20]
+ 580 0008 0691     		str	r1, [sp, #24]
+ 581 000a 0792     		str	r2, [sp, #28]
+ 582 000c 9946     		mov	r9, r3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 17
+
+
+ 583 000e 9DF85830 		ldrb	r3, [sp, #88]	@ zero_extendqisi2
+ 584              	.LVL93:
+ 585 0012 1846     		mov	r0, r3
+ 586              	.LVL94:
+ 587 0014 0393     		str	r3, [sp, #12]
+ 588 0016 9DF85C30 		ldrb	r3, [sp, #92]	@ zero_extendqisi2
+ 589 001a 0893     		str	r3, [sp, #32]
+ 590              	.LVL95:
+ 284:u8glib/u8g_ellipse.c ****   u8g_uint_t x, y;
+ 285:u8glib/u8g_ellipse.c ****   u8g_long_t xchg, ychg;
+ 286:u8glib/u8g_ellipse.c ****   u8g_long_t err;
+ 287:u8glib/u8g_ellipse.c ****   u8g_long_t rxrx2;
+ 288:u8glib/u8g_ellipse.c ****   u8g_long_t ryry2;
+ 289:u8glib/u8g_ellipse.c ****   u8g_long_t stopx, stopy;
+ 290:u8glib/u8g_ellipse.c ****   
+ 291:u8glib/u8g_ellipse.c ****   rxrx2 = rx;
+ 292:u8glib/u8g_ellipse.c ****   rxrx2 *= rx;
+ 591              		.loc 1 292 0
+ 592 001c 1FFA89F3 		uxth	r3, r9
+ 593 0020 1946     		mov	r1, r3
+ 594              	.LVL96:
+ 595 0022 0993     		str	r3, [sp, #36]
+ 596 0024 03FB03F3 		mul	r3, r3, r3
+ 597              	.LVL97:
+ 293:u8glib/u8g_ellipse.c ****   rxrx2 *= 2;
+ 598              		.loc 1 293 0
+ 599 0028 4FEA430A 		lsl	r10, r3, #1
+ 600 002c 1FFA8AFA 		uxth	r10, r10
+ 601              	.LVL98:
+ 294:u8glib/u8g_ellipse.c ****   
+ 295:u8glib/u8g_ellipse.c ****   ryry2 = ry;
+ 296:u8glib/u8g_ellipse.c ****   ryry2 *= ry;
+ 602              		.loc 1 296 0
+ 603 0030 82B2     		uxth	r2, r0
+ 604              	.LVL99:
+ 605 0032 1446     		mov	r4, r2
+ 606 0034 0A92     		str	r2, [sp, #40]
+ 607 0036 02FB02F2 		mul	r2, r2, r2
+ 608 003a 0B92     		str	r2, [sp, #44]
+ 609              	.LVL100:
+ 297:u8glib/u8g_ellipse.c ****   ryry2 *= 2;
+ 610              		.loc 1 297 0
+ 611 003c 4FEA420B 		lsl	fp, r2, #1
+ 612 0040 1FFA8BFB 		uxth	fp, fp
+ 613              	.LVL101:
+ 298:u8glib/u8g_ellipse.c ****   
+ 299:u8glib/u8g_ellipse.c ****   x = rx;
+ 300:u8glib/u8g_ellipse.c ****   y = 0;
+ 301:u8glib/u8g_ellipse.c ****   
+ 302:u8glib/u8g_ellipse.c ****   xchg = 1;
+ 303:u8glib/u8g_ellipse.c ****   xchg -= rx;
+ 614              		.loc 1 303 0
+ 615 0044 C1F10105 		rsb	r5, r1, #1
+ 616 0048 ADB2     		uxth	r5, r5
+ 617              	.LVL102:
+ 304:u8glib/u8g_ellipse.c ****   xchg -= rx;
+ 618              		.loc 1 304 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 18
+
+
+ 619 004a 6D1A     		subs	r5, r5, r1
+ 620              	.LVL103:
+ 621 004c ADB2     		uxth	r5, r5
+ 622              	.LVL104:
+ 305:u8glib/u8g_ellipse.c ****   xchg *= ry;
+ 623              		.loc 1 305 0
+ 624 004e 14FB05F5 		smulbb	r5, r4, r5
+ 625              	.LVL105:
+ 626 0052 ADB2     		uxth	r5, r5
+ 627              	.LVL106:
+ 306:u8glib/u8g_ellipse.c ****   xchg *= ry;
+ 628              		.loc 1 306 0
+ 629 0054 14FB05F5 		smulbb	r5, r4, r5
+ 630              	.LVL107:
+ 631 0058 2DB2     		sxth	r5, r5
+ 632              	.LVL108:
+ 307:u8glib/u8g_ellipse.c ****   
+ 308:u8glib/u8g_ellipse.c ****   ychg = rx;
+ 309:u8glib/u8g_ellipse.c ****   ychg *= rx;
+ 633              		.loc 1 309 0
+ 634 005a 1BB2     		sxth	r3, r3
+ 635 005c 0493     		str	r3, [sp, #16]
+ 636              	.LVL109:
+ 310:u8glib/u8g_ellipse.c ****   
+ 311:u8glib/u8g_ellipse.c ****   err = 0;
+ 312:u8glib/u8g_ellipse.c ****   
+ 313:u8glib/u8g_ellipse.c ****   stopx = ryry2;
+ 314:u8glib/u8g_ellipse.c ****   stopx *= rx;
+ 637              		.loc 1 314 0
+ 638 005e 11FB0BF8 		smulbb	r8, r1, fp
+ 639 0062 0FFA88F8 		sxth	r8, r8
+ 640              	.LVL110:
+ 315:u8glib/u8g_ellipse.c ****   stopy = 0;
+ 641              		.loc 1 315 0
+ 642 0066 0026     		movs	r6, #0
+ 311:u8glib/u8g_ellipse.c ****   
+ 643              		.loc 1 311 0
+ 644 0068 3446     		mov	r4, r6
+ 300:u8glib/u8g_ellipse.c ****   
+ 645              		.loc 1 300 0
+ 646 006a 3746     		mov	r7, r6
+ 316:u8glib/u8g_ellipse.c ****   
+ 317:u8glib/u8g_ellipse.c ****   while( stopx >= stopy )
+ 647              		.loc 1 317 0
+ 648 006c 26E0     		b	.L25
+ 649              	.LVL111:
+ 650              	.L27:
+ 318:u8glib/u8g_ellipse.c ****   {
+ 319:u8glib/u8g_ellipse.c ****     u8g_draw_filled_ellipse_section(u8g, x, y, x0, y0, option);
+ 651              		.loc 1 319 0
+ 652 006e 089B     		ldr	r3, [sp, #32]
+ 653 0070 0193     		str	r3, [sp, #4]
+ 654 0072 079B     		ldr	r3, [sp, #28]
+ 655 0074 0093     		str	r3, [sp]
+ 656 0076 069B     		ldr	r3, [sp, #24]
+ 657 0078 3A46     		mov	r2, r7
+ 658 007a 4946     		mov	r1, r9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 19
+
+
+ 659 007c 0598     		ldr	r0, [sp, #20]
+ 660 007e FFF7FEFF 		bl	u8g_draw_filled_ellipse_section
+ 661              	.LVL112:
+ 320:u8glib/u8g_ellipse.c ****     y++;
+ 662              		.loc 1 320 0
+ 663 0082 0137     		adds	r7, r7, #1
+ 664              	.LVL113:
+ 665 0084 FFB2     		uxtb	r7, r7
+ 666              	.LVL114:
+ 321:u8glib/u8g_ellipse.c ****     stopy += rxrx2;
+ 667              		.loc 1 321 0
+ 668 0086 5644     		add	r6, r6, r10
+ 669              	.LVL115:
+ 670 0088 36B2     		sxth	r6, r6
+ 671              	.LVL116:
+ 322:u8glib/u8g_ellipse.c ****     err += ychg;
+ 672              		.loc 1 322 0
+ 673 008a BDF81020 		ldrh	r2, [sp, #16]
+ 674 008e 1444     		add	r4, r4, r2
+ 675              	.LVL117:
+ 676 0090 A3B2     		uxth	r3, r4
+ 677 0092 1CB2     		sxth	r4, r3
+ 678              	.LVL118:
+ 323:u8glib/u8g_ellipse.c ****     ychg += rxrx2;
+ 679              		.loc 1 323 0
+ 680 0094 5244     		add	r2, r2, r10
+ 681 0096 12B2     		sxth	r2, r2
+ 682 0098 0492     		str	r2, [sp, #16]
+ 683              	.LVL119:
+ 324:u8glib/u8g_ellipse.c ****     if ( 2*err+xchg > 0 )
+ 684              		.loc 1 324 0
+ 685 009a 05EB4402 		add	r2, r5, r4, lsl #1
+ 686 009e 002A     		cmp	r2, #0
+ 687 00a0 0CDD     		ble	.L25
+ 325:u8glib/u8g_ellipse.c ****     {
+ 326:u8glib/u8g_ellipse.c ****       x--;
+ 688              		.loc 1 326 0
+ 689 00a2 09F1FF39 		add	r9, r9, #-1
+ 690              	.LVL120:
+ 691 00a6 5FFA89F9 		uxtb	r9, r9
+ 692              	.LVL121:
+ 327:u8glib/u8g_ellipse.c ****       stopx -= ryry2;
+ 693              		.loc 1 327 0
+ 694 00aa CBEB0808 		rsb	r8, fp, r8
+ 695              	.LVL122:
+ 696 00ae 0FFA88F8 		sxth	r8, r8
+ 697              	.LVL123:
+ 328:u8glib/u8g_ellipse.c ****       err += xchg;
+ 698              		.loc 1 328 0
+ 699 00b2 ADB2     		uxth	r5, r5
+ 700 00b4 5C19     		adds	r4, r3, r5
+ 701              	.LVL124:
+ 702 00b6 24B2     		sxth	r4, r4
+ 703              	.LVL125:
+ 329:u8glib/u8g_ellipse.c ****       xchg += ryry2;      
+ 704              		.loc 1 329 0
+ 705 00b8 5D44     		add	r5, r5, fp
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 20
+
+
+ 706              	.LVL126:
+ 707 00ba 2DB2     		sxth	r5, r5
+ 708              	.LVL127:
+ 709              	.L25:
+ 317:u8glib/u8g_ellipse.c ****   {
+ 710              		.loc 1 317 0
+ 711 00bc B045     		cmp	r8, r6
+ 712 00be D6DA     		bge	.L27
+ 713              	.LVL128:
+ 330:u8glib/u8g_ellipse.c ****     }
+ 331:u8glib/u8g_ellipse.c ****   }
+ 332:u8glib/u8g_ellipse.c **** 
+ 333:u8glib/u8g_ellipse.c ****   x = 0;
+ 334:u8glib/u8g_ellipse.c ****   y = ry;
+ 335:u8glib/u8g_ellipse.c ****   
+ 336:u8glib/u8g_ellipse.c ****   xchg = ry;
+ 337:u8glib/u8g_ellipse.c ****   xchg *= ry;
+ 714              		.loc 1 337 0
+ 715 00c0 BDF92C60 		ldrsh	r6, [sp, #44]
+ 716              	.LVL129:
+ 338:u8glib/u8g_ellipse.c ****   
+ 339:u8glib/u8g_ellipse.c ****   ychg = 1;
+ 340:u8glib/u8g_ellipse.c ****   ychg -= ry;
+ 717              		.loc 1 340 0
+ 718 00c4 0A9A     		ldr	r2, [sp, #40]
+ 719 00c6 1346     		mov	r3, r2
+ 720 00c8 C2F10105 		rsb	r5, r2, #1
+ 721 00cc ADB2     		uxth	r5, r5
+ 722              	.LVL130:
+ 341:u8glib/u8g_ellipse.c ****   ychg -= ry;
+ 723              		.loc 1 341 0
+ 724 00ce AD1A     		subs	r5, r5, r2
+ 725              	.LVL131:
+ 726 00d0 ADB2     		uxth	r5, r5
+ 727              	.LVL132:
+ 342:u8glib/u8g_ellipse.c ****   ychg *= rx;
+ 728              		.loc 1 342 0
+ 729 00d2 099A     		ldr	r2, [sp, #36]
+ 730 00d4 12FB05F5 		smulbb	r5, r2, r5
+ 731              	.LVL133:
+ 732 00d8 ADB2     		uxth	r5, r5
+ 733              	.LVL134:
+ 343:u8glib/u8g_ellipse.c ****   ychg *= rx;
+ 734              		.loc 1 343 0
+ 735 00da 12FB05F5 		smulbb	r5, r2, r5
+ 736              	.LVL135:
+ 737 00de 2DB2     		sxth	r5, r5
+ 738              	.LVL136:
+ 344:u8glib/u8g_ellipse.c ****   
+ 345:u8glib/u8g_ellipse.c ****   err = 0;
+ 346:u8glib/u8g_ellipse.c ****   
+ 347:u8glib/u8g_ellipse.c ****   stopx = 0;
+ 348:u8glib/u8g_ellipse.c **** 
+ 349:u8glib/u8g_ellipse.c ****   stopy = rxrx2;
+ 350:u8glib/u8g_ellipse.c ****   stopy *= ry;
+ 739              		.loc 1 350 0
+ 740 00e0 1AFB03F8 		smulbb	r8, r10, r3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 21
+
+
+ 741 00e4 0FFA88F8 		sxth	r8, r8
+ 742              	.LVL137:
+ 347:u8glib/u8g_ellipse.c **** 
+ 743              		.loc 1 347 0
+ 744 00e8 0027     		movs	r7, #0
+ 345:u8glib/u8g_ellipse.c ****   
+ 745              		.loc 1 345 0
+ 746 00ea 3C46     		mov	r4, r7
+ 333:u8glib/u8g_ellipse.c ****   y = ry;
+ 747              		.loc 1 333 0
+ 748 00ec B946     		mov	r9, r7
+ 351:u8glib/u8g_ellipse.c ****   
+ 352:u8glib/u8g_ellipse.c **** 
+ 353:u8glib/u8g_ellipse.c ****   while( stopx <= stopy )
+ 749              		.loc 1 353 0
+ 750 00ee 26E0     		b	.L28
+ 751              	.LVL138:
+ 752              	.L30:
+ 354:u8glib/u8g_ellipse.c ****   {
+ 355:u8glib/u8g_ellipse.c ****     u8g_draw_filled_ellipse_section(u8g, x, y, x0, y0, option);
+ 753              		.loc 1 355 0
+ 754 00f0 089B     		ldr	r3, [sp, #32]
+ 755 00f2 0193     		str	r3, [sp, #4]
+ 756 00f4 079B     		ldr	r3, [sp, #28]
+ 757 00f6 0093     		str	r3, [sp]
+ 758 00f8 069B     		ldr	r3, [sp, #24]
+ 759 00fa 039A     		ldr	r2, [sp, #12]
+ 760 00fc 4946     		mov	r1, r9
+ 761 00fe 0598     		ldr	r0, [sp, #20]
+ 762 0100 FFF7FEFF 		bl	u8g_draw_filled_ellipse_section
+ 763              	.LVL139:
+ 356:u8glib/u8g_ellipse.c ****     x++;
+ 764              		.loc 1 356 0
+ 765 0104 09F10109 		add	r9, r9, #1
+ 766              	.LVL140:
+ 767 0108 5FFA89F9 		uxtb	r9, r9
+ 768              	.LVL141:
+ 357:u8glib/u8g_ellipse.c ****     stopx += ryry2;
+ 769              		.loc 1 357 0
+ 770 010c 5F44     		add	r7, r7, fp
+ 771              	.LVL142:
+ 772 010e 3FB2     		sxth	r7, r7
+ 773              	.LVL143:
+ 358:u8glib/u8g_ellipse.c ****     err += xchg;
+ 774              		.loc 1 358 0
+ 775 0110 B6B2     		uxth	r6, r6
+ 776 0112 3444     		add	r4, r4, r6
+ 777              	.LVL144:
+ 778 0114 A3B2     		uxth	r3, r4
+ 779 0116 1CB2     		sxth	r4, r3
+ 780              	.LVL145:
+ 359:u8glib/u8g_ellipse.c ****     xchg += ryry2;
+ 781              		.loc 1 359 0
+ 782 0118 5E44     		add	r6, r6, fp
+ 783              	.LVL146:
+ 784 011a 36B2     		sxth	r6, r6
+ 785              	.LVL147:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 22
+
+
+ 360:u8glib/u8g_ellipse.c ****     if ( 2*err+ychg > 0 )
+ 786              		.loc 1 360 0
+ 787 011c 05EB4402 		add	r2, r5, r4, lsl #1
+ 788 0120 002A     		cmp	r2, #0
+ 789 0122 0CDD     		ble	.L28
+ 361:u8glib/u8g_ellipse.c ****     {
+ 362:u8glib/u8g_ellipse.c ****       y--;
+ 790              		.loc 1 362 0
+ 791 0124 039A     		ldr	r2, [sp, #12]
+ 792 0126 013A     		subs	r2, r2, #1
+ 793 0128 D2B2     		uxtb	r2, r2
+ 794 012a 0392     		str	r2, [sp, #12]
+ 795              	.LVL148:
+ 363:u8glib/u8g_ellipse.c ****       stopy -= rxrx2;
+ 796              		.loc 1 363 0
+ 797 012c CAEB0808 		rsb	r8, r10, r8
+ 798              	.LVL149:
+ 799 0130 0FFA88F8 		sxth	r8, r8
+ 800              	.LVL150:
+ 364:u8glib/u8g_ellipse.c ****       err += ychg;
+ 801              		.loc 1 364 0
+ 802 0134 ADB2     		uxth	r5, r5
+ 803 0136 5C19     		adds	r4, r3, r5
+ 804              	.LVL151:
+ 805 0138 24B2     		sxth	r4, r4
+ 806              	.LVL152:
+ 365:u8glib/u8g_ellipse.c ****       ychg += rxrx2;
+ 807              		.loc 1 365 0
+ 808 013a 5544     		add	r5, r5, r10
+ 809              	.LVL153:
+ 810 013c 2DB2     		sxth	r5, r5
+ 811              	.LVL154:
+ 812              	.L28:
+ 353:u8glib/u8g_ellipse.c ****   {
+ 813              		.loc 1 353 0
+ 814 013e 4745     		cmp	r7, r8
+ 815 0140 D6DD     		ble	.L30
+ 366:u8glib/u8g_ellipse.c ****     }
+ 367:u8glib/u8g_ellipse.c ****   }
+ 368:u8glib/u8g_ellipse.c ****   
+ 369:u8glib/u8g_ellipse.c **** }
+ 816              		.loc 1 369 0
+ 817 0142 0DB0     		add	sp, sp, #52
+ 818              	.LCFI10:
+ 819              		.cfi_def_cfa_offset 36
+ 820              		@ sp needed
+ 821 0144 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 822              		.cfi_endproc
+ 823              	.LFE4:
+ 825              		.section	.text.u8g_DrawFilledEllipse,"ax",%progbits
+ 826              		.align	2
+ 827              		.global	u8g_DrawFilledEllipse
+ 828              		.thumb
+ 829              		.thumb_func
+ 831              	u8g_DrawFilledEllipse:
+ 832              	.LFB5:
+ 370:u8glib/u8g_ellipse.c **** 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 23
+
+
+ 371:u8glib/u8g_ellipse.c **** void u8g_DrawFilledEllipse(u8g_t *u8g, u8g_uint_t x0, u8g_uint_t y0, u8g_uint_t rx, u8g_uint_t ry, 
+ 372:u8glib/u8g_ellipse.c **** {
+ 833              		.loc 1 372 0
+ 834              		.cfi_startproc
+ 835              		@ args = 8, pretend = 0, frame = 0
+ 836              		@ frame_needed = 0, uses_anonymous_args = 0
+ 837              	.LVL155:
+ 838 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 839              	.LCFI11:
+ 840              		.cfi_def_cfa_offset 24
+ 841              		.cfi_offset 4, -24
+ 842              		.cfi_offset 5, -20
+ 843              		.cfi_offset 6, -16
+ 844              		.cfi_offset 7, -12
+ 845              		.cfi_offset 8, -8
+ 846              		.cfi_offset 14, -4
+ 847 0004 82B0     		sub	sp, sp, #8
+ 848              	.LCFI12:
+ 849              		.cfi_def_cfa_offset 32
+ 850 0006 8046     		mov	r8, r0
+ 851 0008 0C46     		mov	r4, r1
+ 852 000a 1546     		mov	r5, r2
+ 853 000c 1E46     		mov	r6, r3
+ 854 000e 9DF82070 		ldrb	r7, [sp, #32]	@ zero_extendqisi2
+ 855              	.LVL156:
+ 856              	.LBB3:
+ 373:u8glib/u8g_ellipse.c ****   /* check for bounding box */
+ 374:u8glib/u8g_ellipse.c ****   {
+ 375:u8glib/u8g_ellipse.c ****     u8g_uint_t rxp, rxp2;
+ 376:u8glib/u8g_ellipse.c ****     u8g_uint_t ryp, ryp2;
+ 377:u8glib/u8g_ellipse.c ****     
+ 378:u8glib/u8g_ellipse.c ****     rxp = rx;
+ 379:u8glib/u8g_ellipse.c ****     rxp++;
+ 857              		.loc 1 379 0
+ 858 0012 591C     		adds	r1, r3, #1
+ 859              	.LVL157:
+ 860 0014 C9B2     		uxtb	r1, r1
+ 861              	.LVL158:
+ 380:u8glib/u8g_ellipse.c ****     rxp2 = rxp;
+ 381:u8glib/u8g_ellipse.c ****     rxp2 *= 2;
+ 862              		.loc 1 381 0
+ 863 0016 4FEA410E 		lsl	lr, r1, #1
+ 864              	.LVL159:
+ 382:u8glib/u8g_ellipse.c **** 
+ 383:u8glib/u8g_ellipse.c ****     ryp = ry;
+ 384:u8glib/u8g_ellipse.c ****     ryp++;
+ 865              		.loc 1 384 0
+ 866 001a 7A1C     		adds	r2, r7, #1
+ 867              	.LVL160:
+ 868 001c D2B2     		uxtb	r2, r2
+ 869              	.LVL161:
+ 385:u8glib/u8g_ellipse.c ****     ryp2 = ryp;
+ 386:u8glib/u8g_ellipse.c ****     ryp2 *= 2;
+ 870              		.loc 1 386 0
+ 871 001e 5300     		lsls	r3, r2, #1
+ 872              	.LVL162:
+ 873 0020 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 24
+
+
+ 874              	.LVL163:
+ 387:u8glib/u8g_ellipse.c ****     
+ 388:u8glib/u8g_ellipse.c ****     if ( u8g_IsBBXIntersection(u8g, x0-rxp, y0-ryp, rxp2, ryp2) == 0)
+ 875              		.loc 1 388 0
+ 876 0022 AA1A     		subs	r2, r5, r2
+ 877              	.LVL164:
+ 878 0024 611A     		subs	r1, r4, r1
+ 879              	.LVL165:
+ 880 0026 0093     		str	r3, [sp]
+ 881 0028 0EF0FE03 		and	r3, lr, #254
+ 882              	.LVL166:
+ 883 002c D2B2     		uxtb	r2, r2
+ 884 002e C9B2     		uxtb	r1, r1
+ 885 0030 FFF7FEFF 		bl	u8g_IsBBXIntersection
+ 886              	.LVL167:
+ 887 0034 48B1     		cbz	r0, .L32
+ 888              	.LBE3:
+ 389:u8glib/u8g_ellipse.c ****       return;    
+ 390:u8glib/u8g_ellipse.c ****   }
+ 391:u8glib/u8g_ellipse.c ****   
+ 392:u8glib/u8g_ellipse.c ****   u8g_draw_filled_ellipse(u8g, x0, y0, rx, ry, option);
+ 889              		.loc 1 392 0
+ 890 0036 9DF82430 		ldrb	r3, [sp, #36]	@ zero_extendqisi2
+ 891 003a 0193     		str	r3, [sp, #4]
+ 892 003c 0097     		str	r7, [sp]
+ 893 003e 3346     		mov	r3, r6
+ 894 0040 2A46     		mov	r2, r5
+ 895 0042 2146     		mov	r1, r4
+ 896 0044 4046     		mov	r0, r8
+ 897 0046 FFF7FEFF 		bl	u8g_draw_filled_ellipse
+ 898              	.LVL168:
+ 899              	.L32:
+ 393:u8glib/u8g_ellipse.c **** }
+ 900              		.loc 1 393 0
+ 901 004a 02B0     		add	sp, sp, #8
+ 902              	.LCFI13:
+ 903              		.cfi_def_cfa_offset 24
+ 904              		@ sp needed
+ 905 004c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 906              		.cfi_endproc
+ 907              	.LFE5:
+ 909              		.text
+ 910              	.Letext0:
+ 911              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 912              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 913              		.file 4 "u8glib/u8g.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccqYfC09.s 			page 25
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g_ellipse.c
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:22     .text.u8g_draw_ellipse_section:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:26     .text.u8g_draw_ellipse_section:00000000 u8g_draw_ellipse_section
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:105    .text.u8g_draw_filled_ellipse_section:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:109    .text.u8g_draw_filled_ellipse_section:00000000 u8g_draw_filled_ellipse_section
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:194    .text.u8g_draw_ellipse:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:199    .text.u8g_draw_ellipse:00000000 u8g_draw_ellipse
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:468    .text.u8g_DrawEllipse:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:473    .text.u8g_DrawEllipse:00000000 u8g_DrawEllipse
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:552    .text.u8g_draw_filled_ellipse:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:557    .text.u8g_draw_filled_ellipse:00000000 u8g_draw_filled_ellipse
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:826    .text.u8g_DrawFilledEllipse:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccqYfC09.s:831    .text.u8g_DrawFilledEllipse:00000000 u8g_DrawFilledEllipse
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+u8g_DrawPixel
+u8g_DrawVLine
+u8g_IsBBXIntersection

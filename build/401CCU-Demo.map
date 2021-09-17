@@ -20,8 +20,16 @@ c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none
 Allocating common symbols
 Common symbol       size              file
 
+lrc_u8g             0x4               build/chessengine.o
+chess_low_edge      0x1               build/chessengine.o
+u8g_vs_width        0x1               build/u8g_virtual_screen.o
 uwTick              0x4               build/stm32f4xx_hal.o
 pFlash              0x20              build/stm32f4xx_hal_flash.o
+u8g_vs_height       0x1               build/u8g_virtual_screen.o
+u8g_vs_list         0x20              build/u8g_virtual_screen.o
+lrc_obj             0xf8              build/chessengine.o
+u8g_vs_current      0x1               build/u8g_virtual_screen.o
+u8g_pg              0x4c              build/u8g_polygon.o
 
 Discarded input sections
 
@@ -531,6 +539,1315 @@ Discarded input sections
                 0x00000000       0xa0 build/system_stm32f4xx.o
  .rodata.APBPrescTable
                 0x00000000        0x8 build/system_stm32f4xx.o
+ .text          0x00000000        0x0 build/u8g_ellipse.o
+ .data          0x00000000        0x0 build/u8g_ellipse.o
+ .bss           0x00000000        0x0 build/u8g_ellipse.o
+ .text.u8g_draw_ellipse_section
+                0x00000000       0x74 build/u8g_ellipse.o
+ .text.u8g_draw_filled_ellipse_section
+                0x00000000       0x7c build/u8g_ellipse.o
+ .text.u8g_draw_ellipse
+                0x00000000      0x148 build/u8g_ellipse.o
+ .text.u8g_DrawEllipse
+                0x00000000       0x50 build/u8g_ellipse.o
+ .text.u8g_draw_filled_ellipse
+                0x00000000      0x148 build/u8g_ellipse.o
+ .text.u8g_DrawFilledEllipse
+                0x00000000       0x50 build/u8g_ellipse.o
+ .debug_info    0x00000000      0xbe5 build/u8g_ellipse.o
+ .debug_abbrev  0x00000000      0x1e6 build/u8g_ellipse.o
+ .debug_loc     0x00000000      0xc36 build/u8g_ellipse.o
+ .debug_aranges
+                0x00000000       0x48 build/u8g_ellipse.o
+ .debug_ranges  0x00000000       0x38 build/u8g_ellipse.o
+ .debug_line    0x00000000      0x209 build/u8g_ellipse.o
+ .debug_str     0x00000000      0x4f2 build/u8g_ellipse.o
+ .comment       0x00000000       0x6f build/u8g_ellipse.o
+ .debug_frame   0x00000000      0x130 build/u8g_ellipse.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_ellipse.o
+ .text          0x00000000        0x0 build/u8g_font.o
+ .data          0x00000000        0x0 build/u8g_font.o
+ .bss           0x00000000        0x0 build/u8g_font.o
+ .text.u8g_font_get_byte
+                0x00000000        0x4 build/u8g_font.o
+ .text.u8g_font_get_word
+                0x00000000       0x10 build/u8g_font.o
+ .text.u8g_font_GetFormat
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetFontGlyphStructureSize
+                0x00000000       0x14 build/u8g_font.o
+ .text.u8g_font_GetBBXWidth
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetBBXHeight
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetBBXOffX
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetBBXOffY
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetGlyphDataStart
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_CopyGlyphDataToCache
+                0x00000000       0x50 build/u8g_font.o
+ .text.u8g_FillEmptyGlyphCache
+                0x00000000       0x10 build/u8g_font.o
+ .text.u8g_font_calc_vref_font
+                0x00000000        0x4 build/u8g_font.o
+ .text.u8g_font_calc_vref_bottom
+                0x00000000        0x8 build/u8g_font.o
+ .text.u8g_font_calc_vref_top
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_calc_vref_center
+                0x00000000       0x18 build/u8g_font.o
+ .text.u8g_font_get_char
+                0x00000000        0x4 build/u8g_font.o
+ .text.u8g_font_get_charP
+                0x00000000        0x4 build/u8g_font.o
+ .text.u8g_font_GetCapitalAHeight
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetEncoding65Pos
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetEncoding97Pos
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetFontStartEncoding
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetFontEndEncoding
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetLowerGDescent
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetFontAscent
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetFontDescent
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetFontXAscent
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetFontXDescent
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_GetSize
+                0x00000000       0x50 build/u8g_font.o
+ .text.u8g_GetFontBBXWidth
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_GetFontBBXHeight
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_GetFontBBXOffX
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_GetFontBBXOffY
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_GetFontCapitalAHeight
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_GetGlyph
+                0x00000000       0xb0 build/u8g_font.o
+ .text.u8g_font_calc_str_min_box
+                0x00000000       0x8c build/u8g_font.o
+ .text.u8g_font_get_str_box_fill_args
+                0x00000000       0x40 build/u8g_font.o
+ .text.u8g_IsGlyph
+                0x00000000       0x10 build/u8g_font.o
+ .text.u8g_GetGlyphDeltaX
+                0x00000000       0x14 build/u8g_font.o
+ .text.u8g_draw_glyph
+                0x00000000       0xb0 build/u8g_font.o
+ .text.u8g_DrawGlyph
+                0x00000000       0x20 build/u8g_font.o
+ .text.u8g_draw_glyph90
+                0x00000000       0xb0 build/u8g_font.o
+ .text.u8g_DrawGlyph90
+                0x00000000       0x20 build/u8g_font.o
+ .text.u8g_draw_glyph180
+                0x00000000       0xb8 build/u8g_font.o
+ .text.u8g_DrawGlyph180
+                0x00000000       0x20 build/u8g_font.o
+ .text.u8g_draw_glyph270
+                0x00000000       0xb4 build/u8g_font.o
+ .text.u8g_DrawGlyph270
+                0x00000000       0x20 build/u8g_font.o
+ .text.u8g_DrawStr
+                0x00000000       0x3c build/u8g_font.o
+ .text.u8g_DrawStr90
+                0x00000000       0x3c build/u8g_font.o
+ .text.u8g_DrawStr180
+                0x00000000       0x3c build/u8g_font.o
+ .text.u8g_DrawStr270
+                0x00000000       0x3c build/u8g_font.o
+ .text.u8g_DrawStrDir
+                0x00000000       0x34 build/u8g_font.o
+ .text.u8g_DrawStrP
+                0x00000000       0x38 build/u8g_font.o
+ .text.u8g_DrawStr90P
+                0x00000000       0x38 build/u8g_font.o
+ .text.u8g_DrawStr180P
+                0x00000000       0x38 build/u8g_font.o
+ .text.u8g_DrawStr270P
+                0x00000000       0x38 build/u8g_font.o
+ .text.u8g_DrawStrFontBBX
+                0x00000000       0x30 build/u8g_font.o
+ .text.u8g_DrawGlyphFontBBX
+                0x00000000       0x2c build/u8g_font.o
+ .text.u8g_UpdateRefHeight
+                0x00000000       0x78 build/u8g_font.o
+ .text.u8g_SetFontRefHeightText
+                0x00000000       0x10 build/u8g_font.o
+ .text.u8g_SetFontRefHeightExtendedText
+                0x00000000       0x10 build/u8g_font.o
+ .text.u8g_SetFontRefHeightAll
+                0x00000000       0x10 build/u8g_font.o
+ .text.u8g_SetFontLineSpacingFactor
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_SetFontPosBaseline
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_SetFontPosBottom
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_SetFontPosTop
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_SetFontPosCenter
+                0x00000000        0xc build/u8g_font.o
+ .text.u8g_font_calc_str_pixel_width
+                0x00000000       0x6c build/u8g_font.o
+ .text.u8g_GetStrPixelWidth
+                0x00000000       0x10 build/u8g_font.o
+ .text.u8g_GetStrPixelWidthP
+                0x00000000       0x10 build/u8g_font.o
+ .text.u8g_GetStrX
+                0x00000000       0x10 build/u8g_font.o
+ .text.u8g_GetStrXP
+                0x00000000       0x10 build/u8g_font.o
+ .text.u8g_GetStrWidth
+                0x00000000       0x24 build/u8g_font.o
+ .text.u8g_GetStrWidthP
+                0x00000000       0x24 build/u8g_font.o
+ .text.u8g_font_box_min
+                0x00000000        0x8 build/u8g_font.o
+ .text.u8g_font_box_left_gA
+                0x00000000        0x4 build/u8g_font.o
+ .text.u8g_font_box_all_gA
+                0x00000000        0x4 build/u8g_font.o
+ .text.u8g_GetStrMinBox
+                0x00000000       0x3c build/u8g_font.o
+ .text.u8g_GetStrAMinBox
+                0x00000000       0x58 build/u8g_font.o
+ .text.u8g_SetFont
+                0x00000000       0x1c build/u8g_font.o
+ .text.u8g_draw_aa_glyph
+                0x00000000       0xb0 build/u8g_font.o
+ .text.u8g_DrawAAGlyph
+                0x00000000       0x20 build/u8g_font.o
+ .text.u8g_DrawAAStr
+                0x00000000       0x50 build/u8g_font.o
+ .debug_info    0x00000000     0x2ac7 build/u8g_font.o
+ .debug_abbrev  0x00000000      0x2e9 build/u8g_font.o
+ .debug_loc     0x00000000     0x3118 build/u8g_font.o
+ .debug_aranges
+                0x00000000      0x2a8 build/u8g_font.o
+ .debug_ranges  0x00000000      0x310 build/u8g_font.o
+ .debug_line    0x00000000      0x96f build/u8g_font.o
+ .debug_str     0x00000000      0xb94 build/u8g_font.o
+ .comment       0x00000000       0x6f build/u8g_font.o
+ .debug_frame   0x00000000      0xa00 build/u8g_font.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_font.o
+ .text          0x00000000        0x0 build/u8g_line.o
+ .data          0x00000000        0x0 build/u8g_line.o
+ .bss           0x00000000        0x0 build/u8g_line.o
+ .text.u8g_DrawLine
+                0x00000000       0xcc build/u8g_line.o
+ .debug_info    0x00000000      0x56c build/u8g_line.o
+ .debug_abbrev  0x00000000      0x15c build/u8g_line.o
+ .debug_loc     0x00000000      0x228 build/u8g_line.o
+ .debug_aranges
+                0x00000000       0x20 build/u8g_line.o
+ .debug_ranges  0x00000000       0x10 build/u8g_line.o
+ .debug_line    0x00000000      0x15a build/u8g_line.o
+ .debug_str     0x00000000      0x417 build/u8g_line.o
+ .comment       0x00000000       0x6f build/u8g_line.o
+ .debug_frame   0x00000000       0x48 build/u8g_line.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_line.o
+ .text          0x00000000        0x0 build/u8g_ll_api.o
+ .data          0x00000000        0x0 build/u8g_ll_api.o
+ .bss           0x00000000        0x0 build/u8g_ll_api.o
+ .text.u8g_call_dev_fn
+                0x00000000        0x8 build/u8g_ll_api.o
+ .text.u8g_InitLL
+                0x00000000       0x2c build/u8g_ll_api.o
+ .text.u8g_FirstPageLL
+                0x00000000       0x34 build/u8g_ll_api.o
+ .text.u8g_NextPageLL
+                0x00000000       0x3c build/u8g_ll_api.o
+ .text.u8g_SetContrastLL
+                0x00000000       0x18 build/u8g_ll_api.o
+ .text.u8g_DrawPixelLL
+                0x00000000       0x18 build/u8g_ll_api.o
+ .text.u8g_Draw8PixelLL
+                0x00000000       0x28 build/u8g_ll_api.o
+ .text.u8g_Draw4TPixelLL
+                0x00000000       0x28 build/u8g_ll_api.o
+ .text.u8g_GetWidthLL
+                0x00000000       0x18 build/u8g_ll_api.o
+ .text.u8g_GetHeightLL
+                0x00000000       0x18 build/u8g_ll_api.o
+ .text.u8g_GetModeLL
+                0x00000000        0xc build/u8g_ll_api.o
+ .text.u8g_UpdateDimension
+                0x00000000       0x30 build/u8g_ll_api.o
+ .text.u8g_Begin
+                0x00000000       0x1c build/u8g_ll_api.o
+ .text.u8g_FirstPage
+                0x00000000        0xc build/u8g_ll_api.o
+ .text.u8g_NextPage
+                0x00000000       0x14 build/u8g_ll_api.o
+ .text.u8g_SetContrast
+                0x00000000        0xc build/u8g_ll_api.o
+ .text.u8g_SleepOn
+                0x00000000       0x10 build/u8g_ll_api.o
+ .text.u8g_SleepOff
+                0x00000000       0x10 build/u8g_ll_api.o
+ .text.u8g_DrawPixel
+                0x00000000       0x10 build/u8g_ll_api.o
+ .text.u8g_Draw8Pixel
+                0x00000000       0x1c build/u8g_ll_api.o
+ .text.u8g_Draw4TPixel
+                0x00000000       0x1c build/u8g_ll_api.o
+ .text.u8g_Draw8ColorPixel
+                0x00000000       0x28 build/u8g_ll_api.o
+ .text.u8g_SetColorEntry
+                0x00000000       0x28 build/u8g_ll_api.o
+ .text.u8g_SetColorIndex
+                0x00000000        0x8 build/u8g_ll_api.o
+ .text.u8g_init_data
+                0x00000000       0x44 build/u8g_ll_api.o
+ .text.u8g_Init
+                0x00000000       0x14 build/u8g_ll_api.o
+ .text.u8g_InitComFn
+                0x00000000       0x18 build/u8g_ll_api.o
+ .text.u8g_SetHiColor
+                0x00000000        0xc build/u8g_ll_api.o
+ .text.u8g_SetHiColorByRGB
+                0x00000000       0x20 build/u8g_ll_api.o
+ .text.u8g_SetRGB
+                0x00000000       0x38 build/u8g_ll_api.o
+ .text.u8g_GetColorIndex
+                0x00000000        0x8 build/u8g_ll_api.o
+ .text.u8g_GetDefaultForegroundColor
+                0x00000000       0x18 build/u8g_ll_api.o
+ .text.u8g_SetDefaultForegroundColor
+                0x00000000       0x24 build/u8g_ll_api.o
+ .text.u8g_GetDefaultBackgroundColor
+                0x00000000        0x4 build/u8g_ll_api.o
+ .text.u8g_SetDefaultBackgroundColor
+                0x00000000       0x14 build/u8g_ll_api.o
+ .text.u8g_GetDefaultMidColor
+                0x00000000       0x10 build/u8g_ll_api.o
+ .text.u8g_SetDefaultMidColor
+                0x00000000       0x14 build/u8g_ll_api.o
+ .debug_info    0x00000000     0x137b build/u8g_ll_api.o
+ .debug_abbrev  0x00000000      0x292 build/u8g_ll_api.o
+ .debug_loc     0x00000000     0x10cc build/u8g_ll_api.o
+ .debug_aranges
+                0x00000000      0x140 build/u8g_ll_api.o
+ .debug_ranges  0x00000000      0x130 build/u8g_ll_api.o
+ .debug_line    0x00000000      0x3e0 build/u8g_ll_api.o
+ .debug_str     0x00000000      0x6ce build/u8g_ll_api.o
+ .comment       0x00000000       0x6f build/u8g_ll_api.o
+ .debug_frame   0x00000000      0x3fc build/u8g_ll_api.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_ll_api.o
+ .text          0x00000000        0x0 build/u8g_page.o
+ .data          0x00000000        0x0 build/u8g_page.o
+ .bss           0x00000000        0x0 build/u8g_page.o
+ .text.u8g_page_First
+                0x00000000       0x10 build/u8g_page.o
+ .text.u8g_page_Init
+                0x00000000       0x10 build/u8g_page.o
+ .text.u8g_page_Next
+                0x00000000       0x34 build/u8g_page.o
+ .debug_info    0x00000000      0x1bc build/u8g_page.o
+ .debug_abbrev  0x00000000      0x10e build/u8g_page.o
+ .debug_loc     0x00000000      0x129 build/u8g_page.o
+ .debug_aranges
+                0x00000000       0x30 build/u8g_page.o
+ .debug_ranges  0x00000000       0x20 build/u8g_page.o
+ .debug_line    0x00000000      0x14a build/u8g_page.o
+ .debug_str     0x00000000      0x228 build/u8g_page.o
+ .comment       0x00000000       0x6f build/u8g_page.o
+ .debug_frame   0x00000000       0x58 build/u8g_page.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_page.o
+ .text          0x00000000        0x0 build/u8g_pb.o
+ .data          0x00000000        0x0 build/u8g_pb.o
+ .bss           0x00000000        0x0 build/u8g_pb.o
+ .text.u8g_pb_Clear
+                0x00000000       0x14 build/u8g_pb.o
+ .text.u8g_pb_IsYIntersection
+                0x00000000       0x34 build/u8g_pb.o
+ .text.u8g_pb_IsXIntersection
+                0x00000000       0x18 build/u8g_pb.o
+ .text.u8g_pb_IsIntersection
+                0x00000000       0x34 build/u8g_pb.o
+ .text.u8g_pb_GetPageBox
+                0x00000000       0x14 build/u8g_pb.o
+ .text.u8g_pb_Is8PixelVisible
+                0x00000000       0x2c build/u8g_pb.o
+ .text.u8g_pb_WriteBuffer
+                0x00000000       0x14 build/u8g_pb.o
+ .debug_info    0x00000000      0x803 build/u8g_pb.o
+ .debug_abbrev  0x00000000      0x1b0 build/u8g_pb.o
+ .debug_loc     0x00000000      0x48a build/u8g_pb.o
+ .debug_aranges
+                0x00000000       0x50 build/u8g_pb.o
+ .debug_ranges  0x00000000       0x40 build/u8g_pb.o
+ .debug_line    0x00000000      0x1b8 build/u8g_pb.o
+ .debug_str     0x00000000      0x507 build/u8g_pb.o
+ .comment       0x00000000       0x6f build/u8g_pb.o
+ .debug_frame   0x00000000       0xb4 build/u8g_pb.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb.o
+ .text          0x00000000        0x0 build/u8g_pb8h1.o
+ .data          0x00000000        0x0 build/u8g_pb8h1.o
+ .bss           0x00000000        0x0 build/u8g_pb8h1.o
+ .text.u8g_pb8h1_Init
+                0x00000000        0xc build/u8g_pb8h1.o
+ .text.u8g_pb8h1_set_pixel
+                0x00000000       0x38 build/u8g_pb8h1.o
+ .text.u8g_pb8h1_SetPixel
+                0x00000000       0x24 build/u8g_pb8h1.o
+ .text.u8g_pb8h1_Set8PixelStd
+                0x00000000       0x4c build/u8g_pb8h1.o
+ .text.u8g_pb8h1_Set8PixelOpt2
+                0x00000000       0x5c build/u8g_pb8h1.o
+ .text.u8g_dev_pb8h1_base_fn
+                0x00000000       0xb0 build/u8g_pb8h1.o
+ .debug_info    0x00000000      0x879 build/u8g_pb8h1.o
+ .debug_abbrev  0x00000000      0x198 build/u8g_pb8h1.o
+ .debug_loc     0x00000000      0x57f build/u8g_pb8h1.o
+ .debug_aranges
+                0x00000000       0x48 build/u8g_pb8h1.o
+ .debug_ranges  0x00000000       0x38 build/u8g_pb8h1.o
+ .debug_line    0x00000000      0x1dc build/u8g_pb8h1.o
+ .debug_str     0x00000000      0x522 build/u8g_pb8h1.o
+ .comment       0x00000000       0x6f build/u8g_pb8h1.o
+ .debug_frame   0x00000000       0xd4 build/u8g_pb8h1.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb8h1.o
+ .text          0x00000000        0x0 build/u8g_pb8h1f.o
+ .data          0x00000000        0x0 build/u8g_pb8h1f.o
+ .bss           0x00000000        0x0 build/u8g_pb8h1f.o
+ .text.u8g_pb8h1f_Init
+                0x00000000        0xc build/u8g_pb8h1f.o
+ .text.u8g_pb8h1f_set_pixel
+                0x00000000       0x38 build/u8g_pb8h1f.o
+ .text.u8g_pb8h1f_SetPixel
+                0x00000000       0x24 build/u8g_pb8h1f.o
+ .text.u8g_pb8h1f_Set8PixelStd
+                0x00000000       0x4c build/u8g_pb8h1f.o
+ .text.u8g_pb8h1f_Set8PixelOpt2
+                0x00000000       0x5c build/u8g_pb8h1f.o
+ .text.u8g_dev_pb8h1f_base_fn
+                0x00000000       0xb0 build/u8g_pb8h1f.o
+ .debug_info    0x00000000      0x872 build/u8g_pb8h1f.o
+ .debug_abbrev  0x00000000      0x17a build/u8g_pb8h1f.o
+ .debug_loc     0x00000000      0x57c build/u8g_pb8h1f.o
+ .debug_aranges
+                0x00000000       0x48 build/u8g_pb8h1f.o
+ .debug_ranges  0x00000000       0x38 build/u8g_pb8h1f.o
+ .debug_line    0x00000000      0x1d8 build/u8g_pb8h1f.o
+ .debug_str     0x00000000      0x529 build/u8g_pb8h1f.o
+ .comment       0x00000000       0x6f build/u8g_pb8h1f.o
+ .debug_frame   0x00000000       0xd4 build/u8g_pb8h1f.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb8h1f.o
+ .text          0x00000000        0x0 build/u8g_pb8h2.o
+ .data          0x00000000        0x0 build/u8g_pb8h2.o
+ .bss           0x00000000        0x0 build/u8g_pb8h2.o
+ .text.u8g_pb8h2_set_pixel
+                0x00000000       0x38 build/u8g_pb8h2.o
+ .text.u8g_pb8h2_Init
+                0x00000000        0xc build/u8g_pb8h2.o
+ .text.u8g_pb8h2_SetPixel
+                0x00000000       0x24 build/u8g_pb8h2.o
+ .text.u8g_pb8h2_Set8PixelStd
+                0x00000000       0x4c build/u8g_pb8h2.o
+ .text.u8g_dev_pb8h2_base_fn
+                0x00000000       0xb8 build/u8g_pb8h2.o
+ .debug_info    0x00000000      0x80f build/u8g_pb8h2.o
+ .debug_abbrev  0x00000000      0x192 build/u8g_pb8h2.o
+ .debug_loc     0x00000000      0x470 build/u8g_pb8h2.o
+ .debug_aranges
+                0x00000000       0x40 build/u8g_pb8h2.o
+ .debug_ranges  0x00000000       0x30 build/u8g_pb8h2.o
+ .debug_line    0x00000000      0x1b3 build/u8g_pb8h2.o
+ .debug_str     0x00000000      0x51e build/u8g_pb8h2.o
+ .comment       0x00000000       0x6f build/u8g_pb8h2.o
+ .debug_frame   0x00000000       0xac build/u8g_pb8h2.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb8h2.o
+ .text          0x00000000        0x0 build/u8g_pb8h8.o
+ .data          0x00000000        0x0 build/u8g_pb8h8.o
+ .bss           0x00000000        0x0 build/u8g_pb8h8.o
+ .text.u8g_pb8h8_set_pixel
+                0x00000000       0x18 build/u8g_pb8h8.o
+ .text.u8g_pb8h8_Clear
+                0x00000000       0x18 build/u8g_pb8h8.o
+ .text.u8g_pb8h8_Init
+                0x00000000        0xc build/u8g_pb8h8.o
+ .text.u8g_pb8h8_SetPixel
+                0x00000000       0x24 build/u8g_pb8h8.o
+ .text.u8g_pb8h8_Set8Pixel
+                0x00000000       0x5c build/u8g_pb8h8.o
+ .text.u8g_dev_pb8h8_base_fn
+                0x00000000       0xb8 build/u8g_pb8h8.o
+ .debug_info    0x00000000      0x857 build/u8g_pb8h8.o
+ .debug_abbrev  0x00000000      0x1ca build/u8g_pb8h8.o
+ .debug_loc     0x00000000      0x4c5 build/u8g_pb8h8.o
+ .debug_aranges
+                0x00000000       0x48 build/u8g_pb8h8.o
+ .debug_ranges  0x00000000       0x38 build/u8g_pb8h8.o
+ .debug_line    0x00000000      0x1dd build/u8g_pb8h8.o
+ .debug_str     0x00000000      0x51c build/u8g_pb8h8.o
+ .comment       0x00000000       0x6f build/u8g_pb8h8.o
+ .debug_frame   0x00000000       0xc4 build/u8g_pb8h8.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb8h8.o
+ .text          0x00000000        0x0 build/u8g_pb8v1.o
+ .data          0x00000000        0x0 build/u8g_pb8v1.o
+ .bss           0x00000000        0x0 build/u8g_pb8v1.o
+ .text.u8g_pb8v1_Init
+                0x00000000        0xc build/u8g_pb8v1.o
+ .text.u8g_pb8v1_set_pixel
+                0x00000000       0x2c build/u8g_pb8v1.o
+ .text.u8g_pb8v1_SetPixel
+                0x00000000       0x24 build/u8g_pb8v1.o
+ .text.u8g_pb8v1_Set8PixelStd
+                0x00000000       0x4c build/u8g_pb8v1.o
+ .text.u8g_pb8v1_Set8PixelOpt2
+                0x00000000       0x5c build/u8g_pb8v1.o
+ .text.u8g_dev_pb8v1_base_fn
+                0x00000000       0xb0 build/u8g_pb8v1.o
+ .debug_info    0x00000000      0x861 build/u8g_pb8v1.o
+ .debug_abbrev  0x00000000      0x189 build/u8g_pb8v1.o
+ .debug_loc     0x00000000      0x4fd build/u8g_pb8v1.o
+ .debug_aranges
+                0x00000000       0x48 build/u8g_pb8v1.o
+ .debug_ranges  0x00000000       0x38 build/u8g_pb8v1.o
+ .debug_line    0x00000000      0x1d4 build/u8g_pb8v1.o
+ .debug_str     0x00000000      0x522 build/u8g_pb8v1.o
+ .comment       0x00000000       0x6f build/u8g_pb8v1.o
+ .debug_frame   0x00000000       0xd0 build/u8g_pb8v1.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb8v1.o
+ .text          0x00000000        0x0 build/u8g_pb8v2.o
+ .data          0x00000000        0x0 build/u8g_pb8v2.o
+ .bss           0x00000000        0x0 build/u8g_pb8v2.o
+ .text.u8g_pb8v2_Init
+                0x00000000        0xc build/u8g_pb8v2.o
+ .text.u8g_pb8v2_set_pixel
+                0x00000000       0x30 build/u8g_pb8v2.o
+ .text.u8g_pb8v2_SetPixel
+                0x00000000       0x24 build/u8g_pb8v2.o
+ .text.u8g_pb8v2_Set8PixelStd
+                0x00000000       0x4c build/u8g_pb8v2.o
+ .text.u8g_dev_pb8v2_base_fn
+                0x00000000       0xb8 build/u8g_pb8v2.o
+ .debug_info    0x00000000      0x7e9 build/u8g_pb8v2.o
+ .debug_abbrev  0x00000000      0x189 build/u8g_pb8v2.o
+ .debug_loc     0x00000000      0x407 build/u8g_pb8v2.o
+ .debug_aranges
+                0x00000000       0x40 build/u8g_pb8v2.o
+ .debug_ranges  0x00000000       0x30 build/u8g_pb8v2.o
+ .debug_line    0x00000000      0x1ae build/u8g_pb8v2.o
+ .debug_str     0x00000000      0x50a build/u8g_pb8v2.o
+ .comment       0x00000000       0x6f build/u8g_pb8v2.o
+ .debug_frame   0x00000000       0xac build/u8g_pb8v2.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb8v2.o
+ .text          0x00000000        0x0 build/u8g_pb14v1.o
+ .data          0x00000000        0x0 build/u8g_pb14v1.o
+ .bss           0x00000000        0x0 build/u8g_pb14v1.o
+ .text.u8g_pb14v1_Clear
+                0x00000000       0x18 build/u8g_pb14v1.o
+ .text.u8g_pb14v1_Init
+                0x00000000        0xc build/u8g_pb14v1.o
+ .text.u8g_pb14v1_set_pixel
+                0x00000000       0x34 build/u8g_pb14v1.o
+ .text.u8g_pb14v1_SetPixel
+                0x00000000       0x24 build/u8g_pb14v1.o
+ .text.u8g_pb14v1_Set8PixelStd
+                0x00000000       0x4c build/u8g_pb14v1.o
+ .text.u8g_pb14v1_Set8PixelOpt2
+                0x00000000       0x5c build/u8g_pb14v1.o
+ .text.u8g_dev_pb14v1_base_fn
+                0x00000000       0xb0 build/u8g_pb14v1.o
+ .debug_info    0x00000000      0x898 build/u8g_pb14v1.o
+ .debug_abbrev  0x00000000      0x1a3 build/u8g_pb14v1.o
+ .debug_loc     0x00000000      0x580 build/u8g_pb14v1.o
+ .debug_aranges
+                0x00000000       0x50 build/u8g_pb14v1.o
+ .debug_ranges  0x00000000       0x40 build/u8g_pb14v1.o
+ .debug_line    0x00000000      0x1f4 build/u8g_pb14v1.o
+ .debug_str     0x00000000      0x535 build/u8g_pb14v1.o
+ .comment       0x00000000       0x6f build/u8g_pb14v1.o
+ .debug_frame   0x00000000       0xe4 build/u8g_pb14v1.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb14v1.o
+ .text          0x00000000        0x0 build/u8g_pb16h1.o
+ .data          0x00000000        0x0 build/u8g_pb16h1.o
+ .bss           0x00000000        0x0 build/u8g_pb16h1.o
+ .text.u8g_pb16h1_Clear
+                0x00000000       0x18 build/u8g_pb16h1.o
+ .text.u8g_pb16h1_Init
+                0x00000000        0xc build/u8g_pb16h1.o
+ .text.u8g_pb16h1_set_pixel
+                0x00000000       0x44 build/u8g_pb16h1.o
+ .text.u8g_pb16h1_SetPixel
+                0x00000000       0x24 build/u8g_pb16h1.o
+ .text.u8g_pb16h1_Set8PixelStd
+                0x00000000       0x4c build/u8g_pb16h1.o
+ .text.u8g_pb16h1_Set8PixelOpt2
+                0x00000000       0x5c build/u8g_pb16h1.o
+ .text.u8g_dev_pb16h1_base_fn
+                0x00000000       0xb0 build/u8g_pb16h1.o
+ .debug_info    0x00000000      0x8a9 build/u8g_pb16h1.o
+ .debug_abbrev  0x00000000      0x194 build/u8g_pb16h1.o
+ .debug_loc     0x00000000      0x5dc build/u8g_pb16h1.o
+ .debug_aranges
+                0x00000000       0x50 build/u8g_pb16h1.o
+ .debug_ranges  0x00000000       0x40 build/u8g_pb16h1.o
+ .debug_line    0x00000000      0x1fa build/u8g_pb16h1.o
+ .debug_str     0x00000000      0x535 build/u8g_pb16h1.o
+ .comment       0x00000000       0x6f build/u8g_pb16h1.o
+ .debug_frame   0x00000000       0xe4 build/u8g_pb16h1.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb16h1.o
+ .text          0x00000000        0x0 build/u8g_pb16h2.o
+ .data          0x00000000        0x0 build/u8g_pb16h2.o
+ .bss           0x00000000        0x0 build/u8g_pb16h2.o
+ .text.u8g_pb16h2_set_pixel
+                0x00000000       0x40 build/u8g_pb16h2.o
+ .text.u8g_pb16h2_Clear
+                0x00000000       0x18 build/u8g_pb16h2.o
+ .text.u8g_pb16h2_Init
+                0x00000000        0xc build/u8g_pb16h2.o
+ .text.u8g_pb16h2_SetPixel
+                0x00000000       0x2c build/u8g_pb16h2.o
+ .text.u8g_pb16h2_Set8PixelStd
+                0x00000000       0x50 build/u8g_pb16h2.o
+ .text.u8g_pb16h2_Or4PixelStd
+                0x00000000       0x4c build/u8g_pb16h2.o
+ .text.u8g_dev_pb16h2_base_fn
+                0x00000000       0xd4 build/u8g_pb16h2.o
+ .debug_info    0x00000000      0x90e build/u8g_pb16h2.o
+ .debug_abbrev  0x00000000      0x1ac build/u8g_pb16h2.o
+ .debug_loc     0x00000000      0x5fa build/u8g_pb16h2.o
+ .debug_aranges
+                0x00000000       0x50 build/u8g_pb16h2.o
+ .debug_ranges  0x00000000       0x40 build/u8g_pb16h2.o
+ .debug_line    0x00000000      0x1fc build/u8g_pb16h2.o
+ .debug_str     0x00000000      0x54d build/u8g_pb16h2.o
+ .comment       0x00000000       0x6f build/u8g_pb16h2.o
+ .debug_frame   0x00000000       0xe8 build/u8g_pb16h2.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb16h2.o
+ .text          0x00000000        0x0 build/u8g_pb16v1.o
+ .data          0x00000000        0x0 build/u8g_pb16v1.o
+ .bss           0x00000000        0x0 build/u8g_pb16v1.o
+ .text.u8g_pb16v1_Clear
+                0x00000000       0x18 build/u8g_pb16v1.o
+ .text.u8g_pb16v1_Init
+                0x00000000        0xc build/u8g_pb16v1.o
+ .text.u8g_pb16v1_set_pixel
+                0x00000000       0x34 build/u8g_pb16v1.o
+ .text.u8g_pb16v1_SetPixel
+                0x00000000       0x24 build/u8g_pb16v1.o
+ .text.u8g_pb16v1_Set8PixelStd
+                0x00000000       0x4c build/u8g_pb16v1.o
+ .text.u8g_pb16v1_Set8PixelOpt2
+                0x00000000       0x5c build/u8g_pb16v1.o
+ .text.u8g_dev_pb16v1_base_fn
+                0x00000000       0xb0 build/u8g_pb16v1.o
+ .debug_info    0x00000000      0x898 build/u8g_pb16v1.o
+ .debug_abbrev  0x00000000      0x1a3 build/u8g_pb16v1.o
+ .debug_loc     0x00000000      0x568 build/u8g_pb16v1.o
+ .debug_aranges
+                0x00000000       0x50 build/u8g_pb16v1.o
+ .debug_ranges  0x00000000       0x40 build/u8g_pb16v1.o
+ .debug_line    0x00000000      0x1f4 build/u8g_pb16v1.o
+ .debug_str     0x00000000      0x535 build/u8g_pb16v1.o
+ .comment       0x00000000       0x6f build/u8g_pb16v1.o
+ .debug_frame   0x00000000       0xe4 build/u8g_pb16v1.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb16v1.o
+ .text          0x00000000        0x0 build/u8g_pb16v2.o
+ .data          0x00000000        0x0 build/u8g_pb16v2.o
+ .bss           0x00000000        0x0 build/u8g_pb16v2.o
+ .text.u8g_pb16v2_Clear
+                0x00000000       0x18 build/u8g_pb16v2.o
+ .text.u8g_pb16v2Init
+                0x00000000        0xc build/u8g_pb16v2.o
+ .text.u8g_pb16v2_set_pixel
+                0x00000000       0x38 build/u8g_pb16v2.o
+ .text.u8g_pb16v2_SetPixel
+                0x00000000       0x24 build/u8g_pb16v2.o
+ .text.u8g_pb16v2_Set8PixelStd
+                0x00000000       0x4c build/u8g_pb16v2.o
+ .text.u8g_dev_pb16v2_base_fn
+                0x00000000       0xb8 build/u8g_pb16v2.o
+ .debug_info    0x00000000      0x820 build/u8g_pb16v2.o
+ .debug_abbrev  0x00000000      0x1a3 build/u8g_pb16v2.o
+ .debug_loc     0x00000000      0x47f build/u8g_pb16v2.o
+ .debug_aranges
+                0x00000000       0x48 build/u8g_pb16v2.o
+ .debug_ranges  0x00000000       0x38 build/u8g_pb16v2.o
+ .debug_line    0x00000000      0x1cf build/u8g_pb16v2.o
+ .debug_str     0x00000000      0x51b build/u8g_pb16v2.o
+ .comment       0x00000000       0x6f build/u8g_pb16v2.o
+ .debug_frame   0x00000000       0xbc build/u8g_pb16v2.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb16v2.o
+ .text          0x00000000        0x0 build/u8g_pb32h1.o
+ .data          0x00000000        0x0 build/u8g_pb32h1.o
+ .bss           0x00000000        0x0 build/u8g_pb32h1.o
+ .text.u8g_pb32h1_Clear
+                0x00000000       0x18 build/u8g_pb32h1.o
+ .text.u8g_pb32h1_Init
+                0x00000000        0xc build/u8g_pb32h1.o
+ .text.u8g_pb32h1_set_pixel
+                0x00000000       0x34 build/u8g_pb32h1.o
+ .text.u8g_pb32h1_SetPixel
+                0x00000000       0x24 build/u8g_pb32h1.o
+ .text.u8g_pb32h1_Set8PixelStd
+                0x00000000       0x4c build/u8g_pb32h1.o
+ .text.u8g_pb32h1_Set8PixelOpt2
+                0x00000000       0x5c build/u8g_pb32h1.o
+ .text.u8g_dev_pb32h1_base_fn
+                0x00000000       0xb0 build/u8g_pb32h1.o
+ .debug_info    0x00000000      0x8bf build/u8g_pb32h1.o
+ .debug_abbrev  0x00000000      0x194 build/u8g_pb32h1.o
+ .debug_loc     0x00000000      0x5e1 build/u8g_pb32h1.o
+ .debug_aranges
+                0x00000000       0x50 build/u8g_pb32h1.o
+ .debug_ranges  0x00000000       0x40 build/u8g_pb32h1.o
+ .debug_line    0x00000000      0x1f6 build/u8g_pb32h1.o
+ .debug_str     0x00000000      0x549 build/u8g_pb32h1.o
+ .comment       0x00000000       0x6f build/u8g_pb32h1.o
+ .debug_frame   0x00000000       0xec build/u8g_pb32h1.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pb32h1.o
+ .text          0x00000000        0x0 build/u8g_pbxh16.o
+ .data          0x00000000        0x0 build/u8g_pbxh16.o
+ .bss           0x00000000        0x0 build/u8g_pbxh16.o
+ .text.u8g_pbxh16_set_pixel
+                0x00000000       0x24 build/u8g_pbxh16.o
+ .text.u8g_pbxh16_Clear
+                0x00000000       0x28 build/u8g_pbxh16.o
+ .text.u8g_pbxh16_Init
+                0x00000000        0xc build/u8g_pbxh16.o
+ .text.u8g_pbxh16_SetPixel
+                0x00000000       0x2c build/u8g_pbxh16.o
+ .text.u8g_pbxh16_Set8Pixel
+                0x00000000       0x5c build/u8g_pbxh16.o
+ .text.u8g_dev_pbxh16_base_fn
+                0x00000000       0xb8 build/u8g_pbxh16.o
+ .debug_info    0x00000000      0x869 build/u8g_pbxh16.o
+ .debug_abbrev  0x00000000      0x1a1 build/u8g_pbxh16.o
+ .debug_loc     0x00000000      0x55b build/u8g_pbxh16.o
+ .debug_aranges
+                0x00000000       0x48 build/u8g_pbxh16.o
+ .debug_ranges  0x00000000       0x38 build/u8g_pbxh16.o
+ .debug_line    0x00000000      0x1ef build/u8g_pbxh16.o
+ .debug_str     0x00000000      0x51c build/u8g_pbxh16.o
+ .comment       0x00000000       0x6f build/u8g_pbxh16.o
+ .debug_frame   0x00000000       0xdc build/u8g_pbxh16.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pbxh16.o
+ .text          0x00000000        0x0 build/u8g_pbxh24.o
+ .data          0x00000000        0x0 build/u8g_pbxh24.o
+ .bss           0x00000000        0x0 build/u8g_pbxh24.o
+ .text.u8g_pbxh24_set_tpixel
+                0x00000000       0x90 build/u8g_pbxh24.o
+ .text.u8g_pbxh24_Clear
+                0x00000000       0x2c build/u8g_pbxh24.o
+ .text.u8g_pbxh24_Init
+                0x00000000        0xc build/u8g_pbxh24.o
+ .text.u8g_pbxh24_SetTPixel
+                0x00000000       0x34 build/u8g_pbxh24.o
+ .text.u8g_pbxh24_Set8Pixel
+                0x00000000       0x5c build/u8g_pbxh24.o
+ .text.u8g_pbxh24_Set4TPixel
+                0x00000000       0x58 build/u8g_pbxh24.o
+ .text.u8g_dev_pbxh24_base_fn
+                0x00000000       0xd8 build/u8g_pbxh24.o
+ .debug_info    0x00000000      0x95a build/u8g_pbxh24.o
+ .debug_abbrev  0x00000000      0x1a1 build/u8g_pbxh24.o
+ .debug_loc     0x00000000      0x769 build/u8g_pbxh24.o
+ .debug_aranges
+                0x00000000       0x50 build/u8g_pbxh24.o
+ .debug_ranges  0x00000000       0x40 build/u8g_pbxh24.o
+ .debug_line    0x00000000      0x260 build/u8g_pbxh24.o
+ .debug_str     0x00000000      0x53f build/u8g_pbxh24.o
+ .comment       0x00000000       0x6f build/u8g_pbxh24.o
+ .debug_frame   0x00000000      0x104 build/u8g_pbxh24.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_pbxh24.o
+ .text          0x00000000        0x0 build/u8g_polygon.o
+ .data          0x00000000        0x0 build/u8g_polygon.o
+ .bss           0x00000000        0x0 build/u8g_polygon.o
+ .text.pge_Next
+                0x00000000       0x50 build/u8g_polygon.o
+ .text.pge_Init
+                0x00000000       0x50 build/u8g_polygon.o
+ .text.pg_inc   0x00000000       0x10 build/u8g_polygon.o
+ .text.pg_dec   0x00000000       0x14 build/u8g_polygon.o
+ .text.pg_expand_min_y
+                0x00000000       0x40 build/u8g_polygon.o
+ .text.pg_prepare
+                0x00000000       0xa8 build/u8g_polygon.o
+ .text.pg_line_init
+                0x00000000       0x44 build/u8g_polygon.o
+ .text.pg_hline
+                0x00000000       0x68 build/u8g_polygon.o
+ .text.pg_exec  0x00000000       0x6c build/u8g_polygon.o
+ .text.pg_ClearPolygonXY
+                0x00000000        0x8 build/u8g_polygon.o
+ .text.pg_AddPolygonXY
+                0x00000000       0x18 build/u8g_polygon.o
+ .text.pg_DrawPolygon
+                0x00000000       0x18 build/u8g_polygon.o
+ .text.u8g_ClearPolygonXY
+                0x00000000       0x10 build/u8g_polygon.o
+ .text.u8g_AddPolygonXY
+                0x00000000       0x14 build/u8g_polygon.o
+ .text.u8g_DrawPolygon
+                0x00000000       0x10 build/u8g_polygon.o
+ .text.u8g_DrawTriangle
+                0x00000000       0x3c build/u8g_polygon.o
+ .debug_info    0x00000000      0xcfc build/u8g_polygon.o
+ .debug_abbrev  0x00000000      0x242 build/u8g_polygon.o
+ .debug_loc     0x00000000      0x7d9 build/u8g_polygon.o
+ .debug_aranges
+                0x00000000       0x98 build/u8g_polygon.o
+ .debug_ranges  0x00000000       0x88 build/u8g_polygon.o
+ .debug_line    0x00000000      0x2a0 build/u8g_polygon.o
+ .debug_str     0x00000000      0x5be build/u8g_polygon.o
+ .comment       0x00000000       0x6f build/u8g_polygon.o
+ .debug_frame   0x00000000      0x1e0 build/u8g_polygon.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_polygon.o
+ COMMON         0x00000000       0x4c build/u8g_polygon.o
+ .text          0x00000000        0x0 build/u8g_rect.o
+ .data          0x00000000        0x0 build/u8g_rect.o
+ .bss           0x00000000        0x0 build/u8g_rect.o
+ .text.u8g_draw_hline
+                0x00000000       0x50 build/u8g_rect.o
+ .text.u8g_draw_vline
+                0x00000000       0x50 build/u8g_rect.o
+ .text.u8g_DrawHLine
+                0x00000000       0x2c build/u8g_rect.o
+ .text.u8g_DrawVLine
+                0x00000000       0x28 build/u8g_rect.o
+ .text.u8g_DrawFrame
+                0x00000000       0x60 build/u8g_rect.o
+ .text.u8g_draw_box
+                0x00000000       0x2c build/u8g_rect.o
+ .text.u8g_DrawBox
+                0x00000000       0x30 build/u8g_rect.o
+ .text.u8g_DrawRFrame
+                0x00000000      0x100 build/u8g_rect.o
+ .text.u8g_DrawRBox
+                0x00000000       0xec build/u8g_rect.o
+ .debug_info    0x00000000      0xe30 build/u8g_rect.o
+ .debug_abbrev  0x00000000      0x169 build/u8g_rect.o
+ .debug_loc     0x00000000      0xc85 build/u8g_rect.o
+ .debug_aranges
+                0x00000000       0x60 build/u8g_rect.o
+ .debug_ranges  0x00000000       0x50 build/u8g_rect.o
+ .debug_line    0x00000000      0x207 build/u8g_rect.o
+ .debug_str     0x00000000      0x4aa build/u8g_rect.o
+ .comment       0x00000000       0x6f build/u8g_rect.o
+ .debug_frame   0x00000000      0x1a4 build/u8g_rect.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_rect.o
+ .text          0x00000000        0x0 build/u8g_rot.o
+ .data          0x00000000        0x0 build/u8g_rot.o
+ .bss           0x00000000        0x0 build/u8g_rot.o
+ .text.u8g_dev_rot_dummy_fn
+                0x00000000        0x4 build/u8g_rot.o
+ .text.u8g_dev_rot90_fn
+                0x00000000       0xf8 build/u8g_rot.o
+ .text.u8g_dev_rot180_fn
+                0x00000000      0x150 build/u8g_rot.o
+ .text.u8g_dev_rot270_fn
+                0x00000000      0x128 build/u8g_rot.o
+ .text.u8g_UndoRotation
+                0x00000000       0x18 build/u8g_rot.o
+ .text.u8g_SetRot90
+                0x00000000       0x24 build/u8g_rot.o
+ .text.u8g_SetRot180
+                0x00000000       0x24 build/u8g_rot.o
+ .text.u8g_SetRot270
+                0x00000000       0x24 build/u8g_rot.o
+ .data.u8g_dev_rot
+                0x00000000        0xc build/u8g_rot.o
+ .debug_info    0x00000000      0xbb0 build/u8g_rot.o
+ .debug_abbrev  0x00000000      0x1f7 build/u8g_rot.o
+ .debug_loc     0x00000000      0x7bc build/u8g_rot.o
+ .debug_aranges
+                0x00000000       0x58 build/u8g_rot.o
+ .debug_ranges  0x00000000       0x48 build/u8g_rot.o
+ .debug_line    0x00000000      0x247 build/u8g_rot.o
+ .debug_str     0x00000000      0x4ce build/u8g_rot.o
+ .comment       0x00000000       0x6f build/u8g_rot.o
+ .debug_frame   0x00000000      0x114 build/u8g_rot.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_rot.o
+ .text          0x00000000        0x0 build/u8g_scale.o
+ .data          0x00000000        0x0 build/u8g_scale.o
+ .bss           0x00000000        0x0 build/u8g_scale.o
+ .text.u8g_dev_scale_2x2_fn
+                0x00000000      0x228 build/u8g_scale.o
+ .text.u8g_UndoScale
+                0x00000000       0x18 build/u8g_scale.o
+ .text.u8g_SetScale2x2
+                0x00000000       0x24 build/u8g_scale.o
+ .data.u8g_dev_scale
+                0x00000000        0xc build/u8g_scale.o
+ .debug_info    0x00000000      0x79f build/u8g_scale.o
+ .debug_abbrev  0x00000000      0x187 build/u8g_scale.o
+ .debug_loc     0x00000000      0x43f build/u8g_scale.o
+ .debug_aranges
+                0x00000000       0x30 build/u8g_scale.o
+ .debug_ranges  0x00000000       0x20 build/u8g_scale.o
+ .debug_line    0x00000000      0x1bc build/u8g_scale.o
+ .debug_str     0x00000000      0x491 build/u8g_scale.o
+ .comment       0x00000000       0x6f build/u8g_scale.o
+ .debug_frame   0x00000000       0x80 build/u8g_scale.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_scale.o
+ .text          0x00000000        0x0 build/u8g_state.o
+ .data          0x00000000        0x0 build/u8g_state.o
+ .bss           0x00000000        0x0 build/u8g_state.o
+ .text.u8g_state_dummy_cb
+                0x00000000        0x4 build/u8g_state.o
+ .text.u8g_SetHardwareBackup
+                0x00000000        0xc build/u8g_state.o
+ .text.u8g_backup_spi
+                0x00000000        0x4 build/u8g_state.o
+ .debug_info    0x00000000      0x4d9 build/u8g_state.o
+ .debug_abbrev  0x00000000      0x154 build/u8g_state.o
+ .debug_loc     0x00000000       0x62 build/u8g_state.o
+ .debug_aranges
+                0x00000000       0x30 build/u8g_state.o
+ .debug_ranges  0x00000000       0x20 build/u8g_state.o
+ .debug_line    0x00000000      0x138 build/u8g_state.o
+ .debug_str     0x00000000      0x428 build/u8g_state.o
+ .comment       0x00000000       0x6f build/u8g_state.o
+ .debug_frame   0x00000000       0x4c build/u8g_state.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_state.o
+ .text          0x00000000        0x0 build/u8g_u8toa.o
+ .data          0x00000000        0x0 build/u8g_u8toa.o
+ .bss           0x00000000        0x0 build/u8g_u8toa.o
+ .text.u8g_u8toap
+                0x00000000       0x34 build/u8g_u8toa.o
+ .text.u8g_u8toa
+                0x00000000       0x18 build/u8g_u8toa.o
+ .bss.buf.5881  0x00000000        0x4 build/u8g_u8toa.o
+ .rodata.u8g_u8toa_tab
+                0x00000000        0x3 build/u8g_u8toa.o
+ .debug_info    0x00000000      0x1a6 build/u8g_u8toa.o
+ .debug_abbrev  0x00000000       0xd9 build/u8g_u8toa.o
+ .debug_loc     0x00000000      0x11f build/u8g_u8toa.o
+ .debug_aranges
+                0x00000000       0x28 build/u8g_u8toa.o
+ .debug_ranges  0x00000000       0x18 build/u8g_u8toa.o
+ .debug_line    0x00000000      0x13d build/u8g_u8toa.o
+ .debug_str     0x00000000      0x1db build/u8g_u8toa.o
+ .comment       0x00000000       0x6f build/u8g_u8toa.o
+ .debug_frame   0x00000000       0x4c build/u8g_u8toa.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_u8toa.o
+ .text          0x00000000        0x0 build/u8g_u16toa.o
+ .data          0x00000000        0x0 build/u8g_u16toa.o
+ .bss           0x00000000        0x0 build/u8g_u16toa.o
+ .text.u8g_u16toap
+                0x00000000       0x3c build/u8g_u16toa.o
+ .text.u8g_u16toa
+                0x00000000       0x18 build/u8g_u16toa.o
+ .bss.buf.5880  0x00000000        0x6 build/u8g_u16toa.o
+ .debug_info    0x00000000      0x18d build/u8g_u16toa.o
+ .debug_abbrev  0x00000000       0xc8 build/u8g_u16toa.o
+ .debug_loc     0x00000000      0x156 build/u8g_u16toa.o
+ .debug_aranges
+                0x00000000       0x28 build/u8g_u16toa.o
+ .debug_ranges  0x00000000       0x18 build/u8g_u16toa.o
+ .debug_line    0x00000000      0x141 build/u8g_u16toa.o
+ .debug_str     0x00000000      0x1e4 build/u8g_u16toa.o
+ .comment       0x00000000       0x6f build/u8g_u16toa.o
+ .debug_frame   0x00000000       0x48 build/u8g_u16toa.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_u16toa.o
+ .text          0x00000000        0x0 build/u8g_virtual_screen.o
+ .data          0x00000000        0x0 build/u8g_virtual_screen.o
+ .bss           0x00000000        0x0 build/u8g_virtual_screen.o
+ .text.u8g_dev_vs_fn
+                0x00000000      0x19c build/u8g_virtual_screen.o
+ .text.u8g_SetVirtualScreenDimension
+                0x00000000       0x20 build/u8g_virtual_screen.o
+ .text.u8g_AddToVirtualScreen
+                0x00000000       0x40 build/u8g_virtual_screen.o
+ .bss.u8g_vs_cnt
+                0x00000000        0x1 build/u8g_virtual_screen.o
+ .data.u8g_dev_vs
+                0x00000000        0xc build/u8g_virtual_screen.o
+ .debug_info    0x00000000      0x6bf build/u8g_virtual_screen.o
+ .debug_abbrev  0x00000000      0x1b5 build/u8g_virtual_screen.o
+ .debug_loc     0x00000000      0x368 build/u8g_virtual_screen.o
+ .debug_aranges
+                0x00000000       0x30 build/u8g_virtual_screen.o
+ .debug_ranges  0x00000000       0x50 build/u8g_virtual_screen.o
+ .debug_line    0x00000000      0x192 build/u8g_virtual_screen.o
+ .debug_str     0x00000000      0x4b2 build/u8g_virtual_screen.o
+ .comment       0x00000000       0x6f build/u8g_virtual_screen.o
+ .debug_frame   0x00000000       0x60 build/u8g_virtual_screen.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_virtual_screen.o
+ COMMON         0x00000000       0x25 build/u8g_virtual_screen.o
+ .text          0x00000000        0x0 build/u8g_cursor.o
+ .data          0x00000000        0x0 build/u8g_cursor.o
+ .bss           0x00000000        0x0 build/u8g_cursor.o
+ .text.u8g_DrawCursor
+                0x00000000       0x50 build/u8g_cursor.o
+ .text.u8g_SetCursorFont
+                0x00000000        0x4 build/u8g_cursor.o
+ .text.u8g_SetCursorStyle
+                0x00000000        0x4 build/u8g_cursor.o
+ .text.u8g_SetCursorColor
+                0x00000000        0x8 build/u8g_cursor.o
+ .text.u8g_SetCursorPos
+                0x00000000        0x8 build/u8g_cursor.o
+ .text.u8g_EnableCursor
+                0x00000000        0xc build/u8g_cursor.o
+ .text.u8g_DisableCursor
+                0x00000000        0x8 build/u8g_cursor.o
+ .debug_info    0x00000000      0x680 build/u8g_cursor.o
+ .debug_abbrev  0x00000000      0x178 build/u8g_cursor.o
+ .debug_loc     0x00000000       0x67 build/u8g_cursor.o
+ .debug_aranges
+                0x00000000       0x50 build/u8g_cursor.o
+ .debug_ranges  0x00000000       0x40 build/u8g_cursor.o
+ .debug_line    0x00000000      0x186 build/u8g_cursor.o
+ .debug_str     0x00000000      0x49e build/u8g_cursor.o
+ .comment       0x00000000       0x6f build/u8g_cursor.o
+ .debug_frame   0x00000000       0x98 build/u8g_cursor.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_cursor.o
+ .text          0x00000000        0x0 build/u8g_com_api.o
+ .data          0x00000000        0x0 build/u8g_com_api.o
+ .bss           0x00000000        0x0 build/u8g_com_api.o
+ .text.u8g_InitCom
+                0x00000000        0xc build/u8g_com_api.o
+ .text.u8g_StopCom
+                0x00000000       0x10 build/u8g_com_api.o
+ .text.u8g_SetChipSelect
+                0x00000000        0xc build/u8g_com_api.o
+ .text.u8g_SetResetLow
+                0x00000000       0x10 build/u8g_com_api.o
+ .text.u8g_SetResetHigh
+                0x00000000       0x10 build/u8g_com_api.o
+ .text.u8g_SetAddress
+                0x00000000        0xc build/u8g_com_api.o
+ .text.u8g_WriteByte
+                0x00000000        0xc build/u8g_com_api.o
+ .text.u8g_WriteSequence
+                0x00000000        0xc build/u8g_com_api.o
+ .text.u8g_WriteSequenceP
+                0x00000000        0xc build/u8g_com_api.o
+ .text.u8g_WriteEscSeqP
+                0x00000000       0xcc build/u8g_com_api.o
+ .debug_info    0x00000000      0x945 build/u8g_com_api.o
+ .debug_abbrev  0x00000000      0x168 build/u8g_com_api.o
+ .debug_loc     0x00000000      0x5ae build/u8g_com_api.o
+ .debug_aranges
+                0x00000000       0x68 build/u8g_com_api.o
+ .debug_ranges  0x00000000       0x58 build/u8g_com_api.o
+ .debug_line    0x00000000      0x1e8 build/u8g_com_api.o
+ .debug_str     0x00000000      0x4bf build/u8g_com_api.o
+ .comment       0x00000000       0x6f build/u8g_com_api.o
+ .debug_frame   0x00000000      0x134 build/u8g_com_api.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_com_api.o
+ .text          0x00000000        0x0 build/u8g_com_api_16gr.o
+ .data          0x00000000        0x0 build/u8g_com_api_16gr.o
+ .bss           0x00000000        0x0 build/u8g_com_api_16gr.o
+ .text.u8g_WriteByteBWTo16GrDevice
+                0x00000000       0x3c build/u8g_com_api_16gr.o
+ .text.u8g_WriteSequenceBWTo16GrDevice
+                0x00000000       0x28 build/u8g_com_api_16gr.o
+ .text.u8g_WriteByte4LTo16GrDevice
+                0x00000000       0x30 build/u8g_com_api_16gr.o
+ .text.u8g_WriteSequence4LTo16GrDevice
+                0x00000000       0x28 build/u8g_com_api_16gr.o
+ .rodata.map.5883
+                0x00000000       0x10 build/u8g_com_api_16gr.o
+ .bss.buf.5868  0x00000000        0x4 build/u8g_com_api_16gr.o
+ .rodata.map.5869
+                0x00000000        0x4 build/u8g_com_api_16gr.o
+ .debug_info    0x00000000      0x68e build/u8g_com_api_16gr.o
+ .debug_abbrev  0x00000000      0x169 build/u8g_com_api_16gr.o
+ .debug_loc     0x00000000      0x289 build/u8g_com_api_16gr.o
+ .debug_aranges
+                0x00000000       0x38 build/u8g_com_api_16gr.o
+ .debug_ranges  0x00000000       0x28 build/u8g_com_api_16gr.o
+ .debug_line    0x00000000      0x165 build/u8g_com_api_16gr.o
+ .debug_str     0x00000000      0x465 build/u8g_com_api_16gr.o
+ .comment       0x00000000       0x6f build/u8g_com_api_16gr.o
+ .debug_frame   0x00000000       0xa8 build/u8g_com_api_16gr.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_com_api_16gr.o
+ .text          0x00000000        0x0 build/u8g_clip.o
+ .data          0x00000000        0x0 build/u8g_clip.o
+ .bss           0x00000000        0x0 build/u8g_clip.o
+ .text.u8g_IsBBXIntersection
+                0x00000000       0x84 build/u8g_clip.o
+ .debug_info    0x00000000      0x558 build/u8g_clip.o
+ .debug_abbrev  0x00000000      0x153 build/u8g_clip.o
+ .debug_loc     0x00000000      0x327 build/u8g_clip.o
+ .debug_aranges
+                0x00000000       0x20 build/u8g_clip.o
+ .debug_ranges  0x00000000       0x10 build/u8g_clip.o
+ .debug_line    0x00000000      0x14c build/u8g_clip.o
+ .debug_str     0x00000000      0x41d build/u8g_clip.o
+ .comment       0x00000000       0x6f build/u8g_clip.o
+ .debug_frame   0x00000000       0x38 build/u8g_clip.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_clip.o
+ .text          0x00000000        0x0 build/u8g_circle.o
+ .data          0x00000000        0x0 build/u8g_circle.o
+ .bss           0x00000000        0x0 build/u8g_circle.o
+ .text.u8g_draw_circle_section
+                0x00000000       0xbc build/u8g_circle.o
+ .text.u8g_draw_disc_section
+                0x00000000       0xc0 build/u8g_circle.o
+ .text.u8g_draw_circle
+                0x00000000       0x7c build/u8g_circle.o
+ .text.u8g_DrawCircle
+                0x00000000       0x3c build/u8g_circle.o
+ .text.u8g_draw_disc
+                0x00000000       0x7c build/u8g_circle.o
+ .text.u8g_DrawDisc
+                0x00000000       0x3c build/u8g_circle.o
+ .debug_info    0x00000000      0xbf2 build/u8g_circle.o
+ .debug_abbrev  0x00000000      0x1fe build/u8g_circle.o
+ .debug_loc     0x00000000      0x6ac build/u8g_circle.o
+ .debug_aranges
+                0x00000000       0x48 build/u8g_circle.o
+ .debug_ranges  0x00000000       0x38 build/u8g_circle.o
+ .debug_line    0x00000000      0x1b8 build/u8g_circle.o
+ .debug_str     0x00000000      0x4a9 build/u8g_circle.o
+ .comment       0x00000000       0x6f build/u8g_circle.o
+ .debug_frame   0x00000000      0x120 build/u8g_circle.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_circle.o
+ .text          0x00000000        0x0 build/u8g_bitmap.o
+ .data          0x00000000        0x0 build/u8g_bitmap.o
+ .bss           0x00000000        0x0 build/u8g_bitmap.o
+ .text.u8g_DrawHXBM
+                0x00000000       0x64 build/u8g_bitmap.o
+ .text.u8g_DrawHXBMP
+                0x00000000       0x64 build/u8g_bitmap.o
+ .text.u8g_DrawHBitmap
+                0x00000000       0x38 build/u8g_bitmap.o
+ .text.u8g_DrawBitmap
+                0x00000000       0x48 build/u8g_bitmap.o
+ .text.u8g_DrawHBitmapP
+                0x00000000       0x38 build/u8g_bitmap.o
+ .text.u8g_DrawBitmapP
+                0x00000000       0x48 build/u8g_bitmap.o
+ .text.u8g_DrawXBM
+                0x00000000       0x48 build/u8g_bitmap.o
+ .text.u8g_DrawXBMP
+                0x00000000       0x48 build/u8g_bitmap.o
+ .debug_info    0x00000000      0xa10 build/u8g_bitmap.o
+ .debug_abbrev  0x00000000      0x158 build/u8g_bitmap.o
+ .debug_loc     0x00000000      0x90a build/u8g_bitmap.o
+ .debug_aranges
+                0x00000000       0x58 build/u8g_bitmap.o
+ .debug_ranges  0x00000000       0x48 build/u8g_bitmap.o
+ .debug_line    0x00000000      0x1d2 build/u8g_bitmap.o
+ .debug_str     0x00000000      0x495 build/u8g_bitmap.o
+ .comment       0x00000000       0x6f build/u8g_bitmap.o
+ .debug_frame   0x00000000      0x188 build/u8g_bitmap.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_bitmap.o
+ .text          0x00000000        0x0 build/chessengine.o
+ .data          0x00000000        0x0 build/chessengine.o
+ .bss           0x00000000        0x0 build/chessengine.o
+ .text.cu_gpos2bpos
+                0x00000000       0x10 build/chessengine.o
+ .text.cp_Construct
+                0x00000000        0x8 build/chessengine.o
+ .text.cp_GetPiece
+                0x00000000        0x8 build/chessengine.o
+ .text.cp_GetColor
+                0x00000000        0x8 build/chessengine.o
+ .text.cu_add_pos
+                0x00000000       0x10 build/chessengine.o
+ .text.stack_GetCurrElement
+                0x00000000        0xc build/chessengine.o
+ .text.stack_Push
+                0x00000000       0x3c build/chessengine.o
+ .text.stack_Pop
+                0x00000000       0x20 build/chessengine.o
+ .text.stack_InitCurrElement
+                0x00000000       0x14 build/chessengine.o
+ .text.stack_Init
+                0x00000000       0x38 build/chessengine.o
+ .text.stack_SetMove
+                0x00000000       0x1c build/chessengine.o
+ .text.cu_NextPos
+                0x00000000       0x20 build/chessengine.o
+ .text.cu_PrevPos
+                0x00000000       0x20 build/chessengine.o
+ .text.cp_GetFromBoard
+                0x00000000       0x14 build/chessengine.o
+ .text.cp_SetOnBoard
+                0x00000000       0x14 build/chessengine.o
+ .text.cu_IsIllegalPosition
+                0x00000000       0x24 build/chessengine.o
+ .text.ce_Eval  0x00000000       0xd8 build/chessengine.o
+ .text.cu_ClearMoveHistory
+                0x00000000        0xc build/chessengine.o
+ .text.cu_ClearBoard
+                0x00000000       0x44 build/chessengine.o
+ .text.chess_SetupBoardTest01
+                0x00000000       0x48 build/chessengine.o
+ .text.chess_SetupBoard
+                0x00000000       0xcc build/chessengine.o
+ .text.cu_ReduceHistoryByFullMove
+                0x00000000       0x4c build/chessengine.o
+ .text.cu_UndoHalfMove
+                0x00000000       0x5c build/chessengine.o
+ .text.cu_PushHalfMove
+                0x00000000       0x30 build/chessengine.o
+ .text.cu_GetHalfMoveStr
+                0x00000000       0x68 build/chessengine.o
+ .text.cu_Move  0x00000000      0x1fc build/chessengine.o
+ .text.ce_FindPieceByStep
+                0x00000000       0x68 build/chessengine.o
+ .text.ce_FindPawnPiece
+                0x00000000       0x44 build/chessengine.o
+ .text.ce_CalculatePositionWeight
+                0x00000000       0xa0 build/chessengine.o
+ .text.ce_GetPositionAttackWeight
+                0x00000000       0x18 build/chessengine.o
+ .text.cu_IsKingCastling
+                0x00000000       0x68 build/chessengine.o
+ .text.ce_GetPositionAttackCount
+                0x00000000       0x18 build/chessengine.o
+ .text.ce_LoopPieces
+                0x00000000       0x68 build/chessengine.o
+ .text.ce_LoopRecur
+                0x00000000       0xb0 build/chessengine.o
+ .text.ce_LoopDirsSingleMultiStep
+                0x00000000       0x34 build/chessengine.o
+ .text.ce_LoopRook
+                0x00000000       0x10 build/chessengine.o
+ .text.ce_LoopBishop
+                0x00000000       0x10 build/chessengine.o
+ .text.ce_LoopQueen
+                0x00000000       0x10 build/chessengine.o
+ .text.ce_LoopKnight
+                0x00000000       0x10 build/chessengine.o
+ .text.ce_LoopKing
+                0x00000000       0x88 build/chessengine.o
+ .text.ce_LoopPawnSideCapture
+                0x00000000       0x54 build/chessengine.o
+ .text.ce_LoopPawn
+                0x00000000       0x88 build/chessengine.o
+ .text.chess_ClearMarks
+                0x00000000       0x20 build/chessengine.o
+ .text.chess_MarkMovable
+                0x00000000       0x1c build/chessengine.o
+ .text.chess_MarkTargetMoves
+                0x00000000       0x34 build/chessengine.o
+ .text.chess_GetNextMarked
+                0x00000000       0x48 build/chessengine.o
+ .text.chess_ManualMove
+                0x00000000       0xbc build/chessengine.o
+ .text.chess_ComputerMove
+                0x00000000       0x1c build/chessengine.o
+ .text.mnu_DrawHome
+                0x00000000       0x64 build/chessengine.o
+ .text.mnu_DrawEntry
+                0x00000000       0xa4 build/chessengine.o
+ .text.mnu_Draw
+                0x00000000       0x7c build/chessengine.o
+ .text.mnu_Step
+                0x00000000       0x34 build/chessengine.o
+ .text.chess_DrawFrame
+                0x00000000       0x94 build/chessengine.o
+ .text.chess_DrawBoard
+                0x00000000      0x2a0 build/chessengine.o
+ .text.chess_Thinking
+                0x00000000        0x4 build/chessengine.o
+ .text.chess_Init
+                0x00000000       0x84 build/chessengine.o
+ .text.chess_Draw
+                0x00000000      0x130 build/chessengine.o
+ .text.chess_Step
+                0x00000000      0x1f8 build/chessengine.o
+ .bss.chess_key_code
+                0x00000000        0x1 build/chessengine.o
+ .data.chess_piece_to_char
+                0x00000000        0x6 build/chessengine.o
+ .data.ce_piece_weight
+                0x00000000        0x7 build/chessengine.o
+ .rodata.ce_dir_offset_queen
+                0x00000000        0x9 build/chessengine.o
+ .data.mnu_list
+                0x00000000       0x10 build/chessengine.o
+ .bss.mnu_pos   0x00000000        0x1 build/chessengine.o
+ .data.ce_pos_weight
+                0x00000000        0x8 build/chessengine.o
+ .rodata.ce_dir_offset_knight
+                0x00000000        0x9 build/chessengine.o
+ .data.chess_target_pos
+                0x00000000        0x1 build/chessengine.o
+ .rodata.chess_black_pieces_bm
+                0x00000000       0x30 build/chessengine.o
+ .data.mnu_max  0x00000000        0x1 build/chessengine.o
+ .bss.chess_state
+                0x00000000        0x1 build/chessengine.o
+ .rodata.str1.4
+                0x00000000       0x7a build/chessengine.o
+ .data.mnu_title
+                0x00000000        0x4 build/chessengine.o
+ .data.chess_boxsize
+                0x00000000        0x1 build/chessengine.o
+ .rodata.ce_dir_offset_bishop
+                0x00000000        0x5 build/chessengine.o
+ .data.chess_source_pos
+                0x00000000        0x1 build/chessengine.o
+ .bss.buf.6076  0x00000000        0x7 build/chessengine.o
+ .bss.chess_key_cmd
+                0x00000000        0x1 build/chessengine.o
+ .rodata.chess_pieces_body_bm
+                0x00000000       0x30 build/chessengine.o
+ .data.chess_boxoffset
+                0x00000000        0x1 build/chessengine.o
+ .rodata.ce_dir_offset_rook
+                0x00000000        0x5 build/chessengine.o
+ .debug_info    0x00000000     0x285d build/chessengine.o
+ .debug_abbrev  0x00000000      0x281 build/chessengine.o
+ .debug_loc     0x00000000     0x1a56 build/chessengine.o
+ .debug_aranges
+                0x00000000      0x1e8 build/chessengine.o
+ .debug_ranges  0x00000000      0x1d8 build/chessengine.o
+ .debug_line    0x00000000      0x870 build/chessengine.o
+ .debug_str     0x00000000      0xd56 build/chessengine.o
+ .comment       0x00000000       0x6f build/chessengine.o
+ .debug_frame   0x00000000      0x6e0 build/chessengine.o
+ .ARM.attributes
+                0x00000000       0x39 build/chessengine.o
+ COMMON         0x00000000      0x100 build/chessengine.o
  .text          0x00000000       0x14 build/startup_stm32f401xc.o
  .data          0x00000000        0x0 build/startup_stm32f401xc.o
  .bss           0x00000000        0x0 build/startup_stm32f401xc.o
@@ -614,6 +1931,41 @@ LOAD build/stm32f4xx_hal_cortex.o
 LOAD build/stm32f4xx_hal.o
 LOAD build/stm32f4xx_hal_exti.o
 LOAD build/system_stm32f4xx.o
+LOAD build/u8g_ellipse.o
+LOAD build/u8g_font.o
+LOAD build/u8g_line.o
+LOAD build/u8g_ll_api.o
+LOAD build/u8g_page.o
+LOAD build/u8g_pb.o
+LOAD build/u8g_pb8h1.o
+LOAD build/u8g_pb8h1f.o
+LOAD build/u8g_pb8h2.o
+LOAD build/u8g_pb8h8.o
+LOAD build/u8g_pb8v1.o
+LOAD build/u8g_pb8v2.o
+LOAD build/u8g_pb14v1.o
+LOAD build/u8g_pb16h1.o
+LOAD build/u8g_pb16h2.o
+LOAD build/u8g_pb16v1.o
+LOAD build/u8g_pb16v2.o
+LOAD build/u8g_pb32h1.o
+LOAD build/u8g_pbxh16.o
+LOAD build/u8g_pbxh24.o
+LOAD build/u8g_polygon.o
+LOAD build/u8g_rect.o
+LOAD build/u8g_rot.o
+LOAD build/u8g_scale.o
+LOAD build/u8g_state.o
+LOAD build/u8g_u8toa.o
+LOAD build/u8g_u16toa.o
+LOAD build/u8g_virtual_screen.o
+LOAD build/u8g_cursor.o
+LOAD build/u8g_com_api.o
+LOAD build/u8g_com_api_16gr.o
+LOAD build/u8g_clip.o
+LOAD build/u8g_circle.o
+LOAD build/u8g_bitmap.o
+LOAD build/chessengine.o
 LOAD build/startup_stm32f401xc.o
 LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a
 LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libm.a
@@ -1373,19 +2725,481 @@ _sdata                                            build/startup_stm32f401xc.o
 _sidata                                           build/startup_stm32f401xc.o
 _start                                            c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
 atexit                                            c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
+ce_CalculatePositionWeight                        build/chessengine.o
+ce_Eval                                           build/chessengine.o
+ce_FindPawnPiece                                  build/chessengine.o
+ce_FindPieceByStep                                build/chessengine.o
+ce_GetPositionAttackCount                         build/chessengine.o
+ce_GetPositionAttackWeight                        build/chessengine.o
+ce_LoopBishop                                     build/chessengine.o
+ce_LoopDirsSingleMultiStep                        build/chessengine.o
+ce_LoopKing                                       build/chessengine.o
+ce_LoopKnight                                     build/chessengine.o
+ce_LoopPawn                                       build/chessengine.o
+ce_LoopPawnSideCapture                            build/chessengine.o
+ce_LoopPieces                                     build/chessengine.o
+ce_LoopQueen                                      build/chessengine.o
+ce_LoopRecur                                      build/chessengine.o
+ce_LoopRook                                       build/chessengine.o
+ce_piece_weight                                   build/chessengine.o
+ce_pos_weight                                     build/chessengine.o
+chess_ClearMarks                                  build/chessengine.o
+chess_ComputerMove                                build/chessengine.o
+chess_Draw                                        build/chessengine.o
+chess_DrawBoard                                   build/chessengine.o
+chess_DrawFrame                                   build/chessengine.o
+chess_GetNextMarked                               build/chessengine.o
+chess_Init                                        build/chessengine.o
+chess_ManualMove                                  build/chessengine.o
+chess_MarkMovable                                 build/chessengine.o
+chess_MarkTargetMoves                             build/chessengine.o
+chess_SetupBoard                                  build/chessengine.o
+chess_SetupBoardTest01                            build/chessengine.o
+chess_Step                                        build/chessengine.o
+chess_Thinking                                    build/chessengine.o
+chess_black_pieces_bm                             build/chessengine.o
+chess_boxoffset                                   build/chessengine.o
+chess_boxsize                                     build/chessengine.o
+chess_key_cmd                                     build/chessengine.o
+chess_key_code                                    build/chessengine.o
+chess_low_edge                                    build/chessengine.o
+chess_piece_to_char                               build/chessengine.o
+chess_pieces_body_bm                              build/chessengine.o
+chess_source_pos                                  build/chessengine.o
+chess_state                                       build/chessengine.o
+chess_target_pos                                  build/chessengine.o
+cp_GetFromBoard                                   build/chessengine.o
+cp_SetOnBoard                                     build/chessengine.o
+cu_ClearBoard                                     build/chessengine.o
+cu_ClearMoveHistory                               build/chessengine.o
+cu_GetHalfMoveStr                                 build/chessengine.o
+cu_IsIllegalPosition                              build/chessengine.o
+cu_IsKingCastling                                 build/chessengine.o
+cu_Move                                           build/chessengine.o
+cu_NextPos                                        build/chessengine.o
+cu_PrevPos                                        build/chessengine.o
+cu_PushHalfMove                                   build/chessengine.o
+cu_ReduceHistoryByFullMove                        build/chessengine.o
+cu_UndoHalfMove                                   build/chessengine.o
 exit                                              c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-exit.o)
                                                   c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
 g_pfnVectors                                      build/startup_stm32f401xc.o
 hardware_init_hook                                c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
+lrc_obj                                           build/chessengine.o
+lrc_u8g                                           build/chessengine.o
 main                                              build/main.o
                                                   build/startup_stm32f401xc.o
                                                   c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
 memset                                            c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-memset.o)
                                                   build/main.o
                                                   c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
+mnu_Draw                                          build/chessengine.o
+mnu_DrawEntry                                     build/chessengine.o
+mnu_DrawHome                                      build/chessengine.o
+mnu_Step                                          build/chessengine.o
+mnu_list                                          build/chessengine.o
+mnu_max                                           build/chessengine.o
+mnu_pos                                           build/chessengine.o
+mnu_title                                         build/chessengine.o
 pFlash                                            build/stm32f4xx_hal_flash.o
                                                   build/stm32f4xx_hal_flash_ex.o
+pg_AddPolygonXY                                   build/u8g_polygon.o
+pg_ClearPolygonXY                                 build/u8g_polygon.o
+pg_DrawPolygon                                    build/u8g_polygon.o
 software_init_hook                                c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
+stack_GetCurrElement                              build/chessengine.o
+stack_Init                                        build/chessengine.o
+stack_InitCurrElement                             build/chessengine.o
+stack_Pop                                         build/chessengine.o
+stack_Push                                        build/chessengine.o
+stack_SetMove                                     build/chessengine.o
+u8g_AddPolygonXY                                  build/u8g_polygon.o
+u8g_AddToVirtualScreen                            build/u8g_virtual_screen.o
+u8g_Begin                                         build/u8g_ll_api.o
+u8g_ClearPolygonXY                                build/u8g_polygon.o
+u8g_Delay                                         build/u8g_com_api.o
+u8g_DisableCursor                                 build/u8g_cursor.o
+u8g_Draw4TPixel                                   build/u8g_ll_api.o
+                                                  build/u8g_font.o
+u8g_Draw4TPixelLL                                 build/u8g_ll_api.o
+u8g_Draw8ColorPixel                               build/u8g_ll_api.o
+u8g_Draw8Pixel                                    build/u8g_ll_api.o
+                                                  build/u8g_bitmap.o
+                                                  build/u8g_rect.o
+                                                  build/u8g_font.o
+u8g_Draw8PixelLL                                  build/u8g_ll_api.o
+u8g_DrawAAGlyph                                   build/u8g_font.o
+u8g_DrawAAStr                                     build/u8g_font.o
+u8g_DrawBitmap                                    build/u8g_bitmap.o
+u8g_DrawBitmapP                                   build/u8g_bitmap.o
+                                                  build/chessengine.o
+u8g_DrawBox                                       build/u8g_rect.o
+                                                  build/chessengine.o
+u8g_DrawCircle                                    build/u8g_circle.o
+u8g_DrawCursor                                    build/u8g_cursor.o
+u8g_DrawDisc                                      build/u8g_circle.o
+u8g_DrawEllipse                                   build/u8g_ellipse.o
+u8g_DrawFilledEllipse                             build/u8g_ellipse.o
+u8g_DrawFrame                                     build/u8g_rect.o
+                                                  build/chessengine.o
+u8g_DrawGlyph                                     build/u8g_font.o
+u8g_DrawGlyph180                                  build/u8g_font.o
+u8g_DrawGlyph270                                  build/u8g_font.o
+u8g_DrawGlyph90                                   build/u8g_font.o
+u8g_DrawGlyphFontBBX                              build/u8g_font.o
+u8g_DrawHBitmap                                   build/u8g_bitmap.o
+u8g_DrawHBitmapP                                  build/u8g_bitmap.o
+u8g_DrawHLine                                     build/u8g_rect.o
+                                                  build/u8g_polygon.o
+u8g_DrawLine                                      build/u8g_line.o
+u8g_DrawPixel                                     build/u8g_ll_api.o
+                                                  build/chessengine.o
+                                                  build/u8g_bitmap.o
+                                                  build/u8g_circle.o
+                                                  build/u8g_line.o
+                                                  build/u8g_ellipse.o
+u8g_DrawPixelLL                                   build/u8g_ll_api.o
+u8g_DrawPolygon                                   build/u8g_polygon.o
+u8g_DrawRBox                                      build/u8g_rect.o
+u8g_DrawRFrame                                    build/u8g_rect.o
+u8g_DrawStr                                       build/u8g_font.o
+                                                  build/chessengine.o
+u8g_DrawStr180                                    build/u8g_font.o
+u8g_DrawStr180P                                   build/u8g_font.o
+u8g_DrawStr270                                    build/u8g_font.o
+u8g_DrawStr270P                                   build/u8g_font.o
+u8g_DrawStr90                                     build/u8g_font.o
+u8g_DrawStr90P                                    build/u8g_font.o
+u8g_DrawStrDir                                    build/u8g_font.o
+u8g_DrawStrFontBBX                                build/u8g_font.o
+u8g_DrawStrP                                      build/u8g_font.o
+                                                  build/chessengine.o
+u8g_DrawTriangle                                  build/u8g_polygon.o
+u8g_DrawVLine                                     build/u8g_rect.o
+                                                  build/u8g_circle.o
+                                                  build/u8g_ellipse.o
+u8g_DrawXBM                                       build/u8g_bitmap.o
+u8g_DrawXBMP                                      build/u8g_bitmap.o
+u8g_EnableCursor                                  build/u8g_cursor.o
+u8g_FirstPage                                     build/u8g_ll_api.o
+u8g_FirstPageLL                                   build/u8g_ll_api.o
+u8g_GetColorIndex                                 build/u8g_ll_api.o
+                                                  build/u8g_cursor.o
+u8g_GetDefaultBackgroundColor                     build/u8g_ll_api.o
+u8g_GetDefaultForegroundColor                     build/u8g_ll_api.o
+u8g_GetDefaultMidColor                            build/u8g_ll_api.o
+u8g_GetFontBBXHeight                              build/u8g_font.o
+u8g_GetFontBBXOffX                                build/u8g_font.o
+u8g_GetFontBBXOffY                                build/u8g_font.o
+u8g_GetFontBBXWidth                               build/u8g_font.o
+u8g_GetFontCapitalAHeight                         build/u8g_font.o
+u8g_GetGlyph                                      build/u8g_font.o
+u8g_GetGlyphDeltaX                                build/u8g_font.o
+u8g_GetHeightLL                                   build/u8g_ll_api.o
+                                                  build/u8g_scale.o
+                                                  build/u8g_rot.o
+u8g_GetModeLL                                     build/u8g_ll_api.o
+u8g_GetStrAMinBox                                 build/u8g_font.o
+u8g_GetStrMinBox                                  build/u8g_font.o
+u8g_GetStrPixelWidth                              build/u8g_font.o
+u8g_GetStrPixelWidthP                             build/u8g_font.o
+u8g_GetStrWidth                                   build/u8g_font.o
+                                                  build/chessengine.o
+u8g_GetStrWidthP                                  build/u8g_font.o
+u8g_GetStrX                                       build/u8g_font.o
+u8g_GetStrXP                                      build/u8g_font.o
+u8g_GetWidthLL                                    build/u8g_ll_api.o
+                                                  build/u8g_scale.o
+                                                  build/u8g_rot.o
+u8g_Init                                          build/u8g_ll_api.o
+u8g_InitCom                                       build/u8g_com_api.o
+u8g_InitComFn                                     build/u8g_ll_api.o
+u8g_InitLL                                        build/u8g_ll_api.o
+u8g_IsBBXIntersection                             build/u8g_clip.o
+                                                  build/u8g_bitmap.o
+                                                  build/u8g_circle.o
+                                                  build/u8g_rect.o
+                                                  build/u8g_font.o
+                                                  build/u8g_ellipse.o
+u8g_IsGlyph                                       build/u8g_font.o
+u8g_NextPage                                      build/u8g_ll_api.o
+u8g_NextPageLL                                    build/u8g_ll_api.o
+u8g_SetAddress                                    build/u8g_com_api.o
+u8g_SetChipSelect                                 build/u8g_com_api.o
+u8g_SetColorEntry                                 build/u8g_ll_api.o
+u8g_SetColorIndex                                 build/u8g_ll_api.o
+                                                  build/u8g_cursor.o
+u8g_SetContrast                                   build/u8g_ll_api.o
+u8g_SetContrastLL                                 build/u8g_ll_api.o
+u8g_SetCursorColor                                build/u8g_cursor.o
+u8g_SetCursorFont                                 build/u8g_cursor.o
+u8g_SetCursorPos                                  build/u8g_cursor.o
+u8g_SetCursorStyle                                build/u8g_cursor.o
+u8g_SetDefaultBackgroundColor                     build/u8g_ll_api.o
+                                                  build/chessengine.o
+u8g_SetDefaultForegroundColor                     build/u8g_ll_api.o
+                                                  build/chessengine.o
+u8g_SetDefaultMidColor                            build/u8g_ll_api.o
+                                                  build/chessengine.o
+u8g_SetFont                                       build/u8g_font.o
+                                                  build/chessengine.o
+u8g_SetFontLineSpacingFactor                      build/u8g_font.o
+u8g_SetFontPosBaseline                            build/u8g_font.o
+                                                  build/u8g_ll_api.o
+u8g_SetFontPosBottom                              build/u8g_font.o
+u8g_SetFontPosCenter                              build/u8g_font.o
+u8g_SetFontPosTop                                 build/u8g_font.o
+u8g_SetFontRefHeightAll                           build/u8g_font.o
+u8g_SetFontRefHeightExtendedText                  build/u8g_font.o
+u8g_SetFontRefHeightText                          build/u8g_font.o
+u8g_SetHardwareBackup                             build/u8g_state.o
+u8g_SetHiColor                                    build/u8g_ll_api.o
+u8g_SetHiColorByRGB                               build/u8g_ll_api.o
+u8g_SetRGB                                        build/u8g_ll_api.o
+u8g_SetResetHigh                                  build/u8g_com_api.o
+u8g_SetResetLow                                   build/u8g_com_api.o
+u8g_SetRot180                                     build/u8g_rot.o
+u8g_SetRot270                                     build/u8g_rot.o
+u8g_SetRot90                                      build/u8g_rot.o
+u8g_SetScale2x2                                   build/u8g_scale.o
+u8g_SetVirtualScreenDimension                     build/u8g_virtual_screen.o
+u8g_SleepOff                                      build/u8g_ll_api.o
+u8g_SleepOn                                       build/u8g_ll_api.o
+u8g_StopCom                                       build/u8g_com_api.o
+u8g_UndoRotation                                  build/u8g_rot.o
+u8g_UndoScale                                     build/u8g_scale.o
+u8g_UpdateDimension                               build/u8g_ll_api.o
+                                                  build/u8g_scale.o
+                                                  build/u8g_rot.o
+u8g_UpdateRefHeight                               build/u8g_font.o
+u8g_WriteByte                                     build/u8g_com_api.o
+u8g_WriteByte4LTo16GrDevice                       build/u8g_com_api_16gr.o
+u8g_WriteByteBWTo16GrDevice                       build/u8g_com_api_16gr.o
+u8g_WriteEscSeqP                                  build/u8g_com_api.o
+u8g_WriteSequence                                 build/u8g_com_api.o
+                                                  build/u8g_pb.o
+u8g_WriteSequence4LTo16GrDevice                   build/u8g_com_api_16gr.o
+u8g_WriteSequenceBWTo16GrDevice                   build/u8g_com_api_16gr.o
+u8g_WriteSequenceP                                build/u8g_com_api.o
+u8g_backup_spi                                    build/u8g_state.o
+u8g_call_dev_fn                                   build/u8g_ll_api.o
+                                                  build/u8g_virtual_screen.o
+                                                  build/u8g_scale.o
+                                                  build/u8g_rot.o
+u8g_dev_pb14v1_base_fn                            build/u8g_pb14v1.o
+u8g_dev_pb16h1_base_fn                            build/u8g_pb16h1.o
+u8g_dev_pb16h2_base_fn                            build/u8g_pb16h2.o
+u8g_dev_pb16v1_base_fn                            build/u8g_pb16v1.o
+u8g_dev_pb16v2_base_fn                            build/u8g_pb16v2.o
+u8g_dev_pb32h1_base_fn                            build/u8g_pb32h1.o
+u8g_dev_pb8h1_base_fn                             build/u8g_pb8h1.o
+u8g_dev_pb8h1f_base_fn                            build/u8g_pb8h1f.o
+u8g_dev_pb8h2_base_fn                             build/u8g_pb8h2.o
+u8g_dev_pb8h8_base_fn                             build/u8g_pb8h8.o
+u8g_dev_pb8v1_base_fn                             build/u8g_pb8v1.o
+u8g_dev_pb8v2_base_fn                             build/u8g_pb8v2.o
+u8g_dev_pbxh16_base_fn                            build/u8g_pbxh16.o
+u8g_dev_pbxh24_base_fn                            build/u8g_pbxh24.o
+u8g_dev_rot                                       build/u8g_rot.o
+u8g_dev_rot180_fn                                 build/u8g_rot.o
+u8g_dev_rot270_fn                                 build/u8g_rot.o
+u8g_dev_rot90_fn                                  build/u8g_rot.o
+u8g_dev_rot_dummy_fn                              build/u8g_rot.o
+u8g_dev_scale                                     build/u8g_scale.o
+u8g_dev_scale_2x2_fn                              build/u8g_scale.o
+u8g_dev_vs                                        build/u8g_virtual_screen.o
+u8g_dev_vs_fn                                     build/u8g_virtual_screen.o
+u8g_draw_aa_glyph                                 build/u8g_font.o
+u8g_draw_box                                      build/u8g_rect.o
+u8g_draw_circle                                   build/u8g_circle.o
+                                                  build/u8g_rect.o
+u8g_draw_disc                                     build/u8g_circle.o
+                                                  build/u8g_rect.o
+u8g_draw_ellipse                                  build/u8g_ellipse.o
+u8g_draw_filled_ellipse                           build/u8g_ellipse.o
+u8g_draw_glyph                                    build/u8g_font.o
+                                                  build/u8g_cursor.o
+u8g_draw_glyph180                                 build/u8g_font.o
+u8g_draw_glyph270                                 build/u8g_font.o
+u8g_draw_glyph90                                  build/u8g_font.o
+u8g_draw_hline                                    build/u8g_rect.o
+u8g_draw_vline                                    build/u8g_rect.o
+u8g_font_5x7                                      build/chessengine.o
+u8g_font_5x7r                                     build/chessengine.o
+u8g_font_5x8r                                     build/chessengine.o
+u8g_font_GetCapitalAHeight                        build/u8g_font.o
+u8g_font_GetEncoding65Pos                         build/u8g_font.o
+u8g_font_GetEncoding97Pos                         build/u8g_font.o
+u8g_font_GetFontAscent                            build/u8g_font.o
+u8g_font_GetFontDescent                           build/u8g_font.o
+u8g_font_GetFontEndEncoding                       build/u8g_font.o
+u8g_font_GetFontStartEncoding                     build/u8g_font.o
+u8g_font_GetFontXAscent                           build/u8g_font.o
+u8g_font_GetFontXDescent                          build/u8g_font.o
+u8g_font_GetLowerGDescent                         build/u8g_font.o
+u8g_font_GetSize                                  build/u8g_font.o
+u8g_font_box_all_gA                               build/u8g_font.o
+u8g_font_box_left_gA                              build/u8g_font.o
+u8g_font_box_min                                  build/u8g_font.o
+u8g_font_calc_str_pixel_width                     build/u8g_font.o
+u8g_font_calc_vref_bottom                         build/u8g_font.o
+u8g_font_calc_vref_center                         build/u8g_font.o
+u8g_font_calc_vref_font                           build/u8g_font.o
+u8g_font_calc_vref_top                            build/u8g_font.o
+u8g_font_get_char                                 build/u8g_font.o
+u8g_font_get_charP                                build/u8g_font.o
+u8g_page_First                                    build/u8g_page.o
+                                                  build/u8g_pbxh24.o
+                                                  build/u8g_pbxh16.o
+                                                  build/u8g_pb32h1.o
+                                                  build/u8g_pb16v2.o
+                                                  build/u8g_pb16v1.o
+                                                  build/u8g_pb16h2.o
+                                                  build/u8g_pb16h1.o
+                                                  build/u8g_pb14v1.o
+                                                  build/u8g_pb8v2.o
+                                                  build/u8g_pb8v1.o
+                                                  build/u8g_pb8h8.o
+                                                  build/u8g_pb8h2.o
+                                                  build/u8g_pb8h1f.o
+                                                  build/u8g_pb8h1.o
+u8g_page_Init                                     build/u8g_page.o
+u8g_page_Next                                     build/u8g_page.o
+                                                  build/u8g_pbxh24.o
+                                                  build/u8g_pbxh16.o
+                                                  build/u8g_pb32h1.o
+                                                  build/u8g_pb16v2.o
+                                                  build/u8g_pb16v1.o
+                                                  build/u8g_pb16h2.o
+                                                  build/u8g_pb16h1.o
+                                                  build/u8g_pb14v1.o
+                                                  build/u8g_pb8v2.o
+                                                  build/u8g_pb8v1.o
+                                                  build/u8g_pb8h8.o
+                                                  build/u8g_pb8h2.o
+                                                  build/u8g_pb8h1f.o
+                                                  build/u8g_pb8h1.o
+u8g_pb14v1_Clear                                  build/u8g_pb14v1.o
+u8g_pb14v1_Init                                   build/u8g_pb14v1.o
+u8g_pb14v1_Set8PixelOpt2                          build/u8g_pb14v1.o
+u8g_pb14v1_Set8PixelStd                           build/u8g_pb14v1.o
+u8g_pb14v1_SetPixel                               build/u8g_pb14v1.o
+u8g_pb14v1_set_pixel                              build/u8g_pb14v1.o
+u8g_pb16h1_Clear                                  build/u8g_pb16h1.o
+u8g_pb16h1_Init                                   build/u8g_pb16h1.o
+u8g_pb16h1_Set8PixelOpt2                          build/u8g_pb16h1.o
+u8g_pb16h1_Set8PixelStd                           build/u8g_pb16h1.o
+u8g_pb16h1_SetPixel                               build/u8g_pb16h1.o
+u8g_pb16h1_set_pixel                              build/u8g_pb16h1.o
+u8g_pb16h2_Clear                                  build/u8g_pb16h2.o
+u8g_pb16h2_Init                                   build/u8g_pb16h2.o
+u8g_pb16h2_Or4PixelStd                            build/u8g_pb16h2.o
+u8g_pb16h2_Set8PixelStd                           build/u8g_pb16h2.o
+u8g_pb16h2_SetPixel                               build/u8g_pb16h2.o
+u8g_pb16v1_Clear                                  build/u8g_pb16v1.o
+u8g_pb16v1_Init                                   build/u8g_pb16v1.o
+u8g_pb16v1_Set8PixelOpt2                          build/u8g_pb16v1.o
+u8g_pb16v1_Set8PixelStd                           build/u8g_pb16v1.o
+u8g_pb16v1_SetPixel                               build/u8g_pb16v1.o
+u8g_pb16v1_set_pixel                              build/u8g_pb16v1.o
+u8g_pb16v2Init                                    build/u8g_pb16v2.o
+u8g_pb16v2_Clear                                  build/u8g_pb16v2.o
+u8g_pb16v2_Set8PixelStd                           build/u8g_pb16v2.o
+u8g_pb16v2_SetPixel                               build/u8g_pb16v2.o
+u8g_pb16v2_set_pixel                              build/u8g_pb16v2.o
+u8g_pb32h1_Clear                                  build/u8g_pb32h1.o
+u8g_pb32h1_Init                                   build/u8g_pb32h1.o
+u8g_pb32h1_Set8PixelOpt2                          build/u8g_pb32h1.o
+u8g_pb32h1_Set8PixelStd                           build/u8g_pb32h1.o
+u8g_pb32h1_SetPixel                               build/u8g_pb32h1.o
+u8g_pb32h1_set_pixel                              build/u8g_pb32h1.o
+u8g_pb8h1_Init                                    build/u8g_pb8h1.o
+u8g_pb8h1_Set8PixelOpt2                           build/u8g_pb8h1.o
+u8g_pb8h1_Set8PixelStd                            build/u8g_pb8h1.o
+u8g_pb8h1_SetPixel                                build/u8g_pb8h1.o
+u8g_pb8h1_set_pixel                               build/u8g_pb8h1.o
+u8g_pb8h1f_Init                                   build/u8g_pb8h1f.o
+u8g_pb8h1f_Set8PixelOpt2                          build/u8g_pb8h1f.o
+u8g_pb8h1f_Set8PixelStd                           build/u8g_pb8h1f.o
+u8g_pb8h1f_SetPixel                               build/u8g_pb8h1f.o
+u8g_pb8h1f_set_pixel                              build/u8g_pb8h1f.o
+u8g_pb8h2_Init                                    build/u8g_pb8h2.o
+u8g_pb8h2_Set8PixelStd                            build/u8g_pb8h2.o
+u8g_pb8h2_SetPixel                                build/u8g_pb8h2.o
+u8g_pb8h8_Clear                                   build/u8g_pb8h8.o
+u8g_pb8h8_Init                                    build/u8g_pb8h8.o
+u8g_pb8h8_Set8Pixel                               build/u8g_pb8h8.o
+u8g_pb8h8_SetPixel                                build/u8g_pb8h8.o
+u8g_pb8v1_Init                                    build/u8g_pb8v1.o
+u8g_pb8v1_Set8PixelOpt2                           build/u8g_pb8v1.o
+u8g_pb8v1_Set8PixelStd                            build/u8g_pb8v1.o
+u8g_pb8v1_SetPixel                                build/u8g_pb8v1.o
+u8g_pb8v1_set_pixel                               build/u8g_pb8v1.o
+u8g_pb8v2_Init                                    build/u8g_pb8v2.o
+u8g_pb8v2_Set8PixelStd                            build/u8g_pb8v2.o
+u8g_pb8v2_SetPixel                                build/u8g_pb8v2.o
+u8g_pb8v2_set_pixel                               build/u8g_pb8v2.o
+u8g_pb_Clear                                      build/u8g_pb.o
+                                                  build/u8g_pb8v2.o
+                                                  build/u8g_pb8v1.o
+                                                  build/u8g_pb8h2.o
+                                                  build/u8g_pb8h1f.o
+                                                  build/u8g_pb8h1.o
+u8g_pb_GetPageBox                                 build/u8g_pb.o
+                                                  build/u8g_pbxh24.o
+                                                  build/u8g_pbxh16.o
+                                                  build/u8g_pb32h1.o
+                                                  build/u8g_pb16v2.o
+                                                  build/u8g_pb16v1.o
+                                                  build/u8g_pb16h2.o
+                                                  build/u8g_pb16h1.o
+                                                  build/u8g_pb14v1.o
+                                                  build/u8g_pb8v2.o
+                                                  build/u8g_pb8v1.o
+                                                  build/u8g_pb8h8.o
+                                                  build/u8g_pb8h2.o
+                                                  build/u8g_pb8h1f.o
+                                                  build/u8g_pb8h1.o
+u8g_pb_Is8PixelVisible                            build/u8g_pb.o
+                                                  build/u8g_pbxh24.o
+                                                  build/u8g_pbxh16.o
+                                                  build/u8g_pb32h1.o
+                                                  build/u8g_pb16v2.o
+                                                  build/u8g_pb16v1.o
+                                                  build/u8g_pb16h2.o
+                                                  build/u8g_pb16h1.o
+                                                  build/u8g_pb14v1.o
+                                                  build/u8g_pb8v2.o
+                                                  build/u8g_pb8v1.o
+                                                  build/u8g_pb8h8.o
+                                                  build/u8g_pb8h2.o
+                                                  build/u8g_pb8h1f.o
+                                                  build/u8g_pb8h1.o
+u8g_pb_IsIntersection                             build/u8g_pb.o
+u8g_pb_IsXIntersection                            build/u8g_pb.o
+u8g_pb_IsYIntersection                            build/u8g_pb.o
+u8g_pb_WriteBuffer                                build/u8g_pb.o
+u8g_pbxh16_Clear                                  build/u8g_pbxh16.o
+u8g_pbxh16_Init                                   build/u8g_pbxh16.o
+u8g_pbxh16_Set8Pixel                              build/u8g_pbxh16.o
+u8g_pbxh16_SetPixel                               build/u8g_pbxh16.o
+u8g_pbxh24_Clear                                  build/u8g_pbxh24.o
+u8g_pbxh24_Init                                   build/u8g_pbxh24.o
+u8g_pbxh24_Set4TPixel                             build/u8g_pbxh24.o
+u8g_pbxh24_Set8Pixel                              build/u8g_pbxh24.o
+u8g_pbxh24_SetTPixel                              build/u8g_pbxh24.o
+u8g_pg                                            build/u8g_polygon.o
+u8g_state_dummy_cb                                build/u8g_state.o
+                                                  build/u8g_ll_api.o
+u8g_u16toa                                        build/u8g_u16toa.o
+u8g_u16toap                                       build/u8g_u16toa.o
+u8g_u8toa                                         build/u8g_u8toa.o
+u8g_u8toap                                        build/u8g_u8toa.o
+u8g_vs_cnt                                        build/u8g_virtual_screen.o
+u8g_vs_current                                    build/u8g_virtual_screen.o
+u8g_vs_height                                     build/u8g_virtual_screen.o
+u8g_vs_list                                       build/u8g_virtual_screen.o
+u8g_vs_width                                      build/u8g_virtual_screen.o
 uwTick                                            build/stm32f4xx_hal.o
 uwTickFreq                                        build/stm32f4xx_hal.o
 uwTickPrio                                        build/stm32f4xx_hal.o

@@ -54,9 +54,45 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c \
-Core/Src/system_stm32f4xx.c
+Core/Src/system_stm32f4xx.c \
+u8glib/u8g_ellipse.c \
+u8glib/u8g_font.c \
+u8glib/u8g_line.c \
+u8glib/u8g_ll_api.c \
+u8glib/u8g_page.c \
+u8glib/u8g_pb.c \
+u8glib/u8g_pb8h1.c \
+u8glib/u8g_pb8h1f.c \
+u8glib/u8g_pb8h2.c \
+u8glib/u8g_pb8h8.c \
+u8glib/u8g_pb8v1.c \
+u8glib/u8g_pb8v2.c \
+u8glib/u8g_pb14v1.c \
+u8glib/u8g_pb16h1.c \
+u8glib/u8g_pb16h2.c \
+u8glib/u8g_pb16v1.c \
+u8glib/u8g_pb16v2.c \
+u8glib/u8g_pb32h1.c \
+u8glib/u8g_pbxh16.c \
+u8glib/u8g_pbxh24.c \
+u8glib/u8g_polygon.c \
+u8glib/u8g_rect.c \
+u8glib/u8g_rot.c \
+u8glib/u8g_scale.c \
+u8glib/u8g_state.c \
+u8glib/u8g_u8toa.c \
+u8glib/u8g_u16toa.c \
+u8glib/u8g_virtual_screen.c \
+u8glib/u8g_cursor.c \
+u8glib/u8g_com_api.c \
+u8glib/u8g_com_api_16gr.c \
+u8glib/u8g_clip.c \
+u8glib/u8g_circle.c \
+u8glib/u8g_bitmap.c \
+u8glib/chessengine.c
 
 # ASM sources
+# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources
 ASM_SOURCES =  \
 startup_stm32f401xc.s
 
@@ -111,12 +147,13 @@ AS_INCLUDES =
 
 # C includes
 C_INCLUDES =  \
+-Iu8glib \
 -ICore/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \
 -IDrivers/STM32F4xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F4xx/Include \
--IDrivers/CMSIS/Include \
--Iu8glib
+-IDrivers/CMSIS/Include
+
 
 
 # compile gcc flags

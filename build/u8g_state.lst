@@ -1,0 +1,270 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccgh3tvg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g_state.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g_state_dummy_cb,"ax",%progbits
+  22              		.align	2
+  23              		.global	u8g_state_dummy_cb
+  24              		.thumb
+  25              		.thumb_func
+  27              	u8g_state_dummy_cb:
+  28              	.LFB0:
+  29              		.file 1 "u8glib/u8g_state.c"
+   1:u8glib/u8g_state.c **** /*
+   2:u8glib/u8g_state.c **** 
+   3:u8glib/u8g_state.c ****   u8g_state.c
+   4:u8glib/u8g_state.c ****   
+   5:u8glib/u8g_state.c ****   backup and restore hardware state
+   6:u8glib/u8g_state.c **** 
+   7:u8glib/u8g_state.c ****   Universal 8bit Graphics Library
+   8:u8glib/u8g_state.c ****   
+   9:u8glib/u8g_state.c ****   Copyright (c) 2011, olikraus@gmail.com
+  10:u8glib/u8g_state.c ****   All rights reserved.
+  11:u8glib/u8g_state.c **** 
+  12:u8glib/u8g_state.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  13:u8glib/u8g_state.c ****   are permitted provided that the following conditions are met:
+  14:u8glib/u8g_state.c **** 
+  15:u8glib/u8g_state.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  16:u8glib/u8g_state.c ****     of conditions and the following disclaimer.
+  17:u8glib/u8g_state.c ****     
+  18:u8glib/u8g_state.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  19:u8glib/u8g_state.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  20:u8glib/u8g_state.c ****     materials provided with the distribution.
+  21:u8glib/u8g_state.c **** 
+  22:u8glib/u8g_state.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  23:u8glib/u8g_state.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  24:u8glib/u8g_state.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  25:u8glib/u8g_state.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  26:u8glib/u8g_state.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  27:u8glib/u8g_state.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  28:u8glib/u8g_state.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:u8glib/u8g_state.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccgh3tvg.s 			page 2
+
+
+  30:u8glib/u8g_state.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  31:u8glib/u8g_state.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  32:u8glib/u8g_state.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  33:u8glib/u8g_state.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  34:u8glib/u8g_state.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  35:u8glib/u8g_state.c ****   
+  36:u8glib/u8g_state.c **** 
+  37:u8glib/u8g_state.c ****   state callback: backup env U8G_STATE_MSG_BACKUP_ENV
+  38:u8glib/u8g_state.c ****   device callback: DEV_MSG_INIT
+  39:u8glib/u8g_state.c ****   state callback: backup u8g U8G_STATE_MSG_BACKUP_U8G
+  40:u8glib/u8g_state.c ****   state callback: restore env U8G_STATE_MSG_RESTORE_ENV
+  41:u8glib/u8g_state.c **** 
+  42:u8glib/u8g_state.c ****   state callback: backup env U8G_STATE_MSG_BACKUP_ENV
+  43:u8glib/u8g_state.c ****   state callback: retore u8g U8G_STATE_MSG_RESTORE_U8G
+  44:u8glib/u8g_state.c ****   DEV_MSG_PAGE_FIRST or DEV_MSG_PAGE_NEXT
+  45:u8glib/u8g_state.c ****   state callback: restore env U8G_STATE_MSG_RESTORE_ENV
+  46:u8glib/u8g_state.c **** 
+  47:u8glib/u8g_state.c **** */
+  48:u8glib/u8g_state.c **** 
+  49:u8glib/u8g_state.c **** #include <stddef.h>
+  50:u8glib/u8g_state.c **** #include "u8g.h"
+  51:u8glib/u8g_state.c **** 
+  52:u8glib/u8g_state.c **** void u8g_state_dummy_cb(uint8_t msg)
+  53:u8glib/u8g_state.c **** {
+  30              		.loc 1 53 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  35              	.LVL0:
+  36 0000 7047     		bx	lr
+  37              		.cfi_endproc
+  38              	.LFE0:
+  40 0002 00BF     		.section	.text.u8g_SetHardwareBackup,"ax",%progbits
+  41              		.align	2
+  42              		.global	u8g_SetHardwareBackup
+  43              		.thumb
+  44              		.thumb_func
+  46              	u8g_SetHardwareBackup:
+  47              	.LFB1:
+  54:u8glib/u8g_state.c ****   /* the dummy procedure does nothing */
+  55:u8glib/u8g_state.c **** }
+  56:u8glib/u8g_state.c **** 
+  57:u8glib/u8g_state.c **** void u8g_SetHardwareBackup(u8g_t *u8g, u8g_state_cb backup_cb)
+  58:u8glib/u8g_state.c **** {
+  48              		.loc 1 58 0
+  49              		.cfi_startproc
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52              	.LVL1:
+  53              		.loc 1 58 0
+  54 0000 08B5     		push	{r3, lr}
+  55              	.LCFI0:
+  56              		.cfi_def_cfa_offset 8
+  57              		.cfi_offset 3, -8
+  58              		.cfi_offset 14, -4
+  59:u8glib/u8g_state.c ****   u8g->state_cb = backup_cb;
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccgh3tvg.s 			page 3
+
+
+  59              		.loc 1 59 0
+  60 0002 4163     		str	r1, [r0, #52]
+  60:u8glib/u8g_state.c ****   /* in most cases the init message was already sent, so this will backup the */
+  61:u8glib/u8g_state.c ****   /* current u8g state */
+  62:u8glib/u8g_state.c ****   backup_cb(U8G_STATE_MSG_BACKUP_U8G);
+  61              		.loc 1 62 0
+  62 0004 0320     		movs	r0, #3
+  63              	.LVL2:
+  64 0006 8847     		blx	r1
+  65              	.LVL3:
+  66 0008 08BD     		pop	{r3, pc}
+  67              		.cfi_endproc
+  68              	.LFE1:
+  70 000a 00BF     		.section	.text.u8g_backup_spi,"ax",%progbits
+  71              		.align	2
+  72              		.global	u8g_backup_spi
+  73              		.thumb
+  74              		.thumb_func
+  76              	u8g_backup_spi:
+  77              	.LFB2:
+  63:u8glib/u8g_state.c **** }
+  64:u8glib/u8g_state.c **** 
+  65:u8glib/u8g_state.c **** 
+  66:u8glib/u8g_state.c **** /*===============================================================*/
+  67:u8glib/u8g_state.c **** /* register variable for restoring interrupt state */
+  68:u8glib/u8g_state.c **** 
+  69:u8glib/u8g_state.c **** #if defined(__AVR__)
+  70:u8glib/u8g_state.c **** uint8_t global_SREG_backup;
+  71:u8glib/u8g_state.c **** #endif
+  72:u8glib/u8g_state.c **** 
+  73:u8glib/u8g_state.c **** 
+  74:u8glib/u8g_state.c **** 
+  75:u8glib/u8g_state.c **** /*===============================================================*/
+  76:u8glib/u8g_state.c **** /* AVR */
+  77:u8glib/u8g_state.c **** 
+  78:u8glib/u8g_state.c **** #if defined(__AVR_XMEGA__)
+  79:u8glib/u8g_state.c **** #elif defined(__AVR__)
+  80:u8glib/u8g_state.c **** #define U8G_ATMEGA_HW_SPI
+  81:u8glib/u8g_state.c **** 
+  82:u8glib/u8g_state.c **** /* remove the definition for attiny */
+  83:u8glib/u8g_state.c **** #if __AVR_ARCH__ == 2
+  84:u8glib/u8g_state.c **** #undef U8G_ATMEGA_HW_SPI
+  85:u8glib/u8g_state.c **** #endif
+  86:u8glib/u8g_state.c **** #if __AVR_ARCH__ == 25
+  87:u8glib/u8g_state.c **** #undef U8G_ATMEGA_HW_SPI
+  88:u8glib/u8g_state.c **** #endif
+  89:u8glib/u8g_state.c **** #endif
+  90:u8glib/u8g_state.c **** 
+  91:u8glib/u8g_state.c **** #if defined(U8G_ATMEGA_HW_SPI)
+  92:u8glib/u8g_state.c **** #include <avr/interrupt.h>
+  93:u8glib/u8g_state.c **** static uint8_t u8g_state_avr_spi_memory[2];
+  94:u8glib/u8g_state.c **** 
+  95:u8glib/u8g_state.c **** void u8g_backup_spi(uint8_t msg)
+  96:u8glib/u8g_state.c **** {
+  97:u8glib/u8g_state.c ****   if ( U8G_STATE_MSG_IS_BACKUP(msg) )
+  98:u8glib/u8g_state.c ****   {
+  99:u8glib/u8g_state.c ****     u8g_state_avr_spi_memory[U8G_STATE_MSG_GET_IDX(msg)] = SPCR;
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccgh3tvg.s 			page 4
+
+
+ 100:u8glib/u8g_state.c ****   }
+ 101:u8glib/u8g_state.c ****   else
+ 102:u8glib/u8g_state.c ****   {
+ 103:u8glib/u8g_state.c ****     uint8_t tmp = SREG;
+ 104:u8glib/u8g_state.c ****     cli();
+ 105:u8glib/u8g_state.c ****     SPCR = 0;
+ 106:u8glib/u8g_state.c ****     SPCR = u8g_state_avr_spi_memory[U8G_STATE_MSG_GET_IDX(msg)];
+ 107:u8glib/u8g_state.c ****     SREG = tmp;
+ 108:u8glib/u8g_state.c ****   }
+ 109:u8glib/u8g_state.c **** }
+ 110:u8glib/u8g_state.c **** 
+ 111:u8glib/u8g_state.c **** #elif defined (U8G_RASPBERRY_PI)
+ 112:u8glib/u8g_state.c **** 
+ 113:u8glib/u8g_state.c **** #include <stdio.h>
+ 114:u8glib/u8g_state.c **** 
+ 115:u8glib/u8g_state.c **** void u8g_backup_spi(uint8_t msg) {
+ 116:u8glib/u8g_state.c ****   printf("u8g_backup_spi %d\r\n",msg);
+ 117:u8glib/u8g_state.c **** }
+ 118:u8glib/u8g_state.c **** 
+ 119:u8glib/u8g_state.c **** #elif defined(ARDUINO) && defined(__SAM3X8E__)		// Arduino Due, maybe we should better check for __
+ 120:u8glib/u8g_state.c **** 
+ 121:u8glib/u8g_state.c **** #include "sam.h"
+ 122:u8glib/u8g_state.c **** 
+ 123:u8glib/u8g_state.c **** struct sam_backup_struct
+ 124:u8glib/u8g_state.c **** {
+ 125:u8glib/u8g_state.c ****   uint32_t mr;
+ 126:u8glib/u8g_state.c ****   uint32_t sr;
+ 127:u8glib/u8g_state.c ****   uint32_t csr[4];  
+ 128:u8glib/u8g_state.c **** } sam_backup[2];
+ 129:u8glib/u8g_state.c **** 
+ 130:u8glib/u8g_state.c **** void u8g_backup_spi(uint8_t msg)
+ 131:u8glib/u8g_state.c **** {
+ 132:u8glib/u8g_state.c ****   uint8_t idx = U8G_STATE_MSG_GET_IDX(msg);
+ 133:u8glib/u8g_state.c ****   if ( U8G_STATE_MSG_IS_BACKUP(msg) )
+ 134:u8glib/u8g_state.c ****   {
+ 135:u8glib/u8g_state.c ****     sam_backup[idx].mr = SPI0->SPI_MR;
+ 136:u8glib/u8g_state.c ****     sam_backup[idx].sr = SPI0->SPI_SR;
+ 137:u8glib/u8g_state.c ****     sam_backup[idx].csr[0] = SPI0->SPI_CSR[0];
+ 138:u8glib/u8g_state.c ****     sam_backup[idx].csr[1] = SPI0->SPI_CSR[1];
+ 139:u8glib/u8g_state.c ****     sam_backup[idx].csr[2] = SPI0->SPI_CSR[2];
+ 140:u8glib/u8g_state.c ****     sam_backup[idx].csr[3] = SPI0->SPI_CSR[3];
+ 141:u8glib/u8g_state.c ****   }
+ 142:u8glib/u8g_state.c ****   else
+ 143:u8glib/u8g_state.c ****   {
+ 144:u8glib/u8g_state.c ****     SPI0->SPI_MR = sam_backup[idx].mr;
+ 145:u8glib/u8g_state.c ****     SPI0->SPI_CSR[0] = sam_backup[idx].csr[0];
+ 146:u8glib/u8g_state.c ****     SPI0->SPI_CSR[1] = sam_backup[idx].csr[1];
+ 147:u8glib/u8g_state.c ****     SPI0->SPI_CSR[2] = sam_backup[idx].csr[2];
+ 148:u8glib/u8g_state.c ****     SPI0->SPI_CSR[3] = sam_backup[idx].csr[3];
+ 149:u8glib/u8g_state.c ****   }
+ 150:u8glib/u8g_state.c **** }
+ 151:u8glib/u8g_state.c **** 
+ 152:u8glib/u8g_state.c **** #else
+ 153:u8glib/u8g_state.c **** 
+ 154:u8glib/u8g_state.c **** void u8g_backup_spi(uint8_t msg)
+ 155:u8glib/u8g_state.c **** {
+  78              		.loc 1 155 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccgh3tvg.s 			page 5
+
+
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  83              	.LVL4:
+  84 0000 7047     		bx	lr
+  85              		.cfi_endproc
+  86              	.LFE2:
+  88 0002 00BF     		.text
+  89              	.Letext0:
+  90              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+  91              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+  92              		.file 4 "u8glib/u8g.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccgh3tvg.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g_state.c
+C:\Users\master\AppData\Local\Temp\ccgh3tvg.s:22     .text.u8g_state_dummy_cb:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccgh3tvg.s:27     .text.u8g_state_dummy_cb:00000000 u8g_state_dummy_cb
+C:\Users\master\AppData\Local\Temp\ccgh3tvg.s:41     .text.u8g_SetHardwareBackup:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccgh3tvg.s:46     .text.u8g_SetHardwareBackup:00000000 u8g_SetHardwareBackup
+C:\Users\master\AppData\Local\Temp\ccgh3tvg.s:71     .text.u8g_backup_spi:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccgh3tvg.s:76     .text.u8g_backup_spi:00000000 u8g_backup_spi
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS
