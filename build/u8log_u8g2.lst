@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\cclAOjKV.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 1
   27:u8g2_lib/u8log_u8g2.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
   28:u8g2_lib/u8log_u8g2.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
   29:u8g2_lib/u8log_u8g2.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cclAOjKV.s 			page 2
 
 
   30:u8g2_lib/u8log_u8g2.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 1
   55              	.LVL3:
   59:u8g2_lib/u8log_u8g2.c ****   for( buf_y = 0; buf_y < u8log->height; buf_y++ )
   56              		.loc 1 59 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\cclAOjKV.s 			page 3
 
 
   57 0012 0027     		movs	r7, #0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 1
  100 0048 96F91130 		ldrsb	r3, [r6, #17]
  101 004c 13FA88F8 		uxtah	r8, r3, r8
  102              	.LVL15:
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\cclAOjKV.s 			page 4
 
 
  103 0050 1FFA88F8 		uxth	r8, r8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 1
  139              		.cfi_offset 14, -4
   87:u8g2_lib/u8log_u8g2.c ****   u8g2_t *u8g2 = (u8g2_t *)(u8log->aux_data);
  140              		.loc 1 87 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\cclAOjKV.s 			page 5
 
 
  141 0002 0468     		ldr	r4, [r0]
@@ -288,15 +288,15 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 1
  178              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  179              		.file 4 "u8g2_lib/u8x8.h"
  180              		.file 5 "u8g2_lib/u8g2.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\cclAOjKV.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8log_u8g2.c
-C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s:22     .text.u8g2_DrawLog:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s:27     .text.u8g2_DrawLog:00000000 u8g2_DrawLog
-C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s:121    .text.u8log_u8g2_cb:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s:126    .text.u8log_u8g2_cb:00000000 u8log_u8g2_cb
+C:\Users\master\AppData\Local\Temp\cclAOjKV.s:22     .text.u8g2_DrawLog:00000000 $t
+C:\Users\master\AppData\Local\Temp\cclAOjKV.s:27     .text.u8g2_DrawLog:00000000 u8g2_DrawLog
+C:\Users\master\AppData\Local\Temp\cclAOjKV.s:121    .text.u8log_u8g2_cb:00000000 $t
+C:\Users\master\AppData\Local\Temp\cclAOjKV.s:126    .text.u8log_u8g2_cb:00000000 u8log_u8g2_cb
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

@@ -7,6 +7,9 @@ void setp(){
     while (1)
     {
         u8g2_DrawStr(&u8g2,0,10,"Neotoxic");
+        u8g2_DrawLine(&u8g2,10,60,118,60);
+        u8g2_DrawLine(&u8g2,10,20,10,60);
+        u8g2_SendBuffer(&u8g2);
     }
     
 }

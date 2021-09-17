@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc6Vgo5i.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc8gzuxI.s 			page 1
 
 
    1              		.syntax unified
@@ -37,76 +37,108 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc6Vgo5i.s 			page 1
   32              		@ Volatile: function does not return.
   33              		@ args = 0, pretend = 0, frame = 0
   34              		@ frame_needed = 0, uses_anonymous_args = 0
-  35 0000 08B5     		push	{r3, lr}
+  35 0000 00B5     		push	{lr}
   36              	.LCFI0:
-  37              		.cfi_def_cfa_offset 8
-  38              		.cfi_offset 3, -8
-  39              		.cfi_offset 14, -4
+  37              		.cfi_def_cfa_offset 4
+  38              		.cfi_offset 14, -4
+  39 0002 83B0     		sub	sp, sp, #12
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 16
    4:Core/Src/mysetp.c ****  
    5:Core/Src/mysetp.c ****     u8g2Init(&u8g2);
-  40              		.loc 1 5 0
-  41 0002 074C     		ldr	r4, .L4
-  42 0004 2046     		mov	r0, r4
-  43 0006 FFF7FEFF 		bl	u8g2Init
-  44              	.LVL0:
+  42              		.loc 1 5 0
+  43 0004 104C     		ldr	r4, .L4
+  44 0006 2046     		mov	r0, r4
+  45 0008 FFF7FEFF 		bl	u8g2Init
+  46              	.LVL0:
    6:Core/Src/mysetp.c ****     u8g2_SetFont(&u8g2, u8g2_font_6x13_tr);
-  45              		.loc 1 6 0
-  46 000a 0649     		ldr	r1, .L4+4
-  47 000c 2046     		mov	r0, r4
-  48 000e FFF7FEFF 		bl	u8g2_SetFont
-  49              	.LVL1:
-  50              	.L2:
+  47              		.loc 1 6 0
+  48 000c 0F49     		ldr	r1, .L4+4
+  49 000e 2046     		mov	r0, r4
+  50 0010 FFF7FEFF 		bl	u8g2_SetFont
+  51              	.LVL1:
+  52              	.L2:
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc8gzuxI.s 			page 2
+
+
    7:Core/Src/mysetp.c ****     while (1)
    8:Core/Src/mysetp.c ****     {
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc6Vgo5i.s 			page 2
-
-
    9:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,0,10,"Neotoxic");
-  51              		.loc 1 9 0 discriminator 1
-  52 0012 054B     		ldr	r3, .L4+8
-  53 0014 0A22     		movs	r2, #10
-  54 0016 0021     		movs	r1, #0
-  55 0018 0148     		ldr	r0, .L4
-  56 001a FFF7FEFF 		bl	u8g2_DrawStr
-  57              	.LVL2:
-  58 001e F8E7     		b	.L2
-  59              	.L5:
-  60              		.align	2
-  61              	.L4:
-  62 0020 00000000 		.word	u8g2
-  63 0024 00000000 		.word	u8g2_font_6x13_tr
-  64 0028 00000000 		.word	.LC0
-  65              		.cfi_endproc
-  66              	.LFE130:
-  68              		.comm	u8g2,148,4
-  69              		.section	.rodata.str1.4,"aMS",%progbits,1
-  70              		.align	2
-  71              	.LC0:
-  72 0000 4E656F74 		.ascii	"Neotoxic\000"
-  72      6F786963 
-  72      00
-  73              		.text
-  74              	.Letext0:
-  75              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
-  76              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
-  77              		.file 4 "u8g2_lib/u8x8.h"
-  78              		.file 5 "u8g2_lib/u8g2.h"
-  79              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
-  80              		.file 7 "u8g2_lib/u8g2_com_stm32_hw_i2c_hal.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc6Vgo5i.s 			page 3
+  53              		.loc 1 9 0 discriminator 1
+  54 0014 0C4C     		ldr	r4, .L4
+  55 0016 0E4B     		ldr	r3, .L4+8
+  56 0018 0A22     		movs	r2, #10
+  57 001a 0021     		movs	r1, #0
+  58 001c 2046     		mov	r0, r4
+  59 001e FFF7FEFF 		bl	u8g2_DrawStr
+  60              	.LVL2:
+  10:Core/Src/mysetp.c ****         u8g2_DrawLine(&u8g2,10,60,118,60);
+  61              		.loc 1 10 0 discriminator 1
+  62 0022 3C25     		movs	r5, #60
+  63 0024 0095     		str	r5, [sp]
+  64 0026 7623     		movs	r3, #118
+  65 0028 2A46     		mov	r2, r5
+  66 002a 0A21     		movs	r1, #10
+  67 002c 2046     		mov	r0, r4
+  68 002e FFF7FEFF 		bl	u8g2_DrawLine
+  69              	.LVL3:
+  11:Core/Src/mysetp.c ****         u8g2_DrawLine(&u8g2,10,20,10,60);
+  70              		.loc 1 11 0 discriminator 1
+  71 0032 0095     		str	r5, [sp]
+  72 0034 0A23     		movs	r3, #10
+  73 0036 1422     		movs	r2, #20
+  74 0038 1946     		mov	r1, r3
+  75 003a 2046     		mov	r0, r4
+  76 003c FFF7FEFF 		bl	u8g2_DrawLine
+  77              	.LVL4:
+  12:Core/Src/mysetp.c ****         u8g2_SendBuffer(&u8g2);
+  78              		.loc 1 12 0 discriminator 1
+  79 0040 2046     		mov	r0, r4
+  80 0042 FFF7FEFF 		bl	u8g2_SendBuffer
+  81              	.LVL5:
+  82 0046 E5E7     		b	.L2
+  83              	.L5:
+  84              		.align	2
+  85              	.L4:
+  86 0048 00000000 		.word	u8g2
+  87 004c 00000000 		.word	u8g2_font_6x13_tr
+  88 0050 00000000 		.word	.LC0
+  89              		.cfi_endproc
+  90              	.LFE130:
+  92              		.comm	u8g2,148,4
+  93              		.section	.rodata.str1.4,"aMS",%progbits,1
+  94              		.align	2
+  95              	.LC0:
+  96 0000 4E656F74 		.ascii	"Neotoxic\000"
+  96      6F786963 
+  96      00
+  97              		.text
+  98              	.Letext0:
+  99              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 100              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 101              		.file 4 "u8g2_lib/u8x8.h"
+ 102              		.file 5 "u8g2_lib/u8g2.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc8gzuxI.s 			page 3
+
+
+ 103              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
+ 104              		.file 7 "u8g2_lib/u8g2_com_stm32_hw_i2c_hal.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc8gzuxI.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 mysetp.c
-C:\Users\master\AppData\Local\Temp\cc6Vgo5i.s:22     .text.setp:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc6Vgo5i.s:27     .text.setp:00000000 setp
-C:\Users\master\AppData\Local\Temp\cc6Vgo5i.s:62     .text.setp:00000020 $d
+C:\Users\master\AppData\Local\Temp\cc8gzuxI.s:22     .text.setp:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc8gzuxI.s:27     .text.setp:00000000 setp
+C:\Users\master\AppData\Local\Temp\cc8gzuxI.s:86     .text.setp:00000048 $d
                             *COM*:00000094 u8g2
-C:\Users\master\AppData\Local\Temp\cc6Vgo5i.s:70     .rodata.str1.4:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc8gzuxI.s:94     .rodata.str1.4:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
 u8g2Init
 u8g2_SetFont
 u8g2_DrawStr
+u8g2_DrawLine
+u8g2_SendBuffer
 u8g2_font_6x13_tr
