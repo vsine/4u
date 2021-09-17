@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
   28:u8glib/u8g_bitmap.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
   29:u8glib/u8g_bitmap.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
   30:u8glib/u8g_bitmap.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 2
 
 
   31:u8glib/u8g_bitmap.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
   85:u8glib/u8g_bitmap.c ****   }
   86:u8glib/u8g_bitmap.c **** }
   87:u8glib/u8g_bitmap.c **** 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 3
 
 
   88:u8glib/u8g_bitmap.c **** /*=========================================================================*/
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
   72 002a E4B2     		uxtb	r4, r4
   73              	.LVL7:
   99:u8glib/u8g_bitmap.c ****     x+=8;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 4
 
 
   74              		.loc 1 99 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  112:u8glib/u8g_bitmap.c ****     } while ( w > 0 );
  115              		.loc 1 112 0
  116 0058 14F0FF04 		ands	r4, r4, #255
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 5
 
 
  117              	.LVL18:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  149              		.cfi_offset 8, -8
  150              		.cfi_offset 14, -4
  151 0004 82B0     		sub	sp, sp, #8
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 6
 
 
  152              	.LCFI4:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  193              		.loc 1 148 0
  194 0036 98F80080 		ldrb	r8, [r8]	@ zero_extendqisi2
  195              	.LVL30:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 7
 
 
  149:u8glib/u8g_bitmap.c ****     x -= 7;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  240              		.global	u8g_DrawHBitmap
  241              		.thumb
  242              		.thumb_func
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 8
 
 
  244              	u8g_DrawHBitmap:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
   41:u8glib/u8g_bitmap.c ****   {
  293              		.loc 1 41 0
  294 002c 002C     		cmp	r4, #0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 9
 
 
  295 002e F0D1     		bne	.L17
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
   56:u8glib/u8g_bitmap.c ****     bitmap += cnt;
  348              		.loc 1 56 0
  349 0024 0096     		str	r6, [sp]
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 10
 
 
  350 0026 3B46     		mov	r3, r7
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  400              		.cfi_offset 4, -24
  401              		.cfi_offset 5, -20
  402              		.cfi_offset 6, -16
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 11
 
 
  403              		.cfi_offset 7, -12
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  452              		.align	2
  453              		.global	u8g_DrawBitmapP
  454              		.thumb
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 12
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 12
 
 
  455              		.thumb_func
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  505              		.loc 1 83 0
  506 0034 0135     		adds	r5, r5, #1
  507              	.LVL73:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 13
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 13
 
 
  508 0036 EDB2     		uxtb	r5, r5
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  560 000c 9846     		mov	r8, r3
  561 000e 9DF82840 		ldrb	r4, [sp, #40]	@ zero_extendqisi2
  562 0012 0B9E     		ldr	r6, [sp, #44]
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 14
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 14
 
 
  563              	.LVL79:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  608              		.cfi_def_cfa_offset 32
  609              		@ sp needed
  610 0042 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 15
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 15
 
 
  611              		.cfi_endproc
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  658 0020 60B9     		cbnz	r0, .L40
  659 0022 0DE0     		b	.L38
  660              	.LVL96:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 16
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 16
 
 
  661              	.L41:
@@ -952,27 +952,27 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 1
  700              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  701              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  702              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccxGIbQo.s 			page 17
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccibMyKc.s 			page 17
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_bitmap.c
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:22     .text.u8g_DrawHXBM:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:26     .text.u8g_DrawHXBM:00000000 u8g_DrawHXBM
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:131    .text.u8g_DrawHXBMP:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:135    .text.u8g_DrawHXBMP:00000000 u8g_DrawHXBMP
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:239    .text.u8g_DrawHBitmap:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:244    .text.u8g_DrawHBitmap:00000000 u8g_DrawHBitmap
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:306    .text.u8g_DrawBitmap:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:311    .text.u8g_DrawBitmap:00000000 u8g_DrawBitmap
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:385    .text.u8g_DrawHBitmapP:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:390    .text.u8g_DrawHBitmapP:00000000 u8g_DrawHBitmapP
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:452    .text.u8g_DrawBitmapP:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:457    .text.u8g_DrawBitmapP:00000000 u8g_DrawBitmapP
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:531    .text.u8g_DrawXBM:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:536    .text.u8g_DrawXBM:00000000 u8g_DrawXBM
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:615    .text.u8g_DrawXBMP:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccxGIbQo.s:620    .text.u8g_DrawXBMP:00000000 u8g_DrawXBMP
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:22     .text.u8g_DrawHXBM:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:26     .text.u8g_DrawHXBM:00000000 u8g_DrawHXBM
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:131    .text.u8g_DrawHXBMP:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:135    .text.u8g_DrawHXBMP:00000000 u8g_DrawHXBMP
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:239    .text.u8g_DrawHBitmap:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:244    .text.u8g_DrawHBitmap:00000000 u8g_DrawHBitmap
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:306    .text.u8g_DrawBitmap:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:311    .text.u8g_DrawBitmap:00000000 u8g_DrawBitmap
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:385    .text.u8g_DrawHBitmapP:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:390    .text.u8g_DrawHBitmapP:00000000 u8g_DrawHBitmapP
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:452    .text.u8g_DrawBitmapP:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:457    .text.u8g_DrawBitmapP:00000000 u8g_DrawBitmapP
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:531    .text.u8g_DrawXBM:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:536    .text.u8g_DrawXBM:00000000 u8g_DrawXBM
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:615    .text.u8g_DrawXBMP:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccibMyKc.s:620    .text.u8g_DrawXBMP:00000000 u8g_DrawXBMP
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

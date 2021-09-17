@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
   27:u8glib/u8g_rot.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
   28:u8glib/u8g_rot.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
   29:u8glib/u8g_rot.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 2
 
 
   30:u8glib/u8g_rot.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
   65:u8glib/u8g_rot.c ****   }
   66:u8glib/u8g_rot.c ****   u8g_dev_rot.dev_fn = u8g_dev_rot90_fn;
   67:u8glib/u8g_rot.c ****   u8g_UpdateDimension(u8g);
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 3
 
 
   68:u8glib/u8g_rot.c **** }
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
   77 0012 302B     		cmp	r3, #48
   78 0014 1AD8     		bhi	.L3
   79 0016 DFE803F0 		tbb	[pc, r3]
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 4
 
 
   80              	.LVL5:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
   97:u8glib/u8g_rot.c ****     default:
   98:u8glib/u8g_rot.c ****     /*
   99:u8glib/u8g_rot.c ****     case U8G_DEV_MSG_INIT:
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 5
 
 
  100:u8glib/u8g_rot.c ****     case U8G_DEV_MSG_STOP:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  149              	.LVL10:
  150              	.LBB2:
  138:u8glib/u8g_rot.c ****       //printf("pre x: %3d..%3d y: %3d..%3d   ", ((u8g_box_t *)arg)->x0, ((u8g_box_t *)arg)->x1, ((
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 6
 
 
  139:u8glib/u8g_rot.c ****       {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  177:u8glib/u8g_rot.c ****         x = u8g_GetWidthLL(u8g, rotation_chain);
  178:u8glib/u8g_rot.c ****         x -= ((u8g_dev_arg_pixel_t *)arg)->y; 
  179:u8glib/u8g_rot.c ****         x--;
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 7
 
 
  180:u8glib/u8g_rot.c ****         ((u8g_dev_arg_pixel_t *)arg)->x = x;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  205              	.LVL20:
  164:u8glib/u8g_rot.c ****         x--;
  206              		.loc 1 164 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 8
 
 
  207 00a4 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  180:u8glib/u8g_rot.c ****         ((u8g_dev_arg_pixel_t *)arg)->y = y;
  252              		.loc 1 180 0
  253 00d4 2370     		strb	r3, [r4]
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 9
 
 
  181:u8glib/u8g_rot.c ****         ((u8g_dev_arg_pixel_t *)arg)->dir+=1;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  302              		.cfi_offset 6, -16
  303              		.cfi_offset 7, -12
  304              		.cfi_offset 8, -8
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 10
 
 
  305              		.cfi_offset 14, -4
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  357 003c 19       		.byte	(.L13-.L15)/2
  358 003d 19       		.byte	(.L13-.L15)/2
  359 003e 76       		.byte	(.L17-.L15)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 11
 
 
  360 003f 19       		.byte	(.L13-.L15)/2
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  225:u8glib/u8g_rot.c ****         y++;
  226:u8glib/u8g_rot.c ****         
  227:u8glib/u8g_rot.c ****         x -= bbx->w;
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 12
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 12
 
 
  228:u8glib/u8g_rot.c ****         x++;
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  419              		.loc 1 246 0
  420 0098 3146     		mov	r1, r6
  421 009a 2846     		mov	r0, r5
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 13
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 13
 
 
  422 009c FFF7FEFF 		bl	u8g_GetHeightLL
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  291:u8glib/u8g_rot.c ****         ((u8g_dev_arg_pixel_t *)arg)->dir &= 3;
  292:u8glib/u8g_rot.c ****       }
  293:u8glib/u8g_rot.c ****       u8g_call_dev_fn(u8g, rotation_chain, msg, arg);
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 14
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 14
 
 
  294:u8glib/u8g_rot.c ****       break;
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  475 00d8 08F1FF38 		add	r8, r8, #-1
  476              	.LVL60:
  477 00dc 5FFA88F8 		uxtb	r8, r8
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 15
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 15
 
 
  478              	.LVL61:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  523              	.LVL72:
  282:u8glib/u8g_rot.c ****         
  524              		.loc 1 282 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 16
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 16
 
 
  525 0114 08F1FF38 		add	r8, r8, #-1
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  570              		@ sp needed
  571 014c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
  572              		.cfi_endproc
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 17
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 17
 
 
  573              	.LFE6:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  624 0024 19       		.byte	(.L23-.L25)/2
  625 0025 19       		.byte	(.L23-.L25)/2
  626 0026 19       		.byte	(.L23-.L25)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 18
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 18
 
 
  627 0027 19       		.byte	(.L23-.L25)/2
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  670 0052 FFF7FEFF 		bl	u8g_call_dev_fn
  671              	.LVL87:
  672 0056 64E0     		b	.L30
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 19
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 19
 
 
  673              	.LVL88:
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  690 006e 0138     		subs	r0, r0, #1
  691 0070 8DF80400 		strb	r0, [sp, #4]
  351:u8glib/u8g_rot.c **** 	new_box.x1 = u8g_GetHeightLL(u8g,rotation_chain) - ((u8g_box_t *)arg)->y0 - 1;
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 20
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 20
 
 
  692              		.loc 1 351 0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  375:u8glib/u8g_rot.c ****         x = u8g_GetWidthLL(u8g, rotation_chain);
  376:u8glib/u8g_rot.c ****         x -= ((u8g_dev_arg_pixel_t *)arg)->y; 
  377:u8glib/u8g_rot.c ****         x--;
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 21
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 21
 
 
  378:u8glib/u8g_rot.c ****         */
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  743              	.LVL99:
  744 00c0 FFF7FEFF 		bl	u8g_GetWidthLL
  745              	.LVL100:
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 22
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 22
 
 
  746 00c4 2070     		strb	r0, [r4]
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  388:u8glib/u8g_rot.c ****         
  791              		.loc 1 388 0
  792 00f2 94F80180 		ldrb	r8, [r4, #1]	@ zero_extendqisi2
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 23
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 23
 
 
  793              	.LVL111:
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  838              	.LFE7:
  840              		.section	.text.u8g_UndoRotation,"ax",%progbits
  841              		.align	2
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 24
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 24
 
 
  842              		.global	u8g_UndoRotation
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  894              		.cfi_offset 3, -8
  895              		.cfi_offset 14, -4
   61:u8glib/u8g_rot.c ****   {
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 25
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 25
 
 
  896              		.loc 1 61 0
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  945              		.loc 1 74 0
  946 000a 5360     		str	r3, [r2, #4]
   75:u8glib/u8g_rot.c ****   }
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 26
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 26
 
 
  947              		.loc 1 75 0
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  996 0010 024B     		ldr	r3, .L50
  997 0012 1A60     		str	r2, [r3]
   89:u8glib/u8g_rot.c **** }
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 27
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 27
 
 
  998              		.loc 1 89 0
@@ -1585,43 +1585,43 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 1
  1022              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  1023              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  1024              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc1IMOsO.s 			page 28
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccxdMrCo.s 			page 28
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_rot.c
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:22     .text.u8g_dev_rot_dummy_fn:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:27     .text.u8g_dev_rot_dummy_fn:00000000 u8g_dev_rot_dummy_fn
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:44     .text.u8g_dev_rot90_fn:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:49     .text.u8g_dev_rot90_fn:00000000 u8g_dev_rot90_fn
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:82     .text.u8g_dev_rot90_fn:0000001a $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:285    .text.u8g_dev_rot180_fn:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:290    .text.u8g_dev_rot180_fn:00000000 u8g_dev_rot180_fn
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:323    .text.u8g_dev_rot180_fn:0000001a $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:576    .text.u8g_dev_rot270_fn:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:581    .text.u8g_dev_rot270_fn:00000000 u8g_dev_rot270_fn
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:614    .text.u8g_dev_rot270_fn:0000001a $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:841    .text.u8g_UndoRotation:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:846    .text.u8g_UndoRotation:00000000 u8g_UndoRotation
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:874    .text.u8g_UndoRotation:00000014 $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:879    .text.u8g_SetRot90:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:884    .text.u8g_SetRot90:00000000 u8g_SetRot90
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:917    .text.u8g_SetRot90:0000001c $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:923    .text.u8g_SetRot180:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:928    .text.u8g_SetRot180:00000000 u8g_SetRot180
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:961    .text.u8g_SetRot180:0000001c $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:967    .text.u8g_SetRot270:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:972    .text.u8g_SetRot270:00000000 u8g_SetRot270
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:1005   .text.u8g_SetRot270:0000001c $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:1016   .data.u8g_dev_rot:00000000 u8g_dev_rot
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:1012   .data.u8g_dev_rot:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:22     .text.u8g_dev_rot_dummy_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:27     .text.u8g_dev_rot_dummy_fn:00000000 u8g_dev_rot_dummy_fn
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:44     .text.u8g_dev_rot90_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:49     .text.u8g_dev_rot90_fn:00000000 u8g_dev_rot90_fn
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:82     .text.u8g_dev_rot90_fn:0000001a $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:285    .text.u8g_dev_rot180_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:290    .text.u8g_dev_rot180_fn:00000000 u8g_dev_rot180_fn
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:323    .text.u8g_dev_rot180_fn:0000001a $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:576    .text.u8g_dev_rot270_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:581    .text.u8g_dev_rot270_fn:00000000 u8g_dev_rot270_fn
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:614    .text.u8g_dev_rot270_fn:0000001a $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:841    .text.u8g_UndoRotation:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:846    .text.u8g_UndoRotation:00000000 u8g_UndoRotation
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:874    .text.u8g_UndoRotation:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:879    .text.u8g_SetRot90:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:884    .text.u8g_SetRot90:00000000 u8g_SetRot90
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:917    .text.u8g_SetRot90:0000001c $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:923    .text.u8g_SetRot180:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:928    .text.u8g_SetRot180:00000000 u8g_SetRot180
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:961    .text.u8g_SetRot180:0000001c $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:967    .text.u8g_SetRot270:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:972    .text.u8g_SetRot270:00000000 u8g_SetRot270
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:1005   .text.u8g_SetRot270:0000001c $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:1016   .data.u8g_dev_rot:00000000 u8g_dev_rot
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:1012   .data.u8g_dev_rot:00000000 $d
                      .debug_frame:00000010 $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:131    .text.u8g_dev_rot90_fn:0000004b $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:131    .text.u8g_dev_rot90_fn:0000004c $t
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:372    .text.u8g_dev_rot180_fn:0000004b $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:372    .text.u8g_dev_rot180_fn:0000004c $t
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:663    .text.u8g_dev_rot270_fn:0000004b $d
-C:\Users\master\AppData\Local\Temp\cc1IMOsO.s:663    .text.u8g_dev_rot270_fn:0000004c $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:131    .text.u8g_dev_rot90_fn:0000004b $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:131    .text.u8g_dev_rot90_fn:0000004c $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:372    .text.u8g_dev_rot180_fn:0000004b $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:372    .text.u8g_dev_rot180_fn:0000004c $t
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:663    .text.u8g_dev_rot270_fn:0000004b $d
+C:\Users\master\AppData\Local\Temp\ccxdMrCo.s:663    .text.u8g_dev_rot270_fn:0000004c $t
 
 UNDEFINED SYMBOLS
 u8g_call_dev_fn

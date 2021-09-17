@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
   27:u8glib/u8g_com_api.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
   28:u8glib/u8g_com_api.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
   29:u8glib/u8g_com_api.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 2
 
 
   30:u8glib/u8g_com_api.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
   46:u8glib/u8g_com_api.c ****   dev->com_fn(u8g, U8G_COM_MSG_STOP, 0, NULL);
   70              		.loc 1 46 0
   71 0002 8C68     		ldr	r4, [r1, #8]
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 3
 
 
   72 0004 0023     		movs	r3, #0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
  120              		.cfi_startproc
  121              		@ args = 0, pretend = 0, frame = 0
  122              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 4
 
 
  123              	.LVL9:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
  174              		.thumb
  175              		.thumb_func
  177              	u8g_SetAddress:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 5
 
 
  178              	.LFB5:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
  223 0008 A047     		blx	r4
  224              	.LVL20:
   74:u8glib/u8g_com_api.c **** }
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 6
 
 
  225              		.loc 1 74 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
  275              		.cfi_offset 4, -8
  276              		.cfi_offset 14, -4
   83:u8glib/u8g_com_api.c ****   return dev->com_fn(u8g, U8G_COM_MSG_WRITE_SEQ_P, cnt, (void *)seq);
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 7
 
 
  277              		.loc 1 83 0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
  309              		.cfi_offset 14, -4
  310 0004 0746     		mov	r7, r0
  311 0006 8846     		mov	r8, r1
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 8
 
 
  312 0008 1546     		mov	r5, r2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
  344 0030 FFF7FEFF 		bl	u8g_WriteByte
  345              	.LVL32:
  346 0034 0346     		mov	r3, r0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 9
 
 
  347 0036 0028     		cmp	r0, #0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
  140:u8glib/u8g_com_api.c ****       {
  361              		.loc 1 140 0
  362 0046 DF2C     		cmp	r4, #223
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 10
 
 
  363 0048 07D9     		bls	.L24
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
  410 0086 FFF7FEFF 		bl	u8g_Delay
  411              	.LVL46:
  155:u8glib/u8g_com_api.c ****         u8g_Delay(value);
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 11
 
 
  412              		.loc 1 155 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
  461              	.LVL60:
  462              	.L21:
  168:u8glib/u8g_com_api.c ****     }
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 12
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 12
 
 
  169:u8glib/u8g_com_api.c ****     esc_seq++;
@@ -685,31 +685,31 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 1
  481              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  482              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  483              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccUguYlO.s 			page 13
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoIetdv.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_com_api.c
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:22     .text.u8g_InitCom:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:27     .text.u8g_InitCom:00000000 u8g_InitCom
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:53     .text.u8g_StopCom:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:58     .text.u8g_StopCom:00000000 u8g_StopCom
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:83     .text.u8g_SetChipSelect:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:88     .text.u8g_SetChipSelect:00000000 u8g_SetChipSelect
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:112    .text.u8g_SetResetLow:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:117    .text.u8g_SetResetLow:00000000 u8g_SetResetLow
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:142    .text.u8g_SetResetHigh:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:147    .text.u8g_SetResetHigh:00000000 u8g_SetResetHigh
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:172    .text.u8g_SetAddress:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:177    .text.u8g_SetAddress:00000000 u8g_SetAddress
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:201    .text.u8g_WriteByte:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:206    .text.u8g_WriteByte:00000000 u8g_WriteByte
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:231    .text.u8g_WriteSequence:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:236    .text.u8g_WriteSequence:00000000 u8g_WriteSequence
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:260    .text.u8g_WriteSequenceP:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:265    .text.u8g_WriteSequenceP:00000000 u8g_WriteSequenceP
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:289    .text.u8g_WriteEscSeqP:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccUguYlO.s:294    .text.u8g_WriteEscSeqP:00000000 u8g_WriteEscSeqP
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:22     .text.u8g_InitCom:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:27     .text.u8g_InitCom:00000000 u8g_InitCom
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:53     .text.u8g_StopCom:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:58     .text.u8g_StopCom:00000000 u8g_StopCom
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:83     .text.u8g_SetChipSelect:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:88     .text.u8g_SetChipSelect:00000000 u8g_SetChipSelect
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:112    .text.u8g_SetResetLow:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:117    .text.u8g_SetResetLow:00000000 u8g_SetResetLow
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:142    .text.u8g_SetResetHigh:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:147    .text.u8g_SetResetHigh:00000000 u8g_SetResetHigh
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:172    .text.u8g_SetAddress:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:177    .text.u8g_SetAddress:00000000 u8g_SetAddress
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:201    .text.u8g_WriteByte:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:206    .text.u8g_WriteByte:00000000 u8g_WriteByte
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:231    .text.u8g_WriteSequence:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:236    .text.u8g_WriteSequence:00000000 u8g_WriteSequence
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:260    .text.u8g_WriteSequenceP:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:265    .text.u8g_WriteSequenceP:00000000 u8g_WriteSequenceP
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:289    .text.u8g_WriteEscSeqP:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoIetdv.s:294    .text.u8g_WriteEscSeqP:00000000 u8g_WriteEscSeqP
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
   28:u8glib/u8g_pb8h2.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
   29:u8glib/u8g_pb8h2.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
   30:u8glib/u8g_pb8h2.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 2
 
 
   31:u8glib/u8g_pb8h2.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
   52              		.loc 1 61 0
   53 000c 9208     		lsrs	r2, r2, #2
   54              	.LVL5:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 3
 
 
   62:u8glib/u8g_pb8h2.c ****   tmp *= (uint8_t)y;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
   90              		.cfi_restore 5
   91              		.cfi_restore 4
   92              		.cfi_def_cfa_offset 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 4
 
 
   93              	.LVL15:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
  142 0002 8378     		ldrb	r3, [r0, #2]	@ zero_extendqisi2
  143 0004 9A42     		cmp	r2, r3
  144 0006 0CD3     		bcc	.L8
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 5
 
 
   86:u8glib/u8g_pb8h2.c ****     return;
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
  189              		@ frame_needed = 0, uses_anonymous_args = 0
  190              	.LVL22:
  191 0000 70B5     		push	{r4, r5, r6, lr}
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 6
 
 
  192              	.LCFI5:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
  235 0032 06E0     		b	.L11
  236              	.L15:
  108:u8glib/u8g_pb8h2.c ****       case 2: arg_pixel->x--; break;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 7
 
 
  237              		.loc 1 108 0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
  282 0004 4C68     		ldr	r4, [r1, #4]
  283              	.LVL28:
  120:u8glib/u8g_pb8h2.c ****   switch(msg)
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 8
 
 
  284              		.loc 1 120 0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
  338 003e 4E       		.byte	(.L30-.L22)/2
  339 003f 4E       		.byte	(.L30-.L22)/2
  340 0040 4E       		.byte	(.L30-.L22)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 9
 
 
  341 0041 4E       		.byte	(.L30-.L22)/2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
  352 004a 2946     		mov	r1, r5
  353              	.LVL31:
  354 004c 2046     		mov	r0, r4
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 10
 
 
  355              	.LVL32:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
  400 007e FFF7FEFF 		bl	u8g_page_Next
  401              	.LVL45:
  402 0082 0346     		mov	r3, r0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 11
 
 
  403 0084 A8B1     		cbz	r0, .L20
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
  449              	.L20:
  165:u8glib/u8g_pb8h2.c **** }
  450              		.loc 1 165 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 12
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 12
 
 
  451 00b2 1846     		mov	r0, r3
@@ -670,27 +670,27 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 1
  458              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  459              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  460              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccTRBqIv.s 			page 13
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccyX2AUd.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_pb8h2.c
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:22     .text.u8g_pb8h2_set_pixel:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:26     .text.u8g_pb8h2_set_pixel:00000000 u8g_pb8h2_set_pixel
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:99     .text.u8g_pb8h2_Init:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:104    .text.u8g_pb8h2_Init:00000000 u8g_pb8h2_Init
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:128    .text.u8g_pb8h2_SetPixel:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:133    .text.u8g_pb8h2_SetPixel:00000000 u8g_pb8h2_SetPixel
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:179    .text.u8g_pb8h2_Set8PixelStd:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:184    .text.u8g_pb8h2_Set8PixelStd:00000000 u8g_pb8h2_Set8PixelStd
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:219    .text.u8g_pb8h2_Set8PixelStd:00000020 $d
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:223    .text.u8g_pb8h2_Set8PixelStd:00000024 $t
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:261    .text.u8g_dev_pb8h2_base_fn:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:266    .text.u8g_dev_pb8h2_base_fn:00000000 u8g_dev_pb8h2_base_fn
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:292    .text.u8g_dev_pb8h2_base_fn:00000010 $d
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:22     .text.u8g_pb8h2_set_pixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:26     .text.u8g_pb8h2_set_pixel:00000000 u8g_pb8h2_set_pixel
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:99     .text.u8g_pb8h2_Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:104    .text.u8g_pb8h2_Init:00000000 u8g_pb8h2_Init
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:128    .text.u8g_pb8h2_SetPixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:133    .text.u8g_pb8h2_SetPixel:00000000 u8g_pb8h2_SetPixel
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:179    .text.u8g_pb8h2_Set8PixelStd:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:184    .text.u8g_pb8h2_Set8PixelStd:00000000 u8g_pb8h2_Set8PixelStd
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:219    .text.u8g_pb8h2_Set8PixelStd:00000020 $d
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:223    .text.u8g_pb8h2_Set8PixelStd:00000024 $t
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:261    .text.u8g_dev_pb8h2_base_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:266    .text.u8g_dev_pb8h2_base_fn:00000000 u8g_dev_pb8h2_base_fn
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:292    .text.u8g_dev_pb8h2_base_fn:00000010 $d
                      .debug_frame:00000010 $d
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:345    .text.u8g_dev_pb8h2_base_fn:00000045 $d
-C:\Users\master\AppData\Local\Temp\ccTRBqIv.s:345    .text.u8g_dev_pb8h2_base_fn:00000046 $t
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:345    .text.u8g_dev_pb8h2_base_fn:00000045 $d
+C:\Users\master\AppData\Local\Temp\ccyX2AUd.s:345    .text.u8g_dev_pb8h2_base_fn:00000046 $t
 
 UNDEFINED SYMBOLS
 u8g_pb_Clear

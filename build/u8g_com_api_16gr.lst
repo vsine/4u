@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc6OcdpD.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 1
   27:u8glib/u8g_com_api_16gr.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
   28:u8glib/u8g_com_api_16gr.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
   29:u8glib/u8g_com_api_16gr.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc6OcdpD.s 			page 2
 
 
   30:u8glib/u8g_com_api_16gr.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 1
   59 001a 02F00305 		and	r5, r2, #3
   60 001e 655D     		ldrb	r5, [r4, r5]	@ zero_extendqisi2
   61 0020 5D70     		strb	r5, [r3, #1]
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc6OcdpD.s 			page 3
 
 
   62              	.LVL3:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 1
  111              	.L7:
   62:u8glib/u8g_com_api_16gr.c ****   do
   63:u8glib/u8g_com_api_16gr.c ****   {
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc6OcdpD.s 			page 4
 
 
   64:u8glib/u8g_com_api_16gr.c ****     if ( u8g_WriteByteBWTo16GrDevice(u8g, dev, *ptr++) == 0 )
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 1
  157              		.cfi_offset 5, -20
  158              		.cfi_offset 6, -16
  159              		.cfi_offset 7, -12
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc6OcdpD.s 			page 5
 
 
  160              		.cfi_offset 8, -8
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 1
  206              	.LFB3:
   84:u8glib/u8g_com_api_16gr.c **** 
   85:u8glib/u8g_com_api_16gr.c **** uint8_t u8g_WriteSequence4LTo16GrDevice(u8g_t *u8g, u8g_dev_t *dev, uint8_t cnt, uint8_t *ptr)
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc6OcdpD.s 			page 6
 
 
   86:u8glib/u8g_com_api_16gr.c **** {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 1
  251              		.cfi_endproc
  252              	.LFE3:
  254              		.section	.rodata.map.5883,"a",%progbits
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc6OcdpD.s 			page 7
 
 
  255              		.align	2
@@ -398,27 +398,27 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 1
  295              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  296              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  297              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccAqQfD2.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc6OcdpD.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_com_api_16gr.c
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:22     .text.u8g_WriteByteBWTo16GrDevice:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:27     .text.u8g_WriteByteBWTo16GrDevice:00000000 u8g_WriteByteBWTo16GrDevice
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:80     .text.u8g_WriteByteBWTo16GrDevice:00000034 $d
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:86     .text.u8g_WriteSequenceBWTo16GrDevice:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:91     .text.u8g_WriteSequenceBWTo16GrDevice:00000000 u8g_WriteSequenceBWTo16GrDevice
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:141    .text.u8g_WriteByte4LTo16GrDevice:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:146    .text.u8g_WriteByte4LTo16GrDevice:00000000 u8g_WriteByte4LTo16GrDevice
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:195    .text.u8g_WriteByte4LTo16GrDevice:0000002c $d
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:200    .text.u8g_WriteSequence4LTo16GrDevice:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:205    .text.u8g_WriteSequence4LTo16GrDevice:00000000 u8g_WriteSequence4LTo16GrDevice
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:255    .rodata.map.5883:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:259    .rodata.map.5883:00000000 map.5883
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:277    .bss.buf.5868:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:281    .bss.buf.5868:00000000 buf.5868
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:284    .rodata.map.5869:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccAqQfD2.s:288    .rodata.map.5869:00000000 map.5869
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:22     .text.u8g_WriteByteBWTo16GrDevice:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:27     .text.u8g_WriteByteBWTo16GrDevice:00000000 u8g_WriteByteBWTo16GrDevice
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:80     .text.u8g_WriteByteBWTo16GrDevice:00000034 $d
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:86     .text.u8g_WriteSequenceBWTo16GrDevice:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:91     .text.u8g_WriteSequenceBWTo16GrDevice:00000000 u8g_WriteSequenceBWTo16GrDevice
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:141    .text.u8g_WriteByte4LTo16GrDevice:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:146    .text.u8g_WriteByte4LTo16GrDevice:00000000 u8g_WriteByte4LTo16GrDevice
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:195    .text.u8g_WriteByte4LTo16GrDevice:0000002c $d
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:200    .text.u8g_WriteSequence4LTo16GrDevice:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:205    .text.u8g_WriteSequence4LTo16GrDevice:00000000 u8g_WriteSequence4LTo16GrDevice
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:255    .rodata.map.5883:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:259    .rodata.map.5883:00000000 map.5883
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:277    .bss.buf.5868:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:281    .bss.buf.5868:00000000 buf.5868
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:284    .rodata.map.5869:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc6OcdpD.s:288    .rodata.map.5869:00000000 map.5869
                      .debug_frame:00000010 $d
 
 NO UNDEFINED SYMBOLS

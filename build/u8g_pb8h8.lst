@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
   28:u8glib/u8g_pb8h8.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
   29:u8glib/u8g_pb8h8.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
   30:u8glib/u8g_pb8h8.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 2
 
 
   31:u8glib/u8g_pb8h8.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
   85:u8glib/u8g_pb8h8.c ****   b->width = width;
   86:u8glib/u8g_pb8h8.c ****   u8g_pb8h8_Clear(b);
   87:u8glib/u8g_pb8h8.c **** }
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 3
 
 
   88:u8glib/u8g_pb8h8.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
   72              		.align	2
   73              		.global	u8g_pb8h8_Clear
   74              		.thumb
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 4
 
 
   75              		.thumb_func
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
  124              	.LCFI2:
  125              		.cfi_def_cfa_offset 8
  126              		.cfi_offset 3, -8
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 5
 
 
  127              		.cfi_offset 14, -4
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
  171 0016 03D2     		bcs	.L7
  108:u8glib/u8g_pb8h8.c ****     return;
  109:u8glib/u8g_pb8h8.c ****   u8g_pb8h8_set_pixel(b, arg_pixel->x, arg_pixel->y, arg_pixel->color);
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 6
 
 
  172              		.loc 1 109 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
  218 000a CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
  219 000c 032B     		cmp	r3, #3
  220 000e 03D8     		bhi	.L12
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 7
 
 
  221 0010 DFE803F0 		tbb	[pc, r3]
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
  263              	.LVL25:
  264              	.L19:
  125:u8glib/u8g_pb8h8.c ****   }
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 8
 
 
  126:u8glib/u8g_pb8h8.c ****   
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
  307 0000 38B5     		push	{r3, r4, r5, lr}
  308              	.LCFI6:
  309              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 9
 
 
  310              		.cfi_offset 3, -16
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
  362 0034 4E       		.byte	(.L33-.L25)/2
  363 0035 4E       		.byte	(.L33-.L25)/2
  364 0036 4E       		.byte	(.L33-.L25)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 10
 
 
  365 0037 1D       		.byte	(.L29-.L25)/2
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
  180:u8glib/u8g_pb8h8.c ****     case U8G_DEV_MSG_GET_MODE:
  181:u8glib/u8g_pb8h8.c ****       return U8G_MODE_R3G3B2;
  381              		.loc 1 181 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 11
 
 
  382 0046 2823     		movs	r3, #40
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
  427              		.loc 1 157 0
  428 007a 1AE0     		b	.L23
  429              	.LVL45:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 12
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 12
 
 
  430              	.L26:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
  475 00aa 02E0     		b	.L23
  476              	.L33:
  477              		.loc 1 183 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 13
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 13
 
 
  478 00ac 0123     		movs	r3, #1
@@ -738,29 +738,29 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 1
  492              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  493              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  494              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccP5MRCH.s 			page 14
+ARM GAS  C:\Users\master\AppData\Local\Temp\cctA5Qaf.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_pb8h8.c
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:22     .text.u8g_pb8h8_set_pixel:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:26     .text.u8g_pb8h8_set_pixel:00000000 u8g_pb8h8_set_pixel
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:72     .text.u8g_pb8h8_Clear:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:77     .text.u8g_pb8h8_Clear:00000000 u8g_pb8h8_Clear
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:111    .text.u8g_pb8h8_Init:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:116    .text.u8g_pb8h8_Init:00000000 u8g_pb8h8_Init
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:140    .text.u8g_pb8h8_SetPixel:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:145    .text.u8g_pb8h8_SetPixel:00000000 u8g_pb8h8_SetPixel
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:191    .text.u8g_pb8h8_Set8Pixel:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:196    .text.u8g_pb8h8_Set8Pixel:00000000 u8g_pb8h8_Set8Pixel
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:223    .text.u8g_pb8h8_Set8Pixel:00000014 $d
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:227    .text.u8g_pb8h8_Set8Pixel:00000018 $t
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:295    .text.u8g_dev_pb8h8_base_fn:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:300    .text.u8g_dev_pb8h8_base_fn:00000000 u8g_dev_pb8h8_base_fn
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:326    .text.u8g_dev_pb8h8_base_fn:00000010 $d
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:22     .text.u8g_pb8h8_set_pixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:26     .text.u8g_pb8h8_set_pixel:00000000 u8g_pb8h8_set_pixel
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:72     .text.u8g_pb8h8_Clear:00000000 $t
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:77     .text.u8g_pb8h8_Clear:00000000 u8g_pb8h8_Clear
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:111    .text.u8g_pb8h8_Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:116    .text.u8g_pb8h8_Init:00000000 u8g_pb8h8_Init
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:140    .text.u8g_pb8h8_SetPixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:145    .text.u8g_pb8h8_SetPixel:00000000 u8g_pb8h8_SetPixel
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:191    .text.u8g_pb8h8_Set8Pixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:196    .text.u8g_pb8h8_Set8Pixel:00000000 u8g_pb8h8_Set8Pixel
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:223    .text.u8g_pb8h8_Set8Pixel:00000014 $d
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:227    .text.u8g_pb8h8_Set8Pixel:00000018 $t
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:295    .text.u8g_dev_pb8h8_base_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:300    .text.u8g_dev_pb8h8_base_fn:00000000 u8g_dev_pb8h8_base_fn
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:326    .text.u8g_dev_pb8h8_base_fn:00000010 $d
                      .debug_frame:00000010 $d
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:379    .text.u8g_dev_pb8h8_base_fn:00000045 $d
-C:\Users\master\AppData\Local\Temp\ccP5MRCH.s:379    .text.u8g_dev_pb8h8_base_fn:00000046 $t
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:379    .text.u8g_dev_pb8h8_base_fn:00000045 $d
+C:\Users\master\AppData\Local\Temp\cctA5Qaf.s:379    .text.u8g_dev_pb8h8_base_fn:00000046 $t
 
 UNDEFINED SYMBOLS
 u8g_pb_Is8PixelVisible
