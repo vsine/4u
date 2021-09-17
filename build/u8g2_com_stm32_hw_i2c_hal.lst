@@ -1,0 +1,597 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g2_com_stm32_hw_i2c_hal.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8x8_byte_hw_i2c,"ax",%progbits
+  22              		.align	2
+  23              		.global	u8x8_byte_hw_i2c
+  24              		.thumb
+  25              		.thumb_func
+  27              	u8x8_byte_hw_i2c:
+  28              	.LFB130:
+  29              		.file 1 "u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c"
+   1:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** #include "u8g2_com_stm32_hw_i2c_hal.h"
+   2:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+   3:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** extern I2C_HandleTypeDef hi2c1;
+   4:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** uint8_t u8x8_byte_hw_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+   5:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** {
+  30              		.loc 1 5 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              	.LVL0:
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+  40 0002 82B0     		sub	sp, sp, #8
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 16
+   6:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     /* u8g2/u8x8 will never send more than 32 bytes between START_TRANSFER and END_TRANSFER */
+   7:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     static uint8_t buffer[128];
+   8:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     static uint8_t buf_idx;
+   9:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     uint8_t *data;
+  10:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  11:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     switch (msg)
+  43              		.loc 1 11 0
+  44 0004 1439     		subs	r1, r1, #20
+  45              	.LVL1:
+  46 0006 0C29     		cmp	r1, #12
+  47 0008 08D8     		bhi	.L2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 2
+
+
+  48 000a DFE801F0 		tbb	[pc, r1]
+  49              	.LVL2:
+  50              	.L4:
+  51 000e 29       		.byte	(.L9-.L4)/2
+  52 000f 07       		.byte	(.L2-.L4)/2
+  53 0010 07       		.byte	(.L2-.L4)/2
+  54 0011 18       		.byte	(.L5-.L4)/2
+  55 0012 09       		.byte	(.L6-.L4)/2
+  56 0013 1C       		.byte	(.L7-.L4)/2
+  57 0014 07       		.byte	(.L2-.L4)/2
+  58 0015 07       		.byte	(.L2-.L4)/2
+  59 0016 07       		.byte	(.L2-.L4)/2
+  60 0017 07       		.byte	(.L2-.L4)/2
+  61 0018 07       		.byte	(.L2-.L4)/2
+  62 0019 07       		.byte	(.L2-.L4)/2
+  63 001a 29       		.byte	(.L9-.L4)/2
+  64 001b 00       		.p2align 1
+  65              	.L2:
+  12:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     {
+  13:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_BYTE_INIT:
+  14:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     {
+  15:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         /* add your custom code to init i2c subsystem */
+  16:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****        // MX_I2C1_Init(); //I2C初始化
+  17:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****        // ihi2c=getHI2C1();
+  18:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     }
+  19:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     break;
+  20:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  21:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_BYTE_START_TRANSFER:
+  22:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     {
+  23:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         buf_idx = 0;
+  24:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     }
+  25:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     break;
+  26:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  27:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_BYTE_SEND:
+  28:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     {
+  29:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         data = (uint8_t *)arg_ptr;
+  30:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  31:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         while (arg_int > 0)
+  32:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         {
+  33:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****             buffer[buf_idx++] = *data;
+  34:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****             data++;
+  35:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****             arg_int--;
+  36:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         }
+  37:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     }
+  38:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     break;
+  39:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  40:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_BYTE_END_TRANSFER:
+  41:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     {
+  42:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  43:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         if (HAL_I2C_Master_Transmit(&hi2c1, (OLED_ADDRESS), buffer, buf_idx,1000) != HAL_OK)
+  44:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****                return 0;
+  45:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         
+  46:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****          
+  47:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         
+  48:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     }
+  49:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     break;
+  50:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 3
+
+
+  51:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_BYTE_SET_DC:
+  52:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;
+  53:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  54:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     default:
+  55:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         return 0;
+  66              		.loc 1 55 0
+  67 001c 0020     		movs	r0, #0
+  68 001e 22E0     		b	.L3
+  69              	.L6:
+  23:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     }
+  70              		.loc 1 23 0
+  71 0020 0022     		movs	r2, #0
+  72              	.LVL3:
+  73 0022 124B     		ldr	r3, .L12
+  74              	.LVL4:
+  75 0024 1A70     		strb	r2, [r3]
+  56:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     }
+  57:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  58:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     return 1;
+  76              		.loc 1 58 0
+  77 0026 0120     		movs	r0, #1
+  25:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  78              		.loc 1 25 0
+  79 0028 1DE0     		b	.L3
+  80              	.LVL5:
+  81              	.L8:
+  33:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****             data++;
+  82              		.loc 1 33 0
+  83 002a 1048     		ldr	r0, .L12
+  84 002c 0178     		ldrb	r1, [r0]	@ zero_extendqisi2
+  85 002e 4C1C     		adds	r4, r1, #1
+  86 0030 0470     		strb	r4, [r0]
+  87 0032 13F8014B 		ldrb	r4, [r3], #1	@ zero_extendqisi2
+  88              	.LVL6:
+  89 0036 0E48     		ldr	r0, .L12+4
+  90 0038 4454     		strb	r4, [r0, r1]
+  91              	.LVL7:
+  35:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         }
+  92              		.loc 1 35 0
+  93 003a 013A     		subs	r2, r2, #1
+  94              	.LVL8:
+  95 003c D2B2     		uxtb	r2, r2
+  96              	.LVL9:
+  97              	.L5:
+  31:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         {
+  98              		.loc 1 31 0
+  99 003e 002A     		cmp	r2, #0
+ 100 0040 F3D1     		bne	.L8
+ 101              		.loc 1 58 0
+ 102 0042 0120     		movs	r0, #1
+ 103 0044 0FE0     		b	.L3
+ 104              	.LVL10:
+ 105              	.L7:
+  43:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****                return 0;
+ 106              		.loc 1 43 0
+ 107 0046 094B     		ldr	r3, .L12
+ 108              	.LVL11:
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 4
+
+
+ 109 0048 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 110 004a 4FF47A72 		mov	r2, #1000
+ 111              	.LVL12:
+ 112 004e 0092     		str	r2, [sp]
+ 113 0050 074A     		ldr	r2, .L12+4
+ 114 0052 7821     		movs	r1, #120
+ 115 0054 0748     		ldr	r0, .L12+8
+ 116 0056 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+ 117              	.LVL13:
+ 118 005a 18B1     		cbz	r0, .L10
+  44:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         
+ 119              		.loc 1 44 0
+ 120 005c 0020     		movs	r0, #0
+ 121 005e 02E0     		b	.L3
+ 122              	.LVL14:
+ 123              	.L9:
+ 124              		.loc 1 58 0
+ 125 0060 0120     		movs	r0, #1
+ 126 0062 00E0     		b	.L3
+ 127              	.LVL15:
+ 128              	.L10:
+ 129 0064 0120     		movs	r0, #1
+ 130              	.LVL16:
+ 131              	.L3:
+  59:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** }
+ 132              		.loc 1 59 0
+ 133 0066 02B0     		add	sp, sp, #8
+ 134              	.LCFI2:
+ 135              		.cfi_def_cfa_offset 8
+ 136              		@ sp needed
+ 137 0068 10BD     		pop	{r4, pc}
+ 138              	.L13:
+ 139 006a 00BF     		.align	2
+ 140              	.L12:
+ 141 006c 00000000 		.word	.LANCHOR0
+ 142 0070 00000000 		.word	.LANCHOR1
+ 143 0074 00000000 		.word	hi2c1
+ 144              		.cfi_endproc
+ 145              	.LFE130:
+ 147              		.section	.text.u8x8_gpio_and_delay,"ax",%progbits
+ 148              		.align	2
+ 149              		.global	u8x8_gpio_and_delay
+ 150              		.thumb
+ 151              		.thumb_func
+ 153              	u8x8_gpio_and_delay:
+ 154              	.LFB132:
+  60:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  61:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** void delay_us(uint32_t time)
+  62:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** {
+  63:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     uint32_t i = 8 * time;
+  64:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     while (i--)
+  65:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         ;
+  66:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** }
+  67:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+  68:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** uint8_t u8x8_gpio_and_delay(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+  69:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** {
+ 155              		.loc 1 69 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 5
+
+
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159              	.LVL17:
+ 160 0000 08B5     		push	{r3, lr}
+ 161              	.LCFI3:
+ 162              		.cfi_def_cfa_offset 8
+ 163              		.cfi_offset 3, -8
+ 164              		.cfi_offset 14, -4
+  70:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     switch (msg)
+ 165              		.loc 1 70 0
+ 166 0002 2939     		subs	r1, r1, #41
+ 167              	.LVL18:
+ 168 0004 2A29     		cmp	r1, #42
+ 169 0006 36D8     		bhi	.L15
+ 170 0008 DFE801F0 		tbb	[pc, r1]
+ 171              	.LVL19:
+ 172              	.L17:
+ 173 000c 21       		.byte	(.L16-.L17)/2
+ 174 000d 1C       		.byte	(.L26-.L17)/2
+ 175 000e 16       		.byte	(.L19-.L17)/2
+ 176 000f 35       		.byte	(.L15-.L17)/2
+ 177 0010 38       		.byte	(.L20-.L17)/2
+ 178 0011 35       		.byte	(.L15-.L17)/2
+ 179 0012 35       		.byte	(.L15-.L17)/2
+ 180 0013 35       		.byte	(.L15-.L17)/2
+ 181 0014 35       		.byte	(.L15-.L17)/2
+ 182 0015 35       		.byte	(.L15-.L17)/2
+ 183 0016 35       		.byte	(.L15-.L17)/2
+ 184 0017 35       		.byte	(.L15-.L17)/2
+ 185 0018 35       		.byte	(.L15-.L17)/2
+ 186 0019 35       		.byte	(.L15-.L17)/2
+ 187 001a 35       		.byte	(.L15-.L17)/2
+ 188 001b 35       		.byte	(.L15-.L17)/2
+ 189 001c 35       		.byte	(.L15-.L17)/2
+ 190 001d 35       		.byte	(.L15-.L17)/2
+ 191 001e 35       		.byte	(.L15-.L17)/2
+ 192 001f 35       		.byte	(.L15-.L17)/2
+ 193 0020 35       		.byte	(.L15-.L17)/2
+ 194 0021 35       		.byte	(.L15-.L17)/2
+ 195 0022 35       		.byte	(.L15-.L17)/2
+ 196 0023 35       		.byte	(.L15-.L17)/2
+ 197 0024 35       		.byte	(.L15-.L17)/2
+ 198 0025 35       		.byte	(.L15-.L17)/2
+ 199 0026 35       		.byte	(.L15-.L17)/2
+ 200 0027 35       		.byte	(.L15-.L17)/2
+ 201 0028 35       		.byte	(.L15-.L17)/2
+ 202 0029 35       		.byte	(.L15-.L17)/2
+ 203 002a 35       		.byte	(.L15-.L17)/2
+ 204 002b 35       		.byte	(.L15-.L17)/2
+ 205 002c 35       		.byte	(.L15-.L17)/2
+ 206 002d 35       		.byte	(.L15-.L17)/2
+ 207 002e 35       		.byte	(.L15-.L17)/2
+ 208 002f 38       		.byte	(.L20-.L17)/2
+ 209 0030 38       		.byte	(.L20-.L17)/2
+ 210 0031 35       		.byte	(.L15-.L17)/2
+ 211 0032 35       		.byte	(.L15-.L17)/2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 6
+
+
+ 212 0033 25       		.byte	(.L21-.L17)/2
+ 213 0034 29       		.byte	(.L22-.L17)/2
+ 214 0035 2D       		.byte	(.L23-.L17)/2
+ 215 0036 31       		.byte	(.L24-.L17)/2
+ 216 0037 00       		.p2align 1
+ 217              	.L19:
+  71:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     {
+  72:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_DELAY_100NANO: // delay arg_int * 100 nano seconds
+  73:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         __NOP();
+ 218              		.loc 1 73 0
+ 219              		.syntax unified
+ 220              	@ 73 "u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c" 1
+ 221 0038 00BF     		nop
+ 222              	@ 0 "" 2
+  74:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;
+ 223              		.loc 1 74 0
+ 224              		.thumb
+ 225              		.syntax unified
+ 226 003a 1FE0     		b	.L20
+ 227              	.LVL20:
+ 228              	.L25:
+ 229              	.LBB2:
+  75:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_DELAY_10MICRO: // delay arg_int * 10 micro seconds
+  76:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         for (uint16_t n = 0; n < 320; n++)
+  77:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         {
+  78:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****             __NOP();
+ 230              		.loc 1 78 0 discriminator 3
+ 231              		.syntax unified
+ 232              	@ 78 "u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c" 1
+ 233 003c 00BF     		nop
+ 234              	@ 0 "" 2
+  76:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         {
+ 235              		.loc 1 76 0 discriminator 3
+ 236              		.thumb
+ 237              		.syntax unified
+ 238 003e 0133     		adds	r3, r3, #1
+ 239              	.LVL21:
+ 240 0040 9BB2     		uxth	r3, r3
+ 241              	.LVL22:
+ 242 0042 00E0     		b	.L18
+ 243              	.LVL23:
+ 244              	.L26:
+ 245              	.LBE2:
+  70:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     {
+ 246              		.loc 1 70 0
+ 247 0044 0023     		movs	r3, #0
+ 248              	.L18:
+ 249              	.LVL24:
+ 250              	.LBB3:
+  76:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         {
+ 251              		.loc 1 76 0 discriminator 1
+ 252 0046 B3F5A07F 		cmp	r3, #320
+ 253 004a F7D3     		bcc	.L25
+ 254 004c 16E0     		b	.L20
+ 255              	.LVL25:
+ 256              	.L16:
+ 257              	.LBE3:
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 7
+
+
+  79:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         }
+  80:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;
+  81:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_DELAY_MILLI: // delay arg_int * 1 milli second
+  82:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         HAL_Delay(1);
+ 258              		.loc 1 82 0
+ 259 004e 0120     		movs	r0, #1
+ 260              	.LVL26:
+ 261 0050 FFF7FEFF 		bl	HAL_Delay
+ 262              	.LVL27:
+  83:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;
+ 263              		.loc 1 83 0
+ 264 0054 12E0     		b	.L20
+ 265              	.LVL28:
+ 266              	.L21:
+  84:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_DELAY_I2C: // arg_int is the I2C speed in 100KHz, e.g. 4 = 400 KHz
+  85:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         delay_us(5);
+  86:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;                    // arg_int=1: delay by 5us, arg_int = 4: delay by 1.25us
+  87:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_GPIO_I2C_CLOCK: // arg_int=0: Output low at I2C clock pin
+  88:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;                    // arg_int=1: Input dir with pullup high for I2C clock pin
+  89:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_GPIO_I2C_DATA:  // arg_int=0: Output low at I2C data pin
+  90:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;                    // arg_int=1: Input dir with pullup high for I2C data pin
+  91:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_GPIO_MENU_SELECT:
+  92:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         u8x8_SetGPIOResult(u8x8, /* get menu select pin state */ 0);
+ 267              		.loc 1 92 0
+ 268 0056 0023     		movs	r3, #0
+ 269 0058 80F82730 		strb	r3, [r0, #39]
+  93:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;
+ 270              		.loc 1 93 0
+ 271 005c 0EE0     		b	.L20
+ 272              	.L22:
+  94:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_GPIO_MENU_NEXT:
+  95:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         u8x8_SetGPIOResult(u8x8, /* get menu next pin state */ 0);
+ 273              		.loc 1 95 0
+ 274 005e 0023     		movs	r3, #0
+ 275 0060 80F82730 		strb	r3, [r0, #39]
+  96:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;
+ 276              		.loc 1 96 0
+ 277 0064 0AE0     		b	.L20
+ 278              	.L23:
+  97:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_GPIO_MENU_PREV:
+  98:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         u8x8_SetGPIOResult(u8x8, /* get menu prev pin state */ 0);
+ 279              		.loc 1 98 0
+ 280 0066 0023     		movs	r3, #0
+ 281 0068 80F82730 		strb	r3, [r0, #39]
+  99:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;
+ 282              		.loc 1 99 0
+ 283 006c 06E0     		b	.L20
+ 284              	.L24:
+ 100:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     case U8X8_MSG_GPIO_MENU_HOME:
+ 101:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         u8x8_SetGPIOResult(u8x8, /* get menu home pin state */ 0);
+ 285              		.loc 1 101 0
+ 286 006e 0023     		movs	r3, #0
+ 287 0070 80F82730 		strb	r3, [r0, #39]
+ 102:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;
+ 288              		.loc 1 102 0
+ 289 0074 02E0     		b	.L20
+ 290              	.L15:
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 8
+
+
+ 103:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     default:
+ 104:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         u8x8_SetGPIOResult(u8x8, 1); // default return value
+ 291              		.loc 1 104 0
+ 292 0076 0123     		movs	r3, #1
+ 293 0078 80F82730 		strb	r3, [r0, #39]
+ 294              	.LVL29:
+ 295              	.L20:
+ 105:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         break;
+ 106:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     }
+ 107:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     return 1;
+ 108:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** }
+ 296              		.loc 1 108 0
+ 297 007c 0120     		movs	r0, #1
+ 298 007e 08BD     		pop	{r3, pc}
+ 299              		.cfi_endproc
+ 300              	.LFE132:
+ 302              		.section	.text.delay_us,"ax",%progbits
+ 303              		.align	2
+ 304              		.global	delay_us
+ 305              		.thumb
+ 306              		.thumb_func
+ 308              	delay_us:
+ 309              	.LFB131:
+  62:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     uint32_t i = 8 * time;
+ 310              		.loc 1 62 0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 0
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+ 314              		@ link register save eliminated.
+ 315              	.LVL30:
+  63:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     while (i--)
+ 316              		.loc 1 63 0
+ 317 0000 C000     		lsls	r0, r0, #3
+ 318              	.LVL31:
+  64:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         ;
+ 319              		.loc 1 64 0
+ 320 0002 00E0     		b	.L29
+ 321              	.LVL32:
+ 322              	.L30:
+ 323 0004 1846     		mov	r0, r3
+ 324              	.LVL33:
+ 325              	.L29:
+  64:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****         ;
+ 326              		.loc 1 64 0 is_stmt 0 discriminator 1
+ 327 0006 431E     		subs	r3, r0, #1
+ 328              	.LVL34:
+ 329 0008 0028     		cmp	r0, #0
+ 330 000a FBD1     		bne	.L30
+  66:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+ 331              		.loc 1 66 0 is_stmt 1
+ 332 000c 7047     		bx	lr
+ 333              		.cfi_endproc
+ 334              	.LFE131:
+ 336 000e 00BF     		.section	.text.u8g2Init,"ax",%progbits
+ 337              		.align	2
+ 338              		.global	u8g2Init
+ 339              		.thumb
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 9
+
+
+ 340              		.thumb_func
+ 342              	u8g2Init:
+ 343              	.LFB133:
+ 109:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** 
+ 110:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** void u8g2Init(u8g2_t *u8g2)
+ 111:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c **** {
+ 344              		.loc 1 111 0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348              	.LVL35:
+ 349 0000 10B5     		push	{r4, lr}
+ 350              	.LCFI4:
+ 351              		.cfi_def_cfa_offset 8
+ 352              		.cfi_offset 4, -8
+ 353              		.cfi_offset 14, -4
+ 354 0002 0446     		mov	r4, r0
+ 112:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     u8g2_Setup_ssd1306_i2c_128x64_noname_f(u8g2, U8G2_R0, u8x8_byte_hw_i2c, u8x8_gpio_and_delay); /
+ 355              		.loc 1 112 0
+ 356 0004 074B     		ldr	r3, .L33
+ 357 0006 084A     		ldr	r2, .L33+4
+ 358 0008 0849     		ldr	r1, .L33+8
+ 359 000a FFF7FEFF 		bl	u8g2_Setup_ssd1306_i2c_128x64_noname_f
+ 360              	.LVL36:
+ 113:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     u8g2_InitDisplay(u8g2);                                                                       /
+ 361              		.loc 1 113 0
+ 362 000e 2046     		mov	r0, r4
+ 363 0010 FFF7FEFF 		bl	u8x8_InitDisplay
+ 364              	.LVL37:
+ 114:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     u8g2_SetPowerSave(u8g2, 0);                                                                   /
+ 365              		.loc 1 114 0
+ 366 0014 0021     		movs	r1, #0
+ 367 0016 2046     		mov	r0, r4
+ 368 0018 FFF7FEFF 		bl	u8x8_SetPowerSave
+ 369              	.LVL38:
+ 115:u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c ****     u8g2_ClearBuffer(u8g2);
+ 370              		.loc 1 115 0
+ 371 001c 2046     		mov	r0, r4
+ 372 001e FFF7FEFF 		bl	u8g2_ClearBuffer
+ 373              	.LVL39:
+ 374 0022 10BD     		pop	{r4, pc}
+ 375              	.LVL40:
+ 376              	.L34:
+ 377              		.align	2
+ 378              	.L33:
+ 379 0024 00000000 		.word	u8x8_gpio_and_delay
+ 380 0028 00000000 		.word	u8x8_byte_hw_i2c
+ 381 002c 00000000 		.word	u8g2_cb_r0
+ 382              		.cfi_endproc
+ 383              	.LFE133:
+ 385              		.section	.bss.buf_idx.13467,"aw",%nobits
+ 386              		.set	.LANCHOR0,. + 0
+ 389              	buf_idx.13467:
+ 390 0000 00       		.space	1
+ 391              		.section	.bss.buffer.13466,"aw",%nobits
+ 392              		.align	2
+ 393              		.set	.LANCHOR1,. + 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 10
+
+
+ 396              	buffer.13466:
+ 397 0000 00000000 		.space	128
+ 397      00000000 
+ 397      00000000 
+ 397      00000000 
+ 397      00000000 
+ 398              		.text
+ 399              	.Letext0:
+ 400              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 401              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 402              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 403              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 404              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 405              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 406              		.file 8 "u8g2_lib/u8x8.h"
+ 407              		.file 9 "u8g2_lib/u8g2.h"
+ 408              		.file 10 "Drivers/CMSIS/Include/core_cm4.h"
+ 409              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczUT85b.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g2_com_stm32_hw_i2c_hal.c
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:22     .text.u8x8_byte_hw_i2c:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:27     .text.u8x8_byte_hw_i2c:00000000 u8x8_byte_hw_i2c
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:51     .text.u8x8_byte_hw_i2c:0000000e $d
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:141    .text.u8x8_byte_hw_i2c:0000006c $d
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:148    .text.u8x8_gpio_and_delay:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:153    .text.u8x8_gpio_and_delay:00000000 u8x8_gpio_and_delay
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:173    .text.u8x8_gpio_and_delay:0000000c $d
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:303    .text.delay_us:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:308    .text.delay_us:00000000 delay_us
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:337    .text.u8g2Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:342    .text.u8g2Init:00000000 u8g2Init
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:379    .text.u8g2Init:00000024 $d
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:389    .bss.buf_idx.13467:00000000 buf_idx.13467
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:390    .bss.buf_idx.13467:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:392    .bss.buffer.13466:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:396    .bss.buffer.13466:00000000 buffer.13466
+                     .debug_frame:00000010 $d
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:64     .text.u8x8_byte_hw_i2c:0000001b $d
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:64     .text.u8x8_byte_hw_i2c:0000001c $t
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:216    .text.u8x8_gpio_and_delay:00000037 $d
+C:\Users\master\AppData\Local\Temp\cczUT85b.s:216    .text.u8x8_gpio_and_delay:00000038 $t
+
+UNDEFINED SYMBOLS
+HAL_I2C_Master_Transmit
+hi2c1
+HAL_Delay
+u8g2_Setup_ssd1306_i2c_128x64_noname_f
+u8x8_InitDisplay
+u8x8_SetPowerSave
+u8g2_ClearBuffer
+u8g2_cb_r0

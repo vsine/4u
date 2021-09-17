@@ -9,7 +9,7 @@
                 "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
                 "${workspaceFolder}/Drivers/CMSIS/Include",
                 "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
-                "${workspaceFolder}/u8glib"
+                "${workspaceFolder}/u8g2_lib"
             ],
             "defines": [
                 "DUSE_HAL_DRIVER",

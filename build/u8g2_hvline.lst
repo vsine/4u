@@ -1,0 +1,755 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g2_hvline.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g2_clip_intersection2,"ax",%progbits
+  22              		.align	2
+  23              		.thumb
+  24              		.thumb_func
+  26              	u8g2_clip_intersection2:
+  27              	.LFB0:
+  28              		.file 1 "u8g2_lib/u8g2_hvline.c"
+   1:u8g2_lib/u8g2_hvline.c **** /*
+   2:u8g2_lib/u8g2_hvline.c **** 
+   3:u8g2_lib/u8g2_hvline.c ****   u8g2_hvline.c
+   4:u8g2_lib/u8g2_hvline.c **** 
+   5:u8g2_lib/u8g2_hvline.c ****   Universal 8bit Graphics Library (https://github.com/olikraus/u8g2/)
+   6:u8g2_lib/u8g2_hvline.c **** 
+   7:u8g2_lib/u8g2_hvline.c ****   Copyright (c) 2016, olikraus@gmail.com
+   8:u8g2_lib/u8g2_hvline.c ****   All rights reserved.
+   9:u8g2_lib/u8g2_hvline.c **** 
+  10:u8g2_lib/u8g2_hvline.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  11:u8g2_lib/u8g2_hvline.c ****   are permitted provided that the following conditions are met:
+  12:u8g2_lib/u8g2_hvline.c **** 
+  13:u8g2_lib/u8g2_hvline.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  14:u8g2_lib/u8g2_hvline.c ****     of conditions and the following disclaimer.
+  15:u8g2_lib/u8g2_hvline.c ****     
+  16:u8g2_lib/u8g2_hvline.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  17:u8g2_lib/u8g2_hvline.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  18:u8g2_lib/u8g2_hvline.c ****     materials provided with the distribution.
+  19:u8g2_lib/u8g2_hvline.c **** 
+  20:u8g2_lib/u8g2_hvline.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  21:u8g2_lib/u8g2_hvline.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  22:u8g2_lib/u8g2_hvline.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  23:u8g2_lib/u8g2_hvline.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  24:u8g2_lib/u8g2_hvline.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  25:u8g2_lib/u8g2_hvline.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  26:u8g2_lib/u8g2_hvline.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  27:u8g2_lib/u8g2_hvline.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  28:u8g2_lib/u8g2_hvline.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  29:u8g2_lib/u8g2_hvline.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  30:u8g2_lib/u8g2_hvline.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 2
+
+
+  31:u8g2_lib/u8g2_hvline.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  32:u8g2_lib/u8g2_hvline.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  33:u8g2_lib/u8g2_hvline.c **** 
+  34:u8g2_lib/u8g2_hvline.c **** 
+  35:u8g2_lib/u8g2_hvline.c ****   Calltree
+  36:u8g2_lib/u8g2_hvline.c ****   
+  37:u8g2_lib/u8g2_hvline.c ****     void u8g2_DrawHVLine(u8g2_t *u8g2, u8g2_uint_t x, u8g2_uint_t y, u8g2_uint_t len, uint8_t dir)
+  38:u8g2_lib/u8g2_hvline.c ****     u8g2->cb->draw_l90
+  39:u8g2_lib/u8g2_hvline.c ****     u8g2_draw_hv_line_2dir
+  40:u8g2_lib/u8g2_hvline.c ****     u8g2->ll_hvline(u8g2, x, y, len, dir);
+  41:u8g2_lib/u8g2_hvline.c ****     
+  42:u8g2_lib/u8g2_hvline.c **** 
+  43:u8g2_lib/u8g2_hvline.c **** */
+  44:u8g2_lib/u8g2_hvline.c **** 
+  45:u8g2_lib/u8g2_hvline.c **** #include "u8g2.h"
+  46:u8g2_lib/u8g2_hvline.c **** #include <assert.h>
+  47:u8g2_lib/u8g2_hvline.c **** 
+  48:u8g2_lib/u8g2_hvline.c **** /*==========================================================*/
+  49:u8g2_lib/u8g2_hvline.c **** /* intersection procedure */
+  50:u8g2_lib/u8g2_hvline.c **** 
+  51:u8g2_lib/u8g2_hvline.c **** /*
+  52:u8g2_lib/u8g2_hvline.c ****   Description:
+  53:u8g2_lib/u8g2_hvline.c ****     clip range from pos a (included) with line len (a+len excluded) agains c (included) to d (exclu
+  54:u8g2_lib/u8g2_hvline.c ****   Assumptions:
+  55:u8g2_lib/u8g2_hvline.c ****     len > 0
+  56:u8g2_lib/u8g2_hvline.c ****     c <= d		(this is not checked)
+  57:u8g2_lib/u8g2_hvline.c ****   will return 0 if there is no intersection and if a > b
+  58:u8g2_lib/u8g2_hvline.c **** 
+  59:u8g2_lib/u8g2_hvline.c **** */
+  60:u8g2_lib/u8g2_hvline.c **** 
+  61:u8g2_lib/u8g2_hvline.c **** static uint8_t u8g2_clip_intersection2(u8g2_uint_t *ap, u8g2_uint_t *len, u8g2_uint_t c, u8g2_uint_
+  62:u8g2_lib/u8g2_hvline.c **** {
+  29              		.loc 1 62 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34              	.LVL0:
+  35 0000 30B4     		push	{r4, r5}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 5, -4
+  63:u8g2_lib/u8g2_hvline.c ****   u8g2_uint_t a = *ap;
+  40              		.loc 1 63 0
+  41 0002 0588     		ldrh	r5, [r0]
+  42              	.LVL1:
+  64:u8g2_lib/u8g2_hvline.c ****   u8g2_uint_t b;
+  65:u8g2_lib/u8g2_hvline.c ****   b  = a;
+  66:u8g2_lib/u8g2_hvline.c ****   b += *len;
+  43              		.loc 1 66 0
+  44 0004 0C88     		ldrh	r4, [r1]
+  45 0006 2C44     		add	r4, r4, r5
+  46 0008 A4B2     		uxth	r4, r4
+  47              	.LVL2:
+  67:u8g2_lib/u8g2_hvline.c **** 
+  68:u8g2_lib/u8g2_hvline.c ****   /*
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 3
+
+
+  69:u8g2_lib/u8g2_hvline.c ****     Description:
+  70:u8g2_lib/u8g2_hvline.c ****       clip range from a (included) to b (excluded) agains c (included) to d (excluded)
+  71:u8g2_lib/u8g2_hvline.c ****     Assumptions:
+  72:u8g2_lib/u8g2_hvline.c ****       a <= b		(violation is checked and handled correctly)
+  73:u8g2_lib/u8g2_hvline.c ****       c <= d		(this is not checked)
+  74:u8g2_lib/u8g2_hvline.c ****     will return 0 if there is no intersection and if a > b
+  75:u8g2_lib/u8g2_hvline.c **** 
+  76:u8g2_lib/u8g2_hvline.c ****     optimized clipping: c is set to 0 --> 27 Oct 2018: again removed the c==0 assumption
+  77:u8g2_lib/u8g2_hvline.c ****     
+  78:u8g2_lib/u8g2_hvline.c ****     replaced by uint8_t u8g2_clip_intersection2
+  79:u8g2_lib/u8g2_hvline.c ****   */
+  80:u8g2_lib/u8g2_hvline.c **** 
+  81:u8g2_lib/u8g2_hvline.c ****   /* handle the a>b case correctly. If code and time is critical, this could */
+  82:u8g2_lib/u8g2_hvline.c ****   /* be removed completly (be aware about memory curruption for wrong */
+  83:u8g2_lib/u8g2_hvline.c ****   /* arguments) or return 0 for a>b (will lead to skipped lines for wrong */
+  84:u8g2_lib/u8g2_hvline.c ****   /* arguments) */  
+  85:u8g2_lib/u8g2_hvline.c ****   
+  86:u8g2_lib/u8g2_hvline.c ****   /* removing the following if clause completly may lead to memory corruption of a>b */
+  87:u8g2_lib/u8g2_hvline.c ****   if ( a > b )
+  48              		.loc 1 87 0
+  49 000a A542     		cmp	r5, r4
+  50 000c 05D9     		bls	.L2
+  88:u8g2_lib/u8g2_hvline.c ****   {    
+  89:u8g2_lib/u8g2_hvline.c ****     /* replacing this if with a simple "return 0;" will not handle the case with negative a */    
+  90:u8g2_lib/u8g2_hvline.c ****     if ( a < d )
+  51              		.loc 1 90 0
+  52 000e 9D42     		cmp	r5, r3
+  53 0010 02D2     		bcs	.L6
+  54              	.LVL3:
+  91:u8g2_lib/u8g2_hvline.c ****     {
+  92:u8g2_lib/u8g2_hvline.c ****       b = d;
+  93:u8g2_lib/u8g2_hvline.c ****       b--;
+  55              		.loc 1 93 0
+  56 0012 5C1E     		subs	r4, r3, #1
+  57 0014 A4B2     		uxth	r4, r4
+  58              	.LVL4:
+  59 0016 00E0     		b	.L2
+  60              	.L6:
+  94:u8g2_lib/u8g2_hvline.c ****     }
+  95:u8g2_lib/u8g2_hvline.c ****     else
+  96:u8g2_lib/u8g2_hvline.c ****     {
+  97:u8g2_lib/u8g2_hvline.c ****       a = c;
+  61              		.loc 1 97 0
+  62 0018 1546     		mov	r5, r2
+  63              	.LVL5:
+  64              	.L2:
+  98:u8g2_lib/u8g2_hvline.c ****     }
+  99:u8g2_lib/u8g2_hvline.c ****   }
+ 100:u8g2_lib/u8g2_hvline.c ****   
+ 101:u8g2_lib/u8g2_hvline.c ****   /* from now on, the asumption a <= b is ok */
+ 102:u8g2_lib/u8g2_hvline.c ****   
+ 103:u8g2_lib/u8g2_hvline.c ****   if ( a >= d )
+  65              		.loc 1 103 0
+  66 001a 9D42     		cmp	r5, r3
+  67 001c 0CD2     		bcs	.L7
+ 104:u8g2_lib/u8g2_hvline.c ****     return 0;
+ 105:u8g2_lib/u8g2_hvline.c ****   if ( b <= c )
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 4
+
+
+  68              		.loc 1 105 0
+  69 001e 9442     		cmp	r4, r2
+  70 0020 0CD9     		bls	.L8
+ 106:u8g2_lib/u8g2_hvline.c ****     return 0;
+ 107:u8g2_lib/u8g2_hvline.c ****   if ( a < c )		
+  71              		.loc 1 107 0
+  72 0022 9542     		cmp	r5, r2
+  73 0024 00D3     		bcc	.L4
+  74 0026 2A46     		mov	r2, r5
+  75              	.LVL6:
+  76              	.L4:
+ 108:u8g2_lib/u8g2_hvline.c ****     a = c;
+ 109:u8g2_lib/u8g2_hvline.c ****   if ( b > d )
+  77              		.loc 1 109 0
+  78 0028 9C42     		cmp	r4, r3
+  79 002a 00D8     		bhi	.L5
+  80 002c 2346     		mov	r3, r4
+  81              	.LVL7:
+  82              	.L5:
+ 110:u8g2_lib/u8g2_hvline.c ****     b = d;
+ 111:u8g2_lib/u8g2_hvline.c ****   
+ 112:u8g2_lib/u8g2_hvline.c ****   *ap = a;
+  83              		.loc 1 112 0
+  84 002e 0280     		strh	r2, [r0]	@ movhi
+ 113:u8g2_lib/u8g2_hvline.c ****   b -= a;
+  85              		.loc 1 113 0
+  86 0030 9B1A     		subs	r3, r3, r2
+  87              	.LVL8:
+ 114:u8g2_lib/u8g2_hvline.c ****   *len = b;
+  88              		.loc 1 114 0
+  89 0032 0B80     		strh	r3, [r1]	@ movhi
+ 115:u8g2_lib/u8g2_hvline.c ****   return 1;
+  90              		.loc 1 115 0
+  91 0034 0120     		movs	r0, #1
+  92              	.LVL9:
+  93 0036 02E0     		b	.L3
+  94              	.LVL10:
+  95              	.L7:
+ 104:u8g2_lib/u8g2_hvline.c ****   if ( b <= c )
+  96              		.loc 1 104 0
+  97 0038 0020     		movs	r0, #0
+  98              	.LVL11:
+  99 003a 00E0     		b	.L3
+ 100              	.LVL12:
+ 101              	.L8:
+ 106:u8g2_lib/u8g2_hvline.c ****   if ( a < c )		
+ 102              		.loc 1 106 0
+ 103 003c 0020     		movs	r0, #0
+ 104              	.LVL13:
+ 105              	.L3:
+ 116:u8g2_lib/u8g2_hvline.c **** }
+ 106              		.loc 1 116 0
+ 107 003e 30BC     		pop	{r4, r5}
+ 108              	.LCFI1:
+ 109              		.cfi_restore 5
+ 110              		.cfi_restore 4
+ 111              		.cfi_def_cfa_offset 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 5
+
+
+ 112 0040 7047     		bx	lr
+ 113              		.cfi_endproc
+ 114              	.LFE0:
+ 116 0042 00BF     		.section	.text.u8g2_draw_hv_line_2dir,"ax",%progbits
+ 117              		.align	2
+ 118              		.global	u8g2_draw_hv_line_2dir
+ 119              		.thumb
+ 120              		.thumb_func
+ 122              	u8g2_draw_hv_line_2dir:
+ 123              	.LFB1:
+ 117:u8g2_lib/u8g2_hvline.c **** 
+ 118:u8g2_lib/u8g2_hvline.c **** 
+ 119:u8g2_lib/u8g2_hvline.c **** 
+ 120:u8g2_lib/u8g2_hvline.c **** /*==========================================================*/
+ 121:u8g2_lib/u8g2_hvline.c **** /* draw procedures */
+ 122:u8g2_lib/u8g2_hvline.c **** 
+ 123:u8g2_lib/u8g2_hvline.c **** /*
+ 124:u8g2_lib/u8g2_hvline.c ****   x,y		Upper left position of the line within the pixel buffer 
+ 125:u8g2_lib/u8g2_hvline.c ****   len		length of the line in pixel, len must not be 0
+ 126:u8g2_lib/u8g2_hvline.c ****   dir		0: horizontal line (left to right)
+ 127:u8g2_lib/u8g2_hvline.c **** 		1: vertical line (top to bottom)
+ 128:u8g2_lib/u8g2_hvline.c ****   This function first adjusts the y position to the local buffer. Then it
+ 129:u8g2_lib/u8g2_hvline.c ****   will clip the line and call u8g2_draw_low_level_hv_line()
+ 130:u8g2_lib/u8g2_hvline.c **** 
+ 131:u8g2_lib/u8g2_hvline.c **** */
+ 132:u8g2_lib/u8g2_hvline.c **** void u8g2_draw_hv_line_2dir(u8g2_t *u8g2, u8g2_uint_t x, u8g2_uint_t y, u8g2_uint_t len, uint8_t di
+ 133:u8g2_lib/u8g2_hvline.c **** {
+ 124              		.loc 1 133 0
+ 125              		.cfi_startproc
+ 126              		@ args = 4, pretend = 0, frame = 0
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 128              	.LVL14:
+ 129 0000 30B5     		push	{r4, r5, lr}
+ 130              	.LCFI2:
+ 131              		.cfi_def_cfa_offset 12
+ 132              		.cfi_offset 4, -12
+ 133              		.cfi_offset 5, -8
+ 134              		.cfi_offset 14, -4
+ 135 0002 83B0     		sub	sp, sp, #12
+ 136              	.LCFI3:
+ 137              		.cfi_def_cfa_offset 24
+ 134:u8g2_lib/u8g2_hvline.c **** 
+ 135:u8g2_lib/u8g2_hvline.c ****   /* clipping happens before the display rotation */
+ 136:u8g2_lib/u8g2_hvline.c **** 
+ 137:u8g2_lib/u8g2_hvline.c ****   /* transform to pixel buffer coordinates */
+ 138:u8g2_lib/u8g2_hvline.c ****   y -= u8g2->pixel_curr_row;
+ 138              		.loc 1 138 0
+ 139 0004 C48F     		ldrh	r4, [r0, #62]
+ 140 0006 121B     		subs	r2, r2, r4
+ 141              	.LVL15:
+ 139:u8g2_lib/u8g2_hvline.c ****   
+ 140:u8g2_lib/u8g2_hvline.c ****   u8g2->ll_hvline(u8g2, x, y, len, dir);
+ 142              		.loc 1 140 0
+ 143 0008 C46A     		ldr	r4, [r0, #44]
+ 144 000a 9DF81850 		ldrb	r5, [sp, #24]	@ zero_extendqisi2
+ 145 000e 0095     		str	r5, [sp]
+ 146 0010 92B2     		uxth	r2, r2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 6
+
+
+ 147 0012 A047     		blx	r4
+ 148              	.LVL16:
+ 141:u8g2_lib/u8g2_hvline.c **** }
+ 149              		.loc 1 141 0
+ 150 0014 03B0     		add	sp, sp, #12
+ 151              	.LCFI4:
+ 152              		.cfi_def_cfa_offset 12
+ 153              		@ sp needed
+ 154 0016 30BD     		pop	{r4, r5, pc}
+ 155              		.cfi_endproc
+ 156              	.LFE1:
+ 158              		.section	.text.u8g2_DrawHVLine,"ax",%progbits
+ 159              		.align	2
+ 160              		.global	u8g2_DrawHVLine
+ 161              		.thumb
+ 162              		.thumb_func
+ 164              	u8g2_DrawHVLine:
+ 165              	.LFB2:
+ 142:u8g2_lib/u8g2_hvline.c **** 
+ 143:u8g2_lib/u8g2_hvline.c **** 
+ 144:u8g2_lib/u8g2_hvline.c **** /*
+ 145:u8g2_lib/u8g2_hvline.c ****   This is the toplevel function for the hv line draw procedures.
+ 146:u8g2_lib/u8g2_hvline.c ****   This function should be called by the user.
+ 147:u8g2_lib/u8g2_hvline.c ****   
+ 148:u8g2_lib/u8g2_hvline.c ****   "dir" may have 4 directions: 0 (left to right), 1, 2, 3 (down up)
+ 149:u8g2_lib/u8g2_hvline.c **** */
+ 150:u8g2_lib/u8g2_hvline.c **** void u8g2_DrawHVLine(u8g2_t *u8g2, u8g2_uint_t x, u8g2_uint_t y, u8g2_uint_t len, uint8_t dir)
+ 151:u8g2_lib/u8g2_hvline.c **** {
+ 166              		.loc 1 151 0
+ 167              		.cfi_startproc
+ 168              		@ args = 4, pretend = 0, frame = 8
+ 169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 170              	.LVL17:
+ 171 0000 70B5     		push	{r4, r5, r6, lr}
+ 172              	.LCFI5:
+ 173              		.cfi_def_cfa_offset 16
+ 174              		.cfi_offset 4, -16
+ 175              		.cfi_offset 5, -12
+ 176              		.cfi_offset 6, -8
+ 177              		.cfi_offset 14, -4
+ 178 0002 84B0     		sub	sp, sp, #16
+ 179              	.LCFI6:
+ 180              		.cfi_def_cfa_offset 32
+ 181 0004 9DF82050 		ldrb	r5, [sp, #32]	@ zero_extendqisi2
+ 182 0008 ADF80E10 		strh	r1, [sp, #14]	@ movhi
+ 183 000c ADF80C20 		strh	r2, [sp, #12]	@ movhi
+ 184 0010 ADF80A30 		strh	r3, [sp, #10]	@ movhi
+ 152:u8g2_lib/u8g2_hvline.c ****   /* Make a call to the callback function (e.g. u8g2_draw_l90_r0). */
+ 153:u8g2_lib/u8g2_hvline.c ****   /* The callback may rotate the hv line */
+ 154:u8g2_lib/u8g2_hvline.c ****   /* after rotation this will call u8g2_draw_hv_line_4dir() */
+ 155:u8g2_lib/u8g2_hvline.c ****   
+ 156:u8g2_lib/u8g2_hvline.c **** #ifdef U8G2_WITH_CLIP_WINDOW_SUPPORT
+ 157:u8g2_lib/u8g2_hvline.c ****   if ( u8g2->is_page_clip_window_intersection != 0 )
+ 185              		.loc 1 157 0
+ 186 0014 90F88C30 		ldrb	r3, [r0, #140]	@ zero_extendqisi2
+ 187              	.LVL18:
+ 188 0018 002B     		cmp	r3, #0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 7
+
+
+ 189 001a 50D0     		beq	.L12
+ 158:u8g2_lib/u8g2_hvline.c **** #endif /* U8G2_WITH_CLIP_WINDOW_SUPPORT */
+ 159:u8g2_lib/u8g2_hvline.c ****     if ( len != 0 )
+ 190              		.loc 1 159 0
+ 191 001c BDF80A30 		ldrh	r3, [sp, #10]
+ 192 0020 002B     		cmp	r3, #0
+ 193 0022 4CD0     		beq	.L12
+ 160:u8g2_lib/u8g2_hvline.c ****     {
+ 161:u8g2_lib/u8g2_hvline.c ****     
+ 162:u8g2_lib/u8g2_hvline.c ****       /* convert to two directions */    
+ 163:u8g2_lib/u8g2_hvline.c ****       if ( len > 1 )
+ 194              		.loc 1 163 0
+ 195 0024 012B     		cmp	r3, #1
+ 196 0026 11D9     		bls	.L14
+ 164:u8g2_lib/u8g2_hvline.c ****       {
+ 165:u8g2_lib/u8g2_hvline.c **** 	if ( dir == 2 )
+ 197              		.loc 1 165 0
+ 198 0028 022D     		cmp	r5, #2
+ 199 002a 06D1     		bne	.L15
+ 166:u8g2_lib/u8g2_hvline.c **** 	{
+ 167:u8g2_lib/u8g2_hvline.c **** 	  x -= len;
+ 200              		.loc 1 167 0
+ 201 002c 8AB2     		uxth	r2, r1
+ 202              	.LVL19:
+ 203 002e D31A     		subs	r3, r2, r3
+ 204 0030 9BB2     		uxth	r3, r3
+ 168:u8g2_lib/u8g2_hvline.c **** 	  x++;
+ 205              		.loc 1 168 0
+ 206 0032 0133     		adds	r3, r3, #1
+ 207 0034 ADF80E30 		strh	r3, [sp, #14]	@ movhi
+ 208 0038 08E0     		b	.L14
+ 209              	.LVL20:
+ 210              	.L15:
+ 169:u8g2_lib/u8g2_hvline.c **** 	}
+ 170:u8g2_lib/u8g2_hvline.c **** 	else if ( dir == 3 )
+ 211              		.loc 1 170 0
+ 212 003a 032D     		cmp	r5, #3
+ 213 003c 06D1     		bne	.L14
+ 171:u8g2_lib/u8g2_hvline.c **** 	{
+ 172:u8g2_lib/u8g2_hvline.c **** 	  y -= len;
+ 214              		.loc 1 172 0
+ 215 003e BDF80C20 		ldrh	r2, [sp, #12]
+ 216              	.LVL21:
+ 217 0042 D31A     		subs	r3, r2, r3
+ 218 0044 9BB2     		uxth	r3, r3
+ 173:u8g2_lib/u8g2_hvline.c **** 	  y++;
+ 219              		.loc 1 173 0
+ 220 0046 0133     		adds	r3, r3, #1
+ 221 0048 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+ 222              	.LVL22:
+ 223              	.L14:
+ 224 004c 0446     		mov	r4, r0
+ 225              	.LVL23:
+ 174:u8g2_lib/u8g2_hvline.c **** 	}
+ 175:u8g2_lib/u8g2_hvline.c ****       }
+ 176:u8g2_lib/u8g2_hvline.c ****       dir &= 1;  
+ 177:u8g2_lib/u8g2_hvline.c ****       
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 8
+
+
+ 178:u8g2_lib/u8g2_hvline.c ****       /* clip against the user window */
+ 179:u8g2_lib/u8g2_hvline.c ****       if ( dir == 0 )
+ 226              		.loc 1 179 0
+ 227 004e 15F00105 		ands	r5, r5, #1
+ 228              	.LVL24:
+ 229 0052 15D1     		bne	.L16
+ 180:u8g2_lib/u8g2_hvline.c ****       {
+ 181:u8g2_lib/u8g2_hvline.c **** 	if ( y < u8g2->user_y0 )
+ 230              		.loc 1 181 0
+ 231 0054 B0F84C20 		ldrh	r2, [r0, #76]
+ 232 0058 BDF80C30 		ldrh	r3, [sp, #12]
+ 233 005c 9A42     		cmp	r2, r3
+ 234 005e 2ED8     		bhi	.L12
+ 182:u8g2_lib/u8g2_hvline.c **** 	  return;
+ 183:u8g2_lib/u8g2_hvline.c **** 	if ( y >= u8g2->user_y1 )
+ 235              		.loc 1 183 0
+ 236 0060 B0F84E20 		ldrh	r2, [r0, #78]
+ 237 0064 9342     		cmp	r3, r2
+ 238 0066 2AD2     		bcs	.L12
+ 184:u8g2_lib/u8g2_hvline.c **** 	  return;
+ 185:u8g2_lib/u8g2_hvline.c **** 	if ( u8g2_clip_intersection2(&x, &len, u8g2->user_x0, u8g2->user_x1) == 0 )
+ 239              		.loc 1 185 0
+ 240 0068 B0F84A30 		ldrh	r3, [r0, #74]
+ 241 006c B0F84820 		ldrh	r2, [r0, #72]
+ 242 0070 0DF10A01 		add	r1, sp, #10
+ 243              	.LVL25:
+ 244 0074 0DF10E00 		add	r0, sp, #14
+ 245              	.LVL26:
+ 246 0078 FFF7FEFF 		bl	u8g2_clip_intersection2
+ 247              	.LVL27:
+ 248 007c A0B9     		cbnz	r0, .L17
+ 249 007e 1EE0     		b	.L12
+ 250              	.LVL28:
+ 251              	.L16:
+ 186:u8g2_lib/u8g2_hvline.c **** 	  return;
+ 187:u8g2_lib/u8g2_hvline.c ****       }
+ 188:u8g2_lib/u8g2_hvline.c ****       else
+ 189:u8g2_lib/u8g2_hvline.c ****       {
+ 190:u8g2_lib/u8g2_hvline.c **** 	if ( x < u8g2->user_x0 )
+ 252              		.loc 1 190 0
+ 253 0080 B0F84820 		ldrh	r2, [r0, #72]
+ 254 0084 BDF80E30 		ldrh	r3, [sp, #14]
+ 255 0088 9A42     		cmp	r2, r3
+ 256 008a 18D8     		bhi	.L12
+ 191:u8g2_lib/u8g2_hvline.c **** 	  return;
+ 192:u8g2_lib/u8g2_hvline.c **** 	if ( x >= u8g2->user_x1 )
+ 257              		.loc 1 192 0
+ 258 008c B0F84A20 		ldrh	r2, [r0, #74]
+ 259 0090 9342     		cmp	r3, r2
+ 260 0092 14D2     		bcs	.L12
+ 193:u8g2_lib/u8g2_hvline.c **** 	  return;
+ 194:u8g2_lib/u8g2_hvline.c **** 	if ( u8g2_clip_intersection2(&y, &len, u8g2->user_y0, u8g2->user_y1) == 0 )
+ 261              		.loc 1 194 0
+ 262 0094 B0F84E30 		ldrh	r3, [r0, #78]
+ 263 0098 B0F84C20 		ldrh	r2, [r0, #76]
+ 264 009c 0DF10A01 		add	r1, sp, #10
+ 265              	.LVL29:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 9
+
+
+ 266 00a0 03A8     		add	r0, sp, #12
+ 267              	.LVL30:
+ 268 00a2 FFF7FEFF 		bl	u8g2_clip_intersection2
+ 269              	.LVL31:
+ 270 00a6 50B1     		cbz	r0, .L12
+ 271              	.L17:
+ 195:u8g2_lib/u8g2_hvline.c **** 	  return;
+ 196:u8g2_lib/u8g2_hvline.c ****       }
+ 197:u8g2_lib/u8g2_hvline.c ****       
+ 198:u8g2_lib/u8g2_hvline.c ****       
+ 199:u8g2_lib/u8g2_hvline.c ****       u8g2->cb->draw_l90(u8g2, x, y, len, dir);
+ 272              		.loc 1 199 0
+ 273 00a8 236B     		ldr	r3, [r4, #48]
+ 274 00aa 9E68     		ldr	r6, [r3, #8]
+ 275 00ac BDF80A30 		ldrh	r3, [sp, #10]
+ 276 00b0 BDF80C20 		ldrh	r2, [sp, #12]
+ 277 00b4 BDF80E10 		ldrh	r1, [sp, #14]
+ 278 00b8 0095     		str	r5, [sp]
+ 279 00ba 2046     		mov	r0, r4
+ 280 00bc B047     		blx	r6
+ 281              	.LVL32:
+ 282              	.L12:
+ 200:u8g2_lib/u8g2_hvline.c ****     }
+ 201:u8g2_lib/u8g2_hvline.c **** }
+ 283              		.loc 1 201 0
+ 284 00be 04B0     		add	sp, sp, #16
+ 285              	.LCFI7:
+ 286              		.cfi_def_cfa_offset 16
+ 287              		@ sp needed
+ 288 00c0 70BD     		pop	{r4, r5, r6, pc}
+ 289              		.cfi_endproc
+ 290              	.LFE2:
+ 292 00c2 00BF     		.section	.text.u8g2_DrawHLine,"ax",%progbits
+ 293              		.align	2
+ 294              		.global	u8g2_DrawHLine
+ 295              		.thumb
+ 296              		.thumb_func
+ 298              	u8g2_DrawHLine:
+ 299              	.LFB3:
+ 202:u8g2_lib/u8g2_hvline.c **** 
+ 203:u8g2_lib/u8g2_hvline.c **** void u8g2_DrawHLine(u8g2_t *u8g2, u8g2_uint_t x, u8g2_uint_t y, u8g2_uint_t len)
+ 204:u8g2_lib/u8g2_hvline.c **** {
+ 300              		.loc 1 204 0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304              	.LVL33:
+ 305 0000 10B5     		push	{r4, lr}
+ 306              	.LCFI8:
+ 307              		.cfi_def_cfa_offset 8
+ 308              		.cfi_offset 4, -8
+ 309              		.cfi_offset 14, -4
+ 310 0002 82B0     		sub	sp, sp, #8
+ 311              	.LCFI9:
+ 312              		.cfi_def_cfa_offset 16
+ 205:u8g2_lib/u8g2_hvline.c **** // #ifdef U8G2_WITH_INTERSECTION
+ 206:u8g2_lib/u8g2_hvline.c **** //   if ( u8g2_IsIntersection(u8g2, x, y, x+len, y+1) == 0 ) 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 10
+
+
+ 207:u8g2_lib/u8g2_hvline.c **** //     return;
+ 208:u8g2_lib/u8g2_hvline.c **** // #endif /* U8G2_WITH_INTERSECTION */
+ 209:u8g2_lib/u8g2_hvline.c ****   u8g2_DrawHVLine(u8g2, x, y, len, 0);
+ 313              		.loc 1 209 0
+ 314 0004 0024     		movs	r4, #0
+ 315 0006 0094     		str	r4, [sp]
+ 316 0008 FFF7FEFF 		bl	u8g2_DrawHVLine
+ 317              	.LVL34:
+ 210:u8g2_lib/u8g2_hvline.c **** }
+ 318              		.loc 1 210 0
+ 319 000c 02B0     		add	sp, sp, #8
+ 320              	.LCFI10:
+ 321              		.cfi_def_cfa_offset 8
+ 322              		@ sp needed
+ 323 000e 10BD     		pop	{r4, pc}
+ 324              		.cfi_endproc
+ 325              	.LFE3:
+ 327              		.section	.text.u8g2_DrawVLine,"ax",%progbits
+ 328              		.align	2
+ 329              		.global	u8g2_DrawVLine
+ 330              		.thumb
+ 331              		.thumb_func
+ 333              	u8g2_DrawVLine:
+ 334              	.LFB4:
+ 211:u8g2_lib/u8g2_hvline.c **** 
+ 212:u8g2_lib/u8g2_hvline.c **** void u8g2_DrawVLine(u8g2_t *u8g2, u8g2_uint_t x, u8g2_uint_t y, u8g2_uint_t len)
+ 213:u8g2_lib/u8g2_hvline.c **** {
+ 335              		.loc 1 213 0
+ 336              		.cfi_startproc
+ 337              		@ args = 0, pretend = 0, frame = 0
+ 338              		@ frame_needed = 0, uses_anonymous_args = 0
+ 339              	.LVL35:
+ 340 0000 10B5     		push	{r4, lr}
+ 341              	.LCFI11:
+ 342              		.cfi_def_cfa_offset 8
+ 343              		.cfi_offset 4, -8
+ 344              		.cfi_offset 14, -4
+ 345 0002 82B0     		sub	sp, sp, #8
+ 346              	.LCFI12:
+ 347              		.cfi_def_cfa_offset 16
+ 214:u8g2_lib/u8g2_hvline.c **** // #ifdef U8G2_WITH_INTERSECTION
+ 215:u8g2_lib/u8g2_hvline.c **** //   if ( u8g2_IsIntersection(u8g2, x, y, x+1, y+len) == 0 ) 
+ 216:u8g2_lib/u8g2_hvline.c **** //     return;
+ 217:u8g2_lib/u8g2_hvline.c **** // #endif /* U8G2_WITH_INTERSECTION */
+ 218:u8g2_lib/u8g2_hvline.c ****   u8g2_DrawHVLine(u8g2, x, y, len, 1);
+ 348              		.loc 1 218 0
+ 349 0004 0124     		movs	r4, #1
+ 350 0006 0094     		str	r4, [sp]
+ 351 0008 FFF7FEFF 		bl	u8g2_DrawHVLine
+ 352              	.LVL36:
+ 219:u8g2_lib/u8g2_hvline.c **** }
+ 353              		.loc 1 219 0
+ 354 000c 02B0     		add	sp, sp, #8
+ 355              	.LCFI13:
+ 356              		.cfi_def_cfa_offset 8
+ 357              		@ sp needed
+ 358 000e 10BD     		pop	{r4, pc}
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 11
+
+
+ 359              		.cfi_endproc
+ 360              	.LFE4:
+ 362              		.section	.text.u8g2_DrawPixel,"ax",%progbits
+ 363              		.align	2
+ 364              		.global	u8g2_DrawPixel
+ 365              		.thumb
+ 366              		.thumb_func
+ 368              	u8g2_DrawPixel:
+ 369              	.LFB5:
+ 220:u8g2_lib/u8g2_hvline.c **** 
+ 221:u8g2_lib/u8g2_hvline.c **** void u8g2_DrawPixel(u8g2_t *u8g2, u8g2_uint_t x, u8g2_uint_t y)
+ 222:u8g2_lib/u8g2_hvline.c **** {
+ 370              		.loc 1 222 0
+ 371              		.cfi_startproc
+ 372              		@ args = 0, pretend = 0, frame = 0
+ 373              		@ frame_needed = 0, uses_anonymous_args = 0
+ 374              	.LVL37:
+ 223:u8g2_lib/u8g2_hvline.c **** #ifdef U8G2_WITH_INTERSECTION
+ 224:u8g2_lib/u8g2_hvline.c ****   if ( y < u8g2->user_y0 )
+ 375              		.loc 1 224 0
+ 376 0000 B0F84C30 		ldrh	r3, [r0, #76]
+ 377 0004 9342     		cmp	r3, r2
+ 378 0006 15D8     		bhi	.L26
+ 225:u8g2_lib/u8g2_hvline.c ****     return;
+ 226:u8g2_lib/u8g2_hvline.c ****   if ( y >= u8g2->user_y1 )
+ 379              		.loc 1 226 0
+ 380 0008 B0F84E30 		ldrh	r3, [r0, #78]
+ 381 000c 9A42     		cmp	r2, r3
+ 382 000e 11D2     		bcs	.L26
+ 227:u8g2_lib/u8g2_hvline.c ****     return;
+ 228:u8g2_lib/u8g2_hvline.c ****   if ( x < u8g2->user_x0 )
+ 383              		.loc 1 228 0
+ 384 0010 B0F84830 		ldrh	r3, [r0, #72]
+ 385 0014 8B42     		cmp	r3, r1
+ 386 0016 0DD8     		bhi	.L26
+ 229:u8g2_lib/u8g2_hvline.c ****     return;
+ 230:u8g2_lib/u8g2_hvline.c ****   if ( x >= u8g2->user_x1 )
+ 387              		.loc 1 230 0
+ 388 0018 B0F84A30 		ldrh	r3, [r0, #74]
+ 389 001c 9942     		cmp	r1, r3
+ 390 001e 09D2     		bcs	.L26
+ 222:u8g2_lib/u8g2_hvline.c **** #ifdef U8G2_WITH_INTERSECTION
+ 391              		.loc 1 222 0
+ 392 0020 00B5     		push	{lr}
+ 393              	.LCFI14:
+ 394              		.cfi_def_cfa_offset 4
+ 395              		.cfi_offset 14, -4
+ 396 0022 83B0     		sub	sp, sp, #12
+ 397              	.LCFI15:
+ 398              		.cfi_def_cfa_offset 16
+ 231:u8g2_lib/u8g2_hvline.c ****     return;
+ 232:u8g2_lib/u8g2_hvline.c **** #endif /* U8G2_WITH_INTERSECTION */
+ 233:u8g2_lib/u8g2_hvline.c ****   u8g2_DrawHVLine(u8g2, x, y, 1, 0);
+ 399              		.loc 1 233 0
+ 400 0024 0023     		movs	r3, #0
+ 401 0026 0093     		str	r3, [sp]
+ 402 0028 0123     		movs	r3, #1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 12
+
+
+ 403 002a FFF7FEFF 		bl	u8g2_DrawHVLine
+ 404              	.LVL38:
+ 234:u8g2_lib/u8g2_hvline.c **** }
+ 405              		.loc 1 234 0
+ 406 002e 03B0     		add	sp, sp, #12
+ 407              	.LCFI16:
+ 408              		.cfi_def_cfa_offset 4
+ 409              		@ sp needed
+ 410 0030 5DF804FB 		ldr	pc, [sp], #4
+ 411              	.LVL39:
+ 412              	.L26:
+ 413              	.LCFI17:
+ 414              		.cfi_def_cfa_offset 0
+ 415              		.cfi_restore 14
+ 416 0034 7047     		bx	lr
+ 417              		.cfi_endproc
+ 418              	.LFE5:
+ 420 0036 00BF     		.section	.text.u8g2_SetDrawColor,"ax",%progbits
+ 421              		.align	2
+ 422              		.global	u8g2_SetDrawColor
+ 423              		.thumb
+ 424              		.thumb_func
+ 426              	u8g2_SetDrawColor:
+ 427              	.LFB6:
+ 235:u8g2_lib/u8g2_hvline.c **** 
+ 236:u8g2_lib/u8g2_hvline.c **** /*
+ 237:u8g2_lib/u8g2_hvline.c ****   Assign the draw color for all drawing functions.
+ 238:u8g2_lib/u8g2_hvline.c ****   color may be 0 or 1. The actual color is defined by the display.
+ 239:u8g2_lib/u8g2_hvline.c ****   With color = 1 the drawing function will set the display memory to 1.
+ 240:u8g2_lib/u8g2_hvline.c ****   For OLEDs this ususally means, that the pixel is enabled and the LED 
+ 241:u8g2_lib/u8g2_hvline.c ****   at the pixel is turned on.
+ 242:u8g2_lib/u8g2_hvline.c ****   On an LCD it usually means that the LCD segment of the pixel is enabled, 
+ 243:u8g2_lib/u8g2_hvline.c ****   which absorbs the light.
+ 244:u8g2_lib/u8g2_hvline.c ****   For eInk/ePaper it means black ink.
+ 245:u8g2_lib/u8g2_hvline.c **** 
+ 246:u8g2_lib/u8g2_hvline.c ****   7 Jan 2017: Allow color value 2 for XOR operation.
+ 247:u8g2_lib/u8g2_hvline.c ****   
+ 248:u8g2_lib/u8g2_hvline.c **** */
+ 249:u8g2_lib/u8g2_hvline.c **** void u8g2_SetDrawColor(u8g2_t *u8g2, uint8_t color)
+ 250:u8g2_lib/u8g2_hvline.c **** {
+ 428              		.loc 1 250 0
+ 429              		.cfi_startproc
+ 430              		@ args = 0, pretend = 0, frame = 0
+ 431              		@ frame_needed = 0, uses_anonymous_args = 0
+ 432              		@ link register save eliminated.
+ 433              	.LVL40:
+ 251:u8g2_lib/u8g2_hvline.c ****   u8g2->draw_color = color;	/* u8g2_SetDrawColor: just assign the argument */ 
+ 434              		.loc 1 251 0
+ 435 0000 80F89210 		strb	r1, [r0, #146]
+ 252:u8g2_lib/u8g2_hvline.c ****   if ( color >= 3 )
+ 436              		.loc 1 252 0
+ 437 0004 0229     		cmp	r1, #2
+ 438 0006 02D9     		bls	.L27
+ 253:u8g2_lib/u8g2_hvline.c ****     u8g2->draw_color = 1;	/* u8g2_SetDrawColor: make color as one if arg is invalid */
+ 439              		.loc 1 253 0
+ 440 0008 0123     		movs	r3, #1
+ 441 000a 80F89230 		strb	r3, [r0, #146]
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 13
+
+
+ 442              	.L27:
+ 443 000e 7047     		bx	lr
+ 444              		.cfi_endproc
+ 445              	.LFE6:
+ 447              		.text
+ 448              	.Letext0:
+ 449              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 450              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 451              		.file 4 "u8g2_lib/u8x8.h"
+ 452              		.file 5 "u8g2_lib/u8g2.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g2_hvline.c
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:22     .text.u8g2_clip_intersection2:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:26     .text.u8g2_clip_intersection2:00000000 u8g2_clip_intersection2
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:117    .text.u8g2_draw_hv_line_2dir:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:122    .text.u8g2_draw_hv_line_2dir:00000000 u8g2_draw_hv_line_2dir
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:159    .text.u8g2_DrawHVLine:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:164    .text.u8g2_DrawHVLine:00000000 u8g2_DrawHVLine
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:293    .text.u8g2_DrawHLine:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:298    .text.u8g2_DrawHLine:00000000 u8g2_DrawHLine
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:328    .text.u8g2_DrawVLine:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:333    .text.u8g2_DrawVLine:00000000 u8g2_DrawVLine
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:363    .text.u8g2_DrawPixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:368    .text.u8g2_DrawPixel:00000000 u8g2_DrawPixel
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:421    .text.u8g2_SetDrawColor:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNO0FTJ.s:426    .text.u8g2_SetDrawColor:00000000 u8g2_SetDrawColor
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

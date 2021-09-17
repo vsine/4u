@@ -1,0 +1,375 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccPL5iUj.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g2_kerning.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g2_GetKerning,"ax",%progbits
+  22              		.align	2
+  23              		.global	u8g2_GetKerning
+  24              		.thumb
+  25              		.thumb_func
+  27              	u8g2_GetKerning:
+  28              	.LFB0:
+  29              		.file 1 "u8g2_lib/u8g2_kerning.c"
+   1:u8g2_lib/u8g2_kerning.c **** /*
+   2:u8g2_lib/u8g2_kerning.c **** 
+   3:u8g2_lib/u8g2_kerning.c ****   u8g2_kerning.c
+   4:u8g2_lib/u8g2_kerning.c **** 
+   5:u8g2_lib/u8g2_kerning.c ****   Universal 8bit Graphics Library (https://github.com/olikraus/u8g2/)
+   6:u8g2_lib/u8g2_kerning.c **** 
+   7:u8g2_lib/u8g2_kerning.c ****   Copyright (c) 2016, olikraus@gmail.com
+   8:u8g2_lib/u8g2_kerning.c ****   All rights reserved.
+   9:u8g2_lib/u8g2_kerning.c **** 
+  10:u8g2_lib/u8g2_kerning.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  11:u8g2_lib/u8g2_kerning.c ****   are permitted provided that the following conditions are met:
+  12:u8g2_lib/u8g2_kerning.c **** 
+  13:u8g2_lib/u8g2_kerning.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  14:u8g2_lib/u8g2_kerning.c ****     of conditions and the following disclaimer.
+  15:u8g2_lib/u8g2_kerning.c ****     
+  16:u8g2_lib/u8g2_kerning.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  17:u8g2_lib/u8g2_kerning.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  18:u8g2_lib/u8g2_kerning.c ****     materials provided with the distribution.
+  19:u8g2_lib/u8g2_kerning.c **** 
+  20:u8g2_lib/u8g2_kerning.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  21:u8g2_lib/u8g2_kerning.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  22:u8g2_lib/u8g2_kerning.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  23:u8g2_lib/u8g2_kerning.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  24:u8g2_lib/u8g2_kerning.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  25:u8g2_lib/u8g2_kerning.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  26:u8g2_lib/u8g2_kerning.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  27:u8g2_lib/u8g2_kerning.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  28:u8g2_lib/u8g2_kerning.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  29:u8g2_lib/u8g2_kerning.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccPL5iUj.s 			page 2
+
+
+  30:u8g2_lib/u8g2_kerning.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  31:u8g2_lib/u8g2_kerning.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  32:u8g2_lib/u8g2_kerning.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  33:u8g2_lib/u8g2_kerning.c **** 
+  34:u8g2_lib/u8g2_kerning.c **** */
+  35:u8g2_lib/u8g2_kerning.c **** 
+  36:u8g2_lib/u8g2_kerning.c **** #include "u8g2.h"
+  37:u8g2_lib/u8g2_kerning.c **** 
+  38:u8g2_lib/u8g2_kerning.c **** /* this function is used as "u8g2_get_kerning_cb" */
+  39:u8g2_lib/u8g2_kerning.c **** /*
+  40:u8g2_lib/u8g2_kerning.c **** uint8_t u8g2_GetNullKerning(u8g2_t *u8g2, uint16_t e1, uint16_t e2)
+  41:u8g2_lib/u8g2_kerning.c **** {
+  42:u8g2_lib/u8g2_kerning.c ****   return 0;
+  43:u8g2_lib/u8g2_kerning.c **** }
+  44:u8g2_lib/u8g2_kerning.c **** */
+  45:u8g2_lib/u8g2_kerning.c **** 
+  46:u8g2_lib/u8g2_kerning.c **** /* this function is used as "u8g2_get_kerning_cb" */
+  47:u8g2_lib/u8g2_kerning.c **** uint8_t u8g2_GetKerning(U8X8_UNUSED u8g2_t *u8g2, u8g2_kerning_t *kerning, uint16_t e1, uint16_t e2
+  48:u8g2_lib/u8g2_kerning.c **** {
+  30              		.loc 1 48 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  35              	.LVL0:
+  49:u8g2_lib/u8g2_kerning.c ****   uint16_t i1, i2, cnt, end;
+  50:u8g2_lib/u8g2_kerning.c ****   if ( kerning == NULL )
+  36              		.loc 1 50 0
+  37 0000 31B3     		cbz	r1, .L9
+  48:u8g2_lib/u8g2_kerning.c ****   uint16_t i1, i2, cnt, end;
+  38              		.loc 1 48 0
+  39 0002 30B4     		push	{r4, r5}
+  40              	.LCFI0:
+  41              		.cfi_def_cfa_offset 8
+  42              		.cfi_offset 4, -8
+  43              		.cfi_offset 5, -4
+  44 0004 0C46     		mov	r4, r1
+  51:u8g2_lib/u8g2_kerning.c ****     return 0;
+  52:u8g2_lib/u8g2_kerning.c ****   
+  53:u8g2_lib/u8g2_kerning.c ****   /* search for the encoding in the first table */
+  54:u8g2_lib/u8g2_kerning.c ****   cnt = kerning->first_table_cnt;
+  45              		.loc 1 54 0
+  46 0006 0D88     		ldrh	r5, [r1]
+  47              	.LVL1:
+  55:u8g2_lib/u8g2_kerning.c ****   cnt--;	/* ignore the last element of the table, which is 0x0ffff */
+  48              		.loc 1 55 0
+  49 0008 013D     		subs	r5, r5, #1
+  50              	.LVL2:
+  51 000a ADB2     		uxth	r5, r5
+  52              	.LVL3:
+  56:u8g2_lib/u8g2_kerning.c ****   for( i1 = 0; i1 < cnt; i1++ )
+  53              		.loc 1 56 0
+  54 000c 0021     		movs	r1, #0
+  55              	.LVL4:
+  56 000e 06E0     		b	.L3
+  57              	.LVL5:
+  58              	.L5:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccPL5iUj.s 			page 3
+
+
+  57:u8g2_lib/u8g2_kerning.c ****   {
+  58:u8g2_lib/u8g2_kerning.c ****     if ( kerning->first_encoding_table[i1] == e1 )
+  59              		.loc 1 58 0
+  60 0010 6068     		ldr	r0, [r4, #4]
+  61 0012 30F81100 		ldrh	r0, [r0, r1, lsl #1]
+  62 0016 9042     		cmp	r0, r2
+  63 0018 03D0     		beq	.L4
+  56:u8g2_lib/u8g2_kerning.c ****   for( i1 = 0; i1 < cnt; i1++ )
+  64              		.loc 1 56 0 discriminator 2
+  65 001a 0131     		adds	r1, r1, #1
+  66              	.LVL6:
+  67 001c 89B2     		uxth	r1, r1
+  68              	.LVL7:
+  69              	.L3:
+  56:u8g2_lib/u8g2_kerning.c ****   for( i1 = 0; i1 < cnt; i1++ )
+  70              		.loc 1 56 0 is_stmt 0 discriminator 1
+  71 001e A942     		cmp	r1, r5
+  72 0020 F6D3     		bcc	.L5
+  73              	.L4:
+  59:u8g2_lib/u8g2_kerning.c ****       break;
+  60:u8g2_lib/u8g2_kerning.c ****   }
+  61:u8g2_lib/u8g2_kerning.c ****   if ( i1 >= cnt )
+  74              		.loc 1 61 0 is_stmt 1
+  75 0022 A942     		cmp	r1, r5
+  76 0024 16D2     		bcs	.L10
+  62:u8g2_lib/u8g2_kerning.c ****     return 0;	/* e1 not part of the kerning table, return 0 */
+  63:u8g2_lib/u8g2_kerning.c **** 
+  64:u8g2_lib/u8g2_kerning.c ****   /* get the upper index for i2 */
+  65:u8g2_lib/u8g2_kerning.c ****   end = kerning->index_to_second_table[i1+1];
+  77              		.loc 1 65 0
+  78 0026 A268     		ldr	r2, [r4, #8]
+  79              	.LVL8:
+  80 0028 481C     		adds	r0, r1, #1
+  81 002a 32F81000 		ldrh	r0, [r2, r0, lsl #1]
+  82              	.LVL9:
+  66:u8g2_lib/u8g2_kerning.c ****   for( i2 = kerning->index_to_second_table[i1]; i2 < end; i2++ )
+  83              		.loc 1 66 0
+  84 002e 32F81120 		ldrh	r2, [r2, r1, lsl #1]
+  85              	.LVL10:
+  86 0032 06E0     		b	.L6
+  87              	.LVL11:
+  88              	.L8:
+  67:u8g2_lib/u8g2_kerning.c ****   {
+  68:u8g2_lib/u8g2_kerning.c ****     if ( kerning->second_encoding_table[i2] == e2 )
+  89              		.loc 1 68 0
+  90 0034 E168     		ldr	r1, [r4, #12]
+  91 0036 31F81210 		ldrh	r1, [r1, r2, lsl #1]
+  92 003a 9942     		cmp	r1, r3
+  93 003c 03D0     		beq	.L7
+  66:u8g2_lib/u8g2_kerning.c ****   for( i2 = kerning->index_to_second_table[i1]; i2 < end; i2++ )
+  94              		.loc 1 66 0 discriminator 2
+  95 003e 0132     		adds	r2, r2, #1
+  96              	.LVL12:
+  97 0040 92B2     		uxth	r2, r2
+  98              	.LVL13:
+  99              	.L6:
+  66:u8g2_lib/u8g2_kerning.c ****   for( i2 = kerning->index_to_second_table[i1]; i2 < end; i2++ )
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccPL5iUj.s 			page 4
+
+
+ 100              		.loc 1 66 0 is_stmt 0 discriminator 1
+ 101 0042 8242     		cmp	r2, r0
+ 102 0044 F6D3     		bcc	.L8
+ 103              	.L7:
+  69:u8g2_lib/u8g2_kerning.c ****       break;
+  70:u8g2_lib/u8g2_kerning.c ****   }
+  71:u8g2_lib/u8g2_kerning.c ****   
+  72:u8g2_lib/u8g2_kerning.c ****   if ( i2 >= end )
+ 104              		.loc 1 72 0 is_stmt 1
+ 105 0046 8242     		cmp	r2, r0
+ 106 0048 06D2     		bcs	.L11
+  73:u8g2_lib/u8g2_kerning.c ****     return 0;	/* e2 not part of any pair with e1, return 0 */
+  74:u8g2_lib/u8g2_kerning.c ****   
+  75:u8g2_lib/u8g2_kerning.c ****   return kerning->kerning_values[i2];
+ 107              		.loc 1 75 0
+ 108 004a 2369     		ldr	r3, [r4, #16]
+ 109              	.LVL14:
+ 110 004c 985C     		ldrb	r0, [r3, r2]	@ zero_extendqisi2
+ 111              	.LVL15:
+ 112 004e 04E0     		b	.L2
+ 113              	.LVL16:
+ 114              	.L9:
+ 115              	.LCFI1:
+ 116              		.cfi_def_cfa_offset 0
+ 117              		.cfi_restore 4
+ 118              		.cfi_restore 5
+  51:u8g2_lib/u8g2_kerning.c ****   
+ 119              		.loc 1 51 0
+ 120 0050 0020     		movs	r0, #0
+ 121              	.LVL17:
+  76:u8g2_lib/u8g2_kerning.c **** }
+ 122              		.loc 1 76 0
+ 123 0052 7047     		bx	lr
+ 124              	.LVL18:
+ 125              	.L10:
+ 126              	.LCFI2:
+ 127              		.cfi_def_cfa_offset 8
+ 128              		.cfi_offset 4, -8
+ 129              		.cfi_offset 5, -4
+  62:u8g2_lib/u8g2_kerning.c **** 
+ 130              		.loc 1 62 0
+ 131 0054 0020     		movs	r0, #0
+ 132 0056 00E0     		b	.L2
+ 133              	.LVL19:
+ 134              	.L11:
+  73:u8g2_lib/u8g2_kerning.c ****   
+ 135              		.loc 1 73 0
+ 136 0058 0020     		movs	r0, #0
+ 137              	.LVL20:
+ 138              	.L2:
+ 139              		.loc 1 76 0
+ 140 005a 30BC     		pop	{r4, r5}
+ 141              	.LCFI3:
+ 142              		.cfi_restore 5
+ 143              		.cfi_restore 4
+ 144              		.cfi_def_cfa_offset 0
+ 145              	.LVL21:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccPL5iUj.s 			page 5
+
+
+ 146 005c 7047     		bx	lr
+ 147              		.cfi_endproc
+ 148              	.LFE0:
+ 150 005e 00BF     		.section	.text.u8g2_GetKerningByTable,"ax",%progbits
+ 151              		.align	2
+ 152              		.global	u8g2_GetKerningByTable
+ 153              		.thumb
+ 154              		.thumb_func
+ 156              	u8g2_GetKerningByTable:
+ 157              	.LFB1:
+  77:u8g2_lib/u8g2_kerning.c **** 
+  78:u8g2_lib/u8g2_kerning.c **** uint8_t u8g2_GetKerningByTable(U8X8_UNUSED u8g2_t *u8g2, const uint16_t *kt, uint16_t e1, uint16_t 
+  79:u8g2_lib/u8g2_kerning.c **** {
+ 158              		.loc 1 79 0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162              		@ link register save eliminated.
+ 163              	.LVL22:
+  80:u8g2_lib/u8g2_kerning.c ****   uint16_t i;
+  81:u8g2_lib/u8g2_kerning.c ****   i = 0;
+  82:u8g2_lib/u8g2_kerning.c ****   if ( kt == NULL )
+ 164              		.loc 1 82 0
+ 165 0000 B9B1     		cbz	r1, .L17
+  79:u8g2_lib/u8g2_kerning.c ****   uint16_t i;
+ 166              		.loc 1 79 0
+ 167 0002 70B4     		push	{r4, r5, r6}
+ 168              	.LCFI4:
+ 169              		.cfi_def_cfa_offset 12
+ 170              		.cfi_offset 4, -12
+ 171              		.cfi_offset 5, -8
+ 172              		.cfi_offset 6, -4
+ 173 0004 0D46     		mov	r5, r1
+ 174 0006 0021     		movs	r1, #0
+ 175              	.LVL23:
+ 176              	.L16:
+  83:u8g2_lib/u8g2_kerning.c ****     return 0;
+  84:u8g2_lib/u8g2_kerning.c ****   for(;;)
+  85:u8g2_lib/u8g2_kerning.c ****   {
+  86:u8g2_lib/u8g2_kerning.c ****     if ( kt[i] == 0x0ffff )
+ 177              		.loc 1 86 0
+ 178 0008 0E46     		mov	r6, r1
+ 179 000a 35F81100 		ldrh	r0, [r5, r1, lsl #1]
+ 180 000e 4FF6FF74 		movw	r4, #65535
+ 181 0012 A042     		cmp	r0, r4
+ 182 0014 0FD0     		beq	.L18
+  87:u8g2_lib/u8g2_kerning.c ****       break;
+  88:u8g2_lib/u8g2_kerning.c ****     if ( kt[i] == e1 && kt[i+1] == e2 )
+ 183              		.loc 1 88 0
+ 184 0016 9042     		cmp	r0, r2
+ 185 0018 08D1     		bne	.L15
+ 186              		.loc 1 88 0 is_stmt 0 discriminator 1
+ 187 001a 481C     		adds	r0, r1, #1
+ 188 001c 35F81000 		ldrh	r0, [r5, r0, lsl #1]
+ 189 0020 9842     		cmp	r0, r3
+ 190 0022 03D1     		bne	.L15
+  89:u8g2_lib/u8g2_kerning.c ****       return kt[i+2];
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccPL5iUj.s 			page 6
+
+
+ 191              		.loc 1 89 0 is_stmt 1
+ 192 0024 0236     		adds	r6, r6, #2
+ 193 0026 15F81600 		ldrb	r0, [r5, r6, lsl #1]	@ zero_extendqisi2
+ 194 002a 05E0     		b	.L14
+ 195              	.L15:
+  90:u8g2_lib/u8g2_kerning.c ****     i+=3;
+ 196              		.loc 1 90 0
+ 197 002c 0331     		adds	r1, r1, #3
+ 198              	.LVL24:
+ 199 002e 89B2     		uxth	r1, r1
+ 200              	.LVL25:
+  91:u8g2_lib/u8g2_kerning.c ****   }
+ 201              		.loc 1 91 0
+ 202 0030 EAE7     		b	.L16
+ 203              	.LVL26:
+ 204              	.L17:
+ 205              	.LCFI5:
+ 206              		.cfi_def_cfa_offset 0
+ 207              		.cfi_restore 4
+ 208              		.cfi_restore 5
+ 209              		.cfi_restore 6
+  83:u8g2_lib/u8g2_kerning.c ****   for(;;)
+ 210              		.loc 1 83 0
+ 211 0032 0020     		movs	r0, #0
+ 212              	.LVL27:
+  92:u8g2_lib/u8g2_kerning.c ****   return 0;
+  93:u8g2_lib/u8g2_kerning.c **** }
+ 213              		.loc 1 93 0
+ 214 0034 7047     		bx	lr
+ 215              	.LVL28:
+ 216              	.L18:
+ 217              	.LCFI6:
+ 218              		.cfi_def_cfa_offset 12
+ 219              		.cfi_offset 4, -12
+ 220              		.cfi_offset 5, -8
+ 221              		.cfi_offset 6, -4
+  92:u8g2_lib/u8g2_kerning.c ****   return 0;
+ 222              		.loc 1 92 0
+ 223 0036 0020     		movs	r0, #0
+ 224              	.L14:
+ 225              		.loc 1 93 0
+ 226 0038 70BC     		pop	{r4, r5, r6}
+ 227              	.LCFI7:
+ 228              		.cfi_restore 6
+ 229              		.cfi_restore 5
+ 230              		.cfi_restore 4
+ 231              		.cfi_def_cfa_offset 0
+ 232              	.LVL29:
+ 233 003a 7047     		bx	lr
+ 234              		.cfi_endproc
+ 235              	.LFE1:
+ 237              		.text
+ 238              	.Letext0:
+ 239              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 240              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 241              		.file 4 "u8g2_lib/u8x8.h"
+ 242              		.file 5 "u8g2_lib/u8g2.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccPL5iUj.s 			page 7
+
+
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccPL5iUj.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g2_kerning.c
+C:\Users\master\AppData\Local\Temp\ccPL5iUj.s:22     .text.u8g2_GetKerning:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccPL5iUj.s:27     .text.u8g2_GetKerning:00000000 u8g2_GetKerning
+C:\Users\master\AppData\Local\Temp\ccPL5iUj.s:151    .text.u8g2_GetKerningByTable:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccPL5iUj.s:156    .text.u8g2_GetKerningByTable:00000000 u8g2_GetKerningByTable
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

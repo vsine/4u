@@ -1,0 +1,306 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8log_u8g2.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g2_DrawLog,"ax",%progbits
+  22              		.align	2
+  23              		.global	u8g2_DrawLog
+  24              		.thumb
+  25              		.thumb_func
+  27              	u8g2_DrawLog:
+  28              	.LFB0:
+  29              		.file 1 "u8g2_lib/u8log_u8g2.c"
+   1:u8g2_lib/u8log_u8g2.c **** /*
+   2:u8g2_lib/u8log_u8g2.c **** 
+   3:u8g2_lib/u8log_u8g2.c ****   u8log_u8g2.c
+   4:u8g2_lib/u8log_u8g2.c ****   
+   5:u8g2_lib/u8log_u8g2.c **** 
+   6:u8g2_lib/u8log_u8g2.c ****   Universal 8bit Graphics Library (https://github.com/olikraus/u8g2/)
+   7:u8g2_lib/u8log_u8g2.c **** 
+   8:u8g2_lib/u8log_u8g2.c ****   Copyright (c) 2018, olikraus@gmail.com
+   9:u8g2_lib/u8log_u8g2.c ****   All rights reserved.
+  10:u8g2_lib/u8log_u8g2.c **** 
+  11:u8g2_lib/u8log_u8g2.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  12:u8g2_lib/u8log_u8g2.c ****   are permitted provided that the following conditions are met:
+  13:u8g2_lib/u8log_u8g2.c **** 
+  14:u8g2_lib/u8log_u8g2.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  15:u8g2_lib/u8log_u8g2.c ****     of conditions and the following disclaimer.
+  16:u8g2_lib/u8log_u8g2.c ****     
+  17:u8g2_lib/u8log_u8g2.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  18:u8g2_lib/u8log_u8g2.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  19:u8g2_lib/u8log_u8g2.c ****     materials provided with the distribution.
+  20:u8g2_lib/u8log_u8g2.c **** 
+  21:u8g2_lib/u8log_u8g2.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  22:u8g2_lib/u8log_u8g2.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  23:u8g2_lib/u8log_u8g2.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  24:u8g2_lib/u8log_u8g2.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  25:u8g2_lib/u8log_u8g2.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  26:u8g2_lib/u8log_u8g2.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  27:u8g2_lib/u8log_u8g2.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  28:u8g2_lib/u8log_u8g2.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  29:u8g2_lib/u8log_u8g2.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 2
+
+
+  30:u8g2_lib/u8log_u8g2.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  31:u8g2_lib/u8log_u8g2.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  32:u8g2_lib/u8log_u8g2.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  33:u8g2_lib/u8log_u8g2.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  34:u8g2_lib/u8log_u8g2.c **** 
+  35:u8g2_lib/u8log_u8g2.c **** */
+  36:u8g2_lib/u8log_u8g2.c **** 
+  37:u8g2_lib/u8log_u8g2.c **** #include "u8g2.h"
+  38:u8g2_lib/u8log_u8g2.c **** /*
+  39:u8g2_lib/u8log_u8g2.c ****   Draw the u8log text at the specified x/y position.
+  40:u8g2_lib/u8log_u8g2.c ****   x/y position is the reference position of the first char of the first line.
+  41:u8g2_lib/u8log_u8g2.c ****   the line height is 
+  42:u8g2_lib/u8log_u8g2.c ****     u8g2_GetAscent(u8g2) - u8g2_GetDescent(u8g2) + line_height_offset;
+  43:u8g2_lib/u8log_u8g2.c ****   line_height_offset can be set with u8log_SetLineHeightOffset()
+  44:u8g2_lib/u8log_u8g2.c ****   Use
+  45:u8g2_lib/u8log_u8g2.c ****     u8g2_SetFontRefHeightText(u8g2_t *u8g2);
+  46:u8g2_lib/u8log_u8g2.c ****     u8g2_SetFontRefHeightExtendedText(u8g2_t *u8g2);
+  47:u8g2_lib/u8log_u8g2.c ****     u8g2_SetFontRefHeightAll(u8g2_t *u8g2);
+  48:u8g2_lib/u8log_u8g2.c ****   to change the return values for u8g2_GetAscent and u8g2_GetDescent
+  49:u8g2_lib/u8log_u8g2.c **** 
+  50:u8g2_lib/u8log_u8g2.c **** */
+  51:u8g2_lib/u8log_u8g2.c **** void u8g2_DrawLog(u8g2_t *u8g2, u8g2_uint_t x, u8g2_uint_t y, u8log_t *u8log)
+  52:u8g2_lib/u8log_u8g2.c **** {
+  30              		.loc 1 52 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              	.LVL0:
+  35 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 32
+  38              		.cfi_offset 4, -32
+  39              		.cfi_offset 5, -28
+  40              		.cfi_offset 6, -24
+  41              		.cfi_offset 7, -20
+  42              		.cfi_offset 8, -16
+  43              		.cfi_offset 9, -12
+  44              		.cfi_offset 10, -8
+  45              		.cfi_offset 14, -4
+  46 0004 8146     		mov	r9, r0
+  47 0006 8A46     		mov	r10, r1
+  48 0008 9046     		mov	r8, r2
+  49 000a 1E46     		mov	r6, r3
+  50              	.LVL1:
+  53:u8g2_lib/u8log_u8g2.c ****   u8g2_uint_t disp_x, disp_y;
+  54:u8g2_lib/u8log_u8g2.c ****   uint8_t buf_x, buf_y;
+  55:u8g2_lib/u8log_u8g2.c ****   uint8_t c;
+  56:u8g2_lib/u8log_u8g2.c ****   
+  57:u8g2_lib/u8log_u8g2.c ****   disp_y = y;  
+  58:u8g2_lib/u8log_u8g2.c ****   u8g2_SetFontDirection(u8g2, 0);
+  51              		.loc 1 58 0
+  52 000c 0021     		movs	r1, #0
+  53              	.LVL2:
+  54 000e FFF7FEFF 		bl	u8g2_SetFontDirection
+  55              	.LVL3:
+  59:u8g2_lib/u8log_u8g2.c ****   for( buf_y = 0; buf_y < u8log->height; buf_y++ )
+  56              		.loc 1 59 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 3
+
+
+  57 0012 0027     		movs	r7, #0
+  58 0014 20E0     		b	.L2
+  59              	.LVL4:
+  60              	.L3:
+  60:u8g2_lib/u8log_u8g2.c ****   {
+  61:u8g2_lib/u8log_u8g2.c ****     disp_x = x;
+  62:u8g2_lib/u8log_u8g2.c ****     for( buf_x = 0; buf_x < u8log->width; buf_x++ )
+  63:u8g2_lib/u8log_u8g2.c ****     {
+  64:u8g2_lib/u8log_u8g2.c ****       c = u8log->screen_buffer[buf_y * u8log->width + buf_x];
+  61              		.loc 1 64 0 discriminator 3
+  62 0016 F268     		ldr	r2, [r6, #12]
+  63 0018 03FB0743 		mla	r3, r3, r7, r4
+  64              	.LVL5:
+  65:u8g2_lib/u8log_u8g2.c ****       disp_x += u8g2_DrawGlyph(u8g2, disp_x, disp_y, c);
+  65              		.loc 1 65 0 discriminator 3
+  66 001c D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+  67              	.LVL6:
+  68 001e 4246     		mov	r2, r8
+  69              	.LVL7:
+  70 0020 2946     		mov	r1, r5
+  71 0022 4846     		mov	r0, r9
+  72 0024 FFF7FEFF 		bl	u8g2_DrawGlyph
+  73              	.LVL8:
+  74 0028 2844     		add	r0, r0, r5
+  75 002a 85B2     		uxth	r5, r0
+  76              	.LVL9:
+  62:u8g2_lib/u8log_u8g2.c ****     {
+  77              		.loc 1 62 0 discriminator 3
+  78 002c 0134     		adds	r4, r4, #1
+  79              	.LVL10:
+  80 002e E4B2     		uxtb	r4, r4
+  81              	.LVL11:
+  82 0030 01E0     		b	.L4
+  83              	.LVL12:
+  84              	.L5:
+  85 0032 5546     		mov	r5, r10
+  86 0034 0024     		movs	r4, #0
+  87              	.L4:
+  88              	.LVL13:
+  62:u8g2_lib/u8log_u8g2.c ****     {
+  89              		.loc 1 62 0 is_stmt 0 discriminator 1
+  90 0036 3379     		ldrb	r3, [r6, #4]	@ zero_extendqisi2
+  91 0038 9C42     		cmp	r4, r3
+  92 003a ECD3     		bcc	.L3
+  66:u8g2_lib/u8log_u8g2.c ****     }
+  67:u8g2_lib/u8log_u8g2.c ****     disp_y += u8g2_GetAscent(u8g2) - u8g2_GetDescent(u8g2);
+  93              		.loc 1 67 0 is_stmt 1 discriminator 2
+  94 003c 99F98E30 		ldrsb	r3, [r9, #142]
+  95 0040 99F98F20 		ldrsb	r2, [r9, #143]
+  96 0044 9B1A     		subs	r3, r3, r2
+  97 0046 9844     		add	r8, r8, r3
+  98              	.LVL14:
+  68:u8g2_lib/u8log_u8g2.c ****     disp_y += u8log->line_height_offset;
+  99              		.loc 1 68 0 discriminator 2
+ 100 0048 96F91130 		ldrsb	r3, [r6, #17]
+ 101 004c 13FA88F8 		uxtah	r8, r3, r8
+ 102              	.LVL15:
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 4
+
+
+ 103 0050 1FFA88F8 		uxth	r8, r8
+ 104              	.LVL16:
+  59:u8g2_lib/u8log_u8g2.c ****   {
+ 105              		.loc 1 59 0 discriminator 2
+ 106 0054 0137     		adds	r7, r7, #1
+ 107              	.LVL17:
+ 108 0056 FFB2     		uxtb	r7, r7
+ 109              	.LVL18:
+ 110              	.L2:
+  59:u8g2_lib/u8log_u8g2.c ****   {
+ 111              		.loc 1 59 0 is_stmt 0 discriminator 1
+ 112 0058 7379     		ldrb	r3, [r6, #5]	@ zero_extendqisi2
+ 113 005a 9F42     		cmp	r7, r3
+ 114 005c E9D3     		bcc	.L5
+  69:u8g2_lib/u8log_u8g2.c ****   }
+  70:u8g2_lib/u8log_u8g2.c **** }
+ 115              		.loc 1 70 0 is_stmt 1
+ 116 005e BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 117              		.cfi_endproc
+ 118              	.LFE0:
+ 120 0062 00BF     		.section	.text.u8log_u8g2_cb,"ax",%progbits
+ 121              		.align	2
+ 122              		.global	u8log_u8g2_cb
+ 123              		.thumb
+ 124              		.thumb_func
+ 126              	u8log_u8g2_cb:
+ 127              	.LFB1:
+  71:u8g2_lib/u8log_u8g2.c **** 
+  72:u8g2_lib/u8log_u8g2.c **** /*
+  73:u8g2_lib/u8log_u8g2.c ****   u8lib callback for u8g2
+  74:u8g2_lib/u8log_u8g2.c ****   
+  75:u8g2_lib/u8log_u8g2.c ****   Only font direction 0 is supported: u8g2_SetFontDirection(u8g2, 0)
+  76:u8g2_lib/u8log_u8g2.c ****   Use
+  77:u8g2_lib/u8log_u8g2.c ****     u8g2_SetFontRefHeightText(u8g2_t *u8g2);
+  78:u8g2_lib/u8log_u8g2.c ****     u8g2_SetFontRefHeightExtendedText(u8g2_t *u8g2);
+  79:u8g2_lib/u8log_u8g2.c ****     u8g2_SetFontRefHeightAll(u8g2_t *u8g2);
+  80:u8g2_lib/u8log_u8g2.c ****   to change the top offset and the line height and
+  81:u8g2_lib/u8log_u8g2.c ****     u8log_SetLineHeightOffset(u8log_t *u8log, int8_t line_height_offset)
+  82:u8g2_lib/u8log_u8g2.c ****   to change the line height.
+  83:u8g2_lib/u8log_u8g2.c ****   
+  84:u8g2_lib/u8log_u8g2.c **** */
+  85:u8g2_lib/u8log_u8g2.c **** void u8log_u8g2_cb(u8log_t * u8log)
+  86:u8g2_lib/u8log_u8g2.c **** {
+ 128              		.loc 1 86 0
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 0
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132              	.LVL19:
+ 133 0000 38B5     		push	{r3, r4, r5, lr}
+ 134              	.LCFI1:
+ 135              		.cfi_def_cfa_offset 16
+ 136              		.cfi_offset 3, -16
+ 137              		.cfi_offset 4, -12
+ 138              		.cfi_offset 5, -8
+ 139              		.cfi_offset 14, -4
+  87:u8g2_lib/u8log_u8g2.c ****   u8g2_t *u8g2 = (u8g2_t *)(u8log->aux_data);
+ 140              		.loc 1 87 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 5
+
+
+ 141 0002 0468     		ldr	r4, [r0]
+ 142              	.LVL20:
+  88:u8g2_lib/u8log_u8g2.c ****   if ( u8log->is_redraw_line || u8log->is_redraw_all )
+ 143              		.loc 1 88 0
+ 144 0004 4369     		ldr	r3, [r0, #20]
+ 145 0006 23F07F43 		bic	r3, r3, #-16777216
+ 146 000a 23F0FF03 		bic	r3, r3, #255
+ 147 000e 83B1     		cbz	r3, .L7
+ 148 0010 0546     		mov	r5, r0
+  89:u8g2_lib/u8log_u8g2.c ****   {
+  90:u8g2_lib/u8log_u8g2.c ****     u8g2_FirstPage(u8g2);
+ 149              		.loc 1 90 0
+ 150 0012 2046     		mov	r0, r4
+ 151              	.LVL21:
+ 152 0014 FFF7FEFF 		bl	u8g2_FirstPage
+ 153              	.LVL22:
+ 154              	.L9:
+  91:u8g2_lib/u8log_u8g2.c ****     do
+  92:u8g2_lib/u8log_u8g2.c ****     {
+  93:u8g2_lib/u8log_u8g2.c ****       u8g2_DrawLog( u8g2, 0, u8g2_GetAscent(u8g2), u8log);
+ 155              		.loc 1 93 0 discriminator 1
+ 156 0018 94F98E20 		ldrsb	r2, [r4, #142]
+ 157 001c 2B46     		mov	r3, r5
+ 158 001e 92B2     		uxth	r2, r2
+ 159 0020 0021     		movs	r1, #0
+ 160 0022 2046     		mov	r0, r4
+ 161 0024 FFF7FEFF 		bl	u8g2_DrawLog
+ 162              	.LVL23:
+  94:u8g2_lib/u8log_u8g2.c ****     }
+  95:u8g2_lib/u8log_u8g2.c ****     while( u8g2_NextPage(u8g2) );
+ 163              		.loc 1 95 0 discriminator 1
+ 164 0028 2046     		mov	r0, r4
+ 165 002a FFF7FEFF 		bl	u8g2_NextPage
+ 166              	.LVL24:
+ 167 002e 0028     		cmp	r0, #0
+ 168 0030 F2D1     		bne	.L9
+ 169              	.LVL25:
+ 170              	.L7:
+ 171 0032 38BD     		pop	{r3, r4, r5, pc}
+ 172              		.cfi_endproc
+ 173              	.LFE1:
+ 175              		.text
+ 176              	.Letext0:
+ 177              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 178              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 179              		.file 4 "u8g2_lib/u8x8.h"
+ 180              		.file 5 "u8g2_lib/u8g2.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8log_u8g2.c
+C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s:22     .text.u8g2_DrawLog:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s:27     .text.u8g2_DrawLog:00000000 u8g2_DrawLog
+C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s:121    .text.u8log_u8g2_cb:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc3Dx0aC.s:126    .text.u8log_u8g2_cb:00000000 u8log_u8g2_cb
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+u8g2_SetFontDirection
+u8g2_DrawGlyph
+u8g2_FirstPage
+u8g2_NextPage

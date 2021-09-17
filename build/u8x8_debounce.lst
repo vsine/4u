@@ -1,0 +1,539 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccnDiL9b.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8x8_debounce.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8x8_find_first_diff,"ax",%progbits
+  22              		.align	2
+  23              		.thumb
+  24              		.thumb_func
+  26              	u8x8_find_first_diff:
+  27              	.LFB1:
+  28              		.file 1 "u8g2_lib/u8x8_debounce.c"
+   1:u8g2_lib/u8x8_debounce.c **** /*
+   2:u8g2_lib/u8x8_debounce.c **** 
+   3:u8g2_lib/u8x8_debounce.c ****   u8x8_debounce.c
+   4:u8g2_lib/u8x8_debounce.c ****   
+   5:u8g2_lib/u8x8_debounce.c ****   Key/button simple debounce algorithm (Addon for u8x8)
+   6:u8g2_lib/u8x8_debounce.c ****   
+   7:u8g2_lib/u8x8_debounce.c ****   Universal 8bit Graphics Library (https://github.com/olikraus/u8g2/)
+   8:u8g2_lib/u8x8_debounce.c **** 
+   9:u8g2_lib/u8x8_debounce.c ****   Copyright (c) 2016, olikraus@gmail.com
+  10:u8g2_lib/u8x8_debounce.c ****   All rights reserved.
+  11:u8g2_lib/u8x8_debounce.c **** 
+  12:u8g2_lib/u8x8_debounce.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  13:u8g2_lib/u8x8_debounce.c ****   are permitted provided that the following conditions are met:
+  14:u8g2_lib/u8x8_debounce.c **** 
+  15:u8g2_lib/u8x8_debounce.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  16:u8g2_lib/u8x8_debounce.c ****     of conditions and the following disclaimer.
+  17:u8g2_lib/u8x8_debounce.c ****     
+  18:u8g2_lib/u8x8_debounce.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  19:u8g2_lib/u8x8_debounce.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  20:u8g2_lib/u8x8_debounce.c ****     materials provided with the distribution.
+  21:u8g2_lib/u8x8_debounce.c **** 
+  22:u8g2_lib/u8x8_debounce.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  23:u8g2_lib/u8x8_debounce.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  24:u8g2_lib/u8x8_debounce.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  25:u8g2_lib/u8x8_debounce.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  26:u8g2_lib/u8x8_debounce.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  27:u8g2_lib/u8x8_debounce.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  28:u8g2_lib/u8x8_debounce.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:u8g2_lib/u8x8_debounce.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  30:u8g2_lib/u8x8_debounce.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccnDiL9b.s 			page 2
+
+
+  31:u8g2_lib/u8x8_debounce.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  32:u8g2_lib/u8x8_debounce.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  33:u8g2_lib/u8x8_debounce.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  34:u8g2_lib/u8x8_debounce.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  35:u8g2_lib/u8x8_debounce.c ****   
+  36:u8g2_lib/u8x8_debounce.c **** */
+  37:u8g2_lib/u8x8_debounce.c **** 
+  38:u8g2_lib/u8x8_debounce.c **** #include "u8x8.h"
+  39:u8g2_lib/u8x8_debounce.c **** 
+  40:u8g2_lib/u8x8_debounce.c **** static uint8_t u8x8_read_pin_state(u8x8_t *u8x8)
+  41:u8g2_lib/u8x8_debounce.c **** {
+  42:u8g2_lib/u8x8_debounce.c ****   uint8_t i;
+  43:u8g2_lib/u8x8_debounce.c ****   uint8_t pin_state;
+  44:u8g2_lib/u8x8_debounce.c ****   
+  45:u8g2_lib/u8x8_debounce.c ****   pin_state = 255;	/* be compatible with the setup of the default pin setup, which is 255 */
+  46:u8g2_lib/u8x8_debounce.c ****   for( i = 0; i < U8X8_PIN_INPUT_CNT; i++ )
+  47:u8g2_lib/u8x8_debounce.c ****   {
+  48:u8g2_lib/u8x8_debounce.c ****     pin_state <<= 1;
+  49:u8g2_lib/u8x8_debounce.c ****     
+  50:u8g2_lib/u8x8_debounce.c ****     /* the callback function should put the return value into this variable */
+  51:u8g2_lib/u8x8_debounce.c ****     u8x8->gpio_result = 1;
+  52:u8g2_lib/u8x8_debounce.c ****     u8x8_gpio_call(u8x8, U8X8_MSG_GPIO(i+U8X8_PIN_OUTPUT_CNT), 0);
+  53:u8g2_lib/u8x8_debounce.c ****     pin_state |= u8x8->gpio_result & 1;
+  54:u8g2_lib/u8x8_debounce.c ****   }
+  55:u8g2_lib/u8x8_debounce.c ****   
+  56:u8g2_lib/u8x8_debounce.c ****   return pin_state;
+  57:u8g2_lib/u8x8_debounce.c **** }
+  58:u8g2_lib/u8x8_debounce.c **** 
+  59:u8g2_lib/u8x8_debounce.c **** /*
+  60:u8g2_lib/u8x8_debounce.c ****   return 0 to U8X8_PIN_INPUT_CNT-1 if there is a difference
+  61:u8g2_lib/u8x8_debounce.c ****   return U8X8_PIN_INPUT_CNT if there is no difference
+  62:u8g2_lib/u8x8_debounce.c **** */
+  63:u8g2_lib/u8x8_debounce.c **** static uint8_t u8x8_find_first_diff(uint8_t a, uint8_t b)
+  64:u8g2_lib/u8x8_debounce.c **** {
+  29              		.loc 1 64 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  34              	.LVL0:
+  35 0000 10B4     		push	{r4}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 4
+  38              		.cfi_offset 4, -4
+  39              	.LVL1:
+  65:u8g2_lib/u8x8_debounce.c ****   uint8_t mask;
+  66:u8g2_lib/u8x8_debounce.c ****   uint8_t i;
+  67:u8g2_lib/u8x8_debounce.c ****   mask = 1;
+  68:u8g2_lib/u8x8_debounce.c ****   i = U8X8_PIN_INPUT_CNT;
+  40              		.loc 1 68 0
+  41 0002 0623     		movs	r3, #6
+  67:u8g2_lib/u8x8_debounce.c ****   i = U8X8_PIN_INPUT_CNT;
+  42              		.loc 1 67 0
+  43 0004 0122     		movs	r2, #1
+  44              	.LVL2:
+  45              	.L3:
+  69:u8g2_lib/u8x8_debounce.c ****   do
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccnDiL9b.s 			page 3
+
+
+  70:u8g2_lib/u8x8_debounce.c ****   {
+  71:u8g2_lib/u8x8_debounce.c ****     i--;
+  46              		.loc 1 71 0
+  47 0006 013B     		subs	r3, r3, #1
+  48              	.LVL3:
+  49 0008 DBB2     		uxtb	r3, r3
+  50              	.LVL4:
+  72:u8g2_lib/u8x8_debounce.c ****     if ( (a & mask) != (b & mask) )
+  51              		.loc 1 72 0
+  52 000a 80EA0104 		eor	r4, r0, r1
+  53 000e 2242     		tst	r2, r4
+  54 0010 05D1     		bne	.L4
+  73:u8g2_lib/u8x8_debounce.c ****       return i;
+  74:u8g2_lib/u8x8_debounce.c ****     mask <<= 1;
+  55              		.loc 1 74 0
+  56 0012 5200     		lsls	r2, r2, #1
+  57              	.LVL5:
+  58 0014 D2B2     		uxtb	r2, r2
+  59              	.LVL6:
+  75:u8g2_lib/u8x8_debounce.c ****   } while( i > 0 );
+  60              		.loc 1 75 0
+  61 0016 002B     		cmp	r3, #0
+  62 0018 F5D1     		bne	.L3
+  76:u8g2_lib/u8x8_debounce.c ****   return U8X8_PIN_INPUT_CNT;
+  63              		.loc 1 76 0
+  64 001a 0620     		movs	r0, #6
+  65              	.LVL7:
+  66 001c 00E0     		b	.L2
+  67              	.LVL8:
+  68              	.L4:
+  73:u8g2_lib/u8x8_debounce.c ****       return i;
+  69              		.loc 1 73 0
+  70 001e 1846     		mov	r0, r3
+  71              	.LVL9:
+  72              	.L2:
+  77:u8g2_lib/u8x8_debounce.c **** }
+  73              		.loc 1 77 0
+  74 0020 5DF8044B 		ldr	r4, [sp], #4
+  75              	.LCFI1:
+  76              		.cfi_restore 4
+  77              		.cfi_def_cfa_offset 0
+  78 0024 7047     		bx	lr
+  79              		.cfi_endproc
+  80              	.LFE1:
+  82 0026 00BF     		.section	.text.u8x8_read_pin_state,"ax",%progbits
+  83              		.align	2
+  84              		.thumb
+  85              		.thumb_func
+  87              	u8x8_read_pin_state:
+  88              	.LFB0:
+  41:u8g2_lib/u8x8_debounce.c ****   uint8_t i;
+  89              		.loc 1 41 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93              	.LVL10:
+  94 0000 70B5     		push	{r4, r5, r6, lr}
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccnDiL9b.s 			page 4
+
+
+  95              	.LCFI2:
+  96              		.cfi_def_cfa_offset 16
+  97              		.cfi_offset 4, -16
+  98              		.cfi_offset 5, -12
+  99              		.cfi_offset 6, -8
+ 100              		.cfi_offset 14, -4
+ 101 0002 0646     		mov	r6, r0
+ 102              	.LVL11:
+  45:u8g2_lib/u8x8_debounce.c ****   for( i = 0; i < U8X8_PIN_INPUT_CNT; i++ )
+ 103              		.loc 1 45 0
+ 104 0004 FF20     		movs	r0, #255
+ 105              	.LVL12:
+  46:u8g2_lib/u8x8_debounce.c ****   {
+ 106              		.loc 1 46 0
+ 107 0006 0024     		movs	r4, #0
+ 108 0008 12E0     		b	.L7
+ 109              	.LVL13:
+ 110              	.L8:
+  48:u8g2_lib/u8x8_debounce.c ****     
+ 111              		.loc 1 48 0 discriminator 3
+ 112 000a 4000     		lsls	r0, r0, #1
+ 113              	.LVL14:
+ 114 000c C5B2     		uxtb	r5, r0
+ 115              	.LVL15:
+  51:u8g2_lib/u8x8_debounce.c ****     u8x8_gpio_call(u8x8, U8X8_MSG_GPIO(i+U8X8_PIN_OUTPUT_CNT), 0);
+ 116              		.loc 1 51 0 discriminator 3
+ 117 000e 0123     		movs	r3, #1
+ 118 0010 86F82730 		strb	r3, [r6, #39]
+  52:u8g2_lib/u8x8_debounce.c ****     pin_state |= u8x8->gpio_result & 1;
+ 119              		.loc 1 52 0 discriminator 3
+ 120 0014 04F15001 		add	r1, r4, #80
+ 121 0018 0022     		movs	r2, #0
+ 122 001a C9B2     		uxtb	r1, r1
+ 123 001c 3046     		mov	r0, r6
+ 124 001e FFF7FEFF 		bl	u8x8_gpio_call
+ 125              	.LVL16:
+  53:u8g2_lib/u8x8_debounce.c ****   }
+ 126              		.loc 1 53 0 discriminator 3
+ 127 0022 96F82700 		ldrb	r0, [r6, #39]	@ zero_extendqisi2
+ 128 0026 00F00100 		and	r0, r0, #1
+ 129 002a 2843     		orrs	r0, r0, r5
+ 130              	.LVL17:
+  46:u8g2_lib/u8x8_debounce.c ****   {
+ 131              		.loc 1 46 0 discriminator 3
+ 132 002c 0134     		adds	r4, r4, #1
+ 133              	.LVL18:
+ 134 002e E4B2     		uxtb	r4, r4
+ 135              	.LVL19:
+ 136              	.L7:
+  46:u8g2_lib/u8x8_debounce.c ****   {
+ 137              		.loc 1 46 0 is_stmt 0 discriminator 1
+ 138 0030 052C     		cmp	r4, #5
+ 139 0032 EAD9     		bls	.L8
+  57:u8g2_lib/u8x8_debounce.c **** 
+ 140              		.loc 1 57 0 is_stmt 1
+ 141 0034 70BD     		pop	{r4, r5, r6, pc}
+ 142              		.cfi_endproc
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccnDiL9b.s 			page 5
+
+
+ 143              	.LFE0:
+ 145 0036 00BF     		.section	.text.u8x8_GetMenuEvent,"ax",%progbits
+ 146              		.align	2
+ 147              		.weak	u8x8_GetMenuEvent
+ 148              		.thumb
+ 149              		.thumb_func
+ 151              	u8x8_GetMenuEvent:
+ 152              	.LFB2:
+  78:u8g2_lib/u8x8_debounce.c **** 
+  79:u8g2_lib/u8x8_debounce.c **** /*
+  80:u8g2_lib/u8x8_debounce.c ****   State A:
+  81:u8g2_lib/u8x8_debounce.c ****     u8x8->debounce_last_pin_state == current_state 
+  82:u8g2_lib/u8x8_debounce.c ****       --> State A
+  83:u8g2_lib/u8x8_debounce.c ****     u8x8->debounce_last_pin_state != current_state 
+  84:u8g2_lib/u8x8_debounce.c ****       --> u8x8->debounce_last_pin_state = current_state 
+  85:u8g2_lib/u8x8_debounce.c ****       --> State B + cnt
+  86:u8g2_lib/u8x8_debounce.c **** 
+  87:u8g2_lib/u8x8_debounce.c ****   State B + cnt
+  88:u8g2_lib/u8x8_debounce.c ****     --> state--
+  89:u8g2_lib/u8x8_debounce.c **** 
+  90:u8g2_lib/u8x8_debounce.c ****   State B
+  91:u8g2_lib/u8x8_debounce.c ****     u8x8->debounce_last_pin_state == current_state 
+  92:u8g2_lib/u8x8_debounce.c ****       --> keypress detected
+  93:u8g2_lib/u8x8_debounce.c ****       --> State C
+  94:u8g2_lib/u8x8_debounce.c ****     u8x8->debounce_last_pin_state != current_state 
+  95:u8g2_lib/u8x8_debounce.c ****       --> State A
+  96:u8g2_lib/u8x8_debounce.c **** 
+  97:u8g2_lib/u8x8_debounce.c ****   State C
+  98:u8g2_lib/u8x8_debounce.c ****     u8x8->debounce_last_pin_state == current_state 
+  99:u8g2_lib/u8x8_debounce.c ****       --> State C
+ 100:u8g2_lib/u8x8_debounce.c ****     u8x8->debounce_last_pin_state != current_state 
+ 101:u8g2_lib/u8x8_debounce.c ****       --> State A
+ 102:u8g2_lib/u8x8_debounce.c **** 
+ 103:u8g2_lib/u8x8_debounce.c **** */
+ 104:u8g2_lib/u8x8_debounce.c **** 
+ 105:u8g2_lib/u8x8_debounce.c **** #ifdef __unix__xxxxxx_THIS_IS_DISABLED
+ 106:u8g2_lib/u8x8_debounce.c **** 
+ 107:u8g2_lib/u8x8_debounce.c **** #include <stdio.h>
+ 108:u8g2_lib/u8x8_debounce.c **** #include <stdlib.h>
+ 109:u8g2_lib/u8x8_debounce.c **** uint8_t u8x8_GetMenuEvent(u8x8_t *u8x8)
+ 110:u8g2_lib/u8x8_debounce.c **** {
+ 111:u8g2_lib/u8x8_debounce.c ****     int c;
+ 112:u8g2_lib/u8x8_debounce.c ****     c = getc(stdin);
+ 113:u8g2_lib/u8x8_debounce.c ****     switch(c)
+ 114:u8g2_lib/u8x8_debounce.c ****     {
+ 115:u8g2_lib/u8x8_debounce.c ****         case 'n':
+ 116:u8g2_lib/u8x8_debounce.c ****             return  U8X8_MSG_GPIO_MENU_NEXT;
+ 117:u8g2_lib/u8x8_debounce.c ****         case 'p':
+ 118:u8g2_lib/u8x8_debounce.c ****             return  U8X8_MSG_GPIO_MENU_PREV;
+ 119:u8g2_lib/u8x8_debounce.c ****         case 's':
+ 120:u8g2_lib/u8x8_debounce.c ****             return  U8X8_MSG_GPIO_MENU_SELECT;
+ 121:u8g2_lib/u8x8_debounce.c ****         case 'h':
+ 122:u8g2_lib/u8x8_debounce.c ****             return  U8X8_MSG_GPIO_MENU_HOME;
+ 123:u8g2_lib/u8x8_debounce.c ****         case 'x':
+ 124:u8g2_lib/u8x8_debounce.c ****             exit(0);
+ 125:u8g2_lib/u8x8_debounce.c ****         default:
+ 126:u8g2_lib/u8x8_debounce.c ****             puts("press n, p, s, h or x");
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccnDiL9b.s 			page 6
+
+
+ 127:u8g2_lib/u8x8_debounce.c ****             break;
+ 128:u8g2_lib/u8x8_debounce.c ****     }
+ 129:u8g2_lib/u8x8_debounce.c ****     return 0;
+ 130:u8g2_lib/u8x8_debounce.c **** }
+ 131:u8g2_lib/u8x8_debounce.c **** 
+ 132:u8g2_lib/u8x8_debounce.c **** 
+ 133:u8g2_lib/u8x8_debounce.c **** #else  /* __unix__ */
+ 134:u8g2_lib/u8x8_debounce.c **** 
+ 135:u8g2_lib/u8x8_debounce.c **** 
+ 136:u8g2_lib/u8x8_debounce.c **** #define U8X8_DEBOUNCE_WAIT 2
+ 137:u8g2_lib/u8x8_debounce.c **** /* do debounce and return a GPIO msg which indicates the event */
+ 138:u8g2_lib/u8x8_debounce.c **** /* returns 0, if there is no event */
+ 139:u8g2_lib/u8x8_debounce.c **** #if defined(__GNUC__) && !defined(__CYGWIN__)
+ 140:u8g2_lib/u8x8_debounce.c **** # pragma weak  u8x8_GetMenuEvent
+ 141:u8g2_lib/u8x8_debounce.c **** #endif
+ 142:u8g2_lib/u8x8_debounce.c **** uint8_t u8x8_GetMenuEvent(u8x8_t *u8x8)
+ 143:u8g2_lib/u8x8_debounce.c **** {
+ 153              		.loc 1 143 0
+ 154              		.cfi_startproc
+ 155              		@ args = 0, pretend = 0, frame = 0
+ 156              		@ frame_needed = 0, uses_anonymous_args = 0
+ 157              	.LVL20:
+ 158 0000 10B5     		push	{r4, lr}
+ 159              	.LCFI3:
+ 160              		.cfi_def_cfa_offset 8
+ 161              		.cfi_offset 4, -8
+ 162              		.cfi_offset 14, -4
+ 163 0002 0446     		mov	r4, r0
+ 164              	.LVL21:
+ 144:u8g2_lib/u8x8_debounce.c ****   uint8_t pin_state;
+ 145:u8g2_lib/u8x8_debounce.c ****   uint8_t result_msg = 0;	/* invalid message, no event */
+ 146:u8g2_lib/u8x8_debounce.c ****   
+ 147:u8g2_lib/u8x8_debounce.c ****   pin_state = u8x8_read_pin_state(u8x8);
+ 165              		.loc 1 147 0
+ 166 0004 FFF7FEFF 		bl	u8x8_read_pin_state
+ 167              	.LVL22:
+ 148:u8g2_lib/u8x8_debounce.c ****   
+ 149:u8g2_lib/u8x8_debounce.c ****   /* States A, B, C & D are encoded in the upper 4 bit*/
+ 150:u8g2_lib/u8x8_debounce.c ****   switch(u8x8->debounce_state)
+ 168              		.loc 1 150 0
+ 169 0008 94F82A30 		ldrb	r3, [r4, #42]	@ zero_extendqisi2
+ 170 000c 102B     		cmp	r3, #16
+ 171 000e 10D0     		beq	.L12
+ 172 0010 01D8     		bhi	.L13
+ 173 0012 2BB1     		cbz	r3, .L14
+ 174 0014 38E0     		b	.L11
+ 175              	.L13:
+ 176 0016 202B     		cmp	r3, #32
+ 177 0018 1AD0     		beq	.L15
+ 178 001a 302B     		cmp	r3, #48
+ 179 001c 25D0     		beq	.L16
+ 180 001e 33E0     		b	.L11
+ 181              	.L14:
+ 151:u8g2_lib/u8x8_debounce.c ****   {
+ 152:u8g2_lib/u8x8_debounce.c ****     case 0x00:	/* State A, default state */
+ 153:u8g2_lib/u8x8_debounce.c ****       if ( u8x8->debounce_default_pin_state != pin_state )
+ 182              		.loc 1 153 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccnDiL9b.s 			page 7
+
+
+ 183 0020 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 184 0024 9842     		cmp	r0, r3
+ 185 0026 34D0     		beq	.L20
+ 154:u8g2_lib/u8x8_debounce.c ****       {
+ 155:u8g2_lib/u8x8_debounce.c **** 	//u8x8->debounce_last_pin_state = pin_state;
+ 156:u8g2_lib/u8x8_debounce.c **** 	u8x8->debounce_state = 0x010 + U8X8_DEBOUNCE_WAIT;
+ 186              		.loc 1 156 0
+ 187 0028 1223     		movs	r3, #18
+ 188 002a 84F82A30 		strb	r3, [r4, #42]
+ 145:u8g2_lib/u8x8_debounce.c ****   
+ 189              		.loc 1 145 0
+ 190 002e 0020     		movs	r0, #0
+ 191              	.LVL23:
+ 192 0030 10BD     		pop	{r4, pc}
+ 193              	.LVL24:
+ 194              	.L12:
+ 157:u8g2_lib/u8x8_debounce.c ****       }
+ 158:u8g2_lib/u8x8_debounce.c ****       break;
+ 159:u8g2_lib/u8x8_debounce.c ****     case 0x10:	/* State B */
+ 160:u8g2_lib/u8x8_debounce.c ****       //if ( u8x8->debounce_last_pin_state != pin_state )
+ 161:u8g2_lib/u8x8_debounce.c ****       if ( u8x8->debounce_default_pin_state == pin_state )
+ 195              		.loc 1 161 0
+ 196 0032 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 197 0036 9842     		cmp	r0, r3
+ 198 0038 03D1     		bne	.L18
+ 162:u8g2_lib/u8x8_debounce.c ****       {
+ 163:u8g2_lib/u8x8_debounce.c **** 	u8x8->debounce_state = 0x00;	/* back to state A */
+ 199              		.loc 1 163 0
+ 200 003a 0020     		movs	r0, #0
+ 201              	.LVL25:
+ 202 003c 84F82A00 		strb	r0, [r4, #42]
+ 203 0040 10BD     		pop	{r4, pc}
+ 204              	.LVL26:
+ 205              	.L18:
+ 164:u8g2_lib/u8x8_debounce.c ****       }
+ 165:u8g2_lib/u8x8_debounce.c ****       else
+ 166:u8g2_lib/u8x8_debounce.c ****       {
+ 167:u8g2_lib/u8x8_debounce.c **** 	/* keypress detected */
+ 168:u8g2_lib/u8x8_debounce.c **** 	u8x8->debounce_last_pin_state = pin_state;
+ 206              		.loc 1 168 0
+ 207 0042 84F82900 		strb	r0, [r4, #41]
+ 169:u8g2_lib/u8x8_debounce.c **** 	//result_msg = U8X8_MSG_GPIO_MENU_NEXT;
+ 170:u8g2_lib/u8x8_debounce.c **** 	u8x8->debounce_state = 0x020 + U8X8_DEBOUNCE_WAIT;	/* got to state C */	
+ 208              		.loc 1 170 0
+ 209 0046 2223     		movs	r3, #34
+ 210 0048 84F82A30 		strb	r3, [r4, #42]
+ 145:u8g2_lib/u8x8_debounce.c ****   
+ 211              		.loc 1 145 0
+ 212 004c 0020     		movs	r0, #0
+ 213              	.LVL27:
+ 214 004e 10BD     		pop	{r4, pc}
+ 215              	.LVL28:
+ 216              	.L15:
+ 171:u8g2_lib/u8x8_debounce.c ****       }
+ 172:u8g2_lib/u8x8_debounce.c ****       break;
+ 173:u8g2_lib/u8x8_debounce.c ****       
+ 174:u8g2_lib/u8x8_debounce.c ****     case 0x20:	/* State C */
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccnDiL9b.s 			page 8
+
+
+ 175:u8g2_lib/u8x8_debounce.c ****       if ( u8x8->debounce_last_pin_state != pin_state )
+ 217              		.loc 1 175 0
+ 218 0050 94F82930 		ldrb	r3, [r4, #41]	@ zero_extendqisi2
+ 219 0054 9842     		cmp	r0, r3
+ 220 0056 03D0     		beq	.L19
+ 176:u8g2_lib/u8x8_debounce.c ****       {
+ 177:u8g2_lib/u8x8_debounce.c **** 	u8x8->debounce_state = 0x00;	/* back to state A */
+ 221              		.loc 1 177 0
+ 222 0058 0020     		movs	r0, #0
+ 223              	.LVL29:
+ 224 005a 84F82A00 		strb	r0, [r4, #42]
+ 225 005e 10BD     		pop	{r4, pc}
+ 226              	.LVL30:
+ 227              	.L19:
+ 178:u8g2_lib/u8x8_debounce.c ****       }
+ 179:u8g2_lib/u8x8_debounce.c ****       else
+ 180:u8g2_lib/u8x8_debounce.c ****       {
+ 181:u8g2_lib/u8x8_debounce.c **** 	u8x8->debounce_state = 0x030;	/* got to state D */	
+ 228              		.loc 1 181 0
+ 229 0060 3023     		movs	r3, #48
+ 230 0062 84F82A30 		strb	r3, [r4, #42]
+ 145:u8g2_lib/u8x8_debounce.c ****   
+ 231              		.loc 1 145 0
+ 232 0066 0020     		movs	r0, #0
+ 233              	.LVL31:
+ 234 0068 10BD     		pop	{r4, pc}
+ 235              	.LVL32:
+ 236              	.L16:
+ 182:u8g2_lib/u8x8_debounce.c ****       }
+ 183:u8g2_lib/u8x8_debounce.c ****       break;
+ 184:u8g2_lib/u8x8_debounce.c ****       
+ 185:u8g2_lib/u8x8_debounce.c ****     case 0x30:	/* State D */
+ 186:u8g2_lib/u8x8_debounce.c ****       /* wait until key release */
+ 187:u8g2_lib/u8x8_debounce.c ****       if ( u8x8->debounce_default_pin_state == pin_state )
+ 237              		.loc 1 187 0
+ 238 006a 94F82830 		ldrb	r3, [r4, #40]	@ zero_extendqisi2
+ 239 006e 9842     		cmp	r0, r3
+ 240 0070 11D1     		bne	.L21
+ 188:u8g2_lib/u8x8_debounce.c ****       {
+ 189:u8g2_lib/u8x8_debounce.c **** 	u8x8->debounce_state = 0x00;	/* back to state A */
+ 241              		.loc 1 189 0
+ 242 0072 0022     		movs	r2, #0
+ 243 0074 84F82A20 		strb	r2, [r4, #42]
+ 190:u8g2_lib/u8x8_debounce.c **** 	result_msg = U8X8_MSG_GPIO(u8x8_find_first_diff(u8x8->debounce_default_pin_state, u8x8->debounce_l
+ 244              		.loc 1 190 0
+ 245 0078 94F82910 		ldrb	r1, [r4, #41]	@ zero_extendqisi2
+ 246 007c 1846     		mov	r0, r3
+ 247              	.LVL33:
+ 248 007e FFF7FEFF 		bl	u8x8_find_first_diff
+ 249              	.LVL34:
+ 250 0082 5030     		adds	r0, r0, #80
+ 251 0084 C0B2     		uxtb	r0, r0
+ 252              	.LVL35:
+ 253 0086 10BD     		pop	{r4, pc}
+ 254              	.LVL36:
+ 255              	.L11:
+ 191:u8g2_lib/u8x8_debounce.c ****       }
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccnDiL9b.s 			page 9
+
+
+ 192:u8g2_lib/u8x8_debounce.c ****       else
+ 193:u8g2_lib/u8x8_debounce.c ****       {
+ 194:u8g2_lib/u8x8_debounce.c **** 	//result_msg = U8X8_MSG_GPIO_MENU_NEXT;
+ 195:u8g2_lib/u8x8_debounce.c **** 	// maybe implement autorepeat here 
+ 196:u8g2_lib/u8x8_debounce.c ****       }
+ 197:u8g2_lib/u8x8_debounce.c ****       break;
+ 198:u8g2_lib/u8x8_debounce.c ****     default:
+ 199:u8g2_lib/u8x8_debounce.c ****       u8x8->debounce_state--;	/* count down, until there is a valid state */
+ 256              		.loc 1 199 0
+ 257 0088 013B     		subs	r3, r3, #1
+ 258 008a 84F82A30 		strb	r3, [r4, #42]
+ 145:u8g2_lib/u8x8_debounce.c ****   
+ 259              		.loc 1 145 0
+ 260 008e 0020     		movs	r0, #0
+ 261              	.LVL37:
+ 200:u8g2_lib/u8x8_debounce.c ****       break;
+ 262              		.loc 1 200 0
+ 263 0090 10BD     		pop	{r4, pc}
+ 264              	.LVL38:
+ 265              	.L20:
+ 145:u8g2_lib/u8x8_debounce.c ****   
+ 266              		.loc 1 145 0
+ 267 0092 0020     		movs	r0, #0
+ 268              	.LVL39:
+ 269 0094 10BD     		pop	{r4, pc}
+ 270              	.LVL40:
+ 271              	.L21:
+ 272 0096 0020     		movs	r0, #0
+ 273              	.LVL41:
+ 201:u8g2_lib/u8x8_debounce.c ****   }
+ 202:u8g2_lib/u8x8_debounce.c ****   return result_msg;
+ 203:u8g2_lib/u8x8_debounce.c **** }
+ 274              		.loc 1 203 0
+ 275 0098 10BD     		pop	{r4, pc}
+ 276              		.cfi_endproc
+ 277              	.LFE2:
+ 279 009a 00BF     		.text
+ 280              	.Letext0:
+ 281              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 282              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 283              		.file 4 "u8g2_lib/u8x8.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccnDiL9b.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8x8_debounce.c
+C:\Users\master\AppData\Local\Temp\ccnDiL9b.s:22     .text.u8x8_find_first_diff:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccnDiL9b.s:26     .text.u8x8_find_first_diff:00000000 u8x8_find_first_diff
+C:\Users\master\AppData\Local\Temp\ccnDiL9b.s:83     .text.u8x8_read_pin_state:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccnDiL9b.s:87     .text.u8x8_read_pin_state:00000000 u8x8_read_pin_state
+C:\Users\master\AppData\Local\Temp\ccnDiL9b.s:146    .text.u8x8_GetMenuEvent:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccnDiL9b.s:151    .text.u8x8_GetMenuEvent:00000000 u8x8_GetMenuEvent
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+u8x8_gpio_call

@@ -1,0 +1,977 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g2_buffer.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g2_send_tile_row,"ax",%progbits
+  22              		.align	2
+  23              		.thumb
+  24              		.thumb_func
+  26              	u8g2_send_tile_row:
+  27              	.LFB1:
+  28              		.file 1 "u8g2_lib/u8g2_buffer.c"
+   1:u8g2_lib/u8g2_buffer.c **** /* 
+   2:u8g2_lib/u8g2_buffer.c **** 
+   3:u8g2_lib/u8g2_buffer.c ****   u8g2_buffer.c 
+   4:u8g2_lib/u8g2_buffer.c **** 
+   5:u8g2_lib/u8g2_buffer.c ****   Universal 8bit Graphics Library (https://github.com/olikraus/u8g2/)
+   6:u8g2_lib/u8g2_buffer.c **** 
+   7:u8g2_lib/u8g2_buffer.c ****   Copyright (c) 2016, olikraus@gmail.com
+   8:u8g2_lib/u8g2_buffer.c ****   All rights reserved.
+   9:u8g2_lib/u8g2_buffer.c **** 
+  10:u8g2_lib/u8g2_buffer.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  11:u8g2_lib/u8g2_buffer.c ****   are permitted provided that the following conditions are met:
+  12:u8g2_lib/u8g2_buffer.c **** 
+  13:u8g2_lib/u8g2_buffer.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  14:u8g2_lib/u8g2_buffer.c ****     of conditions and the following disclaimer.
+  15:u8g2_lib/u8g2_buffer.c ****     
+  16:u8g2_lib/u8g2_buffer.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  17:u8g2_lib/u8g2_buffer.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  18:u8g2_lib/u8g2_buffer.c ****     materials provided with the distribution.
+  19:u8g2_lib/u8g2_buffer.c **** 
+  20:u8g2_lib/u8g2_buffer.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  21:u8g2_lib/u8g2_buffer.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  22:u8g2_lib/u8g2_buffer.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  23:u8g2_lib/u8g2_buffer.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  24:u8g2_lib/u8g2_buffer.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  25:u8g2_lib/u8g2_buffer.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  26:u8g2_lib/u8g2_buffer.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  27:u8g2_lib/u8g2_buffer.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  28:u8g2_lib/u8g2_buffer.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+  29:u8g2_lib/u8g2_buffer.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  30:u8g2_lib/u8g2_buffer.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 2
+
+
+  31:u8g2_lib/u8g2_buffer.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  32:u8g2_lib/u8g2_buffer.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  33:u8g2_lib/u8g2_buffer.c **** 
+  34:u8g2_lib/u8g2_buffer.c **** */
+  35:u8g2_lib/u8g2_buffer.c **** 
+  36:u8g2_lib/u8g2_buffer.c **** #include "u8g2.h"
+  37:u8g2_lib/u8g2_buffer.c **** #include <string.h>
+  38:u8g2_lib/u8g2_buffer.c **** 
+  39:u8g2_lib/u8g2_buffer.c **** /*============================================*/
+  40:u8g2_lib/u8g2_buffer.c **** void u8g2_ClearBuffer(u8g2_t *u8g2)
+  41:u8g2_lib/u8g2_buffer.c **** {
+  42:u8g2_lib/u8g2_buffer.c ****   size_t cnt;
+  43:u8g2_lib/u8g2_buffer.c ****   cnt = u8g2_GetU8x8(u8g2)->display_info->tile_width;
+  44:u8g2_lib/u8g2_buffer.c ****   cnt *= u8g2->tile_buf_height;
+  45:u8g2_lib/u8g2_buffer.c ****   cnt *= 8;
+  46:u8g2_lib/u8g2_buffer.c ****   memset(u8g2->tile_buf_ptr, 0, cnt);
+  47:u8g2_lib/u8g2_buffer.c **** }
+  48:u8g2_lib/u8g2_buffer.c **** 
+  49:u8g2_lib/u8g2_buffer.c **** /*============================================*/
+  50:u8g2_lib/u8g2_buffer.c **** 
+  51:u8g2_lib/u8g2_buffer.c **** static void u8g2_send_tile_row(u8g2_t *u8g2, uint8_t src_tile_row, uint8_t dest_tile_row)
+  52:u8g2_lib/u8g2_buffer.c **** {
+  29              		.loc 1 52 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              	.LVL0:
+  34 0000 10B5     		push	{r4, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 4, -8
+  38              		.cfi_offset 14, -4
+  39 0002 82B0     		sub	sp, sp, #8
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 16
+  53:u8g2_lib/u8g2_buffer.c ****   uint8_t *ptr;
+  54:u8g2_lib/u8g2_buffer.c ****   uint16_t offset;
+  55:u8g2_lib/u8g2_buffer.c ****   uint8_t w;
+  56:u8g2_lib/u8g2_buffer.c ****   
+  57:u8g2_lib/u8g2_buffer.c ****   w = u8g2_GetU8x8(u8g2)->display_info->tile_width;
+  42              		.loc 1 57 0
+  43 0004 0368     		ldr	r3, [r0]
+  44 0006 1B7C     		ldrb	r3, [r3, #16]	@ zero_extendqisi2
+  45              	.LVL1:
+  58:u8g2_lib/u8g2_buffer.c ****   offset = src_tile_row;
+  59:u8g2_lib/u8g2_buffer.c ****   ptr = u8g2->tile_buf_ptr;
+  46              		.loc 1 59 0
+  47 0008 446B     		ldr	r4, [r0, #52]
+  48              	.LVL2:
+  60:u8g2_lib/u8g2_buffer.c ****   offset *= w;
+  49              		.loc 1 60 0
+  50 000a 03FB01F1 		mul	r1, r3, r1
+  51              	.LVL3:
+  61:u8g2_lib/u8g2_buffer.c ****   offset *= 8;
+  52              		.loc 1 61 0
+  53 000e C900     		lsls	r1, r1, #3
+  54              	.LVL4:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 3
+
+
+  55 0010 89B2     		uxth	r1, r1
+  56              	.LVL5:
+  62:u8g2_lib/u8g2_buffer.c ****   ptr += offset;
+  57              		.loc 1 62 0
+  58 0012 2144     		add	r1, r1, r4
+  59              	.LVL6:
+  63:u8g2_lib/u8g2_buffer.c ****   u8x8_DrawTile(u8g2_GetU8x8(u8g2), 0, dest_tile_row, w, ptr);
+  60              		.loc 1 63 0
+  61 0014 0091     		str	r1, [sp]
+  62 0016 0021     		movs	r1, #0
+  63              	.LVL7:
+  64 0018 FFF7FEFF 		bl	u8x8_DrawTile
+  65              	.LVL8:
+  64:u8g2_lib/u8g2_buffer.c **** }
+  66              		.loc 1 64 0
+  67 001c 02B0     		add	sp, sp, #8
+  68              	.LCFI2:
+  69              		.cfi_def_cfa_offset 8
+  70              		@ sp needed
+  71 001e 10BD     		pop	{r4, pc}
+  72              		.cfi_endproc
+  73              	.LFE1:
+  75              		.section	.text.u8g2_send_buffer,"ax",%progbits
+  76              		.align	2
+  77              		.thumb
+  78              		.thumb_func
+  80              	u8g2_send_buffer:
+  81              	.LFB2:
+  65:u8g2_lib/u8g2_buffer.c **** 
+  66:u8g2_lib/u8g2_buffer.c **** /* 
+  67:u8g2_lib/u8g2_buffer.c ****   write the buffer to the display RAM. 
+  68:u8g2_lib/u8g2_buffer.c ****   For most displays, this will make the content visible to the user.
+  69:u8g2_lib/u8g2_buffer.c ****   Some displays (like the SSD1606) require a u8x8_RefreshDisplay()
+  70:u8g2_lib/u8g2_buffer.c **** */
+  71:u8g2_lib/u8g2_buffer.c **** static void u8g2_send_buffer(u8g2_t *u8g2) U8X8_NOINLINE;
+  72:u8g2_lib/u8g2_buffer.c **** static void u8g2_send_buffer(u8g2_t *u8g2)
+  73:u8g2_lib/u8g2_buffer.c **** {
+  82              		.loc 1 73 0
+  83              		.cfi_startproc
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86              	.LVL9:
+  87 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  88              	.LCFI3:
+  89              		.cfi_def_cfa_offset 24
+  90              		.cfi_offset 4, -24
+  91              		.cfi_offset 5, -20
+  92              		.cfi_offset 6, -16
+  93              		.cfi_offset 7, -12
+  94              		.cfi_offset 8, -8
+  95              		.cfi_offset 14, -4
+  96 0004 0646     		mov	r6, r0
+  97              	.LVL10:
+  74:u8g2_lib/u8g2_buffer.c ****   uint8_t src_row;
+  75:u8g2_lib/u8g2_buffer.c ****   uint8_t src_max;
+  76:u8g2_lib/u8g2_buffer.c ****   uint8_t dest_row;
+  77:u8g2_lib/u8g2_buffer.c ****   uint8_t dest_max;
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 4
+
+
+  78:u8g2_lib/u8g2_buffer.c **** 
+  79:u8g2_lib/u8g2_buffer.c ****   src_row = 0;
+  80:u8g2_lib/u8g2_buffer.c ****   src_max = u8g2->tile_buf_height;
+  98              		.loc 1 80 0
+  99 0006 90F83870 		ldrb	r7, [r0, #56]	@ zero_extendqisi2
+ 100              	.LVL11:
+  81:u8g2_lib/u8g2_buffer.c ****   dest_row = u8g2->tile_curr_row;
+ 101              		.loc 1 81 0
+ 102 000a 90F83950 		ldrb	r5, [r0, #57]	@ zero_extendqisi2
+ 103              	.LVL12:
+  82:u8g2_lib/u8g2_buffer.c ****   dest_max = u8g2_GetU8x8(u8g2)->display_info->tile_height;
+ 104              		.loc 1 82 0
+ 105 000e 0368     		ldr	r3, [r0]
+ 106 0010 93F81180 		ldrb	r8, [r3, #17]	@ zero_extendqisi2
+ 107              	.LVL13:
+  79:u8g2_lib/u8g2_buffer.c ****   src_max = u8g2->tile_buf_height;
+ 108              		.loc 1 79 0
+ 109 0014 0024     		movs	r4, #0
+ 110              	.LVL14:
+ 111              	.L5:
+  83:u8g2_lib/u8g2_buffer.c ****   
+  84:u8g2_lib/u8g2_buffer.c ****   do
+  85:u8g2_lib/u8g2_buffer.c ****   {
+  86:u8g2_lib/u8g2_buffer.c ****     u8g2_send_tile_row(u8g2, src_row, dest_row);
+ 112              		.loc 1 86 0 discriminator 2
+ 113 0016 2A46     		mov	r2, r5
+ 114 0018 2146     		mov	r1, r4
+ 115 001a 3046     		mov	r0, r6
+ 116 001c FFF7FEFF 		bl	u8g2_send_tile_row
+ 117              	.LVL15:
+  87:u8g2_lib/u8g2_buffer.c ****     src_row++;
+ 118              		.loc 1 87 0 discriminator 2
+ 119 0020 0134     		adds	r4, r4, #1
+ 120              	.LVL16:
+ 121 0022 E4B2     		uxtb	r4, r4
+ 122              	.LVL17:
+  88:u8g2_lib/u8g2_buffer.c ****     dest_row++;
+ 123              		.loc 1 88 0 discriminator 2
+ 124 0024 0135     		adds	r5, r5, #1
+ 125              	.LVL18:
+ 126 0026 EDB2     		uxtb	r5, r5
+ 127              	.LVL19:
+  89:u8g2_lib/u8g2_buffer.c ****   } while( src_row < src_max && dest_row < dest_max );
+ 128              		.loc 1 89 0 discriminator 2
+ 129 0028 A742     		cmp	r7, r4
+ 130 002a 01D9     		bls	.L3
+ 131              		.loc 1 89 0 is_stmt 0 discriminator 1
+ 132 002c A845     		cmp	r8, r5
+ 133 002e F2D8     		bhi	.L5
+ 134              	.L3:
+ 135 0030 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 136              		.cfi_endproc
+ 137              	.LFE2:
+ 139              		.section	.text.u8g2_ClearBuffer,"ax",%progbits
+ 140              		.align	2
+ 141              		.global	u8g2_ClearBuffer
+ 142              		.thumb
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 5
+
+
+ 143              		.thumb_func
+ 145              	u8g2_ClearBuffer:
+ 146              	.LFB0:
+  41:u8g2_lib/u8g2_buffer.c ****   size_t cnt;
+ 147              		.loc 1 41 0 is_stmt 1
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151              	.LVL20:
+ 152 0000 08B5     		push	{r3, lr}
+ 153              	.LCFI4:
+ 154              		.cfi_def_cfa_offset 8
+ 155              		.cfi_offset 3, -8
+ 156              		.cfi_offset 14, -4
+  43:u8g2_lib/u8g2_buffer.c ****   cnt *= u8g2->tile_buf_height;
+ 157              		.loc 1 43 0
+ 158 0002 0368     		ldr	r3, [r0]
+ 159 0004 1B7C     		ldrb	r3, [r3, #16]	@ zero_extendqisi2
+ 160              	.LVL21:
+  44:u8g2_lib/u8g2_buffer.c ****   cnt *= 8;
+ 161              		.loc 1 44 0
+ 162 0006 90F83820 		ldrb	r2, [r0, #56]	@ zero_extendqisi2
+ 163 000a 03FB02F2 		mul	r2, r3, r2
+ 164              	.LVL22:
+  46:u8g2_lib/u8g2_buffer.c **** }
+ 165              		.loc 1 46 0
+ 166 000e D200     		lsls	r2, r2, #3
+ 167              	.LVL23:
+ 168 0010 0021     		movs	r1, #0
+ 169 0012 406B     		ldr	r0, [r0, #52]
+ 170              	.LVL24:
+ 171 0014 FFF7FEFF 		bl	memset
+ 172              	.LVL25:
+ 173 0018 08BD     		pop	{r3, pc}
+ 174              		.cfi_endproc
+ 175              	.LFE0:
+ 177 001a 00BF     		.section	.text.u8g2_SendBuffer,"ax",%progbits
+ 178              		.align	2
+ 179              		.global	u8g2_SendBuffer
+ 180              		.thumb
+ 181              		.thumb_func
+ 183              	u8g2_SendBuffer:
+ 184              	.LFB3:
+  90:u8g2_lib/u8g2_buffer.c **** }
+  91:u8g2_lib/u8g2_buffer.c **** 
+  92:u8g2_lib/u8g2_buffer.c **** /* same as u8g2_send_buffer but also send the DISPLAY_REFRESH message (used by SSD1606) */
+  93:u8g2_lib/u8g2_buffer.c **** void u8g2_SendBuffer(u8g2_t *u8g2)
+  94:u8g2_lib/u8g2_buffer.c **** {
+ 185              		.loc 1 94 0
+ 186              		.cfi_startproc
+ 187              		@ args = 0, pretend = 0, frame = 0
+ 188              		@ frame_needed = 0, uses_anonymous_args = 0
+ 189              	.LVL26:
+ 190 0000 10B5     		push	{r4, lr}
+ 191              	.LCFI5:
+ 192              		.cfi_def_cfa_offset 8
+ 193              		.cfi_offset 4, -8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 6
+
+
+ 194              		.cfi_offset 14, -4
+ 195 0002 0446     		mov	r4, r0
+  95:u8g2_lib/u8g2_buffer.c ****   u8g2_send_buffer(u8g2);
+ 196              		.loc 1 95 0
+ 197 0004 FFF7FEFF 		bl	u8g2_send_buffer
+ 198              	.LVL27:
+  96:u8g2_lib/u8g2_buffer.c ****   u8x8_RefreshDisplay( u8g2_GetU8x8(u8g2) );  
+ 199              		.loc 1 96 0
+ 200 0008 2046     		mov	r0, r4
+ 201 000a FFF7FEFF 		bl	u8x8_RefreshDisplay
+ 202              	.LVL28:
+ 203 000e 10BD     		pop	{r4, pc}
+ 204              		.cfi_endproc
+ 205              	.LFE3:
+ 207              		.section	.text.u8g2_SetBufferCurrTileRow,"ax",%progbits
+ 208              		.align	2
+ 209              		.global	u8g2_SetBufferCurrTileRow
+ 210              		.thumb
+ 211              		.thumb_func
+ 213              	u8g2_SetBufferCurrTileRow:
+ 214              	.LFB4:
+  97:u8g2_lib/u8g2_buffer.c **** }
+  98:u8g2_lib/u8g2_buffer.c **** 
+  99:u8g2_lib/u8g2_buffer.c **** /*============================================*/
+ 100:u8g2_lib/u8g2_buffer.c **** void u8g2_SetBufferCurrTileRow(u8g2_t *u8g2, uint8_t row)
+ 101:u8g2_lib/u8g2_buffer.c **** {
+ 215              		.loc 1 101 0
+ 216              		.cfi_startproc
+ 217              		@ args = 0, pretend = 0, frame = 0
+ 218              		@ frame_needed = 0, uses_anonymous_args = 0
+ 219              	.LVL29:
+ 220 0000 10B5     		push	{r4, lr}
+ 221              	.LCFI6:
+ 222              		.cfi_def_cfa_offset 8
+ 223              		.cfi_offset 4, -8
+ 224              		.cfi_offset 14, -4
+ 225 0002 0446     		mov	r4, r0
+ 102:u8g2_lib/u8g2_buffer.c ****   u8g2->tile_curr_row = row;
+ 226              		.loc 1 102 0
+ 227 0004 80F83910 		strb	r1, [r0, #57]
+ 103:u8g2_lib/u8g2_buffer.c ****   u8g2->cb->update_dimension(u8g2);
+ 228              		.loc 1 103 0
+ 229 0008 036B     		ldr	r3, [r0, #48]
+ 230 000a 1B68     		ldr	r3, [r3]
+ 231 000c 9847     		blx	r3
+ 232              	.LVL30:
+ 104:u8g2_lib/u8g2_buffer.c ****   u8g2->cb->update_page_win(u8g2);
+ 233              		.loc 1 104 0
+ 234 000e 236B     		ldr	r3, [r4, #48]
+ 235 0010 5B68     		ldr	r3, [r3, #4]
+ 236 0012 2046     		mov	r0, r4
+ 237 0014 9847     		blx	r3
+ 238              	.LVL31:
+ 239 0016 10BD     		pop	{r4, pc}
+ 240              		.cfi_endproc
+ 241              	.LFE4:
+ 243              		.section	.text.u8g2_FirstPage,"ax",%progbits
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 7
+
+
+ 244              		.align	2
+ 245              		.global	u8g2_FirstPage
+ 246              		.thumb
+ 247              		.thumb_func
+ 249              	u8g2_FirstPage:
+ 250              	.LFB5:
+ 105:u8g2_lib/u8g2_buffer.c **** }
+ 106:u8g2_lib/u8g2_buffer.c **** 
+ 107:u8g2_lib/u8g2_buffer.c **** void u8g2_FirstPage(u8g2_t *u8g2)
+ 108:u8g2_lib/u8g2_buffer.c **** {
+ 251              		.loc 1 108 0
+ 252              		.cfi_startproc
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255              	.LVL32:
+ 256 0000 10B5     		push	{r4, lr}
+ 257              	.LCFI7:
+ 258              		.cfi_def_cfa_offset 8
+ 259              		.cfi_offset 4, -8
+ 260              		.cfi_offset 14, -4
+ 261 0002 0446     		mov	r4, r0
+ 109:u8g2_lib/u8g2_buffer.c ****   if ( u8g2->is_auto_page_clear )
+ 262              		.loc 1 109 0
+ 263 0004 90F89330 		ldrb	r3, [r0, #147]	@ zero_extendqisi2
+ 264 0008 0BB1     		cbz	r3, .L14
+ 110:u8g2_lib/u8g2_buffer.c ****   {
+ 111:u8g2_lib/u8g2_buffer.c ****     u8g2_ClearBuffer(u8g2);
+ 265              		.loc 1 111 0
+ 266 000a FFF7FEFF 		bl	u8g2_ClearBuffer
+ 267              	.LVL33:
+ 268              	.L14:
+ 112:u8g2_lib/u8g2_buffer.c ****   }
+ 113:u8g2_lib/u8g2_buffer.c ****   u8g2_SetBufferCurrTileRow(u8g2, 0);
+ 269              		.loc 1 113 0
+ 270 000e 0021     		movs	r1, #0
+ 271 0010 2046     		mov	r0, r4
+ 272 0012 FFF7FEFF 		bl	u8g2_SetBufferCurrTileRow
+ 273              	.LVL34:
+ 274 0016 10BD     		pop	{r4, pc}
+ 275              		.cfi_endproc
+ 276              	.LFE5:
+ 278              		.section	.text.u8g2_NextPage,"ax",%progbits
+ 279              		.align	2
+ 280              		.global	u8g2_NextPage
+ 281              		.thumb
+ 282              		.thumb_func
+ 284              	u8g2_NextPage:
+ 285              	.LFB6:
+ 114:u8g2_lib/u8g2_buffer.c **** }
+ 115:u8g2_lib/u8g2_buffer.c **** 
+ 116:u8g2_lib/u8g2_buffer.c **** uint8_t u8g2_NextPage(u8g2_t *u8g2)
+ 117:u8g2_lib/u8g2_buffer.c **** {
+ 286              		.loc 1 117 0
+ 287              		.cfi_startproc
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290              	.LVL35:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 8
+
+
+ 291 0000 38B5     		push	{r3, r4, r5, lr}
+ 292              	.LCFI8:
+ 293              		.cfi_def_cfa_offset 16
+ 294              		.cfi_offset 3, -16
+ 295              		.cfi_offset 4, -12
+ 296              		.cfi_offset 5, -8
+ 297              		.cfi_offset 14, -4
+ 298 0002 0546     		mov	r5, r0
+ 118:u8g2_lib/u8g2_buffer.c ****   uint8_t row;
+ 119:u8g2_lib/u8g2_buffer.c ****   u8g2_send_buffer(u8g2);
+ 299              		.loc 1 119 0
+ 300 0004 FFF7FEFF 		bl	u8g2_send_buffer
+ 301              	.LVL36:
+ 120:u8g2_lib/u8g2_buffer.c ****   row = u8g2->tile_curr_row;
+ 302              		.loc 1 120 0
+ 303 0008 95F83940 		ldrb	r4, [r5, #57]	@ zero_extendqisi2
+ 304              	.LVL37:
+ 121:u8g2_lib/u8g2_buffer.c ****   row += u8g2->tile_buf_height;
+ 305              		.loc 1 121 0
+ 306 000c 95F83830 		ldrb	r3, [r5, #56]	@ zero_extendqisi2
+ 307 0010 1C44     		add	r4, r4, r3
+ 308              	.LVL38:
+ 309 0012 E4B2     		uxtb	r4, r4
+ 310              	.LVL39:
+ 122:u8g2_lib/u8g2_buffer.c ****   if ( row >= u8g2_GetU8x8(u8g2)->display_info->tile_height )
+ 311              		.loc 1 122 0
+ 312 0014 2B68     		ldr	r3, [r5]
+ 313 0016 5B7C     		ldrb	r3, [r3, #17]	@ zero_extendqisi2
+ 314 0018 9C42     		cmp	r4, r3
+ 315 001a 04D3     		bcc	.L17
+ 123:u8g2_lib/u8g2_buffer.c ****   {
+ 124:u8g2_lib/u8g2_buffer.c ****     u8x8_RefreshDisplay( u8g2_GetU8x8(u8g2) );
+ 316              		.loc 1 124 0
+ 317 001c 2846     		mov	r0, r5
+ 318 001e FFF7FEFF 		bl	u8x8_RefreshDisplay
+ 319              	.LVL40:
+ 125:u8g2_lib/u8g2_buffer.c ****     return 0;
+ 320              		.loc 1 125 0
+ 321 0022 0020     		movs	r0, #0
+ 322 0024 38BD     		pop	{r3, r4, r5, pc}
+ 323              	.LVL41:
+ 324              	.L17:
+ 126:u8g2_lib/u8g2_buffer.c ****   }
+ 127:u8g2_lib/u8g2_buffer.c ****   if ( u8g2->is_auto_page_clear )
+ 325              		.loc 1 127 0
+ 326 0026 95F89330 		ldrb	r3, [r5, #147]	@ zero_extendqisi2
+ 327 002a 13B1     		cbz	r3, .L19
+ 128:u8g2_lib/u8g2_buffer.c ****   {
+ 129:u8g2_lib/u8g2_buffer.c ****     u8g2_ClearBuffer(u8g2);
+ 328              		.loc 1 129 0
+ 329 002c 2846     		mov	r0, r5
+ 330 002e FFF7FEFF 		bl	u8g2_ClearBuffer
+ 331              	.LVL42:
+ 332              	.L19:
+ 130:u8g2_lib/u8g2_buffer.c ****   }
+ 131:u8g2_lib/u8g2_buffer.c ****   u8g2_SetBufferCurrTileRow(u8g2, row);
+ 333              		.loc 1 131 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 9
+
+
+ 334 0032 2146     		mov	r1, r4
+ 335 0034 2846     		mov	r0, r5
+ 336 0036 FFF7FEFF 		bl	u8g2_SetBufferCurrTileRow
+ 337              	.LVL43:
+ 132:u8g2_lib/u8g2_buffer.c ****   return 1;
+ 338              		.loc 1 132 0
+ 339 003a 0120     		movs	r0, #1
+ 133:u8g2_lib/u8g2_buffer.c **** }
+ 340              		.loc 1 133 0
+ 341 003c 38BD     		pop	{r3, r4, r5, pc}
+ 342              		.cfi_endproc
+ 343              	.LFE6:
+ 345 003e 00BF     		.section	.text.u8g2_UpdateDisplayArea,"ax",%progbits
+ 346              		.align	2
+ 347              		.global	u8g2_UpdateDisplayArea
+ 348              		.thumb
+ 349              		.thumb_func
+ 351              	u8g2_UpdateDisplayArea:
+ 352              	.LFB7:
+ 134:u8g2_lib/u8g2_buffer.c **** 
+ 135:u8g2_lib/u8g2_buffer.c **** 
+ 136:u8g2_lib/u8g2_buffer.c **** 
+ 137:u8g2_lib/u8g2_buffer.c **** /*============================================*/
+ 138:u8g2_lib/u8g2_buffer.c **** /*
+ 139:u8g2_lib/u8g2_buffer.c ****   Description:
+ 140:u8g2_lib/u8g2_buffer.c ****     Update a sub area of the display, given by tile position, width and height.
+ 141:u8g2_lib/u8g2_buffer.c ****     The arguments are "tile" coordinates. Any u8g2 rotation is ignored.
+ 142:u8g2_lib/u8g2_buffer.c ****     This procedure only checks whether full buffer mode is active.
+ 143:u8g2_lib/u8g2_buffer.c ****     There is no error checking for the arguments: It is the responsibility of the
+ 144:u8g2_lib/u8g2_buffer.c ****     user to ensure, that the provided arguments are correct.
+ 145:u8g2_lib/u8g2_buffer.c **** 
+ 146:u8g2_lib/u8g2_buffer.c ****   Limitations:
+ 147:u8g2_lib/u8g2_buffer.c ****     - Only available in full buffer mode (will not do anything in page mode)
+ 148:u8g2_lib/u8g2_buffer.c ****     - Tile positions and sizes (pixel position divided by 8)
+ 149:u8g2_lib/u8g2_buffer.c ****     - Any display rotation/mirror is ignored
+ 150:u8g2_lib/u8g2_buffer.c ****     - Only works with displays, which support U8x8 API
+ 151:u8g2_lib/u8g2_buffer.c ****     - Will not send the e-paper refresh message (will probably not work with e-paper devices)
+ 152:u8g2_lib/u8g2_buffer.c **** */
+ 153:u8g2_lib/u8g2_buffer.c **** void u8g2_UpdateDisplayArea(u8g2_t *u8g2, uint8_t  tx, uint8_t ty, uint8_t tw, uint8_t th)
+ 154:u8g2_lib/u8g2_buffer.c **** {
+ 353              		.loc 1 154 0
+ 354              		.cfi_startproc
+ 355              		@ args = 4, pretend = 0, frame = 0
+ 356              		@ frame_needed = 0, uses_anonymous_args = 0
+ 357              	.LVL44:
+ 358 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 359              	.LCFI9:
+ 360              		.cfi_def_cfa_offset 32
+ 361              		.cfi_offset 4, -32
+ 362              		.cfi_offset 5, -28
+ 363              		.cfi_offset 6, -24
+ 364              		.cfi_offset 7, -20
+ 365              		.cfi_offset 8, -16
+ 366              		.cfi_offset 9, -12
+ 367              		.cfi_offset 10, -8
+ 368              		.cfi_offset 14, -4
+ 369 0004 82B0     		sub	sp, sp, #8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 10
+
+
+ 370              	.LCFI10:
+ 371              		.cfi_def_cfa_offset 40
+ 372 0006 1446     		mov	r4, r2
+ 373 0008 9846     		mov	r8, r3
+ 374 000a 9DF828A0 		ldrb	r10, [sp, #40]	@ zero_extendqisi2
+ 155:u8g2_lib/u8g2_buffer.c ****   uint16_t page_size;
+ 156:u8g2_lib/u8g2_buffer.c ****   uint8_t *ptr;
+ 157:u8g2_lib/u8g2_buffer.c ****   
+ 158:u8g2_lib/u8g2_buffer.c ****   /* check, whether we are in full buffer mode */
+ 159:u8g2_lib/u8g2_buffer.c ****   if ( u8g2->tile_buf_height != u8g2_GetU8x8(u8g2)->display_info->tile_height )
+ 375              		.loc 1 159 0
+ 376 000e 90F83820 		ldrb	r2, [r0, #56]	@ zero_extendqisi2
+ 377              	.LVL45:
+ 378 0012 0368     		ldr	r3, [r0]
+ 379              	.LVL46:
+ 380 0014 5B7C     		ldrb	r3, [r3, #17]	@ zero_extendqisi2
+ 381 0016 9A42     		cmp	r2, r3
+ 382 0018 1BD1     		bne	.L21
+ 383 001a 0646     		mov	r6, r0
+ 384 001c 0F46     		mov	r7, r1
+ 160:u8g2_lib/u8g2_buffer.c ****     return; /* not in full buffer mode, do nothing */
+ 161:u8g2_lib/u8g2_buffer.c **** 
+ 162:u8g2_lib/u8g2_buffer.c ****   page_size = u8g2->pixel_buf_width;  /* 8*u8g2->u8g2_GetU8x8(u8g2)->display_info->tile_width */
+ 385              		.loc 1 162 0
+ 386 001e B0F83A90 		ldrh	r9, [r0, #58]
+ 387              	.LVL47:
+ 163:u8g2_lib/u8g2_buffer.c ****     
+ 164:u8g2_lib/u8g2_buffer.c ****   ptr = u8g2_GetBufferPtr(u8g2);
+ 388              		.loc 1 164 0
+ 389 0022 456B     		ldr	r5, [r0, #52]
+ 390              	.LVL48:
+ 165:u8g2_lib/u8g2_buffer.c ****   ptr += tx*8;
+ 166:u8g2_lib/u8g2_buffer.c ****   ptr += page_size*ty;
+ 391              		.loc 1 166 0
+ 392 0024 04FB09F3 		mul	r3, r4, r9
+ 393 0028 03EBC103 		add	r3, r3, r1, lsl #3
+ 394 002c 1D44     		add	r5, r5, r3
+ 395              	.LVL49:
+ 167:u8g2_lib/u8g2_buffer.c ****   
+ 168:u8g2_lib/u8g2_buffer.c ****   while( th > 0 )
+ 396              		.loc 1 168 0
+ 397 002e 0DE0     		b	.L23
+ 398              	.LVL50:
+ 399              	.L24:
+ 169:u8g2_lib/u8g2_buffer.c ****   {
+ 170:u8g2_lib/u8g2_buffer.c ****     u8x8_DrawTile( u8g2_GetU8x8(u8g2), tx, ty, tw, ptr );
+ 400              		.loc 1 170 0
+ 401 0030 0095     		str	r5, [sp]
+ 402 0032 4346     		mov	r3, r8
+ 403 0034 2246     		mov	r2, r4
+ 404 0036 3946     		mov	r1, r7
+ 405 0038 3046     		mov	r0, r6
+ 406 003a FFF7FEFF 		bl	u8x8_DrawTile
+ 407              	.LVL51:
+ 171:u8g2_lib/u8g2_buffer.c ****     ptr += page_size;
+ 408              		.loc 1 171 0
+ 409 003e 4D44     		add	r5, r5, r9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 11
+
+
+ 410              	.LVL52:
+ 172:u8g2_lib/u8g2_buffer.c ****     ty++;
+ 411              		.loc 1 172 0
+ 412 0040 0134     		adds	r4, r4, #1
+ 413              	.LVL53:
+ 414 0042 E4B2     		uxtb	r4, r4
+ 415              	.LVL54:
+ 173:u8g2_lib/u8g2_buffer.c ****     th--;
+ 416              		.loc 1 173 0
+ 417 0044 0AF1FF33 		add	r3, r10, #-1
+ 418 0048 5FFA83FA 		uxtb	r10, r3
+ 419              	.LVL55:
+ 420              	.L23:
+ 168:u8g2_lib/u8g2_buffer.c ****   {
+ 421              		.loc 1 168 0
+ 422 004c BAF1000F 		cmp	r10, #0
+ 423 0050 EED1     		bne	.L24
+ 424              	.LVL56:
+ 425              	.L21:
+ 174:u8g2_lib/u8g2_buffer.c ****   }  
+ 175:u8g2_lib/u8g2_buffer.c **** }
+ 426              		.loc 1 175 0
+ 427 0052 02B0     		add	sp, sp, #8
+ 428              	.LCFI11:
+ 429              		.cfi_def_cfa_offset 32
+ 430              		@ sp needed
+ 431 0054 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 432              		.cfi_endproc
+ 433              	.LFE7:
+ 435              		.section	.text.u8g2_UpdateDisplay,"ax",%progbits
+ 436              		.align	2
+ 437              		.global	u8g2_UpdateDisplay
+ 438              		.thumb
+ 439              		.thumb_func
+ 441              	u8g2_UpdateDisplay:
+ 442              	.LFB8:
+ 176:u8g2_lib/u8g2_buffer.c **** 
+ 177:u8g2_lib/u8g2_buffer.c **** /* same as sendBuffer, but does not send the ePaper refresh message */
+ 178:u8g2_lib/u8g2_buffer.c **** void u8g2_UpdateDisplay(u8g2_t *u8g2)
+ 179:u8g2_lib/u8g2_buffer.c **** {
+ 443              		.loc 1 179 0
+ 444              		.cfi_startproc
+ 445              		@ args = 0, pretend = 0, frame = 0
+ 446              		@ frame_needed = 0, uses_anonymous_args = 0
+ 447              	.LVL57:
+ 448 0000 08B5     		push	{r3, lr}
+ 449              	.LCFI12:
+ 450              		.cfi_def_cfa_offset 8
+ 451              		.cfi_offset 3, -8
+ 452              		.cfi_offset 14, -4
+ 180:u8g2_lib/u8g2_buffer.c ****   u8g2_send_buffer(u8g2);
+ 453              		.loc 1 180 0
+ 454 0002 FFF7FEFF 		bl	u8g2_send_buffer
+ 455              	.LVL58:
+ 456 0006 08BD     		pop	{r3, pc}
+ 457              		.cfi_endproc
+ 458              	.LFE8:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 12
+
+
+ 460              		.section	.text.u8g2_WriteBufferPBM,"ax",%progbits
+ 461              		.align	2
+ 462              		.global	u8g2_WriteBufferPBM
+ 463              		.thumb
+ 464              		.thumb_func
+ 466              	u8g2_WriteBufferPBM:
+ 467              	.LFB9:
+ 181:u8g2_lib/u8g2_buffer.c **** }
+ 182:u8g2_lib/u8g2_buffer.c **** 
+ 183:u8g2_lib/u8g2_buffer.c **** 
+ 184:u8g2_lib/u8g2_buffer.c **** /*============================================*/
+ 185:u8g2_lib/u8g2_buffer.c **** 
+ 186:u8g2_lib/u8g2_buffer.c **** /* vertical_top memory architecture */
+ 187:u8g2_lib/u8g2_buffer.c **** void u8g2_WriteBufferPBM(u8g2_t *u8g2, void (*out)(const char *s))
+ 188:u8g2_lib/u8g2_buffer.c **** {
+ 468              		.loc 1 188 0
+ 469              		.cfi_startproc
+ 470              		@ args = 0, pretend = 0, frame = 0
+ 471              		@ frame_needed = 0, uses_anonymous_args = 0
+ 472              	.LVL59:
+ 473 0000 30B5     		push	{r4, r5, lr}
+ 474              	.LCFI13:
+ 475              		.cfi_def_cfa_offset 12
+ 476              		.cfi_offset 4, -12
+ 477              		.cfi_offset 5, -8
+ 478              		.cfi_offset 14, -4
+ 479 0002 83B0     		sub	sp, sp, #12
+ 480              	.LCFI14:
+ 481              		.cfi_def_cfa_offset 24
+ 482 0004 0446     		mov	r4, r0
+ 483 0006 0D46     		mov	r5, r1
+ 189:u8g2_lib/u8g2_buffer.c ****   u8x8_capture_write_pbm_pre(u8g2_GetBufferTileWidth(u8g2), u8g2_GetBufferTileHeight(u8g2), out);
+ 484              		.loc 1 189 0
+ 485 0008 0368     		ldr	r3, [r0]
+ 486 000a 0A46     		mov	r2, r1
+ 487 000c 90F83810 		ldrb	r1, [r0, #56]	@ zero_extendqisi2
+ 488              	.LVL60:
+ 489 0010 187C     		ldrb	r0, [r3, #16]	@ zero_extendqisi2
+ 490              	.LVL61:
+ 491 0012 FFF7FEFF 		bl	u8x8_capture_write_pbm_pre
+ 492              	.LVL62:
+ 190:u8g2_lib/u8g2_buffer.c ****   u8x8_capture_write_pbm_buffer(u8g2_GetBufferPtr(u8g2), u8g2_GetBufferTileWidth(u8g2), u8g2_GetBuf
+ 493              		.loc 1 190 0
+ 494 0016 2368     		ldr	r3, [r4]
+ 495 0018 94F83820 		ldrb	r2, [r4, #56]	@ zero_extendqisi2
+ 496 001c 197C     		ldrb	r1, [r3, #16]	@ zero_extendqisi2
+ 497 001e 606B     		ldr	r0, [r4, #52]
+ 498 0020 0095     		str	r5, [sp]
+ 499 0022 024B     		ldr	r3, .L30
+ 500 0024 FFF7FEFF 		bl	u8x8_capture_write_pbm_buffer
+ 501              	.LVL63:
+ 191:u8g2_lib/u8g2_buffer.c **** }
+ 502              		.loc 1 191 0
+ 503 0028 03B0     		add	sp, sp, #12
+ 504              	.LCFI15:
+ 505              		.cfi_def_cfa_offset 12
+ 506              		@ sp needed
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 13
+
+
+ 507 002a 30BD     		pop	{r4, r5, pc}
+ 508              	.LVL64:
+ 509              	.L31:
+ 510              		.align	2
+ 511              	.L30:
+ 512 002c 00000000 		.word	u8x8_capture_get_pixel_1
+ 513              		.cfi_endproc
+ 514              	.LFE9:
+ 516              		.section	.text.u8g2_WriteBufferXBM,"ax",%progbits
+ 517              		.align	2
+ 518              		.global	u8g2_WriteBufferXBM
+ 519              		.thumb
+ 520              		.thumb_func
+ 522              	u8g2_WriteBufferXBM:
+ 523              	.LFB10:
+ 192:u8g2_lib/u8g2_buffer.c **** 
+ 193:u8g2_lib/u8g2_buffer.c **** void u8g2_WriteBufferXBM(u8g2_t *u8g2, void (*out)(const char *s))
+ 194:u8g2_lib/u8g2_buffer.c **** {
+ 524              		.loc 1 194 0
+ 525              		.cfi_startproc
+ 526              		@ args = 0, pretend = 0, frame = 0
+ 527              		@ frame_needed = 0, uses_anonymous_args = 0
+ 528              	.LVL65:
+ 529 0000 30B5     		push	{r4, r5, lr}
+ 530              	.LCFI16:
+ 531              		.cfi_def_cfa_offset 12
+ 532              		.cfi_offset 4, -12
+ 533              		.cfi_offset 5, -8
+ 534              		.cfi_offset 14, -4
+ 535 0002 83B0     		sub	sp, sp, #12
+ 536              	.LCFI17:
+ 537              		.cfi_def_cfa_offset 24
+ 538 0004 0446     		mov	r4, r0
+ 539 0006 0D46     		mov	r5, r1
+ 195:u8g2_lib/u8g2_buffer.c ****   u8x8_capture_write_xbm_pre(u8g2_GetBufferTileWidth(u8g2), u8g2_GetBufferTileHeight(u8g2), out);
+ 540              		.loc 1 195 0
+ 541 0008 0368     		ldr	r3, [r0]
+ 542 000a 0A46     		mov	r2, r1
+ 543 000c 90F83810 		ldrb	r1, [r0, #56]	@ zero_extendqisi2
+ 544              	.LVL66:
+ 545 0010 187C     		ldrb	r0, [r3, #16]	@ zero_extendqisi2
+ 546              	.LVL67:
+ 547 0012 FFF7FEFF 		bl	u8x8_capture_write_xbm_pre
+ 548              	.LVL68:
+ 196:u8g2_lib/u8g2_buffer.c ****   u8x8_capture_write_xbm_buffer(u8g2_GetBufferPtr(u8g2), u8g2_GetBufferTileWidth(u8g2), u8g2_GetBuf
+ 549              		.loc 1 196 0
+ 550 0016 2368     		ldr	r3, [r4]
+ 551 0018 94F83820 		ldrb	r2, [r4, #56]	@ zero_extendqisi2
+ 552 001c 197C     		ldrb	r1, [r3, #16]	@ zero_extendqisi2
+ 553 001e 606B     		ldr	r0, [r4, #52]
+ 554 0020 0095     		str	r5, [sp]
+ 555 0022 024B     		ldr	r3, .L34
+ 556 0024 FFF7FEFF 		bl	u8x8_capture_write_xbm_buffer
+ 557              	.LVL69:
+ 197:u8g2_lib/u8g2_buffer.c **** }
+ 558              		.loc 1 197 0
+ 559 0028 03B0     		add	sp, sp, #12
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 14
+
+
+ 560              	.LCFI18:
+ 561              		.cfi_def_cfa_offset 12
+ 562              		@ sp needed
+ 563 002a 30BD     		pop	{r4, r5, pc}
+ 564              	.LVL70:
+ 565              	.L35:
+ 566              		.align	2
+ 567              	.L34:
+ 568 002c 00000000 		.word	u8x8_capture_get_pixel_1
+ 569              		.cfi_endproc
+ 570              	.LFE10:
+ 572              		.section	.text.u8g2_WriteBufferPBM2,"ax",%progbits
+ 573              		.align	2
+ 574              		.global	u8g2_WriteBufferPBM2
+ 575              		.thumb
+ 576              		.thumb_func
+ 578              	u8g2_WriteBufferPBM2:
+ 579              	.LFB11:
+ 198:u8g2_lib/u8g2_buffer.c **** 
+ 199:u8g2_lib/u8g2_buffer.c **** 
+ 200:u8g2_lib/u8g2_buffer.c **** /* horizontal right memory architecture */
+ 201:u8g2_lib/u8g2_buffer.c **** /* SH1122, LD7032, ST7920, ST7986, LC7981, T6963, SED1330, RA8835, MAX7219, LS0 */ 
+ 202:u8g2_lib/u8g2_buffer.c **** void u8g2_WriteBufferPBM2(u8g2_t *u8g2, void (*out)(const char *s))
+ 203:u8g2_lib/u8g2_buffer.c **** {
+ 580              		.loc 1 203 0
+ 581              		.cfi_startproc
+ 582              		@ args = 0, pretend = 0, frame = 0
+ 583              		@ frame_needed = 0, uses_anonymous_args = 0
+ 584              	.LVL71:
+ 585 0000 30B5     		push	{r4, r5, lr}
+ 586              	.LCFI19:
+ 587              		.cfi_def_cfa_offset 12
+ 588              		.cfi_offset 4, -12
+ 589              		.cfi_offset 5, -8
+ 590              		.cfi_offset 14, -4
+ 591 0002 83B0     		sub	sp, sp, #12
+ 592              	.LCFI20:
+ 593              		.cfi_def_cfa_offset 24
+ 594 0004 0446     		mov	r4, r0
+ 595 0006 0D46     		mov	r5, r1
+ 204:u8g2_lib/u8g2_buffer.c ****   u8x8_capture_write_pbm_pre(u8g2_GetBufferTileWidth(u8g2), u8g2_GetBufferTileHeight(u8g2), out);
+ 596              		.loc 1 204 0
+ 597 0008 0368     		ldr	r3, [r0]
+ 598 000a 0A46     		mov	r2, r1
+ 599 000c 90F83810 		ldrb	r1, [r0, #56]	@ zero_extendqisi2
+ 600              	.LVL72:
+ 601 0010 187C     		ldrb	r0, [r3, #16]	@ zero_extendqisi2
+ 602              	.LVL73:
+ 603 0012 FFF7FEFF 		bl	u8x8_capture_write_pbm_pre
+ 604              	.LVL74:
+ 205:u8g2_lib/u8g2_buffer.c ****   u8x8_capture_write_pbm_buffer(u8g2_GetBufferPtr(u8g2), u8g2_GetBufferTileWidth(u8g2), u8g2_GetBuf
+ 605              		.loc 1 205 0
+ 606 0016 2368     		ldr	r3, [r4]
+ 607 0018 94F83820 		ldrb	r2, [r4, #56]	@ zero_extendqisi2
+ 608 001c 197C     		ldrb	r1, [r3, #16]	@ zero_extendqisi2
+ 609 001e 606B     		ldr	r0, [r4, #52]
+ 610 0020 0095     		str	r5, [sp]
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 15
+
+
+ 611 0022 024B     		ldr	r3, .L38
+ 612 0024 FFF7FEFF 		bl	u8x8_capture_write_pbm_buffer
+ 613              	.LVL75:
+ 206:u8g2_lib/u8g2_buffer.c **** }
+ 614              		.loc 1 206 0
+ 615 0028 03B0     		add	sp, sp, #12
+ 616              	.LCFI21:
+ 617              		.cfi_def_cfa_offset 12
+ 618              		@ sp needed
+ 619 002a 30BD     		pop	{r4, r5, pc}
+ 620              	.LVL76:
+ 621              	.L39:
+ 622              		.align	2
+ 623              	.L38:
+ 624 002c 00000000 		.word	u8x8_capture_get_pixel_2
+ 625              		.cfi_endproc
+ 626              	.LFE11:
+ 628              		.section	.text.u8g2_WriteBufferXBM2,"ax",%progbits
+ 629              		.align	2
+ 630              		.global	u8g2_WriteBufferXBM2
+ 631              		.thumb
+ 632              		.thumb_func
+ 634              	u8g2_WriteBufferXBM2:
+ 635              	.LFB12:
+ 207:u8g2_lib/u8g2_buffer.c **** 
+ 208:u8g2_lib/u8g2_buffer.c **** void u8g2_WriteBufferXBM2(u8g2_t *u8g2, void (*out)(const char *s))
+ 209:u8g2_lib/u8g2_buffer.c **** {
+ 636              		.loc 1 209 0
+ 637              		.cfi_startproc
+ 638              		@ args = 0, pretend = 0, frame = 0
+ 639              		@ frame_needed = 0, uses_anonymous_args = 0
+ 640              	.LVL77:
+ 641 0000 30B5     		push	{r4, r5, lr}
+ 642              	.LCFI22:
+ 643              		.cfi_def_cfa_offset 12
+ 644              		.cfi_offset 4, -12
+ 645              		.cfi_offset 5, -8
+ 646              		.cfi_offset 14, -4
+ 647 0002 83B0     		sub	sp, sp, #12
+ 648              	.LCFI23:
+ 649              		.cfi_def_cfa_offset 24
+ 650 0004 0446     		mov	r4, r0
+ 651 0006 0D46     		mov	r5, r1
+ 210:u8g2_lib/u8g2_buffer.c ****   u8x8_capture_write_xbm_pre(u8g2_GetBufferTileWidth(u8g2), u8g2_GetBufferTileHeight(u8g2), out);
+ 652              		.loc 1 210 0
+ 653 0008 0368     		ldr	r3, [r0]
+ 654 000a 0A46     		mov	r2, r1
+ 655 000c 90F83810 		ldrb	r1, [r0, #56]	@ zero_extendqisi2
+ 656              	.LVL78:
+ 657 0010 187C     		ldrb	r0, [r3, #16]	@ zero_extendqisi2
+ 658              	.LVL79:
+ 659 0012 FFF7FEFF 		bl	u8x8_capture_write_xbm_pre
+ 660              	.LVL80:
+ 211:u8g2_lib/u8g2_buffer.c ****   u8x8_capture_write_xbm_buffer(u8g2_GetBufferPtr(u8g2), u8g2_GetBufferTileWidth(u8g2), u8g2_GetBuf
+ 661              		.loc 1 211 0
+ 662 0016 2368     		ldr	r3, [r4]
+ 663 0018 94F83820 		ldrb	r2, [r4, #56]	@ zero_extendqisi2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 16
+
+
+ 664 001c 197C     		ldrb	r1, [r3, #16]	@ zero_extendqisi2
+ 665 001e 606B     		ldr	r0, [r4, #52]
+ 666 0020 0095     		str	r5, [sp]
+ 667 0022 024B     		ldr	r3, .L42
+ 668 0024 FFF7FEFF 		bl	u8x8_capture_write_xbm_buffer
+ 669              	.LVL81:
+ 212:u8g2_lib/u8g2_buffer.c **** }
+ 670              		.loc 1 212 0
+ 671 0028 03B0     		add	sp, sp, #12
+ 672              	.LCFI24:
+ 673              		.cfi_def_cfa_offset 12
+ 674              		@ sp needed
+ 675 002a 30BD     		pop	{r4, r5, pc}
+ 676              	.LVL82:
+ 677              	.L43:
+ 678              		.align	2
+ 679              	.L42:
+ 680 002c 00000000 		.word	u8x8_capture_get_pixel_2
+ 681              		.cfi_endproc
+ 682              	.LFE12:
+ 684              		.text
+ 685              	.Letext0:
+ 686              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 687              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 688              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\lib\\gcc\\arm-none-eabi\\5.4
+ 689              		.file 5 "u8g2_lib/u8x8.h"
+ 690              		.file 6 "u8g2_lib/u8g2.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccf5f3BT.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g2_buffer.c
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:22     .text.u8g2_send_tile_row:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:26     .text.u8g2_send_tile_row:00000000 u8g2_send_tile_row
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:76     .text.u8g2_send_buffer:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:80     .text.u8g2_send_buffer:00000000 u8g2_send_buffer
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:140    .text.u8g2_ClearBuffer:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:145    .text.u8g2_ClearBuffer:00000000 u8g2_ClearBuffer
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:178    .text.u8g2_SendBuffer:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:183    .text.u8g2_SendBuffer:00000000 u8g2_SendBuffer
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:208    .text.u8g2_SetBufferCurrTileRow:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:213    .text.u8g2_SetBufferCurrTileRow:00000000 u8g2_SetBufferCurrTileRow
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:244    .text.u8g2_FirstPage:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:249    .text.u8g2_FirstPage:00000000 u8g2_FirstPage
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:279    .text.u8g2_NextPage:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:284    .text.u8g2_NextPage:00000000 u8g2_NextPage
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:346    .text.u8g2_UpdateDisplayArea:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:351    .text.u8g2_UpdateDisplayArea:00000000 u8g2_UpdateDisplayArea
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:436    .text.u8g2_UpdateDisplay:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:441    .text.u8g2_UpdateDisplay:00000000 u8g2_UpdateDisplay
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:461    .text.u8g2_WriteBufferPBM:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:466    .text.u8g2_WriteBufferPBM:00000000 u8g2_WriteBufferPBM
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:512    .text.u8g2_WriteBufferPBM:0000002c $d
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:517    .text.u8g2_WriteBufferXBM:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:522    .text.u8g2_WriteBufferXBM:00000000 u8g2_WriteBufferXBM
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:568    .text.u8g2_WriteBufferXBM:0000002c $d
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:573    .text.u8g2_WriteBufferPBM2:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:578    .text.u8g2_WriteBufferPBM2:00000000 u8g2_WriteBufferPBM2
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:624    .text.u8g2_WriteBufferPBM2:0000002c $d
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:629    .text.u8g2_WriteBufferXBM2:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:634    .text.u8g2_WriteBufferXBM2:00000000 u8g2_WriteBufferXBM2
+C:\Users\master\AppData\Local\Temp\ccf5f3BT.s:680    .text.u8g2_WriteBufferXBM2:0000002c $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+u8x8_DrawTile
+memset
+u8x8_RefreshDisplay
+u8x8_capture_write_pbm_pre
+u8x8_capture_write_pbm_buffer
+u8x8_capture_get_pixel_1
+u8x8_capture_write_xbm_pre
+u8x8_capture_write_xbm_buffer
+u8x8_capture_get_pixel_2

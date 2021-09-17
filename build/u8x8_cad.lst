@@ -1,0 +1,3295 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8x8_cad.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8x8_i2c_data_transfer,"ax",%progbits
+  22              		.align	2
+  23              		.thumb
+  24              		.thumb_func
+  26              	u8x8_i2c_data_transfer:
+  27              	.LFB15:
+  28              		.file 1 "u8g2_lib/u8x8_cad.c"
+   1:u8g2_lib/u8x8_cad.c **** /*
+   2:u8g2_lib/u8x8_cad.c ****   
+   3:u8g2_lib/u8x8_cad.c ****   u8x8_cad.c
+   4:u8g2_lib/u8x8_cad.c ****   
+   5:u8g2_lib/u8x8_cad.c ****   "command arg data" interface to the graphics controller
+   6:u8g2_lib/u8x8_cad.c **** 
+   7:u8g2_lib/u8x8_cad.c ****   Universal 8bit Graphics Library (https://github.com/olikraus/u8g2/)
+   8:u8g2_lib/u8x8_cad.c **** 
+   9:u8g2_lib/u8x8_cad.c ****   Copyright (c) 2016, olikraus@gmail.com
+  10:u8g2_lib/u8x8_cad.c ****   All rights reserved.
+  11:u8g2_lib/u8x8_cad.c **** 
+  12:u8g2_lib/u8x8_cad.c ****   Redistribution and use in source and binary forms, with or without modification, 
+  13:u8g2_lib/u8x8_cad.c ****   are permitted provided that the following conditions are met:
+  14:u8g2_lib/u8x8_cad.c **** 
+  15:u8g2_lib/u8x8_cad.c ****   * Redistributions of source code must retain the above copyright notice, this list 
+  16:u8g2_lib/u8x8_cad.c ****     of conditions and the following disclaimer.
+  17:u8g2_lib/u8x8_cad.c ****     
+  18:u8g2_lib/u8x8_cad.c ****   * Redistributions in binary form must reproduce the above copyright notice, this 
+  19:u8g2_lib/u8x8_cad.c ****     list of conditions and the following disclaimer in the documentation and/or other 
+  20:u8g2_lib/u8x8_cad.c ****     materials provided with the distribution.
+  21:u8g2_lib/u8x8_cad.c **** 
+  22:u8g2_lib/u8x8_cad.c ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND 
+  23:u8g2_lib/u8x8_cad.c ****   CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, 
+  24:u8g2_lib/u8x8_cad.c ****   INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF 
+  25:u8g2_lib/u8x8_cad.c ****   MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE 
+  26:u8g2_lib/u8x8_cad.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+  27:u8g2_lib/u8x8_cad.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+  28:u8g2_lib/u8x8_cad.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  29:u8g2_lib/u8x8_cad.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+  30:u8g2_lib/u8x8_cad.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 2
+
+
+  31:u8g2_lib/u8x8_cad.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+  32:u8g2_lib/u8x8_cad.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  33:u8g2_lib/u8x8_cad.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+  34:u8g2_lib/u8x8_cad.c ****   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  
+  35:u8g2_lib/u8x8_cad.c **** 
+  36:u8g2_lib/u8x8_cad.c **** 
+  37:u8g2_lib/u8x8_cad.c ****   The following sequence must be used for any data, which is set to the display:
+  38:u8g2_lib/u8x8_cad.c ****   
+  39:u8g2_lib/u8x8_cad.c ****   
+  40:u8g2_lib/u8x8_cad.c ****   uint8_t u8x8_cad_StartTransfer(u8x8_t *u8x8)
+  41:u8g2_lib/u8x8_cad.c **** 
+  42:u8g2_lib/u8x8_cad.c ****   any of the following calls
+  43:u8g2_lib/u8x8_cad.c ****     uint8_t u8x8_cad_SendCmd(u8x8_t *u8x8, uint8_t cmd)
+  44:u8g2_lib/u8x8_cad.c ****     uint8_t u8x8_cad_SendArg(u8x8_t *u8x8, uint8_t arg)
+  45:u8g2_lib/u8x8_cad.c ****     uint8_t u8x8_cad_SendData(u8x8_t *u8x8, uint8_t cnt, uint8_t *data)
+  46:u8g2_lib/u8x8_cad.c ****   
+  47:u8g2_lib/u8x8_cad.c ****   uint8_t u8x8_cad_EndTransfer(u8x8_t *u8x8)
+  48:u8g2_lib/u8x8_cad.c **** 
+  49:u8g2_lib/u8x8_cad.c **** 
+  50:u8g2_lib/u8x8_cad.c **** 
+  51:u8g2_lib/u8x8_cad.c **** */
+  52:u8g2_lib/u8x8_cad.c **** /*
+  53:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_template(u8x8_t *u8x8, uint8_t msg, uint16_t arg_int, void *arg_ptr)
+  54:u8g2_lib/u8x8_cad.c **** {
+  55:u8g2_lib/u8x8_cad.c ****   uint8_t i;
+  56:u8g2_lib/u8x8_cad.c ****   
+  57:u8g2_lib/u8x8_cad.c ****   switch(msg)
+  58:u8g2_lib/u8x8_cad.c ****   {
+  59:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+  60:u8g2_lib/u8x8_cad.c ****       u8x8_mcd_byte_SetDC(mcd->next, 1);
+  61:u8g2_lib/u8x8_cad.c ****       u8x8_mcd_byte_Send(mcd->next, arg_int);
+  62:u8g2_lib/u8x8_cad.c ****       break;
+  63:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+  64:u8g2_lib/u8x8_cad.c ****       u8x8_mcd_byte_SetDC(mcd->next, 1);
+  65:u8g2_lib/u8x8_cad.c ****       u8x8_mcd_byte_Send(mcd->next, arg_int);
+  66:u8g2_lib/u8x8_cad.c ****       break;
+  67:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+  68:u8g2_lib/u8x8_cad.c ****       u8x8_mcd_byte_SetDC(mcd->next, 0);
+  69:u8g2_lib/u8x8_cad.c ****       for( i = 0; i < 8; i++ )
+  70:u8g2_lib/u8x8_cad.c **** 	u8x8_mcd_byte_Send(mcd->next, ((uint8_t *)arg_ptr)[i]);
+  71:u8g2_lib/u8x8_cad.c ****       break;
+  72:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_RESET:
+  73:u8g2_lib/u8x8_cad.c ****       return mcd->next->cb(mcd->next, msg, arg_int, arg_ptr);
+  74:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+  75:u8g2_lib/u8x8_cad.c ****       return mcd->next->cb(mcd->next, msg, arg_int, arg_ptr);
+  76:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+  77:u8g2_lib/u8x8_cad.c ****       return mcd->next->cb(mcd->next, msg, arg_int, arg_ptr);
+  78:u8g2_lib/u8x8_cad.c ****     default:
+  79:u8g2_lib/u8x8_cad.c ****       break;
+  80:u8g2_lib/u8x8_cad.c ****   }
+  81:u8g2_lib/u8x8_cad.c ****   return 1;
+  82:u8g2_lib/u8x8_cad.c **** }
+  83:u8g2_lib/u8x8_cad.c **** 
+  84:u8g2_lib/u8x8_cad.c **** */
+  85:u8g2_lib/u8x8_cad.c **** 
+  86:u8g2_lib/u8x8_cad.c **** #include "u8x8.h"
+  87:u8g2_lib/u8x8_cad.c **** 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 3
+
+
+  88:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_SendCmd(u8x8_t *u8x8, uint8_t cmd)
+  89:u8g2_lib/u8x8_cad.c **** {
+  90:u8g2_lib/u8x8_cad.c ****   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_CMD, cmd, NULL);
+  91:u8g2_lib/u8x8_cad.c **** }
+  92:u8g2_lib/u8x8_cad.c **** 
+  93:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_SendArg(u8x8_t *u8x8, uint8_t arg)
+  94:u8g2_lib/u8x8_cad.c **** {
+  95:u8g2_lib/u8x8_cad.c ****   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_ARG, arg, NULL);
+  96:u8g2_lib/u8x8_cad.c **** }
+  97:u8g2_lib/u8x8_cad.c **** 
+  98:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_SendMultipleArg(u8x8_t *u8x8, uint8_t cnt, uint8_t arg)
+  99:u8g2_lib/u8x8_cad.c **** {
+ 100:u8g2_lib/u8x8_cad.c ****   while( cnt > 0 )
+ 101:u8g2_lib/u8x8_cad.c ****   {
+ 102:u8g2_lib/u8x8_cad.c ****     u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_ARG, arg, NULL);
+ 103:u8g2_lib/u8x8_cad.c ****     cnt--;
+ 104:u8g2_lib/u8x8_cad.c ****   }
+ 105:u8g2_lib/u8x8_cad.c ****   return 1;
+ 106:u8g2_lib/u8x8_cad.c **** }
+ 107:u8g2_lib/u8x8_cad.c **** 
+ 108:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_SendData(u8x8_t *u8x8, uint8_t cnt, uint8_t *data)
+ 109:u8g2_lib/u8x8_cad.c **** {
+ 110:u8g2_lib/u8x8_cad.c ****   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, cnt, data);
+ 111:u8g2_lib/u8x8_cad.c **** }
+ 112:u8g2_lib/u8x8_cad.c **** 
+ 113:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_StartTransfer(u8x8_t *u8x8)
+ 114:u8g2_lib/u8x8_cad.c **** {
+ 115:u8g2_lib/u8x8_cad.c ****   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_START_TRANSFER, 0, NULL);
+ 116:u8g2_lib/u8x8_cad.c **** }
+ 117:u8g2_lib/u8x8_cad.c **** 
+ 118:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_EndTransfer(u8x8_t *u8x8)
+ 119:u8g2_lib/u8x8_cad.c **** {
+ 120:u8g2_lib/u8x8_cad.c ****   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_END_TRANSFER, 0, NULL);
+ 121:u8g2_lib/u8x8_cad.c **** }
+ 122:u8g2_lib/u8x8_cad.c **** 
+ 123:u8g2_lib/u8x8_cad.c **** void u8x8_cad_vsendf(u8x8_t * u8x8, const char *fmt, va_list va)
+ 124:u8g2_lib/u8x8_cad.c **** {
+ 125:u8g2_lib/u8x8_cad.c ****   uint8_t d;
+ 126:u8g2_lib/u8x8_cad.c ****   u8x8_cad_StartTransfer(u8x8);
+ 127:u8g2_lib/u8x8_cad.c ****   while( *fmt != '\0' )
+ 128:u8g2_lib/u8x8_cad.c ****   {
+ 129:u8g2_lib/u8x8_cad.c ****     d = (uint8_t)va_arg(va, int);
+ 130:u8g2_lib/u8x8_cad.c ****     switch(*fmt)
+ 131:u8g2_lib/u8x8_cad.c ****     {
+ 132:u8g2_lib/u8x8_cad.c ****       case 'a':  u8x8_cad_SendArg(u8x8, d); break;
+ 133:u8g2_lib/u8x8_cad.c ****       case 'c':  u8x8_cad_SendCmd(u8x8, d); break;
+ 134:u8g2_lib/u8x8_cad.c ****       case 'd':  u8x8_cad_SendData(u8x8, 1, &d); break;
+ 135:u8g2_lib/u8x8_cad.c ****     }
+ 136:u8g2_lib/u8x8_cad.c ****     fmt++;
+ 137:u8g2_lib/u8x8_cad.c ****   }
+ 138:u8g2_lib/u8x8_cad.c ****   u8x8_cad_EndTransfer(u8x8);
+ 139:u8g2_lib/u8x8_cad.c **** }
+ 140:u8g2_lib/u8x8_cad.c **** 
+ 141:u8g2_lib/u8x8_cad.c **** void u8x8_SendF(u8x8_t * u8x8, const char *fmt, ...)
+ 142:u8g2_lib/u8x8_cad.c **** {
+ 143:u8g2_lib/u8x8_cad.c ****   va_list va;
+ 144:u8g2_lib/u8x8_cad.c ****   va_start(va, fmt);
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 4
+
+
+ 145:u8g2_lib/u8x8_cad.c ****   u8x8_cad_vsendf(u8x8, fmt, va);
+ 146:u8g2_lib/u8x8_cad.c ****   va_end(va);
+ 147:u8g2_lib/u8x8_cad.c **** }
+ 148:u8g2_lib/u8x8_cad.c **** 
+ 149:u8g2_lib/u8x8_cad.c **** /*
+ 150:u8g2_lib/u8x8_cad.c ****   21 c		send command c
+ 151:u8g2_lib/u8x8_cad.c ****   22 a		send arg a
+ 152:u8g2_lib/u8x8_cad.c ****   23 d		send data d
+ 153:u8g2_lib/u8x8_cad.c ****   24			CS on
+ 154:u8g2_lib/u8x8_cad.c ****   25			CS off
+ 155:u8g2_lib/u8x8_cad.c ****   254 milli	delay by milliseconds
+ 156:u8g2_lib/u8x8_cad.c ****   255		end of sequence
+ 157:u8g2_lib/u8x8_cad.c **** */
+ 158:u8g2_lib/u8x8_cad.c **** 
+ 159:u8g2_lib/u8x8_cad.c **** void u8x8_cad_SendSequence(u8x8_t *u8x8, uint8_t const *data)
+ 160:u8g2_lib/u8x8_cad.c **** {
+ 161:u8g2_lib/u8x8_cad.c ****   uint8_t cmd;
+ 162:u8g2_lib/u8x8_cad.c ****   uint8_t v;
+ 163:u8g2_lib/u8x8_cad.c **** 
+ 164:u8g2_lib/u8x8_cad.c ****   for(;;)
+ 165:u8g2_lib/u8x8_cad.c ****   {
+ 166:u8g2_lib/u8x8_cad.c ****     cmd = *data;
+ 167:u8g2_lib/u8x8_cad.c ****     data++;
+ 168:u8g2_lib/u8x8_cad.c ****     switch( cmd )
+ 169:u8g2_lib/u8x8_cad.c ****     {
+ 170:u8g2_lib/u8x8_cad.c ****       case U8X8_MSG_CAD_SEND_CMD:
+ 171:u8g2_lib/u8x8_cad.c ****       case U8X8_MSG_CAD_SEND_ARG:
+ 172:u8g2_lib/u8x8_cad.c **** 	  v = *data;
+ 173:u8g2_lib/u8x8_cad.c **** 	  u8x8->cad_cb(u8x8, cmd, v, NULL);
+ 174:u8g2_lib/u8x8_cad.c **** 	  data++;
+ 175:u8g2_lib/u8x8_cad.c **** 	  break;
+ 176:u8g2_lib/u8x8_cad.c ****       case U8X8_MSG_CAD_SEND_DATA:
+ 177:u8g2_lib/u8x8_cad.c **** 	  v = *data;
+ 178:u8g2_lib/u8x8_cad.c **** 	  u8x8_cad_SendData(u8x8, 1, &v);
+ 179:u8g2_lib/u8x8_cad.c **** 	  data++;
+ 180:u8g2_lib/u8x8_cad.c **** 	  break;
+ 181:u8g2_lib/u8x8_cad.c ****       case U8X8_MSG_CAD_START_TRANSFER:
+ 182:u8g2_lib/u8x8_cad.c ****       case U8X8_MSG_CAD_END_TRANSFER:
+ 183:u8g2_lib/u8x8_cad.c **** 	  u8x8->cad_cb(u8x8, cmd, 0, NULL);
+ 184:u8g2_lib/u8x8_cad.c **** 	  break;
+ 185:u8g2_lib/u8x8_cad.c ****       case 0x0fe:
+ 186:u8g2_lib/u8x8_cad.c **** 	  v = *data;
+ 187:u8g2_lib/u8x8_cad.c **** 	  u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_MILLI, v);	    
+ 188:u8g2_lib/u8x8_cad.c **** 	  data++;
+ 189:u8g2_lib/u8x8_cad.c **** 	  break;
+ 190:u8g2_lib/u8x8_cad.c ****       default:
+ 191:u8g2_lib/u8x8_cad.c **** 	return;
+ 192:u8g2_lib/u8x8_cad.c ****     }
+ 193:u8g2_lib/u8x8_cad.c ****   }
+ 194:u8g2_lib/u8x8_cad.c **** }
+ 195:u8g2_lib/u8x8_cad.c **** 
+ 196:u8g2_lib/u8x8_cad.c **** 
+ 197:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_empty(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 198:u8g2_lib/u8x8_cad.c **** {
+ 199:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 200:u8g2_lib/u8x8_cad.c ****   {
+ 201:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 5
+
+
+ 202:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 203:u8g2_lib/u8x8_cad.c ****       break;
+ 204:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 205:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 206:u8g2_lib/u8x8_cad.c ****       break;
+ 207:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 208:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 209:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 210:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 211:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 212:u8g2_lib/u8x8_cad.c ****     default:
+ 213:u8g2_lib/u8x8_cad.c ****       return 0;
+ 214:u8g2_lib/u8x8_cad.c ****   }
+ 215:u8g2_lib/u8x8_cad.c ****   return 1;
+ 216:u8g2_lib/u8x8_cad.c **** }
+ 217:u8g2_lib/u8x8_cad.c **** 
+ 218:u8g2_lib/u8x8_cad.c **** 
+ 219:u8g2_lib/u8x8_cad.c **** /*
+ 220:u8g2_lib/u8x8_cad.c ****   convert to bytes by using 
+ 221:u8g2_lib/u8x8_cad.c ****     dc = 1 for commands and args and
+ 222:u8g2_lib/u8x8_cad.c ****     dc = 0 for data
+ 223:u8g2_lib/u8x8_cad.c **** */
+ 224:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_110(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 225:u8g2_lib/u8x8_cad.c **** {
+ 226:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 227:u8g2_lib/u8x8_cad.c ****   {
+ 228:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ 229:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 1);
+ 230:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 231:u8g2_lib/u8x8_cad.c ****       break;
+ 232:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 233:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 1);
+ 234:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 235:u8g2_lib/u8x8_cad.c ****       break;
+ 236:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 237:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 0);
+ 238:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SendBytes(u8x8, arg_int, arg_ptr);
+ 239:u8g2_lib/u8x8_cad.c ****       //break;
+ 240:u8g2_lib/u8x8_cad.c ****       /* fall through */
+ 241:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 242:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 243:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 244:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 245:u8g2_lib/u8x8_cad.c ****     default:
+ 246:u8g2_lib/u8x8_cad.c ****       return 0;
+ 247:u8g2_lib/u8x8_cad.c ****   }
+ 248:u8g2_lib/u8x8_cad.c ****   return 1;
+ 249:u8g2_lib/u8x8_cad.c **** }
+ 250:u8g2_lib/u8x8_cad.c **** 
+ 251:u8g2_lib/u8x8_cad.c **** /*
+ 252:u8g2_lib/u8x8_cad.c ****   convert to bytes by using 
+ 253:u8g2_lib/u8x8_cad.c ****     dc = 1 for commands and args and
+ 254:u8g2_lib/u8x8_cad.c ****     dc = 0 for data
+ 255:u8g2_lib/u8x8_cad.c ****     t6963
+ 256:u8g2_lib/u8x8_cad.c **** */
+ 257:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_100(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 258:u8g2_lib/u8x8_cad.c **** {
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 6
+
+
+ 259:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 260:u8g2_lib/u8x8_cad.c ****   {
+ 261:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ 262:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 1);
+ 263:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 264:u8g2_lib/u8x8_cad.c ****       break;
+ 265:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 266:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 0);
+ 267:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 268:u8g2_lib/u8x8_cad.c ****       break;
+ 269:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 270:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 0);
+ 271:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SendBytes(u8x8, arg_int, arg_ptr);
+ 272:u8g2_lib/u8x8_cad.c ****       //break;
+ 273:u8g2_lib/u8x8_cad.c ****       /* fall through */
+ 274:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 275:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 276:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 277:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 278:u8g2_lib/u8x8_cad.c ****     default:
+ 279:u8g2_lib/u8x8_cad.c ****       return 0;
+ 280:u8g2_lib/u8x8_cad.c ****   }
+ 281:u8g2_lib/u8x8_cad.c ****   return 1;
+ 282:u8g2_lib/u8x8_cad.c **** }
+ 283:u8g2_lib/u8x8_cad.c **** 
+ 284:u8g2_lib/u8x8_cad.c **** /*
+ 285:u8g2_lib/u8x8_cad.c ****   convert to bytes by using 
+ 286:u8g2_lib/u8x8_cad.c ****     dc = 0 for commands and args and
+ 287:u8g2_lib/u8x8_cad.c ****     dc = 1 for data
+ 288:u8g2_lib/u8x8_cad.c **** */
+ 289:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_001(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 290:u8g2_lib/u8x8_cad.c **** {
+ 291:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 292:u8g2_lib/u8x8_cad.c ****   {
+ 293:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ 294:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 0);
+ 295:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 296:u8g2_lib/u8x8_cad.c ****       break;
+ 297:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 298:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 0);
+ 299:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 300:u8g2_lib/u8x8_cad.c ****       break;
+ 301:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 302:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 1);
+ 303:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SendBytes(u8x8, arg_int, arg_ptr);
+ 304:u8g2_lib/u8x8_cad.c ****       //break;
+ 305:u8g2_lib/u8x8_cad.c ****       /* fall through */
+ 306:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 307:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 308:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 309:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 310:u8g2_lib/u8x8_cad.c ****     default:
+ 311:u8g2_lib/u8x8_cad.c ****       return 0;
+ 312:u8g2_lib/u8x8_cad.c ****   }
+ 313:u8g2_lib/u8x8_cad.c ****   return 1;
+ 314:u8g2_lib/u8x8_cad.c **** }
+ 315:u8g2_lib/u8x8_cad.c **** 
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 7
+
+
+ 316:u8g2_lib/u8x8_cad.c **** /*
+ 317:u8g2_lib/u8x8_cad.c ****   convert to bytes by using 
+ 318:u8g2_lib/u8x8_cad.c ****     dc = 0 for commands 
+ 319:u8g2_lib/u8x8_cad.c ****     dc = 1 for args and data
+ 320:u8g2_lib/u8x8_cad.c **** */
+ 321:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_011(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 322:u8g2_lib/u8x8_cad.c **** {
+ 323:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 324:u8g2_lib/u8x8_cad.c ****   {
+ 325:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ 326:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 0);
+ 327:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 328:u8g2_lib/u8x8_cad.c ****       break;
+ 329:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 330:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 1);
+ 331:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 332:u8g2_lib/u8x8_cad.c ****       break;
+ 333:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 334:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SetDC(u8x8, 1);
+ 335:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SendBytes(u8x8, arg_int, arg_ptr);
+ 336:u8g2_lib/u8x8_cad.c ****       //break;
+ 337:u8g2_lib/u8x8_cad.c ****       /* fall through */
+ 338:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 339:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 340:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 341:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 342:u8g2_lib/u8x8_cad.c ****     default:
+ 343:u8g2_lib/u8x8_cad.c ****       return 0;
+ 344:u8g2_lib/u8x8_cad.c ****   }
+ 345:u8g2_lib/u8x8_cad.c ****   return 1;
+ 346:u8g2_lib/u8x8_cad.c **** }
+ 347:u8g2_lib/u8x8_cad.c **** 
+ 348:u8g2_lib/u8x8_cad.c **** /* cad procedure for the ST7920 in SPI mode */
+ 349:u8g2_lib/u8x8_cad.c **** /* u8x8_byte_SetDC is not used */
+ 350:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_st7920_spi(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 351:u8g2_lib/u8x8_cad.c **** {
+ 352:u8g2_lib/u8x8_cad.c ****   uint8_t *data;
+ 353:u8g2_lib/u8x8_cad.c ****   uint8_t b;
+ 354:u8g2_lib/u8x8_cad.c ****   uint8_t i;
+ 355:u8g2_lib/u8x8_cad.c ****   static uint8_t buf[16];
+ 356:u8g2_lib/u8x8_cad.c ****   uint8_t *ptr;
+ 357:u8g2_lib/u8x8_cad.c ****   
+ 358:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 359:u8g2_lib/u8x8_cad.c ****   {
+ 360:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ 361:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, 0x0f8);
+ 362:u8g2_lib/u8x8_cad.c ****       u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_NANO, 1);
+ 363:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int & 0x0f0);
+ 364:u8g2_lib/u8x8_cad.c ****       u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_NANO, 1);
+ 365:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int << 4);
+ 366:u8g2_lib/u8x8_cad.c ****       u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_NANO, 1);
+ 367:u8g2_lib/u8x8_cad.c ****       break;
+ 368:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 369:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, 0x0f8);
+ 370:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int & 0x0f0);
+ 371:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int << 4);
+ 372:u8g2_lib/u8x8_cad.c ****       break;
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 8
+
+
+ 373:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 374:u8g2_lib/u8x8_cad.c ****     
+ 375:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, 0x0fa);
+ 376:u8g2_lib/u8x8_cad.c ****       u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_NANO, 1);
+ 377:u8g2_lib/u8x8_cad.c **** 
+ 378:u8g2_lib/u8x8_cad.c ****       /* this loop should be optimized: multiple bytes should be sent */
+ 379:u8g2_lib/u8x8_cad.c ****       /* u8x8_byte_SendBytes(u8x8, arg_int, arg_ptr); */
+ 380:u8g2_lib/u8x8_cad.c ****       data = (uint8_t *)arg_ptr;
+ 381:u8g2_lib/u8x8_cad.c ****     
+ 382:u8g2_lib/u8x8_cad.c ****       /* the following loop increases speed by 20% */
+ 383:u8g2_lib/u8x8_cad.c ****       while( arg_int >= 8 )
+ 384:u8g2_lib/u8x8_cad.c ****       {
+ 385:u8g2_lib/u8x8_cad.c **** 	i = 8;
+ 386:u8g2_lib/u8x8_cad.c **** 	ptr = buf;
+ 387:u8g2_lib/u8x8_cad.c **** 	do
+ 388:u8g2_lib/u8x8_cad.c **** 	{
+ 389:u8g2_lib/u8x8_cad.c **** 	  b = *data++;
+ 390:u8g2_lib/u8x8_cad.c **** 	  *ptr++= b & 0x0f0;
+ 391:u8g2_lib/u8x8_cad.c **** 	  b <<= 4;
+ 392:u8g2_lib/u8x8_cad.c **** 	  *ptr++= b;
+ 393:u8g2_lib/u8x8_cad.c **** 	  i--;
+ 394:u8g2_lib/u8x8_cad.c **** 	} while( i > 0 );
+ 395:u8g2_lib/u8x8_cad.c **** 	arg_int -= 8;
+ 396:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_SendBytes(u8x8, 16, buf); 
+ 397:u8g2_lib/u8x8_cad.c ****       }
+ 398:u8g2_lib/u8x8_cad.c ****       
+ 399:u8g2_lib/u8x8_cad.c ****     
+ 400:u8g2_lib/u8x8_cad.c ****       while( arg_int > 0 )
+ 401:u8g2_lib/u8x8_cad.c ****       {
+ 402:u8g2_lib/u8x8_cad.c **** 	b = *data;
+ 403:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_SendByte(u8x8, b & 0x0f0);
+ 404:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_SendByte(u8x8, b << 4);
+ 405:u8g2_lib/u8x8_cad.c **** 	data++;
+ 406:u8g2_lib/u8x8_cad.c **** 	arg_int--;
+ 407:u8g2_lib/u8x8_cad.c ****       }
+ 408:u8g2_lib/u8x8_cad.c ****       u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_NANO, 1);
+ 409:u8g2_lib/u8x8_cad.c ****       break;
+ 410:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 411:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 412:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 413:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 414:u8g2_lib/u8x8_cad.c ****     default:
+ 415:u8g2_lib/u8x8_cad.c ****       return 0;
+ 416:u8g2_lib/u8x8_cad.c ****   }
+ 417:u8g2_lib/u8x8_cad.c ****   return 1;
+ 418:u8g2_lib/u8x8_cad.c **** }
+ 419:u8g2_lib/u8x8_cad.c **** 
+ 420:u8g2_lib/u8x8_cad.c **** 
+ 421:u8g2_lib/u8x8_cad.c **** /* cad procedure for the SSD13xx family in I2C mode */
+ 422:u8g2_lib/u8x8_cad.c **** /* this procedure is also used by the ST7588 */
+ 423:u8g2_lib/u8x8_cad.c **** /* u8x8_byte_SetDC is not used */
+ 424:u8g2_lib/u8x8_cad.c **** /* U8X8_MSG_BYTE_START_TRANSFER starts i2c transfer, U8X8_MSG_BYTE_END_TRANSFER stops transfer */
+ 425:u8g2_lib/u8x8_cad.c **** /* After transfer start, a full byte indicates command or data mode */
+ 426:u8g2_lib/u8x8_cad.c **** 
+ 427:u8g2_lib/u8x8_cad.c **** static void u8x8_i2c_data_transfer(u8x8_t *u8x8, uint8_t arg_int, void *arg_ptr) U8X8_NOINLINE;
+ 428:u8g2_lib/u8x8_cad.c **** static void u8x8_i2c_data_transfer(u8x8_t *u8x8, uint8_t arg_int, void *arg_ptr)
+ 429:u8g2_lib/u8x8_cad.c **** {
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 9
+
+
+  29              		.loc 1 429 0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              	.LVL0:
+  34 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 24
+  37              		.cfi_offset 3, -24
+  38              		.cfi_offset 4, -20
+  39              		.cfi_offset 5, -16
+  40              		.cfi_offset 6, -12
+  41              		.cfi_offset 7, -8
+  42              		.cfi_offset 14, -4
+  43 0002 0446     		mov	r4, r0
+  44 0004 0E46     		mov	r6, r1
+  45 0006 1746     		mov	r7, r2
+ 430:u8g2_lib/u8x8_cad.c ****     u8x8_byte_StartTransfer(u8x8);    
+  46              		.loc 1 430 0
+  47 0008 FFF7FEFF 		bl	u8x8_byte_StartTransfer
+  48              	.LVL1:
+ 431:u8g2_lib/u8x8_cad.c ****     u8x8_byte_SendByte(u8x8, 0x040);
+  49              		.loc 1 431 0
+  50 000c 4021     		movs	r1, #64
+  51 000e 2046     		mov	r0, r4
+  52 0010 FFF7FEFF 		bl	u8x8_byte_SendByte
+  53              	.LVL2:
+ 432:u8g2_lib/u8x8_cad.c ****     u8x8->byte_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, arg_int, arg_ptr);
+  54              		.loc 1 432 0
+  55 0014 2569     		ldr	r5, [r4, #16]
+  56 0016 3B46     		mov	r3, r7
+  57 0018 3246     		mov	r2, r6
+  58 001a 1721     		movs	r1, #23
+  59 001c 2046     		mov	r0, r4
+  60 001e A847     		blx	r5
+  61              	.LVL3:
+ 433:u8g2_lib/u8x8_cad.c ****     u8x8_byte_EndTransfer(u8x8);
+  62              		.loc 1 433 0
+  63 0020 2046     		mov	r0, r4
+  64 0022 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+  65              	.LVL4:
+  66 0026 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+  67              		.cfi_endproc
+  68              	.LFE15:
+  70              		.section	.text.u8x8_cad_SendCmd,"ax",%progbits
+  71              		.align	2
+  72              		.global	u8x8_cad_SendCmd
+  73              		.thumb
+  74              		.thumb_func
+  76              	u8x8_cad_SendCmd:
+  77              	.LFB0:
+  89:u8g2_lib/u8x8_cad.c ****   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_CMD, cmd, NULL);
+  78              		.loc 1 89 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              	.LVL5:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 10
+
+
+  83 0000 10B5     		push	{r4, lr}
+  84              	.LCFI1:
+  85              		.cfi_def_cfa_offset 8
+  86              		.cfi_offset 4, -8
+  87              		.cfi_offset 14, -4
+  90:u8g2_lib/u8x8_cad.c **** }
+  88              		.loc 1 90 0
+  89 0002 C468     		ldr	r4, [r0, #12]
+  90 0004 0023     		movs	r3, #0
+  91 0006 0A46     		mov	r2, r1
+  92 0008 1521     		movs	r1, #21
+  93              	.LVL6:
+  94 000a A047     		blx	r4
+  95              	.LVL7:
+  91:u8g2_lib/u8x8_cad.c **** 
+  96              		.loc 1 91 0
+  97 000c 10BD     		pop	{r4, pc}
+  98              		.cfi_endproc
+  99              	.LFE0:
+ 101 000e 00BF     		.section	.text.u8x8_cad_SendArg,"ax",%progbits
+ 102              		.align	2
+ 103              		.global	u8x8_cad_SendArg
+ 104              		.thumb
+ 105              		.thumb_func
+ 107              	u8x8_cad_SendArg:
+ 108              	.LFB1:
+  94:u8g2_lib/u8x8_cad.c ****   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_ARG, arg, NULL);
+ 109              		.loc 1 94 0
+ 110              		.cfi_startproc
+ 111              		@ args = 0, pretend = 0, frame = 0
+ 112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 113              	.LVL8:
+ 114 0000 10B5     		push	{r4, lr}
+ 115              	.LCFI2:
+ 116              		.cfi_def_cfa_offset 8
+ 117              		.cfi_offset 4, -8
+ 118              		.cfi_offset 14, -4
+  95:u8g2_lib/u8x8_cad.c **** }
+ 119              		.loc 1 95 0
+ 120 0002 C468     		ldr	r4, [r0, #12]
+ 121 0004 0023     		movs	r3, #0
+ 122 0006 0A46     		mov	r2, r1
+ 123 0008 1621     		movs	r1, #22
+ 124              	.LVL9:
+ 125 000a A047     		blx	r4
+ 126              	.LVL10:
+  96:u8g2_lib/u8x8_cad.c **** 
+ 127              		.loc 1 96 0
+ 128 000c 10BD     		pop	{r4, pc}
+ 129              		.cfi_endproc
+ 130              	.LFE1:
+ 132 000e 00BF     		.section	.text.u8x8_cad_SendMultipleArg,"ax",%progbits
+ 133              		.align	2
+ 134              		.global	u8x8_cad_SendMultipleArg
+ 135              		.thumb
+ 136              		.thumb_func
+ 138              	u8x8_cad_SendMultipleArg:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 11
+
+
+ 139              	.LFB2:
+  99:u8g2_lib/u8x8_cad.c ****   while( cnt > 0 )
+ 140              		.loc 1 99 0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144              	.LVL11:
+ 145 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 146              	.LCFI3:
+ 147              		.cfi_def_cfa_offset 24
+ 148              		.cfi_offset 3, -24
+ 149              		.cfi_offset 4, -20
+ 150              		.cfi_offset 5, -16
+ 151              		.cfi_offset 6, -12
+ 152              		.cfi_offset 7, -8
+ 153              		.cfi_offset 14, -4
+ 154 0002 0546     		mov	r5, r0
+ 155 0004 0C46     		mov	r4, r1
+ 156 0006 1746     		mov	r7, r2
+ 100:u8g2_lib/u8x8_cad.c ****   {
+ 157              		.loc 1 100 0
+ 158 0008 07E0     		b	.L8
+ 159              	.LVL12:
+ 160              	.L9:
+ 102:u8g2_lib/u8x8_cad.c ****     cnt--;
+ 161              		.loc 1 102 0
+ 162 000a EE68     		ldr	r6, [r5, #12]
+ 163 000c 0023     		movs	r3, #0
+ 164 000e 3A46     		mov	r2, r7
+ 165 0010 1621     		movs	r1, #22
+ 166 0012 2846     		mov	r0, r5
+ 167 0014 B047     		blx	r6
+ 168              	.LVL13:
+ 103:u8g2_lib/u8x8_cad.c ****   }
+ 169              		.loc 1 103 0
+ 170 0016 013C     		subs	r4, r4, #1
+ 171              	.LVL14:
+ 172 0018 E4B2     		uxtb	r4, r4
+ 173              	.LVL15:
+ 174              	.L8:
+ 100:u8g2_lib/u8x8_cad.c ****   {
+ 175              		.loc 1 100 0
+ 176 001a 002C     		cmp	r4, #0
+ 177 001c F5D1     		bne	.L9
+ 106:u8g2_lib/u8x8_cad.c **** 
+ 178              		.loc 1 106 0
+ 179 001e 0120     		movs	r0, #1
+ 180 0020 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 181              		.cfi_endproc
+ 182              	.LFE2:
+ 184 0022 00BF     		.section	.text.u8x8_cad_SendData,"ax",%progbits
+ 185              		.align	2
+ 186              		.global	u8x8_cad_SendData
+ 187              		.thumb
+ 188              		.thumb_func
+ 190              	u8x8_cad_SendData:
+ 191              	.LFB3:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 12
+
+
+ 109:u8g2_lib/u8x8_cad.c ****   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, cnt, data);
+ 192              		.loc 1 109 0
+ 193              		.cfi_startproc
+ 194              		@ args = 0, pretend = 0, frame = 0
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ 196              	.LVL16:
+ 197 0000 10B5     		push	{r4, lr}
+ 198              	.LCFI4:
+ 199              		.cfi_def_cfa_offset 8
+ 200              		.cfi_offset 4, -8
+ 201              		.cfi_offset 14, -4
+ 110:u8g2_lib/u8x8_cad.c **** }
+ 202              		.loc 1 110 0
+ 203 0002 C468     		ldr	r4, [r0, #12]
+ 204 0004 1346     		mov	r3, r2
+ 205 0006 0A46     		mov	r2, r1
+ 206              	.LVL17:
+ 207 0008 1721     		movs	r1, #23
+ 208              	.LVL18:
+ 209 000a A047     		blx	r4
+ 210              	.LVL19:
+ 111:u8g2_lib/u8x8_cad.c **** 
+ 211              		.loc 1 111 0
+ 212 000c 10BD     		pop	{r4, pc}
+ 213              		.cfi_endproc
+ 214              	.LFE3:
+ 216 000e 00BF     		.section	.text.u8x8_cad_StartTransfer,"ax",%progbits
+ 217              		.align	2
+ 218              		.global	u8x8_cad_StartTransfer
+ 219              		.thumb
+ 220              		.thumb_func
+ 222              	u8x8_cad_StartTransfer:
+ 223              	.LFB4:
+ 114:u8g2_lib/u8x8_cad.c ****   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_START_TRANSFER, 0, NULL);
+ 224              		.loc 1 114 0
+ 225              		.cfi_startproc
+ 226              		@ args = 0, pretend = 0, frame = 0
+ 227              		@ frame_needed = 0, uses_anonymous_args = 0
+ 228              	.LVL20:
+ 229 0000 10B5     		push	{r4, lr}
+ 230              	.LCFI5:
+ 231              		.cfi_def_cfa_offset 8
+ 232              		.cfi_offset 4, -8
+ 233              		.cfi_offset 14, -4
+ 115:u8g2_lib/u8x8_cad.c **** }
+ 234              		.loc 1 115 0
+ 235 0002 C468     		ldr	r4, [r0, #12]
+ 236 0004 0023     		movs	r3, #0
+ 237 0006 1A46     		mov	r2, r3
+ 238 0008 1821     		movs	r1, #24
+ 239 000a A047     		blx	r4
+ 240              	.LVL21:
+ 116:u8g2_lib/u8x8_cad.c **** 
+ 241              		.loc 1 116 0
+ 242 000c 10BD     		pop	{r4, pc}
+ 243              		.cfi_endproc
+ 244              	.LFE4:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 13
+
+
+ 246 000e 00BF     		.section	.text.u8x8_cad_EndTransfer,"ax",%progbits
+ 247              		.align	2
+ 248              		.global	u8x8_cad_EndTransfer
+ 249              		.thumb
+ 250              		.thumb_func
+ 252              	u8x8_cad_EndTransfer:
+ 253              	.LFB5:
+ 119:u8g2_lib/u8x8_cad.c ****   return u8x8->cad_cb(u8x8, U8X8_MSG_CAD_END_TRANSFER, 0, NULL);
+ 254              		.loc 1 119 0
+ 255              		.cfi_startproc
+ 256              		@ args = 0, pretend = 0, frame = 0
+ 257              		@ frame_needed = 0, uses_anonymous_args = 0
+ 258              	.LVL22:
+ 259 0000 10B5     		push	{r4, lr}
+ 260              	.LCFI6:
+ 261              		.cfi_def_cfa_offset 8
+ 262              		.cfi_offset 4, -8
+ 263              		.cfi_offset 14, -4
+ 120:u8g2_lib/u8x8_cad.c **** }
+ 264              		.loc 1 120 0
+ 265 0002 C468     		ldr	r4, [r0, #12]
+ 266 0004 0023     		movs	r3, #0
+ 267 0006 1A46     		mov	r2, r3
+ 268 0008 1921     		movs	r1, #25
+ 269 000a A047     		blx	r4
+ 270              	.LVL23:
+ 121:u8g2_lib/u8x8_cad.c **** 
+ 271              		.loc 1 121 0
+ 272 000c 10BD     		pop	{r4, pc}
+ 273              		.cfi_endproc
+ 274              	.LFE5:
+ 276 000e 00BF     		.section	.text.u8x8_cad_vsendf,"ax",%progbits
+ 277              		.align	2
+ 278              		.global	u8x8_cad_vsendf
+ 279              		.thumb
+ 280              		.thumb_func
+ 282              	u8x8_cad_vsendf:
+ 283              	.LFB6:
+ 124:u8g2_lib/u8x8_cad.c ****   uint8_t d;
+ 284              		.loc 1 124 0
+ 285              		.cfi_startproc
+ 286              		@ args = 0, pretend = 0, frame = 8
+ 287              		@ frame_needed = 0, uses_anonymous_args = 0
+ 288              	.LVL24:
+ 289 0000 70B5     		push	{r4, r5, r6, lr}
+ 290              	.LCFI7:
+ 291              		.cfi_def_cfa_offset 16
+ 292              		.cfi_offset 4, -16
+ 293              		.cfi_offset 5, -12
+ 294              		.cfi_offset 6, -8
+ 295              		.cfi_offset 14, -4
+ 296 0002 82B0     		sub	sp, sp, #8
+ 297              	.LCFI8:
+ 298              		.cfi_def_cfa_offset 24
+ 299 0004 0646     		mov	r6, r0
+ 300 0006 0C46     		mov	r4, r1
+ 301 0008 1546     		mov	r5, r2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 14
+
+
+ 126:u8g2_lib/u8x8_cad.c ****   while( *fmt != '\0' )
+ 302              		.loc 1 126 0
+ 303 000a FFF7FEFF 		bl	u8x8_cad_StartTransfer
+ 304              	.LVL25:
+ 127:u8g2_lib/u8x8_cad.c ****   {
+ 305              		.loc 1 127 0
+ 306 000e 19E0     		b	.L18
+ 307              	.L23:
+ 129:u8g2_lib/u8x8_cad.c ****     switch(*fmt)
+ 308              		.loc 1 129 0
+ 309 0010 2978     		ldrb	r1, [r5]	@ zero_extendqisi2
+ 310              	.LVL26:
+ 311 0012 0435     		adds	r5, r5, #4
+ 312              	.LVL27:
+ 313 0014 8DF80710 		strb	r1, [sp, #7]
+ 130:u8g2_lib/u8x8_cad.c ****     {
+ 314              		.loc 1 130 0
+ 315 0018 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 316 001a 632B     		cmp	r3, #99
+ 317 001c 07D0     		beq	.L20
+ 318 001e 642B     		cmp	r3, #100
+ 319 0020 09D0     		beq	.L21
+ 320 0022 612B     		cmp	r3, #97
+ 321 0024 0DD1     		bne	.L19
+ 132:u8g2_lib/u8x8_cad.c ****       case 'c':  u8x8_cad_SendCmd(u8x8, d); break;
+ 322              		.loc 1 132 0
+ 323 0026 3046     		mov	r0, r6
+ 324 0028 FFF7FEFF 		bl	u8x8_cad_SendArg
+ 325              	.LVL28:
+ 326 002c 09E0     		b	.L19
+ 327              	.L20:
+ 133:u8g2_lib/u8x8_cad.c ****       case 'd':  u8x8_cad_SendData(u8x8, 1, &d); break;
+ 328              		.loc 1 133 0
+ 329 002e 3046     		mov	r0, r6
+ 330 0030 FFF7FEFF 		bl	u8x8_cad_SendCmd
+ 331              	.LVL29:
+ 332 0034 05E0     		b	.L19
+ 333              	.L21:
+ 134:u8g2_lib/u8x8_cad.c ****     }
+ 334              		.loc 1 134 0
+ 335 0036 0DF10702 		add	r2, sp, #7
+ 336 003a 0121     		movs	r1, #1
+ 337 003c 3046     		mov	r0, r6
+ 338 003e FFF7FEFF 		bl	u8x8_cad_SendData
+ 339              	.LVL30:
+ 340              	.L19:
+ 136:u8g2_lib/u8x8_cad.c ****   }
+ 341              		.loc 1 136 0
+ 342 0042 0134     		adds	r4, r4, #1
+ 343              	.LVL31:
+ 344              	.L18:
+ 127:u8g2_lib/u8x8_cad.c ****   {
+ 345              		.loc 1 127 0
+ 346 0044 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 347 0046 002B     		cmp	r3, #0
+ 348 0048 E2D1     		bne	.L23
+ 138:u8g2_lib/u8x8_cad.c **** }
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 15
+
+
+ 349              		.loc 1 138 0
+ 350 004a 3046     		mov	r0, r6
+ 351 004c FFF7FEFF 		bl	u8x8_cad_EndTransfer
+ 352              	.LVL32:
+ 139:u8g2_lib/u8x8_cad.c **** 
+ 353              		.loc 1 139 0
+ 354 0050 02B0     		add	sp, sp, #8
+ 355              	.LCFI9:
+ 356              		.cfi_def_cfa_offset 16
+ 357              		@ sp needed
+ 358 0052 70BD     		pop	{r4, r5, r6, pc}
+ 359              		.cfi_endproc
+ 360              	.LFE6:
+ 362              		.section	.text.u8x8_SendF,"ax",%progbits
+ 363              		.align	2
+ 364              		.global	u8x8_SendF
+ 365              		.thumb
+ 366              		.thumb_func
+ 368              	u8x8_SendF:
+ 369              	.LFB7:
+ 142:u8g2_lib/u8x8_cad.c ****   va_list va;
+ 370              		.loc 1 142 0
+ 371              		.cfi_startproc
+ 372              		@ args = 4, pretend = 12, frame = 8
+ 373              		@ frame_needed = 0, uses_anonymous_args = 1
+ 374              	.LVL33:
+ 375 0000 0EB4     		push	{r1, r2, r3}
+ 376              	.LCFI10:
+ 377              		.cfi_def_cfa_offset 12
+ 378              		.cfi_offset 1, -12
+ 379              		.cfi_offset 2, -8
+ 380              		.cfi_offset 3, -4
+ 381 0002 00B5     		push	{lr}
+ 382              	.LCFI11:
+ 383              		.cfi_def_cfa_offset 16
+ 384              		.cfi_offset 14, -16
+ 385 0004 82B0     		sub	sp, sp, #8
+ 386              	.LCFI12:
+ 387              		.cfi_def_cfa_offset 24
+ 388 0006 03AA     		add	r2, sp, #12
+ 389 0008 52F8041B 		ldr	r1, [r2], #4
+ 144:u8g2_lib/u8x8_cad.c ****   u8x8_cad_vsendf(u8x8, fmt, va);
+ 390              		.loc 1 144 0
+ 391 000c 0192     		str	r2, [sp, #4]
+ 145:u8g2_lib/u8x8_cad.c ****   va_end(va);
+ 392              		.loc 1 145 0
+ 393 000e FFF7FEFF 		bl	u8x8_cad_vsendf
+ 394              	.LVL34:
+ 147:u8g2_lib/u8x8_cad.c **** 
+ 395              		.loc 1 147 0
+ 396 0012 02B0     		add	sp, sp, #8
+ 397              	.LCFI13:
+ 398              		.cfi_def_cfa_offset 16
+ 399              		@ sp needed
+ 400 0014 5DF804EB 		ldr	lr, [sp], #4
+ 401              	.LCFI14:
+ 402              		.cfi_restore 14
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 16
+
+
+ 403              		.cfi_def_cfa_offset 12
+ 404 0018 03B0     		add	sp, sp, #12
+ 405              	.LCFI15:
+ 406              		.cfi_restore 3
+ 407              		.cfi_restore 2
+ 408              		.cfi_restore 1
+ 409              		.cfi_def_cfa_offset 0
+ 410 001a 7047     		bx	lr
+ 411              		.cfi_endproc
+ 412              	.LFE7:
+ 414              		.section	.text.u8x8_cad_SendSequence,"ax",%progbits
+ 415              		.align	2
+ 416              		.global	u8x8_cad_SendSequence
+ 417              		.thumb
+ 418              		.thumb_func
+ 420              	u8x8_cad_SendSequence:
+ 421              	.LFB8:
+ 160:u8g2_lib/u8x8_cad.c ****   uint8_t cmd;
+ 422              		.loc 1 160 0
+ 423              		.cfi_startproc
+ 424              		@ args = 0, pretend = 0, frame = 8
+ 425              		@ frame_needed = 0, uses_anonymous_args = 0
+ 426              	.LVL35:
+ 427 0000 70B5     		push	{r4, r5, r6, lr}
+ 428              	.LCFI16:
+ 429              		.cfi_def_cfa_offset 16
+ 430              		.cfi_offset 4, -16
+ 431              		.cfi_offset 5, -12
+ 432              		.cfi_offset 6, -8
+ 433              		.cfi_offset 14, -4
+ 434 0002 82B0     		sub	sp, sp, #8
+ 435              	.LCFI17:
+ 436              		.cfi_def_cfa_offset 24
+ 437 0004 0546     		mov	r5, r0
+ 438 0006 0C46     		mov	r4, r1
+ 439              	.LVL36:
+ 440              	.L28:
+ 166:u8g2_lib/u8x8_cad.c ****     data++;
+ 441              		.loc 1 166 0
+ 442 0008 14F8011B 		ldrb	r1, [r4], #1	@ zero_extendqisi2
+ 443              	.LVL37:
+ 168:u8g2_lib/u8x8_cad.c ****     {
+ 444              		.loc 1 168 0
+ 445 000c 1729     		cmp	r1, #23
+ 446 000e 11D0     		beq	.L30
+ 447 0010 02D8     		bhi	.L31
+ 448 0012 1529     		cmp	r1, #21
+ 449 0014 05D2     		bcs	.L36
+ 450 0016 26E0     		b	.L27
+ 451              	.L31:
+ 452 0018 1929     		cmp	r1, #25
+ 453 001a 15D9     		bls	.L33
+ 454 001c FE29     		cmp	r1, #254
+ 455 001e 19D0     		beq	.L34
+ 456 0020 21E0     		b	.L27
+ 457              	.L36:
+ 172:u8g2_lib/u8x8_cad.c **** 	  u8x8->cad_cb(u8x8, cmd, v, NULL);
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 17
+
+
+ 458              		.loc 1 172 0
+ 459 0022 14F8012B 		ldrb	r2, [r4], #1	@ zero_extendqisi2
+ 460              	.LVL38:
+ 461 0026 8DF80720 		strb	r2, [sp, #7]
+ 173:u8g2_lib/u8x8_cad.c **** 	  data++;
+ 462              		.loc 1 173 0
+ 463 002a EE68     		ldr	r6, [r5, #12]
+ 464 002c 0023     		movs	r3, #0
+ 465 002e 2846     		mov	r0, r5
+ 466 0030 B047     		blx	r6
+ 467              	.LVL39:
+ 175:u8g2_lib/u8x8_cad.c ****       case U8X8_MSG_CAD_SEND_DATA:
+ 468              		.loc 1 175 0
+ 469 0032 E9E7     		b	.L28
+ 470              	.LVL40:
+ 471              	.L30:
+ 177:u8g2_lib/u8x8_cad.c **** 	  u8x8_cad_SendData(u8x8, 1, &v);
+ 472              		.loc 1 177 0
+ 473 0034 14F8013B 		ldrb	r3, [r4], #1	@ zero_extendqisi2
+ 474              	.LVL41:
+ 475 0038 02AA     		add	r2, sp, #8
+ 476 003a 02F8013D 		strb	r3, [r2, #-1]!
+ 178:u8g2_lib/u8x8_cad.c **** 	  data++;
+ 477              		.loc 1 178 0
+ 478 003e 0121     		movs	r1, #1
+ 479              	.LVL42:
+ 480 0040 2846     		mov	r0, r5
+ 481 0042 FFF7FEFF 		bl	u8x8_cad_SendData
+ 482              	.LVL43:
+ 180:u8g2_lib/u8x8_cad.c ****       case U8X8_MSG_CAD_START_TRANSFER:
+ 483              		.loc 1 180 0
+ 484 0046 DFE7     		b	.L28
+ 485              	.LVL44:
+ 486              	.L33:
+ 183:u8g2_lib/u8x8_cad.c **** 	  break;
+ 487              		.loc 1 183 0
+ 488 0048 EE68     		ldr	r6, [r5, #12]
+ 489 004a 0023     		movs	r3, #0
+ 490 004c 1A46     		mov	r2, r3
+ 491 004e 2846     		mov	r0, r5
+ 492 0050 B047     		blx	r6
+ 493              	.LVL45:
+ 184:u8g2_lib/u8x8_cad.c ****       case 0x0fe:
+ 494              		.loc 1 184 0
+ 495 0052 D9E7     		b	.L28
+ 496              	.LVL46:
+ 497              	.L34:
+ 186:u8g2_lib/u8x8_cad.c **** 	  u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_MILLI, v);	    
+ 498              		.loc 1 186 0
+ 499 0054 14F8012B 		ldrb	r2, [r4], #1	@ zero_extendqisi2
+ 500              	.LVL47:
+ 501 0058 8DF80720 		strb	r2, [sp, #7]
+ 187:u8g2_lib/u8x8_cad.c **** 	  data++;
+ 502              		.loc 1 187 0
+ 503 005c 2921     		movs	r1, #41
+ 504              	.LVL48:
+ 505 005e 2846     		mov	r0, r5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 18
+
+
+ 506 0060 FFF7FEFF 		bl	u8x8_gpio_call
+ 507              	.LVL49:
+ 189:u8g2_lib/u8x8_cad.c ****       default:
+ 508              		.loc 1 189 0
+ 509 0064 D0E7     		b	.L28
+ 510              	.LVL50:
+ 511              	.L27:
+ 194:u8g2_lib/u8x8_cad.c **** 
+ 512              		.loc 1 194 0
+ 513 0066 02B0     		add	sp, sp, #8
+ 514              	.LCFI18:
+ 515              		.cfi_def_cfa_offset 16
+ 516              		@ sp needed
+ 517 0068 70BD     		pop	{r4, r5, r6, pc}
+ 518              		.cfi_endproc
+ 519              	.LFE8:
+ 521 006a 00BF     		.section	.text.u8x8_cad_empty,"ax",%progbits
+ 522              		.align	2
+ 523              		.global	u8x8_cad_empty
+ 524              		.thumb
+ 525              		.thumb_func
+ 527              	u8x8_cad_empty:
+ 528              	.LFB9:
+ 198:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 529              		.loc 1 198 0
+ 530              		.cfi_startproc
+ 531              		@ args = 0, pretend = 0, frame = 0
+ 532              		@ frame_needed = 0, uses_anonymous_args = 0
+ 533              	.LVL51:
+ 534 0000 10B5     		push	{r4, lr}
+ 535              	.LCFI19:
+ 536              		.cfi_def_cfa_offset 8
+ 537              		.cfi_offset 4, -8
+ 538              		.cfi_offset 14, -4
+ 199:u8g2_lib/u8x8_cad.c ****   {
+ 539              		.loc 1 199 0
+ 540 0002 A1F11404 		sub	r4, r1, #20
+ 541 0006 052C     		cmp	r4, #5
+ 542 0008 11D8     		bhi	.L44
+ 543 000a DFE804F0 		tbb	[pc, r4]
+ 544              	.L41:
+ 545 000e 0D       		.byte	(.L40-.L41)/2
+ 546 000f 03       		.byte	(.L42-.L41)/2
+ 547 0010 08       		.byte	(.L43-.L41)/2
+ 548 0011 0D       		.byte	(.L40-.L41)/2
+ 549 0012 0D       		.byte	(.L40-.L41)/2
+ 550 0013 0D       		.byte	(.L40-.L41)/2
+ 551              		.p2align 1
+ 552              	.L42:
+ 202:u8g2_lib/u8x8_cad.c ****       break;
+ 553              		.loc 1 202 0
+ 554 0014 1146     		mov	r1, r2
+ 555              	.LVL52:
+ 556 0016 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 557              	.LVL53:
+ 215:u8g2_lib/u8x8_cad.c **** }
+ 558              		.loc 1 215 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 19
+
+
+ 559 001a 0120     		movs	r0, #1
+ 203:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 560              		.loc 1 203 0
+ 561 001c 10BD     		pop	{r4, pc}
+ 562              	.LVL54:
+ 563              	.L43:
+ 205:u8g2_lib/u8x8_cad.c ****       break;
+ 564              		.loc 1 205 0
+ 565 001e 1146     		mov	r1, r2
+ 566              	.LVL55:
+ 567 0020 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 568              	.LVL56:
+ 215:u8g2_lib/u8x8_cad.c **** }
+ 569              		.loc 1 215 0
+ 570 0024 0120     		movs	r0, #1
+ 206:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 571              		.loc 1 206 0
+ 572 0026 10BD     		pop	{r4, pc}
+ 573              	.LVL57:
+ 574              	.L40:
+ 211:u8g2_lib/u8x8_cad.c ****     default:
+ 575              		.loc 1 211 0
+ 576 0028 0469     		ldr	r4, [r0, #16]
+ 577 002a A047     		blx	r4
+ 578              	.LVL58:
+ 579 002c 10BD     		pop	{r4, pc}
+ 580              	.LVL59:
+ 581              	.L44:
+ 213:u8g2_lib/u8x8_cad.c ****   }
+ 582              		.loc 1 213 0
+ 583 002e 0020     		movs	r0, #0
+ 584              	.LVL60:
+ 216:u8g2_lib/u8x8_cad.c **** 
+ 585              		.loc 1 216 0
+ 586 0030 10BD     		pop	{r4, pc}
+ 587              		.cfi_endproc
+ 588              	.LFE9:
+ 590 0032 00BF     		.section	.text.u8x8_cad_110,"ax",%progbits
+ 591              		.align	2
+ 592              		.global	u8x8_cad_110
+ 593              		.thumb
+ 594              		.thumb_func
+ 596              	u8x8_cad_110:
+ 597              	.LFB10:
+ 225:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 598              		.loc 1 225 0
+ 599              		.cfi_startproc
+ 600              		@ args = 0, pretend = 0, frame = 0
+ 601              		@ frame_needed = 0, uses_anonymous_args = 0
+ 602              	.LVL61:
+ 603 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 604              	.LCFI20:
+ 605              		.cfi_def_cfa_offset 24
+ 606              		.cfi_offset 4, -24
+ 607              		.cfi_offset 5, -20
+ 608              		.cfi_offset 6, -16
+ 609              		.cfi_offset 7, -12
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 20
+
+
+ 610              		.cfi_offset 8, -8
+ 611              		.cfi_offset 14, -4
+ 612 0004 0446     		mov	r4, r0
+ 613 0006 0D46     		mov	r5, r1
+ 614 0008 1646     		mov	r6, r2
+ 615 000a 9846     		mov	r8, r3
+ 226:u8g2_lib/u8x8_cad.c ****   {
+ 616              		.loc 1 226 0
+ 617 000c A1F11403 		sub	r3, r1, #20
+ 618              	.LVL62:
+ 619 0010 052B     		cmp	r3, #5
+ 620 0012 23D8     		bhi	.L53
+ 621 0014 DFE803F0 		tbb	[pc, r3]
+ 622              	.LVL63:
+ 623              	.L49:
+ 624 0018 1A       		.byte	(.L48-.L49)/2
+ 625 0019 03       		.byte	(.L50-.L49)/2
+ 626 001a 0D       		.byte	(.L51-.L49)/2
+ 627 001b 17       		.byte	(.L52-.L49)/2
+ 628 001c 1A       		.byte	(.L48-.L49)/2
+ 629 001d 1A       		.byte	(.L48-.L49)/2
+ 630              		.p2align 1
+ 631              	.L50:
+ 229:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 632              		.loc 1 229 0
+ 633 001e 0121     		movs	r1, #1
+ 634              	.LVL64:
+ 635 0020 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 636              	.LVL65:
+ 230:u8g2_lib/u8x8_cad.c ****       break;
+ 637              		.loc 1 230 0
+ 638 0024 3146     		mov	r1, r6
+ 639 0026 2046     		mov	r0, r4
+ 640 0028 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 641              	.LVL66:
+ 248:u8g2_lib/u8x8_cad.c **** }
+ 642              		.loc 1 248 0
+ 643 002c 0120     		movs	r0, #1
+ 231:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 644              		.loc 1 231 0
+ 645 002e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 646              	.LVL67:
+ 647              	.L51:
+ 233:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 648              		.loc 1 233 0
+ 649 0032 0121     		movs	r1, #1
+ 650              	.LVL68:
+ 651 0034 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 652              	.LVL69:
+ 234:u8g2_lib/u8x8_cad.c ****       break;
+ 653              		.loc 1 234 0
+ 654 0038 3146     		mov	r1, r6
+ 655 003a 2046     		mov	r0, r4
+ 656 003c FFF7FEFF 		bl	u8x8_byte_SendByte
+ 657              	.LVL70:
+ 248:u8g2_lib/u8x8_cad.c **** }
+ 658              		.loc 1 248 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 21
+
+
+ 659 0040 0120     		movs	r0, #1
+ 235:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 660              		.loc 1 235 0
+ 661 0042 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 662              	.LVL71:
+ 663              	.L52:
+ 237:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SendBytes(u8x8, arg_int, arg_ptr);
+ 664              		.loc 1 237 0
+ 665 0046 0021     		movs	r1, #0
+ 666              	.LVL72:
+ 667 0048 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 668              	.LVL73:
+ 669              	.L48:
+ 244:u8g2_lib/u8x8_cad.c ****     default:
+ 670              		.loc 1 244 0
+ 671 004c 2769     		ldr	r7, [r4, #16]
+ 672 004e 4346     		mov	r3, r8
+ 673 0050 3246     		mov	r2, r6
+ 674 0052 2946     		mov	r1, r5
+ 675 0054 2046     		mov	r0, r4
+ 676 0056 B847     		blx	r7
+ 677              	.LVL74:
+ 678 0058 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 679              	.LVL75:
+ 680              	.L53:
+ 246:u8g2_lib/u8x8_cad.c ****   }
+ 681              		.loc 1 246 0
+ 682 005c 0020     		movs	r0, #0
+ 683              	.LVL76:
+ 249:u8g2_lib/u8x8_cad.c **** 
+ 684              		.loc 1 249 0
+ 685 005e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 686              		.cfi_endproc
+ 687              	.LFE10:
+ 689 0062 00BF     		.section	.text.u8x8_cad_100,"ax",%progbits
+ 690              		.align	2
+ 691              		.global	u8x8_cad_100
+ 692              		.thumb
+ 693              		.thumb_func
+ 695              	u8x8_cad_100:
+ 696              	.LFB11:
+ 258:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 697              		.loc 1 258 0
+ 698              		.cfi_startproc
+ 699              		@ args = 0, pretend = 0, frame = 0
+ 700              		@ frame_needed = 0, uses_anonymous_args = 0
+ 701              	.LVL77:
+ 702 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 703              	.LCFI21:
+ 704              		.cfi_def_cfa_offset 24
+ 705              		.cfi_offset 4, -24
+ 706              		.cfi_offset 5, -20
+ 707              		.cfi_offset 6, -16
+ 708              		.cfi_offset 7, -12
+ 709              		.cfi_offset 8, -8
+ 710              		.cfi_offset 14, -4
+ 711 0004 0446     		mov	r4, r0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 22
+
+
+ 712 0006 0D46     		mov	r5, r1
+ 713 0008 1646     		mov	r6, r2
+ 714 000a 9846     		mov	r8, r3
+ 259:u8g2_lib/u8x8_cad.c ****   {
+ 715              		.loc 1 259 0
+ 716 000c A1F11403 		sub	r3, r1, #20
+ 717              	.LVL78:
+ 718 0010 052B     		cmp	r3, #5
+ 719 0012 23D8     		bhi	.L62
+ 720 0014 DFE803F0 		tbb	[pc, r3]
+ 721              	.LVL79:
+ 722              	.L58:
+ 723 0018 1A       		.byte	(.L57-.L58)/2
+ 724 0019 03       		.byte	(.L59-.L58)/2
+ 725 001a 0D       		.byte	(.L60-.L58)/2
+ 726 001b 17       		.byte	(.L61-.L58)/2
+ 727 001c 1A       		.byte	(.L57-.L58)/2
+ 728 001d 1A       		.byte	(.L57-.L58)/2
+ 729              		.p2align 1
+ 730              	.L59:
+ 262:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 731              		.loc 1 262 0
+ 732 001e 0121     		movs	r1, #1
+ 733              	.LVL80:
+ 734 0020 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 735              	.LVL81:
+ 263:u8g2_lib/u8x8_cad.c ****       break;
+ 736              		.loc 1 263 0
+ 737 0024 3146     		mov	r1, r6
+ 738 0026 2046     		mov	r0, r4
+ 739 0028 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 740              	.LVL82:
+ 281:u8g2_lib/u8x8_cad.c **** }
+ 741              		.loc 1 281 0
+ 742 002c 0120     		movs	r0, #1
+ 264:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 743              		.loc 1 264 0
+ 744 002e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 745              	.LVL83:
+ 746              	.L60:
+ 266:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 747              		.loc 1 266 0
+ 748 0032 0021     		movs	r1, #0
+ 749              	.LVL84:
+ 750 0034 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 751              	.LVL85:
+ 267:u8g2_lib/u8x8_cad.c ****       break;
+ 752              		.loc 1 267 0
+ 753 0038 3146     		mov	r1, r6
+ 754 003a 2046     		mov	r0, r4
+ 755 003c FFF7FEFF 		bl	u8x8_byte_SendByte
+ 756              	.LVL86:
+ 281:u8g2_lib/u8x8_cad.c **** }
+ 757              		.loc 1 281 0
+ 758 0040 0120     		movs	r0, #1
+ 268:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 759              		.loc 1 268 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 23
+
+
+ 760 0042 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 761              	.LVL87:
+ 762              	.L61:
+ 270:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SendBytes(u8x8, arg_int, arg_ptr);
+ 763              		.loc 1 270 0
+ 764 0046 0021     		movs	r1, #0
+ 765              	.LVL88:
+ 766 0048 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 767              	.LVL89:
+ 768              	.L57:
+ 277:u8g2_lib/u8x8_cad.c ****     default:
+ 769              		.loc 1 277 0
+ 770 004c 2769     		ldr	r7, [r4, #16]
+ 771 004e 4346     		mov	r3, r8
+ 772 0050 3246     		mov	r2, r6
+ 773 0052 2946     		mov	r1, r5
+ 774 0054 2046     		mov	r0, r4
+ 775 0056 B847     		blx	r7
+ 776              	.LVL90:
+ 777 0058 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 778              	.LVL91:
+ 779              	.L62:
+ 279:u8g2_lib/u8x8_cad.c ****   }
+ 780              		.loc 1 279 0
+ 781 005c 0020     		movs	r0, #0
+ 782              	.LVL92:
+ 282:u8g2_lib/u8x8_cad.c **** 
+ 783              		.loc 1 282 0
+ 784 005e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 785              		.cfi_endproc
+ 786              	.LFE11:
+ 788 0062 00BF     		.section	.text.u8x8_cad_001,"ax",%progbits
+ 789              		.align	2
+ 790              		.global	u8x8_cad_001
+ 791              		.thumb
+ 792              		.thumb_func
+ 794              	u8x8_cad_001:
+ 795              	.LFB12:
+ 290:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 796              		.loc 1 290 0
+ 797              		.cfi_startproc
+ 798              		@ args = 0, pretend = 0, frame = 0
+ 799              		@ frame_needed = 0, uses_anonymous_args = 0
+ 800              	.LVL93:
+ 801 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 802              	.LCFI22:
+ 803              		.cfi_def_cfa_offset 24
+ 804              		.cfi_offset 4, -24
+ 805              		.cfi_offset 5, -20
+ 806              		.cfi_offset 6, -16
+ 807              		.cfi_offset 7, -12
+ 808              		.cfi_offset 8, -8
+ 809              		.cfi_offset 14, -4
+ 810 0004 0446     		mov	r4, r0
+ 811 0006 0D46     		mov	r5, r1
+ 812 0008 1646     		mov	r6, r2
+ 813 000a 9846     		mov	r8, r3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 24
+
+
+ 291:u8g2_lib/u8x8_cad.c ****   {
+ 814              		.loc 1 291 0
+ 815 000c A1F11403 		sub	r3, r1, #20
+ 816              	.LVL94:
+ 817 0010 052B     		cmp	r3, #5
+ 818 0012 23D8     		bhi	.L71
+ 819 0014 DFE803F0 		tbb	[pc, r3]
+ 820              	.LVL95:
+ 821              	.L67:
+ 822 0018 1A       		.byte	(.L66-.L67)/2
+ 823 0019 03       		.byte	(.L68-.L67)/2
+ 824 001a 0D       		.byte	(.L69-.L67)/2
+ 825 001b 17       		.byte	(.L70-.L67)/2
+ 826 001c 1A       		.byte	(.L66-.L67)/2
+ 827 001d 1A       		.byte	(.L66-.L67)/2
+ 828              		.p2align 1
+ 829              	.L68:
+ 294:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 830              		.loc 1 294 0
+ 831 001e 0021     		movs	r1, #0
+ 832              	.LVL96:
+ 833 0020 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 834              	.LVL97:
+ 295:u8g2_lib/u8x8_cad.c ****       break;
+ 835              		.loc 1 295 0
+ 836 0024 3146     		mov	r1, r6
+ 837 0026 2046     		mov	r0, r4
+ 838 0028 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 839              	.LVL98:
+ 313:u8g2_lib/u8x8_cad.c **** }
+ 840              		.loc 1 313 0
+ 841 002c 0120     		movs	r0, #1
+ 296:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 842              		.loc 1 296 0
+ 843 002e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 844              	.LVL99:
+ 845              	.L69:
+ 298:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 846              		.loc 1 298 0
+ 847 0032 0021     		movs	r1, #0
+ 848              	.LVL100:
+ 849 0034 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 850              	.LVL101:
+ 299:u8g2_lib/u8x8_cad.c ****       break;
+ 851              		.loc 1 299 0
+ 852 0038 3146     		mov	r1, r6
+ 853 003a 2046     		mov	r0, r4
+ 854 003c FFF7FEFF 		bl	u8x8_byte_SendByte
+ 855              	.LVL102:
+ 313:u8g2_lib/u8x8_cad.c **** }
+ 856              		.loc 1 313 0
+ 857 0040 0120     		movs	r0, #1
+ 300:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 858              		.loc 1 300 0
+ 859 0042 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 860              	.LVL103:
+ 861              	.L70:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 25
+
+
+ 302:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SendBytes(u8x8, arg_int, arg_ptr);
+ 862              		.loc 1 302 0
+ 863 0046 0121     		movs	r1, #1
+ 864              	.LVL104:
+ 865 0048 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 866              	.LVL105:
+ 867              	.L66:
+ 309:u8g2_lib/u8x8_cad.c ****     default:
+ 868              		.loc 1 309 0
+ 869 004c 2769     		ldr	r7, [r4, #16]
+ 870 004e 4346     		mov	r3, r8
+ 871 0050 3246     		mov	r2, r6
+ 872 0052 2946     		mov	r1, r5
+ 873 0054 2046     		mov	r0, r4
+ 874 0056 B847     		blx	r7
+ 875              	.LVL106:
+ 876 0058 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 877              	.LVL107:
+ 878              	.L71:
+ 311:u8g2_lib/u8x8_cad.c ****   }
+ 879              		.loc 1 311 0
+ 880 005c 0020     		movs	r0, #0
+ 881              	.LVL108:
+ 314:u8g2_lib/u8x8_cad.c **** 
+ 882              		.loc 1 314 0
+ 883 005e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 884              		.cfi_endproc
+ 885              	.LFE12:
+ 887 0062 00BF     		.section	.text.u8x8_cad_011,"ax",%progbits
+ 888              		.align	2
+ 889              		.global	u8x8_cad_011
+ 890              		.thumb
+ 891              		.thumb_func
+ 893              	u8x8_cad_011:
+ 894              	.LFB13:
+ 322:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 895              		.loc 1 322 0
+ 896              		.cfi_startproc
+ 897              		@ args = 0, pretend = 0, frame = 0
+ 898              		@ frame_needed = 0, uses_anonymous_args = 0
+ 899              	.LVL109:
+ 900 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 901              	.LCFI23:
+ 902              		.cfi_def_cfa_offset 24
+ 903              		.cfi_offset 4, -24
+ 904              		.cfi_offset 5, -20
+ 905              		.cfi_offset 6, -16
+ 906              		.cfi_offset 7, -12
+ 907              		.cfi_offset 8, -8
+ 908              		.cfi_offset 14, -4
+ 909 0004 0446     		mov	r4, r0
+ 910 0006 0D46     		mov	r5, r1
+ 911 0008 1646     		mov	r6, r2
+ 912 000a 9846     		mov	r8, r3
+ 323:u8g2_lib/u8x8_cad.c ****   {
+ 913              		.loc 1 323 0
+ 914 000c A1F11403 		sub	r3, r1, #20
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 26
+
+
+ 915              	.LVL110:
+ 916 0010 052B     		cmp	r3, #5
+ 917 0012 23D8     		bhi	.L80
+ 918 0014 DFE803F0 		tbb	[pc, r3]
+ 919              	.LVL111:
+ 920              	.L76:
+ 921 0018 1A       		.byte	(.L75-.L76)/2
+ 922 0019 03       		.byte	(.L77-.L76)/2
+ 923 001a 0D       		.byte	(.L78-.L76)/2
+ 924 001b 17       		.byte	(.L79-.L76)/2
+ 925 001c 1A       		.byte	(.L75-.L76)/2
+ 926 001d 1A       		.byte	(.L75-.L76)/2
+ 927              		.p2align 1
+ 928              	.L77:
+ 326:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 929              		.loc 1 326 0
+ 930 001e 0021     		movs	r1, #0
+ 931              	.LVL112:
+ 932 0020 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 933              	.LVL113:
+ 327:u8g2_lib/u8x8_cad.c ****       break;
+ 934              		.loc 1 327 0
+ 935 0024 3146     		mov	r1, r6
+ 936 0026 2046     		mov	r0, r4
+ 937 0028 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 938              	.LVL114:
+ 345:u8g2_lib/u8x8_cad.c **** }
+ 939              		.loc 1 345 0
+ 940 002c 0120     		movs	r0, #1
+ 328:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 941              		.loc 1 328 0
+ 942 002e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 943              	.LVL115:
+ 944              	.L78:
+ 330:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 945              		.loc 1 330 0
+ 946 0032 0121     		movs	r1, #1
+ 947              	.LVL116:
+ 948 0034 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 949              	.LVL117:
+ 331:u8g2_lib/u8x8_cad.c ****       break;
+ 950              		.loc 1 331 0
+ 951 0038 3146     		mov	r1, r6
+ 952 003a 2046     		mov	r0, r4
+ 953 003c FFF7FEFF 		bl	u8x8_byte_SendByte
+ 954              	.LVL118:
+ 345:u8g2_lib/u8x8_cad.c **** }
+ 955              		.loc 1 345 0
+ 956 0040 0120     		movs	r0, #1
+ 332:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 957              		.loc 1 332 0
+ 958 0042 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 959              	.LVL119:
+ 960              	.L79:
+ 334:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SendBytes(u8x8, arg_int, arg_ptr);
+ 961              		.loc 1 334 0
+ 962 0046 0121     		movs	r1, #1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 27
+
+
+ 963              	.LVL120:
+ 964 0048 FFF7FEFF 		bl	u8x8_byte_SetDC
+ 965              	.LVL121:
+ 966              	.L75:
+ 341:u8g2_lib/u8x8_cad.c ****     default:
+ 967              		.loc 1 341 0
+ 968 004c 2769     		ldr	r7, [r4, #16]
+ 969 004e 4346     		mov	r3, r8
+ 970 0050 3246     		mov	r2, r6
+ 971 0052 2946     		mov	r1, r5
+ 972 0054 2046     		mov	r0, r4
+ 973 0056 B847     		blx	r7
+ 974              	.LVL122:
+ 975 0058 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 976              	.LVL123:
+ 977              	.L80:
+ 343:u8g2_lib/u8x8_cad.c ****   }
+ 978              		.loc 1 343 0
+ 979 005c 0020     		movs	r0, #0
+ 980              	.LVL124:
+ 346:u8g2_lib/u8x8_cad.c **** 
+ 981              		.loc 1 346 0
+ 982 005e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 983              		.cfi_endproc
+ 984              	.LFE13:
+ 986 0062 00BF     		.section	.text.u8x8_cad_st7920_spi,"ax",%progbits
+ 987              		.align	2
+ 988              		.global	u8x8_cad_st7920_spi
+ 989              		.thumb
+ 990              		.thumb_func
+ 992              	u8x8_cad_st7920_spi:
+ 993              	.LFB14:
+ 351:u8g2_lib/u8x8_cad.c ****   uint8_t *data;
+ 994              		.loc 1 351 0
+ 995              		.cfi_startproc
+ 996              		@ args = 0, pretend = 0, frame = 0
+ 997              		@ frame_needed = 0, uses_anonymous_args = 0
+ 998              	.LVL125:
+ 999 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1000              	.LCFI24:
+ 1001              		.cfi_def_cfa_offset 24
+ 1002              		.cfi_offset 3, -24
+ 1003              		.cfi_offset 4, -20
+ 1004              		.cfi_offset 5, -16
+ 1005              		.cfi_offset 6, -12
+ 1006              		.cfi_offset 7, -8
+ 1007              		.cfi_offset 14, -4
+ 1008 0002 0646     		mov	r6, r0
+ 1009 0004 1546     		mov	r5, r2
+ 1010 0006 1F46     		mov	r7, r3
+ 358:u8g2_lib/u8x8_cad.c ****   {
+ 1011              		.loc 1 358 0
+ 1012 0008 A1F11403 		sub	r3, r1, #20
+ 1013              	.LVL126:
+ 1014 000c 052B     		cmp	r3, #5
+ 1015 000e 74D8     		bhi	.L93
+ 1016 0010 DFE803F0 		tbb	[pc, r3]
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 28
+
+
+ 1017              	.LVL127:
+ 1018              	.L85:
+ 1019 0014 6E       		.byte	(.L84-.L85)/2
+ 1020 0015 03       		.byte	(.L86-.L85)/2
+ 1021 0016 22       		.byte	(.L87-.L85)/2
+ 1022 0017 32       		.byte	(.L88-.L85)/2
+ 1023 0018 6E       		.byte	(.L84-.L85)/2
+ 1024 0019 6E       		.byte	(.L84-.L85)/2
+ 1025              		.p2align 1
+ 1026              	.L86:
+ 361:u8g2_lib/u8x8_cad.c ****       u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_NANO, 1);
+ 1027              		.loc 1 361 0
+ 1028 001a F821     		movs	r1, #248
+ 1029              	.LVL128:
+ 1030 001c FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1031              	.LVL129:
+ 362:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int & 0x0f0);
+ 1032              		.loc 1 362 0
+ 1033 0020 0122     		movs	r2, #1
+ 1034 0022 2C21     		movs	r1, #44
+ 1035 0024 3046     		mov	r0, r6
+ 1036 0026 FFF7FEFF 		bl	u8x8_gpio_call
+ 1037              	.LVL130:
+ 363:u8g2_lib/u8x8_cad.c ****       u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_NANO, 1);
+ 1038              		.loc 1 363 0
+ 1039 002a 05F0F001 		and	r1, r5, #240
+ 1040 002e 3046     		mov	r0, r6
+ 1041 0030 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1042              	.LVL131:
+ 364:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int << 4);
+ 1043              		.loc 1 364 0
+ 1044 0034 0122     		movs	r2, #1
+ 1045 0036 2C21     		movs	r1, #44
+ 1046 0038 3046     		mov	r0, r6
+ 1047 003a FFF7FEFF 		bl	u8x8_gpio_call
+ 1048              	.LVL132:
+ 365:u8g2_lib/u8x8_cad.c ****       u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_NANO, 1);
+ 1049              		.loc 1 365 0
+ 1050 003e 2901     		lsls	r1, r5, #4
+ 1051 0040 01F0F001 		and	r1, r1, #240
+ 1052 0044 3046     		mov	r0, r6
+ 1053 0046 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1054              	.LVL133:
+ 366:u8g2_lib/u8x8_cad.c ****       break;
+ 1055              		.loc 1 366 0
+ 1056 004a 0122     		movs	r2, #1
+ 1057 004c 2C21     		movs	r1, #44
+ 1058 004e 3046     		mov	r0, r6
+ 1059 0050 FFF7FEFF 		bl	u8x8_gpio_call
+ 1060              	.LVL134:
+ 417:u8g2_lib/u8x8_cad.c **** }
+ 1061              		.loc 1 417 0
+ 1062 0054 0120     		movs	r0, #1
+ 367:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 1063              		.loc 1 367 0
+ 1064 0056 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1065              	.LVL135:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 29
+
+
+ 1066              	.L87:
+ 369:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int & 0x0f0);
+ 1067              		.loc 1 369 0
+ 1068 0058 F821     		movs	r1, #248
+ 1069              	.LVL136:
+ 1070 005a FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1071              	.LVL137:
+ 370:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int << 4);
+ 1072              		.loc 1 370 0
+ 1073 005e 05F0F001 		and	r1, r5, #240
+ 1074 0062 3046     		mov	r0, r6
+ 1075 0064 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1076              	.LVL138:
+ 371:u8g2_lib/u8x8_cad.c ****       break;
+ 1077              		.loc 1 371 0
+ 1078 0068 2901     		lsls	r1, r5, #4
+ 1079 006a 01F0F001 		and	r1, r1, #240
+ 1080 006e 3046     		mov	r0, r6
+ 1081 0070 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1082              	.LVL139:
+ 417:u8g2_lib/u8x8_cad.c **** }
+ 1083              		.loc 1 417 0
+ 1084 0074 0120     		movs	r0, #1
+ 372:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 1085              		.loc 1 372 0
+ 1086 0076 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1087              	.LVL140:
+ 1088              	.L88:
+ 375:u8g2_lib/u8x8_cad.c ****       u8x8_gpio_Delay(u8x8, U8X8_MSG_DELAY_NANO, 1);
+ 1089              		.loc 1 375 0
+ 1090 0078 FA21     		movs	r1, #250
+ 1091              	.LVL141:
+ 1092 007a FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1093              	.LVL142:
+ 376:u8g2_lib/u8x8_cad.c **** 
+ 1094              		.loc 1 376 0
+ 1095 007e 0122     		movs	r2, #1
+ 1096 0080 2C21     		movs	r1, #44
+ 1097 0082 3046     		mov	r0, r6
+ 1098 0084 FFF7FEFF 		bl	u8x8_gpio_call
+ 1099              	.LVL143:
+ 383:u8g2_lib/u8x8_cad.c ****       {
+ 1100              		.loc 1 383 0
+ 1101 0088 17E0     		b	.L89
+ 1102              	.LVL144:
+ 1103              	.L94:
+ 1104 008a 1D48     		ldr	r0, .L96
+ 1105 008c 0823     		movs	r3, #8
+ 1106              	.L90:
+ 1107              	.LVL145:
+ 389:u8g2_lib/u8x8_cad.c **** 	  *ptr++= b & 0x0f0;
+ 1108              		.loc 1 389 0 discriminator 1
+ 1109 008e 7C1C     		adds	r4, r7, #1
+ 1110              	.LVL146:
+ 1111 0090 3A78     		ldrb	r2, [r7]	@ zero_extendqisi2
+ 1112              	.LVL147:
+ 390:u8g2_lib/u8x8_cad.c **** 	  b <<= 4;
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 30
+
+
+ 1113              		.loc 1 390 0 discriminator 1
+ 1114 0092 22F00F07 		bic	r7, r2, #15
+ 1115 0096 0146     		mov	r1, r0
+ 1116 0098 01F8027B 		strb	r7, [r1], #2
+ 391:u8g2_lib/u8x8_cad.c **** 	  *ptr++= b;
+ 1117              		.loc 1 391 0 discriminator 1
+ 1118 009c 1201     		lsls	r2, r2, #4
+ 1119              	.LVL148:
+ 392:u8g2_lib/u8x8_cad.c **** 	  i--;
+ 1120              		.loc 1 392 0 discriminator 1
+ 1121 009e 4270     		strb	r2, [r0, #1]
+ 393:u8g2_lib/u8x8_cad.c **** 	} while( i > 0 );
+ 1122              		.loc 1 393 0 discriminator 1
+ 1123 00a0 013B     		subs	r3, r3, #1
+ 1124              	.LVL149:
+ 389:u8g2_lib/u8x8_cad.c **** 	  *ptr++= b & 0x0f0;
+ 1125              		.loc 1 389 0 discriminator 1
+ 1126 00a2 2746     		mov	r7, r4
+ 392:u8g2_lib/u8x8_cad.c **** 	  i--;
+ 1127              		.loc 1 392 0 discriminator 1
+ 1128 00a4 0846     		mov	r0, r1
+ 394:u8g2_lib/u8x8_cad.c **** 	arg_int -= 8;
+ 1129              		.loc 1 394 0 discriminator 1
+ 1130 00a6 13F0FF03 		ands	r3, r3, #255
+ 1131              	.LVL150:
+ 1132 00aa F0D1     		bne	.L90
+ 395:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_SendBytes(u8x8, 16, buf); 
+ 1133              		.loc 1 395 0
+ 1134 00ac 083D     		subs	r5, r5, #8
+ 1135              	.LVL151:
+ 1136 00ae EDB2     		uxtb	r5, r5
+ 1137              	.LVL152:
+ 396:u8g2_lib/u8x8_cad.c ****       }
+ 1138              		.loc 1 396 0
+ 1139 00b0 134A     		ldr	r2, .L96
+ 1140              	.LVL153:
+ 1141 00b2 1021     		movs	r1, #16
+ 1142              	.LVL154:
+ 1143 00b4 3046     		mov	r0, r6
+ 1144              	.LVL155:
+ 1145 00b6 FFF7FEFF 		bl	u8x8_byte_SendBytes
+ 1146              	.LVL156:
+ 1147              	.L89:
+ 383:u8g2_lib/u8x8_cad.c ****       {
+ 1148              		.loc 1 383 0
+ 1149 00ba 072D     		cmp	r5, #7
+ 1150 00bc E5D8     		bhi	.L94
+ 1151 00be 0EE0     		b	.L91
+ 1152              	.L92:
+ 402:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_SendByte(u8x8, b & 0x0f0);
+ 1153              		.loc 1 402 0
+ 1154 00c0 17F8014B 		ldrb	r4, [r7], #1	@ zero_extendqisi2
+ 1155              	.LVL157:
+ 403:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_SendByte(u8x8, b << 4);
+ 1156              		.loc 1 403 0
+ 1157 00c4 04F0F001 		and	r1, r4, #240
+ 1158 00c8 3046     		mov	r0, r6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 31
+
+
+ 1159 00ca FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1160              	.LVL158:
+ 404:u8g2_lib/u8x8_cad.c **** 	data++;
+ 1161              		.loc 1 404 0
+ 1162 00ce 2101     		lsls	r1, r4, #4
+ 1163 00d0 01F0F001 		and	r1, r1, #240
+ 1164 00d4 3046     		mov	r0, r6
+ 1165 00d6 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1166              	.LVL159:
+ 406:u8g2_lib/u8x8_cad.c ****       }
+ 1167              		.loc 1 406 0
+ 1168 00da 013D     		subs	r5, r5, #1
+ 1169              	.LVL160:
+ 1170 00dc EDB2     		uxtb	r5, r5
+ 1171              	.LVL161:
+ 1172              	.L91:
+ 400:u8g2_lib/u8x8_cad.c ****       {
+ 1173              		.loc 1 400 0
+ 1174 00de 002D     		cmp	r5, #0
+ 1175 00e0 EED1     		bne	.L92
+ 408:u8g2_lib/u8x8_cad.c ****       break;
+ 1176              		.loc 1 408 0
+ 1177 00e2 0122     		movs	r2, #1
+ 1178 00e4 2C21     		movs	r1, #44
+ 1179 00e6 3046     		mov	r0, r6
+ 1180 00e8 FFF7FEFF 		bl	u8x8_gpio_call
+ 1181              	.LVL162:
+ 417:u8g2_lib/u8x8_cad.c **** }
+ 1182              		.loc 1 417 0
+ 1183 00ec 0120     		movs	r0, #1
+ 409:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 1184              		.loc 1 409 0
+ 1185 00ee F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1186              	.LVL163:
+ 1187              	.L84:
+ 413:u8g2_lib/u8x8_cad.c ****     default:
+ 1188              		.loc 1 413 0
+ 1189 00f0 0469     		ldr	r4, [r0, #16]
+ 1190 00f2 3B46     		mov	r3, r7
+ 1191 00f4 2A46     		mov	r2, r5
+ 1192 00f6 A047     		blx	r4
+ 1193              	.LVL164:
+ 1194 00f8 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1195              	.LVL165:
+ 1196              	.L93:
+ 415:u8g2_lib/u8x8_cad.c ****   }
+ 1197              		.loc 1 415 0
+ 1198 00fa 0020     		movs	r0, #0
+ 1199              	.LVL166:
+ 418:u8g2_lib/u8x8_cad.c **** 
+ 1200              		.loc 1 418 0
+ 1201 00fc F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1202              	.LVL167:
+ 1203              	.L97:
+ 1204 00fe 00BF     		.align	2
+ 1205              	.L96:
+ 1206 0100 00000000 		.word	.LANCHOR0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 32
+
+
+ 1207              		.cfi_endproc
+ 1208              	.LFE14:
+ 1210              		.section	.text.u8x8_cad_ssd13xx_i2c,"ax",%progbits
+ 1211              		.align	2
+ 1212              		.global	u8x8_cad_ssd13xx_i2c
+ 1213              		.thumb
+ 1214              		.thumb_func
+ 1216              	u8x8_cad_ssd13xx_i2c:
+ 1217              	.LFB16:
+ 434:u8g2_lib/u8x8_cad.c **** }
+ 435:u8g2_lib/u8x8_cad.c **** 
+ 436:u8g2_lib/u8x8_cad.c **** /* classic version: will put a start/stop condition around each command and arg */
+ 437:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_ssd13xx_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 438:u8g2_lib/u8x8_cad.c **** {
+ 1218              		.loc 1 438 0
+ 1219              		.cfi_startproc
+ 1220              		@ args = 0, pretend = 0, frame = 0
+ 1221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1222              	.LVL168:
+ 1223 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1224              	.LCFI25:
+ 1225              		.cfi_def_cfa_offset 24
+ 1226              		.cfi_offset 3, -24
+ 1227              		.cfi_offset 4, -20
+ 1228              		.cfi_offset 5, -16
+ 1229              		.cfi_offset 6, -12
+ 1230              		.cfi_offset 7, -8
+ 1231              		.cfi_offset 14, -4
+ 1232 0002 0646     		mov	r6, r0
+ 1233 0004 1446     		mov	r4, r2
+ 1234 0006 1D46     		mov	r5, r3
+ 439:u8g2_lib/u8x8_cad.c ****   uint8_t *p;
+ 440:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 1235              		.loc 1 440 0
+ 1236 0008 A1F11403 		sub	r3, r1, #20
+ 1237              	.LVL169:
+ 1238 000c 052B     		cmp	r3, #5
+ 1239 000e 04D8     		bhi	.L99
+ 1240 0010 DFE803F0 		tbb	[pc, r3]
+ 1241              	.LVL170:
+ 1242              	.L101:
+ 1243 0014 25       		.byte	(.L100-.L101)/2
+ 1244 0015 05       		.byte	(.L102-.L101)/2
+ 1245 0016 05       		.byte	(.L102-.L101)/2
+ 1246 0017 1C       		.byte	(.L103-.L101)/2
+ 1247 0018 32       		.byte	(.L107-.L101)/2
+ 1248 0019 32       		.byte	(.L107-.L101)/2
+ 1249              		.p2align 1
+ 1250              	.L99:
+ 441:u8g2_lib/u8x8_cad.c ****   {
+ 442:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ 443:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 444:u8g2_lib/u8x8_cad.c ****       /* 7 Nov 2016: Can this be improved?  */
+ 445:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SetDC(u8x8, 0);
+ 446:u8g2_lib/u8x8_cad.c ****       u8x8_byte_StartTransfer(u8x8);
+ 447:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SendByte(u8x8, u8x8_GetI2CAddress(u8x8));
+ 448:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, 0x000);
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 33
+
+
+ 449:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 450:u8g2_lib/u8x8_cad.c ****       u8x8_byte_EndTransfer(u8x8);      
+ 451:u8g2_lib/u8x8_cad.c ****       break;
+ 452:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 453:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SetDC(u8x8, 1);
+ 454:u8g2_lib/u8x8_cad.c ****     
+ 455:u8g2_lib/u8x8_cad.c ****       /* the FeatherWing OLED with the 32u4 transfer of long byte */
+ 456:u8g2_lib/u8x8_cad.c ****       /* streams was not possible. This is broken down to */
+ 457:u8g2_lib/u8x8_cad.c ****       /* smaller streams, 32 seems to be the limit... */
+ 458:u8g2_lib/u8x8_cad.c ****       /* I guess this is related to the size of the Wire buffers in Arduino */
+ 459:u8g2_lib/u8x8_cad.c ****       /* Unfortunately, this can not be handled in the byte level drivers, */
+ 460:u8g2_lib/u8x8_cad.c ****       /* so this is done here. Even further, only 24 bytes will be sent, */
+ 461:u8g2_lib/u8x8_cad.c ****       /* because there will be another byte (DC) required during the transfer */
+ 462:u8g2_lib/u8x8_cad.c ****       p = arg_ptr;
+ 463:u8g2_lib/u8x8_cad.c ****        while( arg_int > 24 )
+ 464:u8g2_lib/u8x8_cad.c ****       {
+ 465:u8g2_lib/u8x8_cad.c **** 	u8x8_i2c_data_transfer(u8x8, 24, p);
+ 466:u8g2_lib/u8x8_cad.c **** 	arg_int-=24;
+ 467:u8g2_lib/u8x8_cad.c **** 	p+=24;
+ 468:u8g2_lib/u8x8_cad.c ****       }
+ 469:u8g2_lib/u8x8_cad.c ****       u8x8_i2c_data_transfer(u8x8, arg_int, p);
+ 470:u8g2_lib/u8x8_cad.c ****       break;
+ 471:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 472:u8g2_lib/u8x8_cad.c ****       /* apply default i2c adr if required so that the start transfer msg can use this */
+ 473:u8g2_lib/u8x8_cad.c ****       if ( u8x8->i2c_address == 255 )
+ 474:u8g2_lib/u8x8_cad.c **** 	u8x8->i2c_address = 0x078;
+ 475:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 476:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 477:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 478:u8g2_lib/u8x8_cad.c ****       /* cad transfer commands are ignored */
+ 479:u8g2_lib/u8x8_cad.c ****       break;
+ 480:u8g2_lib/u8x8_cad.c ****     default:
+ 481:u8g2_lib/u8x8_cad.c ****       return 0;
+ 1251              		.loc 1 481 0
+ 1252 001a 0020     		movs	r0, #0
+ 1253              	.LVL171:
+ 1254 001c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1255              	.LVL172:
+ 1256              	.L102:
+ 446:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SendByte(u8x8, u8x8_GetI2CAddress(u8x8));
+ 1257              		.loc 1 446 0
+ 1258 001e FFF7FEFF 		bl	u8x8_byte_StartTransfer
+ 1259              	.LVL173:
+ 448:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 1260              		.loc 1 448 0
+ 1261 0022 0021     		movs	r1, #0
+ 1262 0024 3046     		mov	r0, r6
+ 1263 0026 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1264              	.LVL174:
+ 449:u8g2_lib/u8x8_cad.c ****       u8x8_byte_EndTransfer(u8x8);      
+ 1265              		.loc 1 449 0
+ 1266 002a 2146     		mov	r1, r4
+ 1267 002c 3046     		mov	r0, r6
+ 1268 002e FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1269              	.LVL175:
+ 450:u8g2_lib/u8x8_cad.c ****       break;
+ 1270              		.loc 1 450 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 34
+
+
+ 1271 0032 3046     		mov	r0, r6
+ 1272 0034 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1273              	.LVL176:
+ 482:u8g2_lib/u8x8_cad.c ****   }
+ 483:u8g2_lib/u8x8_cad.c ****   return 1;
+ 1274              		.loc 1 483 0
+ 1275 0038 0120     		movs	r0, #1
+ 451:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 1276              		.loc 1 451 0
+ 1277 003a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1278              	.LVL177:
+ 1279              	.L105:
+ 465:u8g2_lib/u8x8_cad.c **** 	arg_int-=24;
+ 1280              		.loc 1 465 0
+ 1281 003c 2A46     		mov	r2, r5
+ 1282 003e 1821     		movs	r1, #24
+ 1283 0040 3046     		mov	r0, r6
+ 1284 0042 FFF7FEFF 		bl	u8x8_i2c_data_transfer
+ 1285              	.LVL178:
+ 466:u8g2_lib/u8x8_cad.c **** 	p+=24;
+ 1286              		.loc 1 466 0
+ 1287 0046 183C     		subs	r4, r4, #24
+ 1288              	.LVL179:
+ 1289 0048 E4B2     		uxtb	r4, r4
+ 1290              	.LVL180:
+ 467:u8g2_lib/u8x8_cad.c ****       }
+ 1291              		.loc 1 467 0
+ 1292 004a 1835     		adds	r5, r5, #24
+ 1293              	.LVL181:
+ 1294              	.L103:
+ 463:u8g2_lib/u8x8_cad.c ****       {
+ 1295              		.loc 1 463 0
+ 1296 004c 182C     		cmp	r4, #24
+ 1297 004e F5D8     		bhi	.L105
+ 469:u8g2_lib/u8x8_cad.c ****       break;
+ 1298              		.loc 1 469 0
+ 1299 0050 2A46     		mov	r2, r5
+ 1300 0052 2146     		mov	r1, r4
+ 1301 0054 3046     		mov	r0, r6
+ 1302 0056 FFF7FEFF 		bl	u8x8_i2c_data_transfer
+ 1303              	.LVL182:
+ 1304              		.loc 1 483 0
+ 1305 005a 0120     		movs	r0, #1
+ 470:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 1306              		.loc 1 470 0
+ 1307 005c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1308              	.LVL183:
+ 1309              	.L100:
+ 473:u8g2_lib/u8x8_cad.c **** 	u8x8->i2c_address = 0x078;
+ 1310              		.loc 1 473 0
+ 1311 005e 90F82430 		ldrb	r3, [r0, #36]	@ zero_extendqisi2
+ 1312 0062 FF2B     		cmp	r3, #255
+ 1313 0064 02D1     		bne	.L106
+ 474:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 1314              		.loc 1 474 0
+ 1315 0066 7823     		movs	r3, #120
+ 1316 0068 80F82430 		strb	r3, [r0, #36]
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 35
+
+
+ 1317              	.L106:
+ 475:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 1318              		.loc 1 475 0
+ 1319 006c 3769     		ldr	r7, [r6, #16]
+ 1320 006e 2B46     		mov	r3, r5
+ 1321 0070 2246     		mov	r2, r4
+ 1322 0072 3046     		mov	r0, r6
+ 1323              	.LVL184:
+ 1324 0074 B847     		blx	r7
+ 1325              	.LVL185:
+ 1326 0076 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1327              	.LVL186:
+ 1328              	.L107:
+ 1329              		.loc 1 483 0
+ 1330 0078 0120     		movs	r0, #1
+ 1331              	.LVL187:
+ 484:u8g2_lib/u8x8_cad.c **** }
+ 1332              		.loc 1 484 0
+ 1333 007a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1334              		.cfi_endproc
+ 1335              	.LFE16:
+ 1337              		.section	.text.u8x8_cad_ssd13xx_fast_i2c,"ax",%progbits
+ 1338              		.align	2
+ 1339              		.global	u8x8_cad_ssd13xx_fast_i2c
+ 1340              		.thumb
+ 1341              		.thumb_func
+ 1343              	u8x8_cad_ssd13xx_fast_i2c:
+ 1344              	.LFB17:
+ 485:u8g2_lib/u8x8_cad.c **** 
+ 486:u8g2_lib/u8x8_cad.c **** 
+ 487:u8g2_lib/u8x8_cad.c **** /* fast version with reduced data start/stops, issue 735 */
+ 488:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_ssd13xx_fast_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 489:u8g2_lib/u8x8_cad.c **** {
+ 1345              		.loc 1 489 0
+ 1346              		.cfi_startproc
+ 1347              		@ args = 0, pretend = 0, frame = 0
+ 1348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1349              	.LVL188:
+ 1350 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1351              	.LCFI26:
+ 1352              		.cfi_def_cfa_offset 24
+ 1353              		.cfi_offset 3, -24
+ 1354              		.cfi_offset 4, -20
+ 1355              		.cfi_offset 5, -16
+ 1356              		.cfi_offset 6, -12
+ 1357              		.cfi_offset 7, -8
+ 1358              		.cfi_offset 14, -4
+ 1359 0002 0646     		mov	r6, r0
+ 1360 0004 1446     		mov	r4, r2
+ 1361 0006 1D46     		mov	r5, r3
+ 490:u8g2_lib/u8x8_cad.c ****   static uint8_t in_transfer = 0;
+ 491:u8g2_lib/u8x8_cad.c ****   uint8_t *p;
+ 492:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 1362              		.loc 1 492 0
+ 1363 0008 A1F11403 		sub	r3, r1, #20
+ 1364              	.LVL189:
+ 1365 000c 052B     		cmp	r3, #5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 36
+
+
+ 1366 000e 53D8     		bhi	.L124
+ 1367 0010 DFE803F0 		tbb	[pc, r3]
+ 1368              	.LVL190:
+ 1369              	.L112:
+ 1370 0014 36       		.byte	(.L111-.L112)/2
+ 1371 0015 03       		.byte	(.L113-.L112)/2
+ 1372 0016 17       		.byte	(.L114-.L112)/2
+ 1373 0017 1C       		.byte	(.L115-.L112)/2
+ 1374 0018 43       		.byte	(.L116-.L112)/2
+ 1375 0019 48       		.byte	(.L117-.L112)/2
+ 1376              		.p2align 1
+ 1377              	.L113:
+ 493:u8g2_lib/u8x8_cad.c ****   {
+ 494:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ 495:u8g2_lib/u8x8_cad.c ****       /* improved version, takeover from ld7032 */
+ 496:u8g2_lib/u8x8_cad.c ****       /* assumes, that the args of a command is not longer than 31 bytes */
+ 497:u8g2_lib/u8x8_cad.c ****       /* speed improvement is about 4% compared to the classic version */
+ 498:u8g2_lib/u8x8_cad.c ****       if ( in_transfer != 0 )
+ 1378              		.loc 1 498 0
+ 1379 001a 284B     		ldr	r3, .L126
+ 1380 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1381 001e 0BB1     		cbz	r3, .L118
+ 499:u8g2_lib/u8x8_cad.c **** 	 u8x8_byte_EndTransfer(u8x8); 
+ 1382              		.loc 1 499 0
+ 1383 0020 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1384              	.LVL191:
+ 1385              	.L118:
+ 500:u8g2_lib/u8x8_cad.c ****       
+ 501:u8g2_lib/u8x8_cad.c ****       u8x8_byte_StartTransfer(u8x8);
+ 1386              		.loc 1 501 0
+ 1387 0024 3046     		mov	r0, r6
+ 1388 0026 FFF7FEFF 		bl	u8x8_byte_StartTransfer
+ 1389              	.LVL192:
+ 502:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, 0x000);	/* cmd byte for ssd13xx controller */
+ 1390              		.loc 1 502 0
+ 1391 002a 0021     		movs	r1, #0
+ 1392 002c 3046     		mov	r0, r6
+ 1393 002e FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1394              	.LVL193:
+ 503:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 1395              		.loc 1 503 0
+ 1396 0032 2146     		mov	r1, r4
+ 1397 0034 3046     		mov	r0, r6
+ 1398 0036 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1399              	.LVL194:
+ 504:u8g2_lib/u8x8_cad.c ****       in_transfer = 1;
+ 1400              		.loc 1 504 0
+ 1401 003a 0120     		movs	r0, #1
+ 1402 003c 1F4B     		ldr	r3, .L126
+ 1403 003e 1870     		strb	r0, [r3]
+ 505:u8g2_lib/u8x8_cad.c ****       /* lightning version: can replace the improved version from above */
+ 506:u8g2_lib/u8x8_cad.c ****       /* the drawback of the lightning version is this: The complete init sequence */
+ 507:u8g2_lib/u8x8_cad.c ****       /* must fit into the 32 byte Arduino Wire buffer, which might not always be the case */
+ 508:u8g2_lib/u8x8_cad.c ****       /* speed improvement is about 6% compared to the classic version */
+ 509:u8g2_lib/u8x8_cad.c ****       // if ( in_transfer == 0 )
+ 510:u8g2_lib/u8x8_cad.c **** 	// {
+ 511:u8g2_lib/u8x8_cad.c **** 	//   u8x8_byte_StartTransfer(u8x8);
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 37
+
+
+ 512:u8g2_lib/u8x8_cad.c **** 	//   u8x8_byte_SendByte(u8x8, 0x000);	/* cmd byte for ssd13xx controller */
+ 513:u8g2_lib/u8x8_cad.c **** 	//   in_transfer = 1;
+ 514:u8g2_lib/u8x8_cad.c **** 	// }
+ 515:u8g2_lib/u8x8_cad.c **** 	//u8x8_byte_SendByte(u8x8, arg_int);
+ 516:u8g2_lib/u8x8_cad.c ****       break;
+ 1404              		.loc 1 516 0
+ 1405 0040 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1406              	.LVL195:
+ 1407              	.L114:
+ 517:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 518:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 1408              		.loc 1 518 0
+ 1409 0042 2146     		mov	r1, r4
+ 1410              	.LVL196:
+ 1411 0044 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1412              	.LVL197:
+ 519:u8g2_lib/u8x8_cad.c ****       break;      
+ 520:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 521:u8g2_lib/u8x8_cad.c ****       if ( in_transfer != 0 )
+ 522:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8); 
+ 523:u8g2_lib/u8x8_cad.c ****       
+ 524:u8g2_lib/u8x8_cad.c ****     
+ 525:u8g2_lib/u8x8_cad.c ****       /* the FeatherWing OLED with the 32u4 transfer of long byte */
+ 526:u8g2_lib/u8x8_cad.c ****       /* streams was not possible. This is broken down to */
+ 527:u8g2_lib/u8x8_cad.c ****       /* smaller streams, 32 seems to be the limit... */
+ 528:u8g2_lib/u8x8_cad.c ****       /* I guess this is related to the size of the Wire buffers in Arduino */
+ 529:u8g2_lib/u8x8_cad.c ****       /* Unfortunately, this can not be handled in the byte level drivers, */
+ 530:u8g2_lib/u8x8_cad.c ****       /* so this is done here. Even further, only 24 bytes will be sent, */
+ 531:u8g2_lib/u8x8_cad.c ****       /* because there will be another byte (DC) required during the transfer */
+ 532:u8g2_lib/u8x8_cad.c ****       p = arg_ptr;
+ 533:u8g2_lib/u8x8_cad.c ****        while( arg_int > 24 )
+ 534:u8g2_lib/u8x8_cad.c ****       {
+ 535:u8g2_lib/u8x8_cad.c **** 	u8x8_i2c_data_transfer(u8x8, 24, p);
+ 536:u8g2_lib/u8x8_cad.c **** 	arg_int-=24;
+ 537:u8g2_lib/u8x8_cad.c **** 	p+=24;
+ 538:u8g2_lib/u8x8_cad.c ****       }
+ 539:u8g2_lib/u8x8_cad.c ****       u8x8_i2c_data_transfer(u8x8, arg_int, p);
+ 540:u8g2_lib/u8x8_cad.c ****       in_transfer = 0;
+ 541:u8g2_lib/u8x8_cad.c ****       break;
+ 542:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 543:u8g2_lib/u8x8_cad.c ****       /* apply default i2c adr if required so that the start transfer msg can use this */
+ 544:u8g2_lib/u8x8_cad.c ****       if ( u8x8->i2c_address == 255 )
+ 545:u8g2_lib/u8x8_cad.c **** 	u8x8->i2c_address = 0x078;
+ 546:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 547:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 548:u8g2_lib/u8x8_cad.c ****       in_transfer = 0;
+ 549:u8g2_lib/u8x8_cad.c ****       break;
+ 550:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 551:u8g2_lib/u8x8_cad.c ****       if ( in_transfer != 0 )
+ 552:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8); 
+ 553:u8g2_lib/u8x8_cad.c ****       in_transfer = 0;
+ 554:u8g2_lib/u8x8_cad.c ****       break;
+ 555:u8g2_lib/u8x8_cad.c ****     default:
+ 556:u8g2_lib/u8x8_cad.c ****       return 0;
+ 557:u8g2_lib/u8x8_cad.c ****   }
+ 558:u8g2_lib/u8x8_cad.c ****   return 1;
+ 1413              		.loc 1 558 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 38
+
+
+ 1414 0048 0120     		movs	r0, #1
+ 519:u8g2_lib/u8x8_cad.c ****       break;      
+ 1415              		.loc 1 519 0
+ 1416 004a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1417              	.LVL198:
+ 1418              	.L115:
+ 521:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8); 
+ 1419              		.loc 1 521 0
+ 1420 004c 1B4B     		ldr	r3, .L126
+ 1421 004e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1422 0050 53B1     		cbz	r3, .L120
+ 522:u8g2_lib/u8x8_cad.c ****       
+ 1423              		.loc 1 522 0
+ 1424 0052 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1425              	.LVL199:
+ 1426 0056 07E0     		b	.L120
+ 1427              	.LVL200:
+ 1428              	.L121:
+ 535:u8g2_lib/u8x8_cad.c **** 	arg_int-=24;
+ 1429              		.loc 1 535 0
+ 1430 0058 2A46     		mov	r2, r5
+ 1431 005a 1821     		movs	r1, #24
+ 1432 005c 3046     		mov	r0, r6
+ 1433 005e FFF7FEFF 		bl	u8x8_i2c_data_transfer
+ 1434              	.LVL201:
+ 536:u8g2_lib/u8x8_cad.c **** 	p+=24;
+ 1435              		.loc 1 536 0
+ 1436 0062 183C     		subs	r4, r4, #24
+ 1437              	.LVL202:
+ 1438 0064 E4B2     		uxtb	r4, r4
+ 1439              	.LVL203:
+ 537:u8g2_lib/u8x8_cad.c ****       }
+ 1440              		.loc 1 537 0
+ 1441 0066 1835     		adds	r5, r5, #24
+ 1442              	.LVL204:
+ 1443              	.L120:
+ 533:u8g2_lib/u8x8_cad.c ****       {
+ 1444              		.loc 1 533 0
+ 1445 0068 182C     		cmp	r4, #24
+ 1446 006a F5D8     		bhi	.L121
+ 539:u8g2_lib/u8x8_cad.c ****       in_transfer = 0;
+ 1447              		.loc 1 539 0
+ 1448 006c 2A46     		mov	r2, r5
+ 1449 006e 2146     		mov	r1, r4
+ 1450 0070 3046     		mov	r0, r6
+ 1451 0072 FFF7FEFF 		bl	u8x8_i2c_data_transfer
+ 1452              	.LVL205:
+ 540:u8g2_lib/u8x8_cad.c ****       break;
+ 1453              		.loc 1 540 0
+ 1454 0076 0022     		movs	r2, #0
+ 1455 0078 104B     		ldr	r3, .L126
+ 1456 007a 1A70     		strb	r2, [r3]
+ 1457              		.loc 1 558 0
+ 1458 007c 0120     		movs	r0, #1
+ 541:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 1459              		.loc 1 541 0
+ 1460 007e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 39
+
+
+ 1461              	.LVL206:
+ 1462              	.L111:
+ 544:u8g2_lib/u8x8_cad.c **** 	u8x8->i2c_address = 0x078;
+ 1463              		.loc 1 544 0
+ 1464 0080 90F82430 		ldrb	r3, [r0, #36]	@ zero_extendqisi2
+ 1465 0084 FF2B     		cmp	r3, #255
+ 1466 0086 02D1     		bne	.L122
+ 545:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 1467              		.loc 1 545 0
+ 1468 0088 7823     		movs	r3, #120
+ 1469 008a 80F82430 		strb	r3, [r0, #36]
+ 1470              	.L122:
+ 546:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 1471              		.loc 1 546 0
+ 1472 008e 3769     		ldr	r7, [r6, #16]
+ 1473 0090 2B46     		mov	r3, r5
+ 1474 0092 2246     		mov	r2, r4
+ 1475 0094 3046     		mov	r0, r6
+ 1476              	.LVL207:
+ 1477 0096 B847     		blx	r7
+ 1478              	.LVL208:
+ 1479 0098 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1480              	.LVL209:
+ 1481              	.L116:
+ 548:u8g2_lib/u8x8_cad.c ****       break;
+ 1482              		.loc 1 548 0
+ 1483 009a 0022     		movs	r2, #0
+ 1484 009c 074B     		ldr	r3, .L126
+ 1485 009e 1A70     		strb	r2, [r3]
+ 1486              		.loc 1 558 0
+ 1487 00a0 0120     		movs	r0, #1
+ 1488              	.LVL210:
+ 549:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 1489              		.loc 1 549 0
+ 1490 00a2 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1491              	.LVL211:
+ 1492              	.L117:
+ 551:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8); 
+ 1493              		.loc 1 551 0
+ 1494 00a4 054B     		ldr	r3, .L126
+ 1495 00a6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1496 00a8 0BB1     		cbz	r3, .L123
+ 552:u8g2_lib/u8x8_cad.c ****       in_transfer = 0;
+ 1497              		.loc 1 552 0
+ 1498 00aa FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1499              	.LVL212:
+ 1500              	.L123:
+ 553:u8g2_lib/u8x8_cad.c ****       break;
+ 1501              		.loc 1 553 0
+ 1502 00ae 0022     		movs	r2, #0
+ 1503 00b0 024B     		ldr	r3, .L126
+ 1504 00b2 1A70     		strb	r2, [r3]
+ 1505              		.loc 1 558 0
+ 1506 00b4 0120     		movs	r0, #1
+ 554:u8g2_lib/u8x8_cad.c ****     default:
+ 1507              		.loc 1 554 0
+ 1508 00b6 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 40
+
+
+ 1509              	.LVL213:
+ 1510              	.L124:
+ 556:u8g2_lib/u8x8_cad.c ****   }
+ 1511              		.loc 1 556 0
+ 1512 00b8 0020     		movs	r0, #0
+ 1513              	.LVL214:
+ 559:u8g2_lib/u8x8_cad.c **** }
+ 1514              		.loc 1 559 0
+ 1515 00ba F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1516              	.LVL215:
+ 1517              	.L127:
+ 1518              		.align	2
+ 1519              	.L126:
+ 1520 00bc 00000000 		.word	.LANCHOR1
+ 1521              		.cfi_endproc
+ 1522              	.LFE17:
+ 1524              		.section	.text.u8x8_cad_st75256_i2c,"ax",%progbits
+ 1525              		.align	2
+ 1526              		.global	u8x8_cad_st75256_i2c
+ 1527              		.thumb
+ 1528              		.thumb_func
+ 1530              	u8x8_cad_st75256_i2c:
+ 1531              	.LFB18:
+ 560:u8g2_lib/u8x8_cad.c **** 
+ 561:u8g2_lib/u8x8_cad.c **** 
+ 562:u8g2_lib/u8x8_cad.c **** 
+ 563:u8g2_lib/u8x8_cad.c **** /* the st75256 i2c driver is a copy of the ssd13xx driver, but with arg=1 */
+ 564:u8g2_lib/u8x8_cad.c **** /* modified from cad001 (ssd13xx) to cad011 */
+ 565:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_st75256_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 566:u8g2_lib/u8x8_cad.c **** {
+ 1532              		.loc 1 566 0
+ 1533              		.cfi_startproc
+ 1534              		@ args = 0, pretend = 0, frame = 0
+ 1535              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1536              	.LVL216:
+ 1537 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1538              	.LCFI27:
+ 1539              		.cfi_def_cfa_offset 24
+ 1540              		.cfi_offset 3, -24
+ 1541              		.cfi_offset 4, -20
+ 1542              		.cfi_offset 5, -16
+ 1543              		.cfi_offset 6, -12
+ 1544              		.cfi_offset 7, -8
+ 1545              		.cfi_offset 14, -4
+ 1546 0002 0646     		mov	r6, r0
+ 1547 0004 1446     		mov	r4, r2
+ 1548 0006 1D46     		mov	r5, r3
+ 567:u8g2_lib/u8x8_cad.c ****   uint8_t *p;
+ 568:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 1549              		.loc 1 568 0
+ 1550 0008 A1F11403 		sub	r3, r1, #20
+ 1551              	.LVL217:
+ 1552 000c 052B     		cmp	r3, #5
+ 1553 000e 04D8     		bhi	.L129
+ 1554 0010 DFE803F0 		tbb	[pc, r3]
+ 1555              	.LVL218:
+ 1556              	.L131:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 41
+
+
+ 1557 0014 34       		.byte	(.L130-.L131)/2
+ 1558 0015 05       		.byte	(.L132-.L131)/2
+ 1559 0016 14       		.byte	(.L133-.L131)/2
+ 1560 0017 2B       		.byte	(.L134-.L131)/2
+ 1561 0018 41       		.byte	(.L138-.L131)/2
+ 1562 0019 41       		.byte	(.L138-.L131)/2
+ 1563              		.p2align 1
+ 1564              	.L129:
+ 569:u8g2_lib/u8x8_cad.c ****   {
+ 570:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ 571:u8g2_lib/u8x8_cad.c ****       u8x8_byte_StartTransfer(u8x8);
+ 572:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, 0x000);
+ 573:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 574:u8g2_lib/u8x8_cad.c ****       u8x8_byte_EndTransfer(u8x8);      
+ 575:u8g2_lib/u8x8_cad.c ****       break;
+ 576:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 577:u8g2_lib/u8x8_cad.c ****       u8x8_byte_StartTransfer(u8x8);
+ 578:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, 0x040);
+ 579:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 580:u8g2_lib/u8x8_cad.c ****       u8x8_byte_EndTransfer(u8x8);
+ 581:u8g2_lib/u8x8_cad.c ****       break;
+ 582:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 583:u8g2_lib/u8x8_cad.c ****       /* see ssd13xx driver */
+ 584:u8g2_lib/u8x8_cad.c ****       p = arg_ptr;
+ 585:u8g2_lib/u8x8_cad.c ****        while( arg_int > 24 )
+ 586:u8g2_lib/u8x8_cad.c ****       {
+ 587:u8g2_lib/u8x8_cad.c **** 	u8x8_i2c_data_transfer(u8x8, 24, p);
+ 588:u8g2_lib/u8x8_cad.c **** 	arg_int-=24;
+ 589:u8g2_lib/u8x8_cad.c **** 	p+=24;
+ 590:u8g2_lib/u8x8_cad.c ****       }
+ 591:u8g2_lib/u8x8_cad.c ****       u8x8_i2c_data_transfer(u8x8, arg_int, p);
+ 592:u8g2_lib/u8x8_cad.c ****       break;
+ 593:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 594:u8g2_lib/u8x8_cad.c ****       /* apply default i2c adr if required so that the start transfer msg can use this */
+ 595:u8g2_lib/u8x8_cad.c ****       if ( u8x8->i2c_address == 255 )
+ 596:u8g2_lib/u8x8_cad.c **** 	u8x8->i2c_address = 0x078;	/* ST75256, often this is 0x07e */
+ 597:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 598:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 599:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 600:u8g2_lib/u8x8_cad.c ****       /* cad transfer commands are ignored */
+ 601:u8g2_lib/u8x8_cad.c ****       break;
+ 602:u8g2_lib/u8x8_cad.c ****     default:
+ 603:u8g2_lib/u8x8_cad.c ****       return 0;
+ 1565              		.loc 1 603 0
+ 1566 001a 0020     		movs	r0, #0
+ 1567              	.LVL219:
+ 1568 001c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1569              	.LVL220:
+ 1570              	.L132:
+ 571:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, 0x000);
+ 1571              		.loc 1 571 0
+ 1572 001e FFF7FEFF 		bl	u8x8_byte_StartTransfer
+ 1573              	.LVL221:
+ 572:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 1574              		.loc 1 572 0
+ 1575 0022 0021     		movs	r1, #0
+ 1576 0024 3046     		mov	r0, r6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 42
+
+
+ 1577 0026 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1578              	.LVL222:
+ 573:u8g2_lib/u8x8_cad.c ****       u8x8_byte_EndTransfer(u8x8);      
+ 1579              		.loc 1 573 0
+ 1580 002a 2146     		mov	r1, r4
+ 1581 002c 3046     		mov	r0, r6
+ 1582 002e FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1583              	.LVL223:
+ 574:u8g2_lib/u8x8_cad.c ****       break;
+ 1584              		.loc 1 574 0
+ 1585 0032 3046     		mov	r0, r6
+ 1586 0034 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1587              	.LVL224:
+ 604:u8g2_lib/u8x8_cad.c ****   }
+ 605:u8g2_lib/u8x8_cad.c ****   return 1;
+ 1588              		.loc 1 605 0
+ 1589 0038 0120     		movs	r0, #1
+ 575:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 1590              		.loc 1 575 0
+ 1591 003a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1592              	.LVL225:
+ 1593              	.L133:
+ 577:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, 0x040);
+ 1594              		.loc 1 577 0
+ 1595 003c FFF7FEFF 		bl	u8x8_byte_StartTransfer
+ 1596              	.LVL226:
+ 578:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 1597              		.loc 1 578 0
+ 1598 0040 4021     		movs	r1, #64
+ 1599 0042 3046     		mov	r0, r6
+ 1600 0044 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1601              	.LVL227:
+ 579:u8g2_lib/u8x8_cad.c ****       u8x8_byte_EndTransfer(u8x8);
+ 1602              		.loc 1 579 0
+ 1603 0048 2146     		mov	r1, r4
+ 1604 004a 3046     		mov	r0, r6
+ 1605 004c FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1606              	.LVL228:
+ 580:u8g2_lib/u8x8_cad.c ****       break;
+ 1607              		.loc 1 580 0
+ 1608 0050 3046     		mov	r0, r6
+ 1609 0052 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1610              	.LVL229:
+ 1611              		.loc 1 605 0
+ 1612 0056 0120     		movs	r0, #1
+ 581:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 1613              		.loc 1 581 0
+ 1614 0058 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1615              	.LVL230:
+ 1616              	.L136:
+ 587:u8g2_lib/u8x8_cad.c **** 	arg_int-=24;
+ 1617              		.loc 1 587 0
+ 1618 005a 2A46     		mov	r2, r5
+ 1619 005c 1821     		movs	r1, #24
+ 1620 005e 3046     		mov	r0, r6
+ 1621 0060 FFF7FEFF 		bl	u8x8_i2c_data_transfer
+ 1622              	.LVL231:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 43
+
+
+ 588:u8g2_lib/u8x8_cad.c **** 	p+=24;
+ 1623              		.loc 1 588 0
+ 1624 0064 183C     		subs	r4, r4, #24
+ 1625              	.LVL232:
+ 1626 0066 E4B2     		uxtb	r4, r4
+ 1627              	.LVL233:
+ 589:u8g2_lib/u8x8_cad.c ****       }
+ 1628              		.loc 1 589 0
+ 1629 0068 1835     		adds	r5, r5, #24
+ 1630              	.LVL234:
+ 1631              	.L134:
+ 585:u8g2_lib/u8x8_cad.c ****       {
+ 1632              		.loc 1 585 0
+ 1633 006a 182C     		cmp	r4, #24
+ 1634 006c F5D8     		bhi	.L136
+ 591:u8g2_lib/u8x8_cad.c ****       break;
+ 1635              		.loc 1 591 0
+ 1636 006e 2A46     		mov	r2, r5
+ 1637 0070 2146     		mov	r1, r4
+ 1638 0072 3046     		mov	r0, r6
+ 1639 0074 FFF7FEFF 		bl	u8x8_i2c_data_transfer
+ 1640              	.LVL235:
+ 1641              		.loc 1 605 0
+ 1642 0078 0120     		movs	r0, #1
+ 592:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 1643              		.loc 1 592 0
+ 1644 007a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1645              	.LVL236:
+ 1646              	.L130:
+ 595:u8g2_lib/u8x8_cad.c **** 	u8x8->i2c_address = 0x078;	/* ST75256, often this is 0x07e */
+ 1647              		.loc 1 595 0
+ 1648 007c 90F82430 		ldrb	r3, [r0, #36]	@ zero_extendqisi2
+ 1649 0080 FF2B     		cmp	r3, #255
+ 1650 0082 02D1     		bne	.L137
+ 596:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 1651              		.loc 1 596 0
+ 1652 0084 7823     		movs	r3, #120
+ 1653 0086 80F82430 		strb	r3, [r0, #36]
+ 1654              	.L137:
+ 597:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 1655              		.loc 1 597 0
+ 1656 008a 3769     		ldr	r7, [r6, #16]
+ 1657 008c 2B46     		mov	r3, r5
+ 1658 008e 2246     		mov	r2, r4
+ 1659 0090 3046     		mov	r0, r6
+ 1660              	.LVL237:
+ 1661 0092 B847     		blx	r7
+ 1662              	.LVL238:
+ 1663 0094 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1664              	.LVL239:
+ 1665              	.L138:
+ 1666              		.loc 1 605 0
+ 1667 0096 0120     		movs	r0, #1
+ 1668              	.LVL240:
+ 606:u8g2_lib/u8x8_cad.c **** }
+ 1669              		.loc 1 606 0
+ 1670 0098 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 44
+
+
+ 1671              		.cfi_endproc
+ 1672              	.LFE18:
+ 1674 009a 00BF     		.section	.text.u8x8_cad_ld7032_i2c,"ax",%progbits
+ 1675              		.align	2
+ 1676              		.global	u8x8_cad_ld7032_i2c
+ 1677              		.thumb
+ 1678              		.thumb_func
+ 1680              	u8x8_cad_ld7032_i2c:
+ 1681              	.LFB19:
+ 607:u8g2_lib/u8x8_cad.c **** 
+ 608:u8g2_lib/u8x8_cad.c **** /* cad i2c procedure for the ld7032 controller */
+ 609:u8g2_lib/u8x8_cad.c **** /* Issue https://github.com/olikraus/u8g2/issues/865 mentiones, that I2C does not work */
+ 610:u8g2_lib/u8x8_cad.c **** /* Workaround is to remove the while loop (or increase the value in the condition) */
+ 611:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_ld7032_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 612:u8g2_lib/u8x8_cad.c **** {
+ 1682              		.loc 1 612 0
+ 1683              		.cfi_startproc
+ 1684              		@ args = 0, pretend = 0, frame = 0
+ 1685              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1686              	.LVL241:
+ 1687 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1688              	.LCFI28:
+ 1689              		.cfi_def_cfa_offset 24
+ 1690              		.cfi_offset 3, -24
+ 1691              		.cfi_offset 4, -20
+ 1692              		.cfi_offset 5, -16
+ 1693              		.cfi_offset 6, -12
+ 1694              		.cfi_offset 7, -8
+ 1695              		.cfi_offset 14, -4
+ 1696 0002 0446     		mov	r4, r0
+ 1697 0004 1546     		mov	r5, r2
+ 1698 0006 1E46     		mov	r6, r3
+ 613:u8g2_lib/u8x8_cad.c ****   static uint8_t in_transfer = 0;
+ 614:u8g2_lib/u8x8_cad.c ****   uint8_t *p;
+ 615:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 1699              		.loc 1 615 0
+ 1700 0008 A1F11403 		sub	r3, r1, #20
+ 1701              	.LVL242:
+ 1702 000c 052B     		cmp	r3, #5
+ 1703 000e 4FD8     		bhi	.L152
+ 1704 0010 DFE803F0 		tbb	[pc, r3]
+ 1705              	.LVL243:
+ 1706              	.L143:
+ 1707 0014 35       		.byte	(.L142-.L143)/2
+ 1708 0015 03       		.byte	(.L144-.L143)/2
+ 1709 0016 13       		.byte	(.L145-.L143)/2
+ 1710 0017 2B       		.byte	(.L146-.L143)/2
+ 1711 0018 42       		.byte	(.L147-.L143)/2
+ 1712 0019 47       		.byte	(.L148-.L143)/2
+ 1713              		.p2align 1
+ 1714              	.L144:
+ 616:u8g2_lib/u8x8_cad.c ****   {
+ 617:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ 618:u8g2_lib/u8x8_cad.c ****       if ( in_transfer != 0 )
+ 1715              		.loc 1 618 0
+ 1716 001a 274B     		ldr	r3, .L155
+ 1717 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 45
+
+
+ 1718 001e 0BB1     		cbz	r3, .L149
+ 619:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8); 
+ 1719              		.loc 1 619 0
+ 1720 0020 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1721              	.LVL244:
+ 1722              	.L149:
+ 620:u8g2_lib/u8x8_cad.c ****       u8x8_byte_StartTransfer(u8x8);
+ 1723              		.loc 1 620 0
+ 1724 0024 2046     		mov	r0, r4
+ 1725 0026 FFF7FEFF 		bl	u8x8_byte_StartTransfer
+ 1726              	.LVL245:
+ 621:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 1727              		.loc 1 621 0
+ 1728 002a 2946     		mov	r1, r5
+ 1729 002c 2046     		mov	r0, r4
+ 1730 002e FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1731              	.LVL246:
+ 622:u8g2_lib/u8x8_cad.c ****       in_transfer = 1;
+ 1732              		.loc 1 622 0
+ 1733 0032 0120     		movs	r0, #1
+ 1734 0034 204B     		ldr	r3, .L155
+ 1735 0036 1870     		strb	r0, [r3]
+ 623:u8g2_lib/u8x8_cad.c ****       break;
+ 1736              		.loc 1 623 0
+ 1737 0038 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1738              	.LVL247:
+ 1739              	.L145:
+ 624:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 625:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 1740              		.loc 1 625 0
+ 1741 003a 2946     		mov	r1, r5
+ 1742              	.LVL248:
+ 1743 003c FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1744              	.LVL249:
+ 626:u8g2_lib/u8x8_cad.c ****       break;
+ 627:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 628:u8g2_lib/u8x8_cad.c ****       //u8x8_byte_SetDC(u8x8, 1);
+ 629:u8g2_lib/u8x8_cad.c ****     
+ 630:u8g2_lib/u8x8_cad.c ****       /* the FeatherWing OLED with the 32u4 transfer of long byte */
+ 631:u8g2_lib/u8x8_cad.c ****       /* streams was not possible. This is broken down to */
+ 632:u8g2_lib/u8x8_cad.c ****       /* smaller streams, 32 seems to be the limit... */
+ 633:u8g2_lib/u8x8_cad.c ****       /* I guess this is related to the size of the Wire buffers in Arduino */
+ 634:u8g2_lib/u8x8_cad.c ****       /* Unfortunately, this can not be handled in the byte level drivers, */
+ 635:u8g2_lib/u8x8_cad.c ****       /* so this is done here. Even further, only 24 bytes will be sent, */
+ 636:u8g2_lib/u8x8_cad.c ****       /* because there will be another byte (DC) required during the transfer */
+ 637:u8g2_lib/u8x8_cad.c ****       p = arg_ptr;
+ 638:u8g2_lib/u8x8_cad.c ****        while( arg_int > 24 )
+ 639:u8g2_lib/u8x8_cad.c ****       {
+ 640:u8g2_lib/u8x8_cad.c **** 	u8x8->byte_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, 24, p);
+ 641:u8g2_lib/u8x8_cad.c **** 	arg_int-=24;
+ 642:u8g2_lib/u8x8_cad.c **** 	p+=24;
+ 643:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8); 
+ 644:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_StartTransfer(u8x8);
+ 645:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_SendByte(u8x8, 0x08);	/* data write for LD7032 */
+ 646:u8g2_lib/u8x8_cad.c ****       }
+ 647:u8g2_lib/u8x8_cad.c ****       u8x8->byte_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, arg_int, p);
+ 648:u8g2_lib/u8x8_cad.c ****       break;
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 46
+
+
+ 649:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 650:u8g2_lib/u8x8_cad.c ****       /* apply default i2c adr if required so that the start transfer msg can use this */
+ 651:u8g2_lib/u8x8_cad.c ****       if ( u8x8->i2c_address == 255 )
+ 652:u8g2_lib/u8x8_cad.c **** 	u8x8->i2c_address = 0x060;
+ 653:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 654:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 655:u8g2_lib/u8x8_cad.c ****       in_transfer = 0;
+ 656:u8g2_lib/u8x8_cad.c ****       break;
+ 657:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 658:u8g2_lib/u8x8_cad.c ****       if ( in_transfer != 0 )
+ 659:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8); 
+ 660:u8g2_lib/u8x8_cad.c ****       break;
+ 661:u8g2_lib/u8x8_cad.c ****     default:
+ 662:u8g2_lib/u8x8_cad.c ****       return 0;
+ 663:u8g2_lib/u8x8_cad.c ****   }
+ 664:u8g2_lib/u8x8_cad.c ****   return 1;
+ 1745              		.loc 1 664 0
+ 1746 0040 0120     		movs	r0, #1
+ 626:u8g2_lib/u8x8_cad.c ****       break;
+ 1747              		.loc 1 626 0
+ 1748 0042 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1749              	.LVL250:
+ 1750              	.L150:
+ 640:u8g2_lib/u8x8_cad.c **** 	arg_int-=24;
+ 1751              		.loc 1 640 0
+ 1752 0044 2769     		ldr	r7, [r4, #16]
+ 1753 0046 3346     		mov	r3, r6
+ 1754 0048 1822     		movs	r2, #24
+ 1755 004a 1721     		movs	r1, #23
+ 1756 004c 2046     		mov	r0, r4
+ 1757 004e B847     		blx	r7
+ 1758              	.LVL251:
+ 641:u8g2_lib/u8x8_cad.c **** 	p+=24;
+ 1759              		.loc 1 641 0
+ 1760 0050 183D     		subs	r5, r5, #24
+ 1761              	.LVL252:
+ 1762 0052 EDB2     		uxtb	r5, r5
+ 1763              	.LVL253:
+ 642:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8); 
+ 1764              		.loc 1 642 0
+ 1765 0054 1836     		adds	r6, r6, #24
+ 1766              	.LVL254:
+ 643:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_StartTransfer(u8x8);
+ 1767              		.loc 1 643 0
+ 1768 0056 2046     		mov	r0, r4
+ 1769 0058 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1770              	.LVL255:
+ 644:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_SendByte(u8x8, 0x08);	/* data write for LD7032 */
+ 1771              		.loc 1 644 0
+ 1772 005c 2046     		mov	r0, r4
+ 1773 005e FFF7FEFF 		bl	u8x8_byte_StartTransfer
+ 1774              	.LVL256:
+ 645:u8g2_lib/u8x8_cad.c ****       }
+ 1775              		.loc 1 645 0
+ 1776 0062 0821     		movs	r1, #8
+ 1777 0064 2046     		mov	r0, r4
+ 1778 0066 FFF7FEFF 		bl	u8x8_byte_SendByte
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 47
+
+
+ 1779              	.LVL257:
+ 1780              	.L146:
+ 638:u8g2_lib/u8x8_cad.c ****       {
+ 1781              		.loc 1 638 0
+ 1782 006a 182D     		cmp	r5, #24
+ 1783 006c EAD8     		bhi	.L150
+ 647:u8g2_lib/u8x8_cad.c ****       break;
+ 1784              		.loc 1 647 0
+ 1785 006e 2769     		ldr	r7, [r4, #16]
+ 1786 0070 3346     		mov	r3, r6
+ 1787 0072 2A46     		mov	r2, r5
+ 1788 0074 1721     		movs	r1, #23
+ 1789 0076 2046     		mov	r0, r4
+ 1790 0078 B847     		blx	r7
+ 1791              	.LVL258:
+ 1792              		.loc 1 664 0
+ 1793 007a 0120     		movs	r0, #1
+ 648:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 1794              		.loc 1 648 0
+ 1795 007c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1796              	.LVL259:
+ 1797              	.L142:
+ 651:u8g2_lib/u8x8_cad.c **** 	u8x8->i2c_address = 0x060;
+ 1798              		.loc 1 651 0
+ 1799 007e 90F82430 		ldrb	r3, [r0, #36]	@ zero_extendqisi2
+ 1800 0082 FF2B     		cmp	r3, #255
+ 1801 0084 02D1     		bne	.L151
+ 652:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 1802              		.loc 1 652 0
+ 1803 0086 6023     		movs	r3, #96
+ 1804 0088 80F82430 		strb	r3, [r0, #36]
+ 1805              	.L151:
+ 653:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 1806              		.loc 1 653 0
+ 1807 008c 2769     		ldr	r7, [r4, #16]
+ 1808 008e 3346     		mov	r3, r6
+ 1809 0090 2A46     		mov	r2, r5
+ 1810 0092 2046     		mov	r0, r4
+ 1811              	.LVL260:
+ 1812 0094 B847     		blx	r7
+ 1813              	.LVL261:
+ 1814 0096 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1815              	.LVL262:
+ 1816              	.L147:
+ 655:u8g2_lib/u8x8_cad.c ****       break;
+ 1817              		.loc 1 655 0
+ 1818 0098 0022     		movs	r2, #0
+ 1819 009a 074B     		ldr	r3, .L155
+ 1820 009c 1A70     		strb	r2, [r3]
+ 1821              		.loc 1 664 0
+ 1822 009e 0120     		movs	r0, #1
+ 1823              	.LVL263:
+ 656:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 1824              		.loc 1 656 0
+ 1825 00a0 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1826              	.LVL264:
+ 1827              	.L148:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 48
+
+
+ 658:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8); 
+ 1828              		.loc 1 658 0
+ 1829 00a2 054B     		ldr	r3, .L155
+ 1830 00a4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1831 00a6 2BB1     		cbz	r3, .L153
+ 659:u8g2_lib/u8x8_cad.c ****       break;
+ 1832              		.loc 1 659 0
+ 1833 00a8 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1834              	.LVL265:
+ 1835              		.loc 1 664 0
+ 1836 00ac 0120     		movs	r0, #1
+ 1837 00ae F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1838              	.LVL266:
+ 1839              	.L152:
+ 662:u8g2_lib/u8x8_cad.c ****   }
+ 1840              		.loc 1 662 0
+ 1841 00b0 0020     		movs	r0, #0
+ 1842              	.LVL267:
+ 1843 00b2 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1844              	.LVL268:
+ 1845              	.L153:
+ 1846              		.loc 1 664 0
+ 1847 00b4 0120     		movs	r0, #1
+ 1848              	.LVL269:
+ 665:u8g2_lib/u8x8_cad.c **** }
+ 1849              		.loc 1 665 0
+ 1850 00b6 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1851              	.LVL270:
+ 1852              	.L156:
+ 1853              		.align	2
+ 1854              	.L155:
+ 1855 00b8 00000000 		.word	.LANCHOR2
+ 1856              		.cfi_endproc
+ 1857              	.LFE19:
+ 1859              		.section	.text.u8x8_cad_uc16xx_i2c,"ax",%progbits
+ 1860              		.align	2
+ 1861              		.global	u8x8_cad_uc16xx_i2c
+ 1862              		.thumb
+ 1863              		.thumb_func
+ 1865              	u8x8_cad_uc16xx_i2c:
+ 1866              	.LFB20:
+ 666:u8g2_lib/u8x8_cad.c **** 
+ 667:u8g2_lib/u8x8_cad.c **** /* cad procedure for the UC16xx family in I2C mode */
+ 668:u8g2_lib/u8x8_cad.c **** /* u8x8_byte_SetDC is not used */
+ 669:u8g2_lib/u8x8_cad.c **** /* DC bit is encoded into the adr byte */
+ 670:u8g2_lib/u8x8_cad.c **** uint8_t u8x8_cad_uc16xx_i2c(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int, void *arg_ptr)
+ 671:u8g2_lib/u8x8_cad.c **** {
+ 1867              		.loc 1 671 0
+ 1868              		.cfi_startproc
+ 1869              		@ args = 0, pretend = 0, frame = 0
+ 1870              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1871              	.LVL271:
+ 1872 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1873              	.LCFI29:
+ 1874              		.cfi_def_cfa_offset 24
+ 1875              		.cfi_offset 3, -24
+ 1876              		.cfi_offset 4, -20
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 49
+
+
+ 1877              		.cfi_offset 5, -16
+ 1878              		.cfi_offset 6, -12
+ 1879              		.cfi_offset 7, -8
+ 1880              		.cfi_offset 14, -4
+ 1881 0002 0546     		mov	r5, r0
+ 1882 0004 1446     		mov	r4, r2
+ 1883 0006 1E46     		mov	r6, r3
+ 672:u8g2_lib/u8x8_cad.c ****   static uint8_t in_transfer = 0;	
+ 673:u8g2_lib/u8x8_cad.c ****   static uint8_t is_data = 0;
+ 674:u8g2_lib/u8x8_cad.c ****   uint8_t *p;
+ 675:u8g2_lib/u8x8_cad.c ****   switch(msg)
+ 1884              		.loc 1 675 0
+ 1885 0008 A1F11403 		sub	r3, r1, #20
+ 1886              	.LVL272:
+ 1887 000c 052B     		cmp	r3, #5
+ 1888 000e 6BD8     		bhi	.L172
+ 1889 0010 DFE803F0 		tbb	[pc, r3]
+ 1890              	.LVL273:
+ 1891              	.L160:
+ 1892 0014 4E       		.byte	(.L159-.L160)/2
+ 1893 0015 03       		.byte	(.L161-.L160)/2
+ 1894 0016 03       		.byte	(.L161-.L160)/2
+ 1895 0017 16       		.byte	(.L162-.L160)/2
+ 1896 0018 5B       		.byte	(.L163-.L160)/2
+ 1897 0019 60       		.byte	(.L164-.L160)/2
+ 1898              		.p2align 1
+ 1899              	.L161:
+ 676:u8g2_lib/u8x8_cad.c ****   {
+ 677:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_CMD:
+ 678:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_ARG:
+ 679:u8g2_lib/u8x8_cad.c ****       if ( in_transfer != 0 )
+ 1900              		.loc 1 679 0
+ 1901 001a 344B     		ldr	r3, .L174
+ 1902 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1903 001e 3BB9     		cbnz	r3, .L165
+ 680:u8g2_lib/u8x8_cad.c ****       {
+ 681:u8g2_lib/u8x8_cad.c **** 	if ( is_data != 0 )
+ 682:u8g2_lib/u8x8_cad.c **** 	{
+ 683:u8g2_lib/u8x8_cad.c **** 	  /* transfer mode is active, but data transfer */
+ 684:u8g2_lib/u8x8_cad.c **** 	  u8x8_byte_EndTransfer(u8x8); 
+ 685:u8g2_lib/u8x8_cad.c **** 	  /* clear the lowest two bits of the adr */
+ 686:u8g2_lib/u8x8_cad.c **** 	  u8x8_SetI2CAddress( u8x8, u8x8_GetI2CAddress(u8x8)&0x0fc );
+ 687:u8g2_lib/u8x8_cad.c **** 	  u8x8_byte_StartTransfer(u8x8); 
+ 688:u8g2_lib/u8x8_cad.c **** 	}
+ 689:u8g2_lib/u8x8_cad.c ****       }
+ 690:u8g2_lib/u8x8_cad.c ****       else
+ 691:u8g2_lib/u8x8_cad.c ****       {
+ 692:u8g2_lib/u8x8_cad.c **** 	/* clear the lowest two bits of the adr */
+ 693:u8g2_lib/u8x8_cad.c **** 	u8x8_SetI2CAddress( u8x8, u8x8_GetI2CAddress(u8x8)&0x0fc );
+ 1904              		.loc 1 693 0
+ 1905 0020 90F82430 		ldrb	r3, [r0, #36]	@ zero_extendqisi2
+ 1906 0024 23F00303 		bic	r3, r3, #3
+ 1907 0028 80F82430 		strb	r3, [r0, #36]
+ 694:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_StartTransfer(u8x8);
+ 1908              		.loc 1 694 0
+ 1909 002c FFF7FEFF 		bl	u8x8_byte_StartTransfer
+ 1910              	.LVL274:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 50
+
+
+ 1911              	.L165:
+ 695:u8g2_lib/u8x8_cad.c ****       }
+ 696:u8g2_lib/u8x8_cad.c ****       u8x8_byte_SendByte(u8x8, arg_int);
+ 1912              		.loc 1 696 0
+ 1913 0030 2146     		mov	r1, r4
+ 1914 0032 2846     		mov	r0, r5
+ 1915 0034 FFF7FEFF 		bl	u8x8_byte_SendByte
+ 1916              	.LVL275:
+ 697:u8g2_lib/u8x8_cad.c ****       in_transfer = 1;
+ 1917              		.loc 1 697 0
+ 1918 0038 0120     		movs	r0, #1
+ 1919 003a 2C4B     		ldr	r3, .L174
+ 1920 003c 1870     		strb	r0, [r3]
+ 698:u8g2_lib/u8x8_cad.c ****       break;
+ 1921              		.loc 1 698 0
+ 1922 003e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1923              	.LVL276:
+ 1924              	.L162:
+ 699:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_SEND_DATA:
+ 700:u8g2_lib/u8x8_cad.c ****       if ( in_transfer != 0 )
+ 1925              		.loc 1 700 0
+ 1926 0040 2A4B     		ldr	r3, .L174
+ 1927 0042 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1928 0044 6BB1     		cbz	r3, .L166
+ 701:u8g2_lib/u8x8_cad.c ****       {
+ 702:u8g2_lib/u8x8_cad.c **** 	if ( is_data == 0 )
+ 703:u8g2_lib/u8x8_cad.c **** 	{
+ 704:u8g2_lib/u8x8_cad.c **** 	  /* transfer mode is active, but data transfer */
+ 705:u8g2_lib/u8x8_cad.c **** 	  u8x8_byte_EndTransfer(u8x8); 
+ 1929              		.loc 1 705 0
+ 1930 0046 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1931              	.LVL277:
+ 706:u8g2_lib/u8x8_cad.c **** 	  /* clear the lowest two bits of the adr */
+ 707:u8g2_lib/u8x8_cad.c **** 	  u8x8_SetI2CAddress( u8x8, (u8x8_GetI2CAddress(u8x8)&0x0fc)|2 );
+ 1932              		.loc 1 707 0
+ 1933 004a 95F82430 		ldrb	r3, [r5, #36]	@ zero_extendqisi2
+ 1934 004e 23F00303 		bic	r3, r3, #3
+ 1935 0052 43F00203 		orr	r3, r3, #2
+ 1936 0056 85F82430 		strb	r3, [r5, #36]
+ 708:u8g2_lib/u8x8_cad.c **** 	  u8x8_byte_StartTransfer(u8x8); 
+ 1937              		.loc 1 708 0
+ 1938 005a 2846     		mov	r0, r5
+ 1939 005c FFF7FEFF 		bl	u8x8_byte_StartTransfer
+ 1940              	.LVL278:
+ 1941 0060 09E0     		b	.L167
+ 1942              	.LVL279:
+ 1943              	.L166:
+ 709:u8g2_lib/u8x8_cad.c **** 	}
+ 710:u8g2_lib/u8x8_cad.c ****       }
+ 711:u8g2_lib/u8x8_cad.c ****       else
+ 712:u8g2_lib/u8x8_cad.c ****       {
+ 713:u8g2_lib/u8x8_cad.c **** 	/* clear the lowest two bits of the adr */
+ 714:u8g2_lib/u8x8_cad.c **** 	u8x8_SetI2CAddress( u8x8, (u8x8_GetI2CAddress(u8x8)&0x0fc)|2 );
+ 1944              		.loc 1 714 0
+ 1945 0062 90F82430 		ldrb	r3, [r0, #36]	@ zero_extendqisi2
+ 1946 0066 23F00303 		bic	r3, r3, #3
+ 1947 006a 43F00203 		orr	r3, r3, #2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 51
+
+
+ 1948 006e 80F82430 		strb	r3, [r0, #36]
+ 715:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_StartTransfer(u8x8);
+ 1949              		.loc 1 715 0
+ 1950 0072 FFF7FEFF 		bl	u8x8_byte_StartTransfer
+ 1951              	.LVL280:
+ 1952              	.L167:
+ 716:u8g2_lib/u8x8_cad.c ****       }
+ 717:u8g2_lib/u8x8_cad.c ****       in_transfer = 1;
+ 1953              		.loc 1 717 0
+ 1954 0076 0122     		movs	r2, #1
+ 1955 0078 1C4B     		ldr	r3, .L174
+ 1956 007a 1A70     		strb	r2, [r3]
+ 1957              	.LVL281:
+ 718:u8g2_lib/u8x8_cad.c ****       
+ 719:u8g2_lib/u8x8_cad.c ****       p = arg_ptr;
+ 720:u8g2_lib/u8x8_cad.c ****       while( arg_int > 24 )
+ 1958              		.loc 1 720 0
+ 1959 007c 0EE0     		b	.L168
+ 1960              	.LVL282:
+ 1961              	.L169:
+ 721:u8g2_lib/u8x8_cad.c ****       {
+ 722:u8g2_lib/u8x8_cad.c **** 	u8x8->byte_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, 24, p);
+ 1962              		.loc 1 722 0
+ 1963 007e 2F69     		ldr	r7, [r5, #16]
+ 1964 0080 3346     		mov	r3, r6
+ 1965 0082 1822     		movs	r2, #24
+ 1966 0084 1721     		movs	r1, #23
+ 1967 0086 2846     		mov	r0, r5
+ 1968 0088 B847     		blx	r7
+ 1969              	.LVL283:
+ 723:u8g2_lib/u8x8_cad.c **** 	arg_int-=24;
+ 1970              		.loc 1 723 0
+ 1971 008a 183C     		subs	r4, r4, #24
+ 1972              	.LVL284:
+ 1973 008c E4B2     		uxtb	r4, r4
+ 1974              	.LVL285:
+ 724:u8g2_lib/u8x8_cad.c **** 	p+=24;
+ 1975              		.loc 1 724 0
+ 1976 008e 1836     		adds	r6, r6, #24
+ 1977              	.LVL286:
+ 725:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8); 
+ 1978              		.loc 1 725 0
+ 1979 0090 2846     		mov	r0, r5
+ 1980 0092 FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 1981              	.LVL287:
+ 726:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_StartTransfer(u8x8);
+ 1982              		.loc 1 726 0
+ 1983 0096 2846     		mov	r0, r5
+ 1984 0098 FFF7FEFF 		bl	u8x8_byte_StartTransfer
+ 1985              	.LVL288:
+ 1986              	.L168:
+ 720:u8g2_lib/u8x8_cad.c ****       {
+ 1987              		.loc 1 720 0
+ 1988 009c 182C     		cmp	r4, #24
+ 1989 009e EED8     		bhi	.L169
+ 727:u8g2_lib/u8x8_cad.c ****       }
+ 728:u8g2_lib/u8x8_cad.c ****       u8x8->byte_cb(u8x8, U8X8_MSG_CAD_SEND_DATA, arg_int, p);
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 52
+
+
+ 1990              		.loc 1 728 0
+ 1991 00a0 2F69     		ldr	r7, [r5, #16]
+ 1992 00a2 3346     		mov	r3, r6
+ 1993 00a4 2246     		mov	r2, r4
+ 1994 00a6 1721     		movs	r1, #23
+ 1995 00a8 2846     		mov	r0, r5
+ 1996 00aa B847     		blx	r7
+ 1997              	.LVL289:
+ 729:u8g2_lib/u8x8_cad.c ****       
+ 730:u8g2_lib/u8x8_cad.c ****       break;
+ 731:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 732:u8g2_lib/u8x8_cad.c ****       /* apply default i2c adr if required so that the start transfer msg can use this */
+ 733:u8g2_lib/u8x8_cad.c ****       if ( u8x8->i2c_address == 255 )
+ 734:u8g2_lib/u8x8_cad.c **** 	u8x8->i2c_address = 0x070;
+ 735:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 736:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 737:u8g2_lib/u8x8_cad.c ****       in_transfer = 0;    
+ 738:u8g2_lib/u8x8_cad.c ****       /* actual start is delayed, because we do not whether this is data or cmd transfer */
+ 739:u8g2_lib/u8x8_cad.c ****       break;
+ 740:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 741:u8g2_lib/u8x8_cad.c ****       if ( in_transfer != 0 )
+ 742:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8);
+ 743:u8g2_lib/u8x8_cad.c ****       in_transfer = 0;
+ 744:u8g2_lib/u8x8_cad.c ****       break;
+ 745:u8g2_lib/u8x8_cad.c ****     default:
+ 746:u8g2_lib/u8x8_cad.c ****       return 0;
+ 747:u8g2_lib/u8x8_cad.c ****   }
+ 748:u8g2_lib/u8x8_cad.c ****   return 1;
+ 1998              		.loc 1 748 0
+ 1999 00ac 0120     		movs	r0, #1
+ 730:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_INIT:
+ 2000              		.loc 1 730 0
+ 2001 00ae F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 2002              	.LVL290:
+ 2003              	.L159:
+ 733:u8g2_lib/u8x8_cad.c **** 	u8x8->i2c_address = 0x070;
+ 2004              		.loc 1 733 0
+ 2005 00b0 90F82430 		ldrb	r3, [r0, #36]	@ zero_extendqisi2
+ 2006 00b4 FF2B     		cmp	r3, #255
+ 2007 00b6 02D1     		bne	.L170
+ 734:u8g2_lib/u8x8_cad.c ****       return u8x8->byte_cb(u8x8, msg, arg_int, arg_ptr);
+ 2008              		.loc 1 734 0
+ 2009 00b8 7023     		movs	r3, #112
+ 2010 00ba 80F82430 		strb	r3, [r0, #36]
+ 2011              	.L170:
+ 735:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_START_TRANSFER:
+ 2012              		.loc 1 735 0
+ 2013 00be 2F69     		ldr	r7, [r5, #16]
+ 2014 00c0 3346     		mov	r3, r6
+ 2015 00c2 2246     		mov	r2, r4
+ 2016 00c4 2846     		mov	r0, r5
+ 2017              	.LVL291:
+ 2018 00c6 B847     		blx	r7
+ 2019              	.LVL292:
+ 2020 00c8 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 2021              	.LVL293:
+ 2022              	.L163:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 53
+
+
+ 737:u8g2_lib/u8x8_cad.c ****       /* actual start is delayed, because we do not whether this is data or cmd transfer */
+ 2023              		.loc 1 737 0
+ 2024 00ca 0022     		movs	r2, #0
+ 2025 00cc 074B     		ldr	r3, .L174
+ 2026 00ce 1A70     		strb	r2, [r3]
+ 2027              		.loc 1 748 0
+ 2028 00d0 0120     		movs	r0, #1
+ 2029              	.LVL294:
+ 739:u8g2_lib/u8x8_cad.c ****     case U8X8_MSG_CAD_END_TRANSFER:
+ 2030              		.loc 1 739 0
+ 2031 00d2 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 2032              	.LVL295:
+ 2033              	.L164:
+ 741:u8g2_lib/u8x8_cad.c **** 	u8x8_byte_EndTransfer(u8x8);
+ 2034              		.loc 1 741 0
+ 2035 00d4 054B     		ldr	r3, .L174
+ 2036 00d6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 2037 00d8 0BB1     		cbz	r3, .L171
+ 742:u8g2_lib/u8x8_cad.c ****       in_transfer = 0;
+ 2038              		.loc 1 742 0
+ 2039 00da FFF7FEFF 		bl	u8x8_byte_EndTransfer
+ 2040              	.LVL296:
+ 2041              	.L171:
+ 743:u8g2_lib/u8x8_cad.c ****       break;
+ 2042              		.loc 1 743 0
+ 2043 00de 0022     		movs	r2, #0
+ 2044 00e0 024B     		ldr	r3, .L174
+ 2045 00e2 1A70     		strb	r2, [r3]
+ 2046              		.loc 1 748 0
+ 2047 00e4 0120     		movs	r0, #1
+ 744:u8g2_lib/u8x8_cad.c ****     default:
+ 2048              		.loc 1 744 0
+ 2049 00e6 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 2050              	.LVL297:
+ 2051              	.L172:
+ 746:u8g2_lib/u8x8_cad.c ****   }
+ 2052              		.loc 1 746 0
+ 2053 00e8 0020     		movs	r0, #0
+ 2054              	.LVL298:
+ 749:u8g2_lib/u8x8_cad.c **** }
+ 2055              		.loc 1 749 0
+ 2056 00ea F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 2057              	.LVL299:
+ 2058              	.L175:
+ 2059              		.align	2
+ 2060              	.L174:
+ 2061 00ec 00000000 		.word	.LANCHOR3
+ 2062              		.cfi_endproc
+ 2063              	.LFE20:
+ 2065              		.section	.bss.in_transfer.5799,"aw",%nobits
+ 2066              		.set	.LANCHOR1,. + 0
+ 2069              	in_transfer.5799:
+ 2070 0000 00       		.space	1
+ 2071              		.section	.bss.in_transfer.5855,"aw",%nobits
+ 2072              		.set	.LANCHOR3,. + 0
+ 2075              	in_transfer.5855:
+ 2076 0000 00       		.space	1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 54
+
+
+ 2077              		.section	.bss.in_transfer.5836,"aw",%nobits
+ 2078              		.set	.LANCHOR2,. + 0
+ 2081              	in_transfer.5836:
+ 2082 0000 00       		.space	1
+ 2083              		.section	.bss.buf.5748,"aw",%nobits
+ 2084              		.align	2
+ 2085              		.set	.LANCHOR0,. + 0
+ 2088              	buf.5748:
+ 2089 0000 00000000 		.space	16
+ 2089      00000000 
+ 2089      00000000 
+ 2089      00000000 
+ 2090              		.text
+ 2091              	.Letext0:
+ 2092              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 2093              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 2094              		.file 4 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\lib\\gcc\\arm-none-eabi\\5.4
+ 2095              		.file 5 "u8g2_lib/u8x8.h"
+ 2096              		.file 6 "<built-in>"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 55
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8x8_cad.c
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:22     .text.u8x8_i2c_data_transfer:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:26     .text.u8x8_i2c_data_transfer:00000000 u8x8_i2c_data_transfer
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:71     .text.u8x8_cad_SendCmd:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:76     .text.u8x8_cad_SendCmd:00000000 u8x8_cad_SendCmd
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:102    .text.u8x8_cad_SendArg:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:107    .text.u8x8_cad_SendArg:00000000 u8x8_cad_SendArg
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:133    .text.u8x8_cad_SendMultipleArg:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:138    .text.u8x8_cad_SendMultipleArg:00000000 u8x8_cad_SendMultipleArg
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:185    .text.u8x8_cad_SendData:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:190    .text.u8x8_cad_SendData:00000000 u8x8_cad_SendData
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:217    .text.u8x8_cad_StartTransfer:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:222    .text.u8x8_cad_StartTransfer:00000000 u8x8_cad_StartTransfer
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:247    .text.u8x8_cad_EndTransfer:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:252    .text.u8x8_cad_EndTransfer:00000000 u8x8_cad_EndTransfer
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:277    .text.u8x8_cad_vsendf:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:282    .text.u8x8_cad_vsendf:00000000 u8x8_cad_vsendf
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:363    .text.u8x8_SendF:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:368    .text.u8x8_SendF:00000000 u8x8_SendF
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:415    .text.u8x8_cad_SendSequence:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:420    .text.u8x8_cad_SendSequence:00000000 u8x8_cad_SendSequence
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:522    .text.u8x8_cad_empty:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:527    .text.u8x8_cad_empty:00000000 u8x8_cad_empty
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:545    .text.u8x8_cad_empty:0000000e $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:551    .text.u8x8_cad_empty:00000014 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:591    .text.u8x8_cad_110:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:596    .text.u8x8_cad_110:00000000 u8x8_cad_110
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:624    .text.u8x8_cad_110:00000018 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:630    .text.u8x8_cad_110:0000001e $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:690    .text.u8x8_cad_100:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:695    .text.u8x8_cad_100:00000000 u8x8_cad_100
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:723    .text.u8x8_cad_100:00000018 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:729    .text.u8x8_cad_100:0000001e $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:789    .text.u8x8_cad_001:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:794    .text.u8x8_cad_001:00000000 u8x8_cad_001
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:822    .text.u8x8_cad_001:00000018 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:828    .text.u8x8_cad_001:0000001e $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:888    .text.u8x8_cad_011:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:893    .text.u8x8_cad_011:00000000 u8x8_cad_011
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:921    .text.u8x8_cad_011:00000018 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:927    .text.u8x8_cad_011:0000001e $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:987    .text.u8x8_cad_st7920_spi:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:992    .text.u8x8_cad_st7920_spi:00000000 u8x8_cad_st7920_spi
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1019   .text.u8x8_cad_st7920_spi:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1025   .text.u8x8_cad_st7920_spi:0000001a $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1206   .text.u8x8_cad_st7920_spi:00000100 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1211   .text.u8x8_cad_ssd13xx_i2c:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1216   .text.u8x8_cad_ssd13xx_i2c:00000000 u8x8_cad_ssd13xx_i2c
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1243   .text.u8x8_cad_ssd13xx_i2c:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1249   .text.u8x8_cad_ssd13xx_i2c:0000001a $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1338   .text.u8x8_cad_ssd13xx_fast_i2c:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1343   .text.u8x8_cad_ssd13xx_fast_i2c:00000000 u8x8_cad_ssd13xx_fast_i2c
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1370   .text.u8x8_cad_ssd13xx_fast_i2c:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1376   .text.u8x8_cad_ssd13xx_fast_i2c:0000001a $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1520   .text.u8x8_cad_ssd13xx_fast_i2c:000000bc $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1525   .text.u8x8_cad_st75256_i2c:00000000 $t
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s 			page 56
+
+
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1530   .text.u8x8_cad_st75256_i2c:00000000 u8x8_cad_st75256_i2c
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1557   .text.u8x8_cad_st75256_i2c:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1563   .text.u8x8_cad_st75256_i2c:0000001a $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1675   .text.u8x8_cad_ld7032_i2c:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1680   .text.u8x8_cad_ld7032_i2c:00000000 u8x8_cad_ld7032_i2c
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1707   .text.u8x8_cad_ld7032_i2c:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1713   .text.u8x8_cad_ld7032_i2c:0000001a $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1855   .text.u8x8_cad_ld7032_i2c:000000b8 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1860   .text.u8x8_cad_uc16xx_i2c:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1865   .text.u8x8_cad_uc16xx_i2c:00000000 u8x8_cad_uc16xx_i2c
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1892   .text.u8x8_cad_uc16xx_i2c:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:1898   .text.u8x8_cad_uc16xx_i2c:0000001a $t
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:2061   .text.u8x8_cad_uc16xx_i2c:000000ec $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:2069   .bss.in_transfer.5799:00000000 in_transfer.5799
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:2070   .bss.in_transfer.5799:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:2075   .bss.in_transfer.5855:00000000 in_transfer.5855
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:2076   .bss.in_transfer.5855:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:2081   .bss.in_transfer.5836:00000000 in_transfer.5836
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:2082   .bss.in_transfer.5836:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:2084   .bss.buf.5748:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccuX2Tnx.s:2088   .bss.buf.5748:00000000 buf.5748
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+u8x8_byte_StartTransfer
+u8x8_byte_SendByte
+u8x8_byte_EndTransfer
+u8x8_gpio_call
+u8x8_byte_SetDC
+u8x8_byte_SendBytes
