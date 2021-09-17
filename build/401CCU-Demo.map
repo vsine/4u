@@ -1848,6 +1848,29 @@ Discarded input sections
  .ARM.attributes
                 0x00000000       0x39 build/chessengine.o
  COMMON         0x00000000      0x100 build/chessengine.o
+ .text          0x00000000        0x0 build/u8g_com_stm32_hw_i2c_hal.o
+ .data          0x00000000        0x0 build/u8g_com_stm32_hw_i2c_hal.o
+ .bss           0x00000000        0x0 build/u8g_com_stm32_hw_i2c_hal.o
+ .text.u8g_Delay
+                0x00000000        0x8 build/u8g_com_stm32_hw_i2c_hal.o
+ .text.u8g_MicroDelay
+                0x00000000        0x4 build/u8g_com_stm32_hw_i2c_hal.o
+ .text.u8g_10MicroDelay
+                0x00000000        0x4 build/u8g_com_stm32_hw_i2c_hal.o
+ .text.u8g_com_hw_i2c_fn
+                0x00000000        0x4 build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_info    0x00000000      0x52e build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_abbrev  0x00000000      0x173 build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_loc     0x00000000       0x62 build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_aranges
+                0x00000000       0x38 build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_ranges  0x00000000       0x28 build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_line    0x00000000      0x154 build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_str     0x00000000      0x45f build/u8g_com_stm32_hw_i2c_hal.o
+ .comment       0x00000000       0x6f build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_frame   0x00000000       0x5c build/u8g_com_stm32_hw_i2c_hal.o
+ .ARM.attributes
+                0x00000000       0x39 build/u8g_com_stm32_hw_i2c_hal.o
  .text          0x00000000       0x14 build/startup_stm32f401xc.o
  .data          0x00000000        0x0 build/startup_stm32f401xc.o
  .bss           0x00000000        0x0 build/startup_stm32f401xc.o
@@ -1966,6 +1989,7 @@ LOAD build/u8g_clip.o
 LOAD build/u8g_circle.o
 LOAD build/u8g_bitmap.o
 LOAD build/chessengine.o
+LOAD build/u8g_com_stm32_hw_i2c_hal.o
 LOAD build/startup_stm32f401xc.o
 LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a
 LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libm.a
@@ -2497,6 +2521,7 @@ HAL_DMA_Start_IT                                  build/stm32f4xx_hal_dma.o
 HAL_DMA_UnRegisterCallback                        build/stm32f4xx_hal_dma.o
 HAL_DeInit                                        build/stm32f4xx_hal.o
 HAL_Delay                                         build/stm32f4xx_hal.o
+                                                  build/u8g_com_stm32_hw_i2c_hal.o
                                                   build/main.o
 HAL_DisableCompensationCell                       build/stm32f4xx_hal.o
 HAL_EXTI_ClearConfigLine                          build/stm32f4xx_hal_exti.o
@@ -2813,11 +2838,13 @@ stack_InitCurrElement                             build/chessengine.o
 stack_Pop                                         build/chessengine.o
 stack_Push                                        build/chessengine.o
 stack_SetMove                                     build/chessengine.o
+u8g_10MicroDelay                                  build/u8g_com_stm32_hw_i2c_hal.o
 u8g_AddPolygonXY                                  build/u8g_polygon.o
 u8g_AddToVirtualScreen                            build/u8g_virtual_screen.o
 u8g_Begin                                         build/u8g_ll_api.o
 u8g_ClearPolygonXY                                build/u8g_polygon.o
-u8g_Delay                                         build/u8g_com_api.o
+u8g_Delay                                         build/u8g_com_stm32_hw_i2c_hal.o
+                                                  build/u8g_com_api.o
 u8g_DisableCursor                                 build/u8g_cursor.o
 u8g_Draw4TPixel                                   build/u8g_ll_api.o
                                                   build/u8g_font.o
@@ -2922,6 +2949,7 @@ u8g_IsBBXIntersection                             build/u8g_clip.o
                                                   build/u8g_font.o
                                                   build/u8g_ellipse.o
 u8g_IsGlyph                                       build/u8g_font.o
+u8g_MicroDelay                                    build/u8g_com_stm32_hw_i2c_hal.o
 u8g_NextPage                                      build/u8g_ll_api.o
 u8g_NextPageLL                                    build/u8g_ll_api.o
 u8g_SetAddress                                    build/u8g_com_api.o
@@ -2986,6 +3014,7 @@ u8g_call_dev_fn                                   build/u8g_ll_api.o
                                                   build/u8g_virtual_screen.o
                                                   build/u8g_scale.o
                                                   build/u8g_rot.o
+u8g_com_hw_i2c_fn                                 build/u8g_com_stm32_hw_i2c_hal.o
 u8g_dev_pb14v1_base_fn                            build/u8g_pb14v1.o
 u8g_dev_pb16h1_base_fn                            build/u8g_pb16h1.o
 u8g_dev_pb16h2_base_fn                            build/u8g_pb16h2.o

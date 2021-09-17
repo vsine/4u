@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\cci9CIFF.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 1
   27:u8glib/u8g_cursor.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
   28:u8glib/u8g_cursor.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
   29:u8glib/u8g_cursor.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cci9CIFF.s 			page 2
 
 
   30:u8glib/u8g_cursor.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 1
   41              		.cfi_offset 7, -12
   42              		.cfi_offset 8, -8
   43              		.cfi_offset 14, -4
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\cci9CIFF.s 			page 3
 
 
   44 0004 0446     		mov	r4, r0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 1
   91:u8glib/u8g_cursor.c ****   /* required, because y adjustment should not happen to the cursor fonts */
   92:u8glib/u8g_cursor.c ****   /* u8g_DrawGlyph(u8g, u8g->cursor_x, u8g->cursor_y, encoding); */
   93:u8glib/u8g_cursor.c ****   u8g_draw_glyph(u8g, u8g->cursor_x, u8g->cursor_y, encoding);
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\cci9CIFF.s 			page 4
 
 
   80              		.loc 1 93 0
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 1
  131              	.LVL12:
   46:u8glib/u8g_cursor.c **** }
  132              		.loc 1 46 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\cci9CIFF.s 			page 5
 
 
  133 0000 8174     		strb	r1, [r0, #18]
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 1
  186              		.thumb_func
  188              	u8g_EnableCursor:
  189              	.LFB4:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\cci9CIFF.s 			page 6
 
 
   62:u8glib/u8g_cursor.c ****     u8g->cursor_fn = u8g_DrawCursor;
@@ -345,26 +345,26 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 1
  230              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  231              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  232              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\cci9CIFF.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_cursor.c
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:22     .text.u8g_DrawCursor:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:27     .text.u8g_DrawCursor:00000000 u8g_DrawCursor
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:99     .text.u8g_SetCursorFont:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:104    .text.u8g_SetCursorFont:00000000 u8g_SetCursorFont
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:119    .text.u8g_SetCursorStyle:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:124    .text.u8g_SetCursorStyle:00000000 u8g_SetCursorStyle
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:139    .text.u8g_SetCursorColor:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:144    .text.u8g_SetCursorColor:00000000 u8g_SetCursorColor
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:161    .text.u8g_SetCursorPos:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:166    .text.u8g_SetCursorPos:00000000 u8g_SetCursorPos
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:183    .text.u8g_EnableCursor:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:188    .text.u8g_EnableCursor:00000000 u8g_EnableCursor
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:203    .text.u8g_EnableCursor:00000008 $d
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:208    .text.u8g_DisableCursor:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccR7KdmJ.s:213    .text.u8g_DisableCursor:00000000 u8g_DisableCursor
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:22     .text.u8g_DrawCursor:00000000 $t
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:27     .text.u8g_DrawCursor:00000000 u8g_DrawCursor
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:99     .text.u8g_SetCursorFont:00000000 $t
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:104    .text.u8g_SetCursorFont:00000000 u8g_SetCursorFont
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:119    .text.u8g_SetCursorStyle:00000000 $t
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:124    .text.u8g_SetCursorStyle:00000000 u8g_SetCursorStyle
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:139    .text.u8g_SetCursorColor:00000000 $t
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:144    .text.u8g_SetCursorColor:00000000 u8g_SetCursorColor
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:161    .text.u8g_SetCursorPos:00000000 $t
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:166    .text.u8g_SetCursorPos:00000000 u8g_SetCursorPos
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:183    .text.u8g_EnableCursor:00000000 $t
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:188    .text.u8g_EnableCursor:00000000 u8g_EnableCursor
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:203    .text.u8g_EnableCursor:00000008 $d
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:208    .text.u8g_DisableCursor:00000000 $t
+C:\Users\master\AppData\Local\Temp\cci9CIFF.s:213    .text.u8g_DisableCursor:00000000 u8g_DisableCursor
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

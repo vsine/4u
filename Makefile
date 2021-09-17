@@ -89,7 +89,8 @@ u8glib/u8g_com_api_16gr.c \
 u8glib/u8g_clip.c \
 u8glib/u8g_circle.c \
 u8glib/u8g_bitmap.c \
-u8glib/chessengine.c
+u8glib/chessengine.c \
+u8glib/u8g_com_stm32_hw_i2c_hal.c
 
 # ASM sources
 # ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources# ASM sources

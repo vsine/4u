@@ -1,0 +1,166 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccjtVgk2.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g_com_stm32_hw_i2c_hal.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8g_Delay,"ax",%progbits
+  22              		.align	2
+  23              		.global	u8g_Delay
+  24              		.thumb
+  25              		.thumb_func
+  27              	u8g_Delay:
+  28              	.LFB0:
+  29              		.file 1 "u8glib/u8g_com_stm32_hw_i2c_hal.c"
+   1:u8glib/u8g_com_stm32_hw_i2c_hal.c **** #include "u8g.h"
+   2:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+   3:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+   4:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+   5:u8glib/u8g_com_stm32_hw_i2c_hal.c **** void u8g_Delay(uint16_t val)
+   6:u8glib/u8g_com_stm32_hw_i2c_hal.c ****  {
+  30              		.loc 1 6 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              	.LVL0:
+  35 0000 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+   7:u8glib/u8g_com_stm32_hw_i2c_hal.c ****    HAL_Delay(val);
+  40              		.loc 1 7 0
+  41 0002 FFF7FEFF 		bl	HAL_Delay
+  42              	.LVL1:
+  43 0006 08BD     		pop	{r3, pc}
+  44              		.cfi_endproc
+  45              	.LFE0:
+  47              		.section	.text.u8g_MicroDelay,"ax",%progbits
+  48              		.align	2
+  49              		.global	u8g_MicroDelay
+  50              		.thumb
+  51              		.thumb_func
+  53              	u8g_MicroDelay:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccjtVgk2.s 			page 2
+
+
+  54              	.LFB1:
+   8:u8glib/u8g_com_stm32_hw_i2c_hal.c ****  }
+   9:u8glib/u8g_com_stm32_hw_i2c_hal.c ****  
+  10:u8glib/u8g_com_stm32_hw_i2c_hal.c ****  void u8g_MicroDelay()
+  11:u8glib/u8g_com_stm32_hw_i2c_hal.c **** {
+  55              		.loc 1 11 0
+  56              		.cfi_startproc
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59              		@ link register save eliminated.
+  60 0000 7047     		bx	lr
+  61              		.cfi_endproc
+  62              	.LFE1:
+  64 0002 00BF     		.section	.text.u8g_10MicroDelay,"ax",%progbits
+  65              		.align	2
+  66              		.global	u8g_10MicroDelay
+  67              		.thumb
+  68              		.thumb_func
+  70              	u8g_10MicroDelay:
+  71              	.LFB2:
+  12:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+  13:u8glib/u8g_com_stm32_hw_i2c_hal.c ****  }
+  14:u8glib/u8g_com_stm32_hw_i2c_hal.c **** void u8g_10MicroDelay()
+  15:u8glib/u8g_com_stm32_hw_i2c_hal.c **** {
+  72              		.loc 1 15 0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              		@ link register save eliminated.
+  77 0000 7047     		bx	lr
+  78              		.cfi_endproc
+  79              	.LFE2:
+  81 0002 00BF     		.section	.text.u8g_com_hw_i2c_fn,"ax",%progbits
+  82              		.align	2
+  83              		.global	u8g_com_hw_i2c_fn
+  84              		.thumb
+  85              		.thumb_func
+  87              	u8g_com_hw_i2c_fn:
+  88              	.LFB3:
+  16:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+  17:u8glib/u8g_com_stm32_hw_i2c_hal.c **** }
+  18:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+  19:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+  20:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+  21:u8glib/u8g_com_stm32_hw_i2c_hal.c **** uint8_t u8g_com_hw_i2c_fn(u8g_t *u8g, uint8_t msg, uint8_t arg_val, void *arg_ptr)
+  22:u8glib/u8g_com_stm32_hw_i2c_hal.c **** {
+  89              		.loc 1 22 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93              		@ link register save eliminated.
+  94              	.LVL2:
+  23:u8glib/u8g_com_stm32_hw_i2c_hal.c ****   switch(msg)
+  24:u8glib/u8g_com_stm32_hw_i2c_hal.c ****   {
+  25:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_INIT:
+  26:u8glib/u8g_com_stm32_hw_i2c_hal.c ****       break;
+  27:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_STOP:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccjtVgk2.s 			page 3
+
+
+  28:u8glib/u8g_com_stm32_hw_i2c_hal.c ****       break;
+  29:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+  30:u8glib/u8g_com_stm32_hw_i2c_hal.c ****    
+  31:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_CHIP_SELECT:
+  32:u8glib/u8g_com_stm32_hw_i2c_hal.c ****       /* arg_val contains the chip number, which should be enabled */
+  33:u8glib/u8g_com_stm32_hw_i2c_hal.c ****       break;
+  34:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+  35:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+  36:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_WRITE_BYTE:
+  37:u8glib/u8g_com_stm32_hw_i2c_hal.c ****       break;
+  38:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_WRITE_SEQ:
+  39:u8glib/u8g_com_stm32_hw_i2c_hal.c ****       break;
+  40:u8glib/u8g_com_stm32_hw_i2c_hal.c ****   }
+  41:u8glib/u8g_com_stm32_hw_i2c_hal.c ****   return 1;
+  42:u8glib/u8g_com_stm32_hw_i2c_hal.c **** }...
+  95              		.loc 1 42 0
+  96 0000 0120     		movs	r0, #1
+  97              	.LVL3:
+  98 0002 7047     		bx	lr
+  99              		.cfi_endproc
+ 100              	.LFE3:
+ 102              		.text
+ 103              	.Letext0:
+ 104              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 105              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 106              		.file 4 "u8glib/u8g.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccjtVgk2.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g_com_stm32_hw_i2c_hal.c
+C:\Users\master\AppData\Local\Temp\ccjtVgk2.s:22     .text.u8g_Delay:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccjtVgk2.s:27     .text.u8g_Delay:00000000 u8g_Delay
+C:\Users\master\AppData\Local\Temp\ccjtVgk2.s:48     .text.u8g_MicroDelay:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccjtVgk2.s:53     .text.u8g_MicroDelay:00000000 u8g_MicroDelay
+C:\Users\master\AppData\Local\Temp\ccjtVgk2.s:65     .text.u8g_10MicroDelay:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccjtVgk2.s:70     .text.u8g_10MicroDelay:00000000 u8g_10MicroDelay
+C:\Users\master\AppData\Local\Temp\ccjtVgk2.s:82     .text.u8g_com_hw_i2c_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccjtVgk2.s:87     .text.u8g_com_hw_i2c_fn:00000000 u8g_com_hw_i2c_fn
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+HAL_Delay
