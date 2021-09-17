@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccwT3dHo.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaGPW6s.s 			page 1
 
 
    1              		.syntax unified
@@ -35,51 +35,102 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccwT3dHo.s 			page 1
    4:Core/Src/mysetp.c **** void setp(){
   30              		.loc 1 4 0
   31              		.cfi_startproc
-  32              		@ args = 0, pretend = 0, frame = 0
-  33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34 0000 08B5     		push	{r3, lr}
-  35              	.LCFI0:
-  36              		.cfi_def_cfa_offset 8
-  37              		.cfi_offset 3, -8
+  32              		@ Volatile: function does not return.
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 0, uses_anonymous_args = 0
+  35 0000 00B5     		push	{lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 4
   38              		.cfi_offset 14, -4
-   5:Core/Src/mysetp.c ****     u8g_InitComFn(&u8g,&u8g_dev_ssd1306_128x64_2x_i2c,u8g_com_hw_i2c_fn);
-  39              		.loc 1 5 0
-  40 0002 034A     		ldr	r2, .L3
-  41 0004 0349     		ldr	r1, .L3+4
-  42 0006 0448     		ldr	r0, .L3+8
-  43 0008 FFF7FEFF 		bl	u8g_InitComFn
-  44              	.LVL0:
-  45 000c 08BD     		pop	{r3, pc}
-  46              	.L4:
-  47 000e 00BF     		.align	2
-  48              	.L3:
-  49 0010 00000000 		.word	u8g_com_hw_i2c_fn
-  50 0014 00000000 		.word	u8g_dev_ssd1306_128x64_2x_i2c
-  51 0018 00000000 		.word	u8g
-  52              		.cfi_endproc
-  53              	.LFE130:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccwT3dHo.s 			page 2
+  39 0002 83B0     		sub	sp, sp, #12
+  40              	.LCFI1:
+  41              		.cfi_def_cfa_offset 16
+   5:Core/Src/mysetp.c ****     u8g_InitComFn(&u8g,&u8g_dev_ssd1306_128x64_i2c,u8g_com_hw_i2c_fn);
+  42              		.loc 1 5 0
+  43 0004 104C     		ldr	r4, .L5
+  44 0006 114A     		ldr	r2, .L5+4
+  45 0008 1149     		ldr	r1, .L5+8
+  46 000a 2046     		mov	r0, r4
+  47 000c FFF7FEFF 		bl	u8g_InitComFn
+  48              	.LVL0:
+   6:Core/Src/mysetp.c ****     HAL_Delay(11);
+  49              		.loc 1 6 0
+  50 0010 0B20     		movs	r0, #11
+  51 0012 FFF7FEFF 		bl	HAL_Delay
+  52              	.LVL1:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaGPW6s.s 			page 2
 
 
-  55              		.comm	u8g,60,4
-  56              		.text
-  57              	.Letext0:
-  58              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
-  59              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
-  60              		.file 4 "u8glib/u8g.h"
-  61              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccwT3dHo.s 			page 3
+   7:Core/Src/mysetp.c ****     u8g_DrawLine(&u8g,10,10,40,40);
+  53              		.loc 1 7 0
+  54 0016 2823     		movs	r3, #40
+  55 0018 0093     		str	r3, [sp]
+  56 001a 0A22     		movs	r2, #10
+  57 001c 1146     		mov	r1, r2
+  58 001e 2046     		mov	r0, r4
+  59 0020 FFF7FEFF 		bl	u8g_DrawLine
+  60              	.LVL2:
+  61              	.L3:
+   8:Core/Src/mysetp.c ****     while (1)
+   9:Core/Src/mysetp.c ****     {
+  10:Core/Src/mysetp.c ****        u8g_FirstPage(&u8g);
+  62              		.loc 1 10 0
+  63 0024 0848     		ldr	r0, .L5
+  64 0026 FFF7FEFF 		bl	u8g_FirstPage
+  65              	.LVL3:
+  66              	.L2:
+  11:Core/Src/mysetp.c ****        do
+  12:Core/Src/mysetp.c ****        {
+  13:Core/Src/mysetp.c ****           u8g_DrawLine(&u8g,10,10,40,40);
+  67              		.loc 1 13 0 discriminator 1
+  68 002a 074C     		ldr	r4, .L5
+  69 002c 2823     		movs	r3, #40
+  70 002e 0093     		str	r3, [sp]
+  71 0030 0A22     		movs	r2, #10
+  72 0032 1146     		mov	r1, r2
+  73 0034 2046     		mov	r0, r4
+  74 0036 FFF7FEFF 		bl	u8g_DrawLine
+  75              	.LVL4:
+  14:Core/Src/mysetp.c ****        } while (u8g_NextPage(&u8g));
+  76              		.loc 1 14 0 discriminator 1
+  77 003a 2046     		mov	r0, r4
+  78 003c FFF7FEFF 		bl	u8g_NextPage
+  79              	.LVL5:
+  80 0040 0028     		cmp	r0, #0
+  81 0042 F2D1     		bne	.L2
+  82 0044 EEE7     		b	.L3
+  83              	.L6:
+  84 0046 00BF     		.align	2
+  85              	.L5:
+  86 0048 00000000 		.word	u8g
+  87 004c 00000000 		.word	u8g_com_hw_i2c_fn
+  88 0050 00000000 		.word	u8g_dev_ssd1306_128x64_i2c
+  89              		.cfi_endproc
+  90              	.LFE130:
+  92              		.comm	u8g,60,4
+  93              		.text
+  94              	.Letext0:
+  95              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+  96              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+  97              		.file 4 "u8glib/u8g.h"
+  98              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
+  99              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccaGPW6s.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 mysetp.c
-C:\Users\master\AppData\Local\Temp\ccwT3dHo.s:22     .text.setp:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccwT3dHo.s:27     .text.setp:00000000 setp
-C:\Users\master\AppData\Local\Temp\ccwT3dHo.s:49     .text.setp:00000010 $d
+C:\Users\master\AppData\Local\Temp\ccaGPW6s.s:22     .text.setp:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccaGPW6s.s:27     .text.setp:00000000 setp
+C:\Users\master\AppData\Local\Temp\ccaGPW6s.s:86     .text.setp:00000048 $d
                             *COM*:0000003c u8g
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
 u8g_InitComFn
+HAL_Delay
+u8g_DrawLine
+u8g_FirstPage
+u8g_NextPage
 u8g_com_hw_i2c_fn
-u8g_dev_ssd1306_128x64_2x_i2c
+u8g_dev_ssd1306_128x64_i2c

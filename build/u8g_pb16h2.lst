@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
   28:u8glib/u8g_pb16h2.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
   29:u8glib/u8g_pb16h2.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
   30:u8glib/u8g_pb16h2.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 2
 
 
   31:u8glib/u8g_pb16h2.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
   42              		.loc 1 71 0
   43 0006 8568     		ldr	r5, [r0, #8]
   44              	.LVL1:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 3
 
 
   72:u8glib/u8g_pb16h2.c ****   
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
   78 0026 AC5C     		ldrb	r4, [r5, r2]	@ zero_extendqisi2
   79              	.LVL12:
   80 0028 24EA0000 		bic	r0, r4, r0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 4
 
 
   81              	.LVL13:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  129 0002 4079     		ldrb	r0, [r0, #5]	@ zero_extendqisi2
  130              	.LVL23:
   50:u8glib/u8g_pb16h2.c ****   
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 5
 
 
  131              		.loc 1 50 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  181              		.thumb
  182              		.thumb_func
  184              	u8g_pb16h2_SetPixel:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 6
 
 
  185              	.LFB3:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  227              		.cfi_def_cfa_offset 12
  228              		@ sp needed
  229 0028 30BD     		pop	{r4, r5, pc}
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 7
 
 
  230              		.cfi_endproc
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  274              	.L15:
  275 0022 02       		.byte	(.L14-.L15)/2
  276 0023 06       		.byte	(.L16-.L15)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 8
 
 
  277 0024 0A       		.byte	(.L17-.L15)/2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  131:u8glib/u8g_pb16h2.c **** 
  132:u8glib/u8g_pb16h2.c **** void u8g_pb16h2_Or4PixelStd(u8g_pb_t *b, u8g_dev_arg_pixel_t *arg_pixel)
  133:u8glib/u8g_pb16h2.c **** {
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 9
 
 
  324              		.loc 1 133 0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  143:u8glib/u8g_pb16h2.c ****       case 1: arg_pixel->y++; break;
  369              		.loc 1 143 0
  370 002c 6B78     		ldrb	r3, [r5, #1]	@ zero_extendqisi2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 10
 
 
  371 002e 0133     		adds	r3, r3, #1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  417              		.cfi_offset 14, -4
  418 0002 1D46     		mov	r5, r3
  154:u8glib/u8g_pb16h2.c ****   u8g_pb_t *pb = (u8g_pb_t *)(dev->dev_mem);
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 11
 
 
  419              		.loc 1 154 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  472 003a 5C       		.byte	(.L43-.L33)/2
  473 003b 5C       		.byte	(.L43-.L33)/2
  474 003c 5C       		.byte	(.L43-.L33)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 12
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 12
 
 
  475 003d 5C       		.byte	(.L43-.L33)/2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  200:u8glib/u8g_pb16h2.c ****     case U8G_DEV_MSG_SET_XY_CB:
  201:u8glib/u8g_pb16h2.c ****       break;
  202:u8glib/u8g_pb16h2.c ****     case U8G_DEV_MSG_GET_MODE:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 13
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 13
 
 
  203:u8glib/u8g_pb16h2.c ****       return U8G_MODE_GRAY2BIT;
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  530              		.loc 1 168 0
  531 0078 29E0     		b	.L31
  532              	.LVL58:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 14
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 14
 
 
  533              	.L36:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  579              	.L35:
  190:u8glib/u8g_pb16h2.c ****       break;
  580              		.loc 1 190 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 15
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 15
 
 
  581 00ac 2946     		mov	r1, r5
@@ -892,33 +892,33 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 1
  624              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  625              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  626              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWLaInY.s 			page 16
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccw0S5SO.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_pb16h2.c
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:22     .text.u8g_pb16h2_set_pixel:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:26     .text.u8g_pb16h2_set_pixel:00000000 u8g_pb16h2_set_pixel
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:112    .text.u8g_pb16h2_Clear:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:117    .text.u8g_pb16h2_Clear:00000000 u8g_pb16h2_Clear
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:150    .text.u8g_pb16h2_Init:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:155    .text.u8g_pb16h2_Init:00000000 u8g_pb16h2_Init
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:179    .text.u8g_pb16h2_SetPixel:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:184    .text.u8g_pb16h2_SetPixel:00000000 u8g_pb16h2_SetPixel
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:234    .text.u8g_pb16h2_Set8PixelStd:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:239    .text.u8g_pb16h2_Set8PixelStd:00000000 u8g_pb16h2_Set8PixelStd
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:275    .text.u8g_pb16h2_Set8PixelStd:00000022 $d
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:279    .text.u8g_pb16h2_Set8PixelStd:00000026 $t
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:317    .text.u8g_pb16h2_Or4PixelStd:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:322    .text.u8g_pb16h2_Or4PixelStd:00000000 u8g_pb16h2_Or4PixelStd
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:357    .text.u8g_pb16h2_Or4PixelStd:00000020 $d
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:361    .text.u8g_pb16h2_Or4PixelStd:00000024 $t
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:399    .text.u8g_dev_pb16h2_base_fn:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:404    .text.u8g_dev_pb16h2_base_fn:00000000 u8g_dev_pb16h2_base_fn
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:430    .text.u8g_dev_pb16h2_base_fn:00000010 $d
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:22     .text.u8g_pb16h2_set_pixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:26     .text.u8g_pb16h2_set_pixel:00000000 u8g_pb16h2_set_pixel
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:112    .text.u8g_pb16h2_Clear:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:117    .text.u8g_pb16h2_Clear:00000000 u8g_pb16h2_Clear
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:150    .text.u8g_pb16h2_Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:155    .text.u8g_pb16h2_Init:00000000 u8g_pb16h2_Init
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:179    .text.u8g_pb16h2_SetPixel:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:184    .text.u8g_pb16h2_SetPixel:00000000 u8g_pb16h2_SetPixel
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:234    .text.u8g_pb16h2_Set8PixelStd:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:239    .text.u8g_pb16h2_Set8PixelStd:00000000 u8g_pb16h2_Set8PixelStd
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:275    .text.u8g_pb16h2_Set8PixelStd:00000022 $d
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:279    .text.u8g_pb16h2_Set8PixelStd:00000026 $t
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:317    .text.u8g_pb16h2_Or4PixelStd:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:322    .text.u8g_pb16h2_Or4PixelStd:00000000 u8g_pb16h2_Or4PixelStd
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:357    .text.u8g_pb16h2_Or4PixelStd:00000020 $d
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:361    .text.u8g_pb16h2_Or4PixelStd:00000024 $t
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:399    .text.u8g_dev_pb16h2_base_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:404    .text.u8g_dev_pb16h2_base_fn:00000000 u8g_dev_pb16h2_base_fn
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:430    .text.u8g_dev_pb16h2_base_fn:00000010 $d
                      .debug_frame:00000010 $d
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:483    .text.u8g_dev_pb16h2_base_fn:00000045 $d
-C:\Users\master\AppData\Local\Temp\ccWLaInY.s:483    .text.u8g_dev_pb16h2_base_fn:00000046 $t
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:483    .text.u8g_dev_pb16h2_base_fn:00000045 $d
+C:\Users\master\AppData\Local\Temp\ccw0S5SO.s:483    .text.u8g_dev_pb16h2_base_fn:00000046 $t
 
 UNDEFINED SYMBOLS
 u8g_pb_Is8PixelVisible
