@@ -37,6 +37,7 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Core/Src/main.c \
+Core/Src/mysetp.c \
 Core/Src/stm32f4xx_it.c \
 Core/Src/stm32f4xx_hal_msp.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c \
@@ -91,6 +92,7 @@ u8glib/u8g_circle.c \
 u8glib/u8g_bitmap.c \
 u8glib/chessengine.c \
 u8glib/u8g_com_stm32_hw_i2c_hal.c \
+u8glib/u8g_dev_ssd1306_128x64.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
 

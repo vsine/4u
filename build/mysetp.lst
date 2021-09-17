@@ -1,0 +1,85 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccwT3dHo.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"mysetp.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.setp,"ax",%progbits
+  22              		.align	2
+  23              		.global	setp
+  24              		.thumb
+  25              		.thumb_func
+  27              	setp:
+  28              	.LFB130:
+  29              		.file 1 "Core/Src/mysetp.c"
+   1:Core/Src/mysetp.c **** #include "mysetp.h"
+   2:Core/Src/mysetp.c **** 
+   3:Core/Src/mysetp.c **** u8g_t u8g;
+   4:Core/Src/mysetp.c **** void setp(){
+  30              		.loc 1 4 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34 0000 08B5     		push	{r3, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 3, -8
+  38              		.cfi_offset 14, -4
+   5:Core/Src/mysetp.c ****     u8g_InitComFn(&u8g,&u8g_dev_ssd1306_128x64_2x_i2c,u8g_com_hw_i2c_fn);
+  39              		.loc 1 5 0
+  40 0002 034A     		ldr	r2, .L3
+  41 0004 0349     		ldr	r1, .L3+4
+  42 0006 0448     		ldr	r0, .L3+8
+  43 0008 FFF7FEFF 		bl	u8g_InitComFn
+  44              	.LVL0:
+  45 000c 08BD     		pop	{r3, pc}
+  46              	.L4:
+  47 000e 00BF     		.align	2
+  48              	.L3:
+  49 0010 00000000 		.word	u8g_com_hw_i2c_fn
+  50 0014 00000000 		.word	u8g_dev_ssd1306_128x64_2x_i2c
+  51 0018 00000000 		.word	u8g
+  52              		.cfi_endproc
+  53              	.LFE130:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccwT3dHo.s 			page 2
+
+
+  55              		.comm	u8g,60,4
+  56              		.text
+  57              	.Letext0:
+  58              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+  59              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+  60              		.file 4 "u8glib/u8g.h"
+  61              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccwT3dHo.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 mysetp.c
+C:\Users\master\AppData\Local\Temp\ccwT3dHo.s:22     .text.setp:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccwT3dHo.s:27     .text.setp:00000000 setp
+C:\Users\master\AppData\Local\Temp\ccwT3dHo.s:49     .text.setp:00000010 $d
+                            *COM*:0000003c u8g
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+u8g_InitComFn
+u8g_com_hw_i2c_fn
+u8g_dev_ssd1306_128x64_2x_i2c

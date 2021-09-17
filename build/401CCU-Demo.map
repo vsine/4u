@@ -22,6 +22,7 @@ Common symbol       size              file
 
 lrc_u8g             0x4               build/chessengine.o
 chess_low_edge      0x1               build/chessengine.o
+u8g                 0x3c              build/mysetp.o
 hi2c1               0x54              build/main.o
 u8g_vs_width        0x1               build/u8g_virtual_screen.o
 uwTick              0x4               build/stm32f4xx_hal.o
@@ -48,6 +49,9 @@ Discarded input sections
  .text          0x00000000        0x0 build/main.o
  .data          0x00000000        0x0 build/main.o
  .bss           0x00000000        0x0 build/main.o
+ .text          0x00000000        0x0 build/mysetp.o
+ .data          0x00000000        0x0 build/mysetp.o
+ .bss           0x00000000        0x0 build/mysetp.o
  .text          0x00000000        0x0 build/stm32f4xx_it.o
  .data          0x00000000        0x0 build/stm32f4xx_it.o
  .bss           0x00000000        0x0 build/stm32f4xx_it.o
@@ -588,8 +592,6 @@ Discarded input sections
                 0x00000000       0x50 build/u8g_font.o
  .text.u8g_FillEmptyGlyphCache
                 0x00000000       0x10 build/u8g_font.o
- .text.u8g_font_calc_vref_font
-                0x00000000        0x4 build/u8g_font.o
  .text.u8g_font_calc_vref_bottom
                 0x00000000        0x8 build/u8g_font.o
  .text.u8g_font_calc_vref_top
@@ -690,8 +692,6 @@ Discarded input sections
                 0x00000000       0x10 build/u8g_font.o
  .text.u8g_SetFontLineSpacingFactor
                 0x00000000        0xc build/u8g_font.o
- .text.u8g_SetFontPosBaseline
-                0x00000000        0xc build/u8g_font.o
  .text.u8g_SetFontPosBottom
                 0x00000000        0xc build/u8g_font.o
  .text.u8g_SetFontPosTop
@@ -730,18 +730,6 @@ Discarded input sections
                 0x00000000       0x20 build/u8g_font.o
  .text.u8g_DrawAAStr
                 0x00000000       0x50 build/u8g_font.o
- .debug_info    0x00000000     0x2ac7 build/u8g_font.o
- .debug_abbrev  0x00000000      0x2e9 build/u8g_font.o
- .debug_loc     0x00000000     0x3118 build/u8g_font.o
- .debug_aranges
-                0x00000000      0x2a8 build/u8g_font.o
- .debug_ranges  0x00000000      0x310 build/u8g_font.o
- .debug_line    0x00000000      0x96f build/u8g_font.o
- .debug_str     0x00000000      0xb94 build/u8g_font.o
- .comment       0x00000000       0x6f build/u8g_font.o
- .debug_frame   0x00000000      0xa00 build/u8g_font.o
- .ARM.attributes
-                0x00000000       0x39 build/u8g_font.o
  .text          0x00000000        0x0 build/u8g_line.o
  .data          0x00000000        0x0 build/u8g_line.o
  .bss           0x00000000        0x0 build/u8g_line.o
@@ -762,10 +750,6 @@ Discarded input sections
  .text          0x00000000        0x0 build/u8g_ll_api.o
  .data          0x00000000        0x0 build/u8g_ll_api.o
  .bss           0x00000000        0x0 build/u8g_ll_api.o
- .text.u8g_call_dev_fn
-                0x00000000        0x8 build/u8g_ll_api.o
- .text.u8g_InitLL
-                0x00000000       0x2c build/u8g_ll_api.o
  .text.u8g_FirstPageLL
                 0x00000000       0x34 build/u8g_ll_api.o
  .text.u8g_NextPageLL
@@ -778,16 +762,6 @@ Discarded input sections
                 0x00000000       0x28 build/u8g_ll_api.o
  .text.u8g_Draw4TPixelLL
                 0x00000000       0x28 build/u8g_ll_api.o
- .text.u8g_GetWidthLL
-                0x00000000       0x18 build/u8g_ll_api.o
- .text.u8g_GetHeightLL
-                0x00000000       0x18 build/u8g_ll_api.o
- .text.u8g_GetModeLL
-                0x00000000        0xc build/u8g_ll_api.o
- .text.u8g_UpdateDimension
-                0x00000000       0x30 build/u8g_ll_api.o
- .text.u8g_Begin
-                0x00000000       0x1c build/u8g_ll_api.o
  .text.u8g_FirstPage
                 0x00000000        0xc build/u8g_ll_api.o
  .text.u8g_NextPage
@@ -808,14 +782,8 @@ Discarded input sections
                 0x00000000       0x28 build/u8g_ll_api.o
  .text.u8g_SetColorEntry
                 0x00000000       0x28 build/u8g_ll_api.o
- .text.u8g_SetColorIndex
-                0x00000000        0x8 build/u8g_ll_api.o
- .text.u8g_init_data
-                0x00000000       0x44 build/u8g_ll_api.o
  .text.u8g_Init
                 0x00000000       0x14 build/u8g_ll_api.o
- .text.u8g_InitComFn
-                0x00000000       0x18 build/u8g_ll_api.o
  .text.u8g_SetHiColor
                 0x00000000        0xc build/u8g_ll_api.o
  .text.u8g_SetHiColorByRGB
@@ -836,68 +804,22 @@ Discarded input sections
                 0x00000000       0x10 build/u8g_ll_api.o
  .text.u8g_SetDefaultMidColor
                 0x00000000       0x14 build/u8g_ll_api.o
- .debug_info    0x00000000     0x137b build/u8g_ll_api.o
- .debug_abbrev  0x00000000      0x292 build/u8g_ll_api.o
- .debug_loc     0x00000000     0x10cc build/u8g_ll_api.o
- .debug_aranges
-                0x00000000      0x140 build/u8g_ll_api.o
- .debug_ranges  0x00000000      0x130 build/u8g_ll_api.o
- .debug_line    0x00000000      0x3e0 build/u8g_ll_api.o
- .debug_str     0x00000000      0x6ce build/u8g_ll_api.o
- .comment       0x00000000       0x6f build/u8g_ll_api.o
- .debug_frame   0x00000000      0x3fc build/u8g_ll_api.o
- .ARM.attributes
-                0x00000000       0x39 build/u8g_ll_api.o
  .text          0x00000000        0x0 build/u8g_page.o
  .data          0x00000000        0x0 build/u8g_page.o
  .bss           0x00000000        0x0 build/u8g_page.o
- .text.u8g_page_First
-                0x00000000       0x10 build/u8g_page.o
  .text.u8g_page_Init
                 0x00000000       0x10 build/u8g_page.o
- .text.u8g_page_Next
-                0x00000000       0x34 build/u8g_page.o
- .debug_info    0x00000000      0x1bc build/u8g_page.o
- .debug_abbrev  0x00000000      0x10e build/u8g_page.o
- .debug_loc     0x00000000      0x129 build/u8g_page.o
- .debug_aranges
-                0x00000000       0x30 build/u8g_page.o
- .debug_ranges  0x00000000       0x20 build/u8g_page.o
- .debug_line    0x00000000      0x14a build/u8g_page.o
- .debug_str     0x00000000      0x228 build/u8g_page.o
- .comment       0x00000000       0x6f build/u8g_page.o
- .debug_frame   0x00000000       0x58 build/u8g_page.o
- .ARM.attributes
-                0x00000000       0x39 build/u8g_page.o
  .text          0x00000000        0x0 build/u8g_pb.o
  .data          0x00000000        0x0 build/u8g_pb.o
  .bss           0x00000000        0x0 build/u8g_pb.o
  .text.u8g_pb_Clear
                 0x00000000       0x14 build/u8g_pb.o
- .text.u8g_pb_IsYIntersection
-                0x00000000       0x34 build/u8g_pb.o
  .text.u8g_pb_IsXIntersection
                 0x00000000       0x18 build/u8g_pb.o
  .text.u8g_pb_IsIntersection
                 0x00000000       0x34 build/u8g_pb.o
- .text.u8g_pb_GetPageBox
-                0x00000000       0x14 build/u8g_pb.o
- .text.u8g_pb_Is8PixelVisible
-                0x00000000       0x2c build/u8g_pb.o
  .text.u8g_pb_WriteBuffer
                 0x00000000       0x14 build/u8g_pb.o
- .debug_info    0x00000000      0x803 build/u8g_pb.o
- .debug_abbrev  0x00000000      0x1b0 build/u8g_pb.o
- .debug_loc     0x00000000      0x48a build/u8g_pb.o
- .debug_aranges
-                0x00000000       0x50 build/u8g_pb.o
- .debug_ranges  0x00000000       0x40 build/u8g_pb.o
- .debug_line    0x00000000      0x1b8 build/u8g_pb.o
- .debug_str     0x00000000      0x507 build/u8g_pb.o
- .comment       0x00000000       0x6f build/u8g_pb.o
- .debug_frame   0x00000000       0xb4 build/u8g_pb.o
- .ARM.attributes
-                0x00000000       0x39 build/u8g_pb.o
  .text          0x00000000        0x0 build/u8g_pb8h1.o
  .data          0x00000000        0x0 build/u8g_pb8h1.o
  .bss           0x00000000        0x0 build/u8g_pb8h1.o
@@ -1146,32 +1068,10 @@ Discarded input sections
  .text          0x00000000        0x0 build/u8g_pb16v1.o
  .data          0x00000000        0x0 build/u8g_pb16v1.o
  .bss           0x00000000        0x0 build/u8g_pb16v1.o
- .text.u8g_pb16v1_Clear
-                0x00000000       0x18 build/u8g_pb16v1.o
  .text.u8g_pb16v1_Init
                 0x00000000        0xc build/u8g_pb16v1.o
- .text.u8g_pb16v1_set_pixel
-                0x00000000       0x34 build/u8g_pb16v1.o
- .text.u8g_pb16v1_SetPixel
-                0x00000000       0x24 build/u8g_pb16v1.o
  .text.u8g_pb16v1_Set8PixelStd
                 0x00000000       0x4c build/u8g_pb16v1.o
- .text.u8g_pb16v1_Set8PixelOpt2
-                0x00000000       0x5c build/u8g_pb16v1.o
- .text.u8g_dev_pb16v1_base_fn
-                0x00000000       0xb0 build/u8g_pb16v1.o
- .debug_info    0x00000000      0x898 build/u8g_pb16v1.o
- .debug_abbrev  0x00000000      0x1a3 build/u8g_pb16v1.o
- .debug_loc     0x00000000      0x568 build/u8g_pb16v1.o
- .debug_aranges
-                0x00000000       0x50 build/u8g_pb16v1.o
- .debug_ranges  0x00000000       0x40 build/u8g_pb16v1.o
- .debug_line    0x00000000      0x1f4 build/u8g_pb16v1.o
- .debug_str     0x00000000      0x535 build/u8g_pb16v1.o
- .comment       0x00000000       0x6f build/u8g_pb16v1.o
- .debug_frame   0x00000000       0xe4 build/u8g_pb16v1.o
- .ARM.attributes
-                0x00000000       0x39 build/u8g_pb16v1.o
  .text          0x00000000        0x0 build/u8g_pb16v2.o
  .data          0x00000000        0x0 build/u8g_pb16v2.o
  .bss           0x00000000        0x0 build/u8g_pb16v2.o
@@ -1421,24 +1321,10 @@ Discarded input sections
  .text          0x00000000        0x0 build/u8g_state.o
  .data          0x00000000        0x0 build/u8g_state.o
  .bss           0x00000000        0x0 build/u8g_state.o
- .text.u8g_state_dummy_cb
-                0x00000000        0x4 build/u8g_state.o
  .text.u8g_SetHardwareBackup
                 0x00000000        0xc build/u8g_state.o
  .text.u8g_backup_spi
                 0x00000000        0x4 build/u8g_state.o
- .debug_info    0x00000000      0x4d9 build/u8g_state.o
- .debug_abbrev  0x00000000      0x154 build/u8g_state.o
- .debug_loc     0x00000000       0x62 build/u8g_state.o
- .debug_aranges
-                0x00000000       0x30 build/u8g_state.o
- .debug_ranges  0x00000000       0x20 build/u8g_state.o
- .debug_line    0x00000000      0x138 build/u8g_state.o
- .debug_str     0x00000000      0x428 build/u8g_state.o
- .comment       0x00000000       0x6f build/u8g_state.o
- .debug_frame   0x00000000       0x4c build/u8g_state.o
- .ARM.attributes
-                0x00000000       0x39 build/u8g_state.o
  .text          0x00000000        0x0 build/u8g_u8toa.o
  .data          0x00000000        0x0 build/u8g_u8toa.o
  .bss           0x00000000        0x0 build/u8g_u8toa.o
@@ -1539,38 +1425,10 @@ Discarded input sections
  .text          0x00000000        0x0 build/u8g_com_api.o
  .data          0x00000000        0x0 build/u8g_com_api.o
  .bss           0x00000000        0x0 build/u8g_com_api.o
- .text.u8g_InitCom
-                0x00000000        0xc build/u8g_com_api.o
  .text.u8g_StopCom
                 0x00000000       0x10 build/u8g_com_api.o
- .text.u8g_SetChipSelect
-                0x00000000        0xc build/u8g_com_api.o
- .text.u8g_SetResetLow
-                0x00000000       0x10 build/u8g_com_api.o
- .text.u8g_SetResetHigh
-                0x00000000       0x10 build/u8g_com_api.o
- .text.u8g_SetAddress
-                0x00000000        0xc build/u8g_com_api.o
- .text.u8g_WriteByte
-                0x00000000        0xc build/u8g_com_api.o
- .text.u8g_WriteSequence
-                0x00000000        0xc build/u8g_com_api.o
  .text.u8g_WriteSequenceP
                 0x00000000        0xc build/u8g_com_api.o
- .text.u8g_WriteEscSeqP
-                0x00000000       0xcc build/u8g_com_api.o
- .debug_info    0x00000000      0x945 build/u8g_com_api.o
- .debug_abbrev  0x00000000      0x168 build/u8g_com_api.o
- .debug_loc     0x00000000      0x5ae build/u8g_com_api.o
- .debug_aranges
-                0x00000000       0x68 build/u8g_com_api.o
- .debug_ranges  0x00000000       0x58 build/u8g_com_api.o
- .debug_line    0x00000000      0x1e8 build/u8g_com_api.o
- .debug_str     0x00000000      0x4bf build/u8g_com_api.o
- .comment       0x00000000       0x6f build/u8g_com_api.o
- .debug_frame   0x00000000      0x134 build/u8g_com_api.o
- .ARM.attributes
-                0x00000000       0x39 build/u8g_com_api.o
  .text          0x00000000        0x0 build/u8g_com_api_16gr.o
  .data          0x00000000        0x0 build/u8g_com_api_16gr.o
  .bss           0x00000000        0x0 build/u8g_com_api_16gr.o
@@ -1848,30 +1706,93 @@ Discarded input sections
  .text          0x00000000        0x0 build/u8g_com_stm32_hw_i2c_hal.o
  .data          0x00000000        0x0 build/u8g_com_stm32_hw_i2c_hal.o
  .bss           0x00000000        0x0 build/u8g_com_stm32_hw_i2c_hal.o
- .text.u8g_Delay
-                0x00000000        0x8 build/u8g_com_stm32_hw_i2c_hal.o
  .text.u8g_MicroDelay
                 0x00000000        0x4 build/u8g_com_stm32_hw_i2c_hal.o
  .text.u8g_10MicroDelay
                 0x00000000        0x4 build/u8g_com_stm32_hw_i2c_hal.o
- .text.u8g_com_hw_i2c_fn
-                0x00000000       0x6c build/u8g_com_stm32_hw_i2c_hal.o
- .bss.buffer.7909
-                0x00000000       0x80 build/u8g_com_stm32_hw_i2c_hal.o
- .bss.buf_idx.7910
-                0x00000000        0x1 build/u8g_com_stm32_hw_i2c_hal.o
- .debug_info    0x00000000      0xb66 build/u8g_com_stm32_hw_i2c_hal.o
- .debug_abbrev  0x00000000      0x20f build/u8g_com_stm32_hw_i2c_hal.o
- .debug_loc     0x00000000      0x1e2 build/u8g_com_stm32_hw_i2c_hal.o
- .debug_aranges
-                0x00000000       0x38 build/u8g_com_stm32_hw_i2c_hal.o
- .debug_ranges  0x00000000       0x28 build/u8g_com_stm32_hw_i2c_hal.o
- .debug_line    0x00000000      0x23b build/u8g_com_stm32_hw_i2c_hal.o
- .debug_str     0x00000000      0x9ba build/u8g_com_stm32_hw_i2c_hal.o
- .comment       0x00000000       0x6f build/u8g_com_stm32_hw_i2c_hal.o
- .debug_frame   0x00000000       0x6c build/u8g_com_stm32_hw_i2c_hal.o
- .ARM.attributes
-                0x00000000       0x39 build/u8g_com_stm32_hw_i2c_hal.o
+ .text          0x00000000        0x0 build/u8g_dev_ssd1306_128x64.o
+ .data          0x00000000        0x0 build/u8g_dev_ssd1306_128x64.o
+ .bss           0x00000000        0x0 build/u8g_dev_ssd1306_128x64.o
+ .text.u8g_dev_ssd1306_128x64_fn
+                0x00000000       0xe0 build/u8g_dev_ssd1306_128x64.o
+ .text.u8g_dev_ssd1306_adafruit_128x64_fn
+                0x00000000       0xe0 build/u8g_dev_ssd1306_128x64.o
+ .text.u8g_dev_sh1106_128x64_fn
+                0x00000000       0xe0 build/u8g_dev_ssd1306_128x64.o
+ .text.u8g_dev_sh1106_128x64_2x_fn
+                0x00000000      0x134 build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_128x64_sw_spi
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_adafruit_128x64_hw_spi_pb
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_adafruit_128x64_sw_spi
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_adafruit_128x64_i2c
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .bss.u8g_dev_sh1106_128x64_hw_spi_buf
+                0x00000000       0x80 build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_128x64_sw_spi_pb
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .bss.u8g_dev_ssd1306_128x64_sw_spi_buf
+                0x00000000       0x80 build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_sh1106_128x64_hw_spi
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_sh1106_128x64_sw_spi_pb
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_sh1106_128x64_hw_spi_pb
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .bss.u8g_dev_ssd1306_128x64_hw_spi_buf
+                0x00000000       0x80 build/u8g_dev_ssd1306_128x64.o
+ .rodata.u8g_dev_ssd1306_128x64_adafruit2_init_seq
+                0x00000000       0x26 build/u8g_dev_ssd1306_128x64.o
+ .bss.u8g_dev_ssd1306_adafruit_128x64_i2c_buf
+                0x00000000       0x80 build/u8g_dev_ssd1306_128x64.o
+ .bss.u8g_dev_ssd1306_128x64_i2c_buf
+                0x00000000       0x80 build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_sh1106_128x64_2x_hw_spi
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_sh1106_128x64_i2c
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_sh1106_128x64_2x_pb
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_adafruit_128x64_i2c_pb
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_128x64_2x_hw_spi
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .rodata.u8g_dev_sh1106_128x64_data_start
+                0x00000000        0x8 build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_sh1106_128x64_2x_i2c
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_128x64_hw_spi
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_128x64_hw_spi_pb
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_sh1106_128x64_sw_spi
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_sh1106_128x64_2x_sw_spi
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .bss.u8g_dev_ssd1306_adafruit_128x64_sw_spi_buf
+                0x00000000       0x80 build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_adafruit_128x64_hw_spi
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .bss.u8g_dev_sh1106_128x64_2x_buf
+                0x00000000      0x100 build/u8g_dev_ssd1306_128x64.o
+ .bss.u8g_dev_sh1106_128x64_i2c_buf
+                0x00000000       0x80 build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_128x64_i2c_pb
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_adafruit_128x64_sw_spi_pb
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .bss.u8g_dev_sh1106_128x64_sw_spi_buf
+                0x00000000       0x80 build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_128x64_i2c
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_ssd1306_128x64_2x_sw_spi
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .data.u8g_dev_sh1106_128x64_i2c_pb
+                0x00000000        0xc build/u8g_dev_ssd1306_128x64.o
+ .bss.u8g_dev_ssd1306_adafruit_128x64_hw_spi_buf
+                0x00000000       0x80 build/u8g_dev_ssd1306_128x64.o
  .text          0x00000000        0x0 build/stm32f4xx_hal_i2c.o
  .data          0x00000000        0x0 build/stm32f4xx_hal_i2c.o
  .bss           0x00000000        0x0 build/stm32f4xx_hal_i2c.o
@@ -1887,26 +1808,14 @@ Discarded input sections
                 0x00000000       0x20 build/stm32f4xx_hal_i2c.o
  .text.I2C_WaitOnSTOPRequestThroughIT
                 0x00000000       0x48 build/stm32f4xx_hal_i2c.o
- .text.I2C_IsAcknowledgeFailed
-                0x00000000       0x34 build/stm32f4xx_hal_i2c.o
  .text.I2C_ConvertOtherXferOptions
                 0x00000000       0x1c build/stm32f4xx_hal_i2c.o
- .text.I2C_WaitOnFlagUntilTimeout
-                0x00000000       0x70 build/stm32f4xx_hal_i2c.o
- .text.I2C_WaitOnMasterAddressFlagUntilTimeout
-                0x00000000       0xa8 build/stm32f4xx_hal_i2c.o
- .text.I2C_MasterRequestWrite
-                0x00000000       0xbc build/stm32f4xx_hal_i2c.o
  .text.I2C_MasterRequestRead
                 0x00000000      0x128 build/stm32f4xx_hal_i2c.o
- .text.I2C_WaitOnTXEFlagUntilTimeout
-                0x00000000       0x54 build/stm32f4xx_hal_i2c.o
  .text.I2C_RequestMemoryWrite
                 0x00000000       0xe0 build/stm32f4xx_hal_i2c.o
  .text.I2C_RequestMemoryRead
                 0x00000000      0x15c build/stm32f4xx_hal_i2c.o
- .text.I2C_WaitOnBTFFlagUntilTimeout
-                0x00000000       0x54 build/stm32f4xx_hal_i2c.o
  .text.I2C_WaitOnRXNEFlagUntilTimeout
                 0x00000000       0x6c build/stm32f4xx_hal_i2c.o
  .text.I2C_WaitOnSTOPFlagUntilTimeout
@@ -1917,8 +1826,6 @@ Discarded input sections
                 0x00000000        0x4 build/stm32f4xx_hal_i2c.o
  .text.HAL_I2C_DeInit
                 0x00000000       0x34 build/stm32f4xx_hal_i2c.o
- .text.HAL_I2C_Master_Transmit
-                0x00000000      0x170 build/stm32f4xx_hal_i2c.o
  .text.HAL_I2C_Master_Receive
                 0x00000000      0x2e8 build/stm32f4xx_hal_i2c.o
  .text.HAL_I2C_Slave_Transmit
@@ -2119,6 +2026,7 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
 LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
 LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
 LOAD build/main.o
+LOAD build/mysetp.o
 LOAD build/stm32f4xx_it.o
 LOAD build/stm32f4xx_hal_msp.o
 LOAD build/stm32f4xx_hal_tim.o
@@ -2173,6 +2081,7 @@ LOAD build/u8g_circle.o
 LOAD build/u8g_bitmap.o
 LOAD build/chessengine.o
 LOAD build/u8g_com_stm32_hw_i2c_hal.o
+LOAD build/u8g_dev_ssd1306_128x64.o
 LOAD build/stm32f4xx_hal_i2c.o
 LOAD build/stm32f4xx_hal_i2c_ex.o
 LOAD build/startup_stm32f401xc.o
@@ -2200,7 +2109,7 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
                 0x08000000                g_pfnVectors
                 0x08000194                . = ALIGN (0x4)
 
-.text           0x08000194     0x1220
+.text           0x08000194     0x1c68
                 0x08000194                . = ALIGN (0x4)
  *(.text)
  .text          0x08000194       0x5c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
@@ -2222,231 +2131,360 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
  .text.SystemClock_Config
                 0x080005d8       0xa8 build/main.o
                 0x080005d8                SystemClock_Config
- .text.main     0x08000680       0x44 build/main.o
+ .text.main     0x08000680       0x18 build/main.o
                 0x08000680                main
+ .text.setp     0x08000698       0x1c build/mysetp.o
+                0x08000698                setp
  .text.NMI_Handler
-                0x080006c4        0x4 build/stm32f4xx_it.o
-                0x080006c4                NMI_Handler
+                0x080006b4        0x4 build/stm32f4xx_it.o
+                0x080006b4                NMI_Handler
  .text.HardFault_Handler
-                0x080006c8        0x4 build/stm32f4xx_it.o
-                0x080006c8                HardFault_Handler
+                0x080006b8        0x4 build/stm32f4xx_it.o
+                0x080006b8                HardFault_Handler
  .text.MemManage_Handler
-                0x080006cc        0x4 build/stm32f4xx_it.o
-                0x080006cc                MemManage_Handler
+                0x080006bc        0x4 build/stm32f4xx_it.o
+                0x080006bc                MemManage_Handler
  .text.BusFault_Handler
-                0x080006d0        0x4 build/stm32f4xx_it.o
-                0x080006d0                BusFault_Handler
+                0x080006c0        0x4 build/stm32f4xx_it.o
+                0x080006c0                BusFault_Handler
  .text.UsageFault_Handler
-                0x080006d4        0x4 build/stm32f4xx_it.o
-                0x080006d4                UsageFault_Handler
+                0x080006c4        0x4 build/stm32f4xx_it.o
+                0x080006c4                UsageFault_Handler
  .text.SVC_Handler
-                0x080006d8        0x4 build/stm32f4xx_it.o
-                0x080006d8                SVC_Handler
+                0x080006c8        0x4 build/stm32f4xx_it.o
+                0x080006c8                SVC_Handler
  .text.DebugMon_Handler
-                0x080006dc        0x4 build/stm32f4xx_it.o
-                0x080006dc                DebugMon_Handler
+                0x080006cc        0x4 build/stm32f4xx_it.o
+                0x080006cc                DebugMon_Handler
  .text.PendSV_Handler
-                0x080006e0        0x4 build/stm32f4xx_it.o
-                0x080006e0                PendSV_Handler
+                0x080006d0        0x4 build/stm32f4xx_it.o
+                0x080006d0                PendSV_Handler
  .text.SysTick_Handler
-                0x080006e4        0x8 build/stm32f4xx_it.o
-                0x080006e4                SysTick_Handler
+                0x080006d4        0x8 build/stm32f4xx_it.o
+                0x080006d4                SysTick_Handler
  .text.HAL_MspInit
-                0x080006ec       0x38 build/stm32f4xx_hal_msp.o
-                0x080006ec                HAL_MspInit
+                0x080006dc       0x38 build/stm32f4xx_hal_msp.o
+                0x080006dc                HAL_MspInit
  .text.HAL_I2C_MspInit
-                0x08000724       0x6c build/stm32f4xx_hal_msp.o
-                0x08000724                HAL_I2C_MspInit
+                0x08000714       0x6c build/stm32f4xx_hal_msp.o
+                0x08000714                HAL_I2C_MspInit
  .text.HAL_RCC_OscConfig
-                0x08000790      0x428 build/stm32f4xx_hal_rcc.o
-                0x08000790                HAL_RCC_OscConfig
+                0x08000780      0x428 build/stm32f4xx_hal_rcc.o
+                0x08000780                HAL_RCC_OscConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x08000bb8       0xa0 build/stm32f4xx_hal_rcc.o
-                0x08000bb8                HAL_RCC_GetSysClockFreq
+                0x08000ba8       0xa0 build/stm32f4xx_hal_rcc.o
+                0x08000ba8                HAL_RCC_GetSysClockFreq
  .text.HAL_RCC_ClockConfig
-                0x08000c58      0x168 build/stm32f4xx_hal_rcc.o
-                0x08000c58                HAL_RCC_ClockConfig
+                0x08000c48      0x168 build/stm32f4xx_hal_rcc.o
+                0x08000c48                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetHCLKFreq
-                0x08000dc0        0xc build/stm32f4xx_hal_rcc.o
-                0x08000dc0                HAL_RCC_GetHCLKFreq
+                0x08000db0        0xc build/stm32f4xx_hal_rcc.o
+                0x08000db0                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_GetPCLK1Freq
-                0x08000dcc       0x20 build/stm32f4xx_hal_rcc.o
-                0x08000dcc                HAL_RCC_GetPCLK1Freq
+                0x08000dbc       0x20 build/stm32f4xx_hal_rcc.o
+                0x08000dbc                HAL_RCC_GetPCLK1Freq
  .text.HAL_GPIO_Init
-                0x08000dec      0x1ac build/stm32f4xx_hal_gpio.o
-                0x08000dec                HAL_GPIO_Init
+                0x08000ddc      0x1ac build/stm32f4xx_hal_gpio.o
+                0x08000ddc                HAL_GPIO_Init
  .text.HAL_GPIO_WritePin
-                0x08000f98        0xc build/stm32f4xx_hal_gpio.o
-                0x08000f98                HAL_GPIO_WritePin
+                0x08000f88        0xc build/stm32f4xx_hal_gpio.o
+                0x08000f88                HAL_GPIO_WritePin
  .text.HAL_NVIC_SetPriorityGrouping
-                0x08000fa4       0x24 build/stm32f4xx_hal_cortex.o
-                0x08000fa4                HAL_NVIC_SetPriorityGrouping
+                0x08000f94       0x24 build/stm32f4xx_hal_cortex.o
+                0x08000f94                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x08000fc8       0x64 build/stm32f4xx_hal_cortex.o
-                0x08000fc8                HAL_NVIC_SetPriority
+                0x08000fb8       0x64 build/stm32f4xx_hal_cortex.o
+                0x08000fb8                HAL_NVIC_SetPriority
  .text.HAL_SYSTICK_Config
-                0x0800102c       0x2c build/stm32f4xx_hal_cortex.o
-                0x0800102c                HAL_SYSTICK_Config
+                0x0800101c       0x2c build/stm32f4xx_hal_cortex.o
+                0x0800101c                HAL_SYSTICK_Config
  .text.HAL_InitTick
-                0x08001058       0x4c build/stm32f4xx_hal.o
-                0x08001058                HAL_InitTick
+                0x08001048       0x4c build/stm32f4xx_hal.o
+                0x08001048                HAL_InitTick
  .text.HAL_Init
-                0x080010a4       0x34 build/stm32f4xx_hal.o
-                0x080010a4                HAL_Init
+                0x08001094       0x34 build/stm32f4xx_hal.o
+                0x08001094                HAL_Init
  .text.HAL_IncTick
-                0x080010d8       0x18 build/stm32f4xx_hal.o
-                0x080010d8                HAL_IncTick
+                0x080010c8       0x18 build/stm32f4xx_hal.o
+                0x080010c8                HAL_IncTick
  .text.HAL_GetTick
-                0x080010f0        0xc build/stm32f4xx_hal.o
-                0x080010f0                HAL_GetTick
+                0x080010e0        0xc build/stm32f4xx_hal.o
+                0x080010e0                HAL_GetTick
  .text.HAL_Delay
-                0x080010fc       0x28 build/stm32f4xx_hal.o
-                0x080010fc                HAL_Delay
+                0x080010ec       0x28 build/stm32f4xx_hal.o
+                0x080010ec                HAL_Delay
  .text.SystemInit
-                0x08001124       0x14 build/system_stm32f4xx.o
-                0x08001124                SystemInit
+                0x08001114       0x14 build/system_stm32f4xx.o
+                0x08001114                SystemInit
+ .text.u8g_font_calc_vref_font
+                0x08001128        0x4 build/u8g_font.o
+                0x08001128                u8g_font_calc_vref_font
+ .text.u8g_SetFontPosBaseline
+                0x0800112c        0xc build/u8g_font.o
+                0x0800112c                u8g_SetFontPosBaseline
+ .text.u8g_call_dev_fn
+                0x08001138        0x8 build/u8g_ll_api.o
+                0x08001138                u8g_call_dev_fn
+ .text.u8g_InitLL
+                0x08001140       0x2c build/u8g_ll_api.o
+                0x08001140                u8g_InitLL
+ .text.u8g_GetWidthLL
+                0x0800116c       0x18 build/u8g_ll_api.o
+                0x0800116c                u8g_GetWidthLL
+ .text.u8g_GetHeightLL
+                0x08001184       0x18 build/u8g_ll_api.o
+                0x08001184                u8g_GetHeightLL
+ .text.u8g_GetModeLL
+                0x0800119c        0xc build/u8g_ll_api.o
+                0x0800119c                u8g_GetModeLL
+ .text.u8g_UpdateDimension
+                0x080011a8       0x30 build/u8g_ll_api.o
+                0x080011a8                u8g_UpdateDimension
+ .text.u8g_Begin
+                0x080011d8       0x1c build/u8g_ll_api.o
+                0x080011d8                u8g_Begin
+ .text.u8g_SetColorIndex
+                0x080011f4        0x8 build/u8g_ll_api.o
+                0x080011f4                u8g_SetColorIndex
+ .text.u8g_init_data
+                0x080011fc       0x44 build/u8g_ll_api.o
+ .text.u8g_InitComFn
+                0x08001240       0x18 build/u8g_ll_api.o
+                0x08001240                u8g_InitComFn
+ .text.u8g_page_First
+                0x08001258       0x10 build/u8g_page.o
+                0x08001258                u8g_page_First
+ .text.u8g_page_Next
+                0x08001268       0x34 build/u8g_page.o
+                0x08001268                u8g_page_Next
+ .text.u8g_pb_IsYIntersection
+                0x0800129c       0x34 build/u8g_pb.o
+                0x0800129c                u8g_pb_IsYIntersection
+ .text.u8g_pb_GetPageBox
+                0x080012d0       0x14 build/u8g_pb.o
+                0x080012d0                u8g_pb_GetPageBox
+ .text.u8g_pb_Is8PixelVisible
+                0x080012e4       0x2c build/u8g_pb.o
+                0x080012e4                u8g_pb_Is8PixelVisible
+ .text.u8g_pb16v1_Clear
+                0x08001310       0x18 build/u8g_pb16v1.o
+                0x08001310                u8g_pb16v1_Clear
+ .text.u8g_pb16v1_set_pixel
+                0x08001328       0x34 build/u8g_pb16v1.o
+                0x08001328                u8g_pb16v1_set_pixel
+ .text.u8g_pb16v1_SetPixel
+                0x0800135c       0x24 build/u8g_pb16v1.o
+                0x0800135c                u8g_pb16v1_SetPixel
+ .text.u8g_pb16v1_Set8PixelOpt2
+                0x08001380       0x5c build/u8g_pb16v1.o
+                0x08001380                u8g_pb16v1_Set8PixelOpt2
+ .text.u8g_dev_pb16v1_base_fn
+                0x080013dc       0xb0 build/u8g_pb16v1.o
+                0x080013dc                u8g_dev_pb16v1_base_fn
+ .text.u8g_state_dummy_cb
+                0x0800148c        0x4 build/u8g_state.o
+                0x0800148c                u8g_state_dummy_cb
+ .text.u8g_InitCom
+                0x08001490        0xc build/u8g_com_api.o
+                0x08001490                u8g_InitCom
+ .text.u8g_SetChipSelect
+                0x0800149c        0xc build/u8g_com_api.o
+                0x0800149c                u8g_SetChipSelect
+ .text.u8g_SetResetLow
+                0x080014a8       0x10 build/u8g_com_api.o
+                0x080014a8                u8g_SetResetLow
+ .text.u8g_SetResetHigh
+                0x080014b8       0x10 build/u8g_com_api.o
+                0x080014b8                u8g_SetResetHigh
+ .text.u8g_SetAddress
+                0x080014c8        0xc build/u8g_com_api.o
+                0x080014c8                u8g_SetAddress
+ .text.u8g_WriteByte
+                0x080014d4        0xc build/u8g_com_api.o
+                0x080014d4                u8g_WriteByte
+ .text.u8g_WriteSequence
+                0x080014e0        0xc build/u8g_com_api.o
+                0x080014e0                u8g_WriteSequence
+ .text.u8g_WriteEscSeqP
+                0x080014ec       0xcc build/u8g_com_api.o
+                0x080014ec                u8g_WriteEscSeqP
+ .text.u8g_Delay
+                0x080015b8        0x8 build/u8g_com_stm32_hw_i2c_hal.o
+                0x080015b8                u8g_Delay
+ .text.u8g_com_hw_i2c_fn
+                0x080015c0       0x6c build/u8g_com_stm32_hw_i2c_hal.o
+                0x080015c0                u8g_com_hw_i2c_fn
+ .text.u8g_dev_ssd1306_128x64_2x_fn
+                0x0800162c      0x134 build/u8g_dev_ssd1306_128x64.o
+                0x0800162c                u8g_dev_ssd1306_128x64_2x_fn
+ .text.I2C_IsAcknowledgeFailed
+                0x08001760       0x34 build/stm32f4xx_hal_i2c.o
+ .text.I2C_WaitOnFlagUntilTimeout
+                0x08001794       0x70 build/stm32f4xx_hal_i2c.o
+ .text.I2C_WaitOnMasterAddressFlagUntilTimeout
+                0x08001804       0xa8 build/stm32f4xx_hal_i2c.o
+ .text.I2C_MasterRequestWrite
+                0x080018ac       0xbc build/stm32f4xx_hal_i2c.o
+ .text.I2C_WaitOnTXEFlagUntilTimeout
+                0x08001968       0x54 build/stm32f4xx_hal_i2c.o
+ .text.I2C_WaitOnBTFFlagUntilTimeout
+                0x080019bc       0x54 build/stm32f4xx_hal_i2c.o
  .text.HAL_I2C_Init
-                0x08001138      0x1b4 build/stm32f4xx_hal_i2c.o
-                0x08001138                HAL_I2C_Init
+                0x08001a10      0x1b4 build/stm32f4xx_hal_i2c.o
+                0x08001a10                HAL_I2C_Init
+ .text.HAL_I2C_Master_Transmit
+                0x08001bc4      0x170 build/stm32f4xx_hal_i2c.o
+                0x08001bc4                HAL_I2C_Master_Transmit
  .text.Reset_Handler
-                0x080012ec       0x50 build/startup_stm32f401xc.o
-                0x080012ec                Reset_Handler
+                0x08001d34       0x50 build/startup_stm32f401xc.o
+                0x08001d34                Reset_Handler
  .text.Default_Handler
-                0x0800133c        0x2 build/startup_stm32f401xc.o
-                0x0800133c                RTC_Alarm_IRQHandler
-                0x0800133c                EXTI2_IRQHandler
-                0x0800133c                SPI4_IRQHandler
-                0x0800133c                TIM1_CC_IRQHandler
-                0x0800133c                DMA2_Stream5_IRQHandler
-                0x0800133c                DMA1_Stream5_IRQHandler
-                0x0800133c                PVD_IRQHandler
-                0x0800133c                SDIO_IRQHandler
-                0x0800133c                TAMP_STAMP_IRQHandler
-                0x0800133c                EXTI3_IRQHandler
-                0x0800133c                TIM1_UP_TIM10_IRQHandler
-                0x0800133c                I2C3_ER_IRQHandler
-                0x0800133c                EXTI0_IRQHandler
-                0x0800133c                I2C2_EV_IRQHandler
-                0x0800133c                DMA1_Stream2_IRQHandler
-                0x0800133c                FPU_IRQHandler
-                0x0800133c                DMA2_Stream2_IRQHandler
-                0x0800133c                SPI1_IRQHandler
-                0x0800133c                TIM1_BRK_TIM9_IRQHandler
-                0x0800133c                DMA2_Stream3_IRQHandler
-                0x0800133c                USART6_IRQHandler
-                0x0800133c                DMA2_Stream0_IRQHandler
-                0x0800133c                TIM4_IRQHandler
-                0x0800133c                I2C1_EV_IRQHandler
-                0x0800133c                DMA1_Stream6_IRQHandler
-                0x0800133c                DMA1_Stream1_IRQHandler
-                0x0800133c                TIM3_IRQHandler
-                0x0800133c                RCC_IRQHandler
-                0x0800133c                Default_Handler
-                0x0800133c                EXTI15_10_IRQHandler
-                0x0800133c                ADC_IRQHandler
-                0x0800133c                DMA1_Stream7_IRQHandler
-                0x0800133c                TIM5_IRQHandler
-                0x0800133c                DMA2_Stream7_IRQHandler
-                0x0800133c                I2C3_EV_IRQHandler
-                0x0800133c                EXTI9_5_IRQHandler
-                0x0800133c                RTC_WKUP_IRQHandler
-                0x0800133c                SPI2_IRQHandler
-                0x0800133c                DMA1_Stream0_IRQHandler
-                0x0800133c                EXTI4_IRQHandler
-                0x0800133c                WWDG_IRQHandler
-                0x0800133c                TIM2_IRQHandler
-                0x0800133c                OTG_FS_WKUP_IRQHandler
-                0x0800133c                TIM1_TRG_COM_TIM11_IRQHandler
-                0x0800133c                EXTI1_IRQHandler
-                0x0800133c                USART2_IRQHandler
-                0x0800133c                I2C2_ER_IRQHandler
-                0x0800133c                DMA2_Stream1_IRQHandler
-                0x0800133c                FLASH_IRQHandler
-                0x0800133c                DMA2_Stream4_IRQHandler
-                0x0800133c                USART1_IRQHandler
-                0x0800133c                OTG_FS_IRQHandler
-                0x0800133c                SPI3_IRQHandler
-                0x0800133c                DMA1_Stream4_IRQHandler
-                0x0800133c                I2C1_ER_IRQHandler
-                0x0800133c                DMA2_Stream6_IRQHandler
-                0x0800133c                DMA1_Stream3_IRQHandler
- *fill*         0x0800133e        0x2 
+                0x08001d84        0x2 build/startup_stm32f401xc.o
+                0x08001d84                RTC_Alarm_IRQHandler
+                0x08001d84                EXTI2_IRQHandler
+                0x08001d84                SPI4_IRQHandler
+                0x08001d84                TIM1_CC_IRQHandler
+                0x08001d84                DMA2_Stream5_IRQHandler
+                0x08001d84                DMA1_Stream5_IRQHandler
+                0x08001d84                PVD_IRQHandler
+                0x08001d84                SDIO_IRQHandler
+                0x08001d84                TAMP_STAMP_IRQHandler
+                0x08001d84                EXTI3_IRQHandler
+                0x08001d84                TIM1_UP_TIM10_IRQHandler
+                0x08001d84                I2C3_ER_IRQHandler
+                0x08001d84                EXTI0_IRQHandler
+                0x08001d84                I2C2_EV_IRQHandler
+                0x08001d84                DMA1_Stream2_IRQHandler
+                0x08001d84                FPU_IRQHandler
+                0x08001d84                DMA2_Stream2_IRQHandler
+                0x08001d84                SPI1_IRQHandler
+                0x08001d84                TIM1_BRK_TIM9_IRQHandler
+                0x08001d84                DMA2_Stream3_IRQHandler
+                0x08001d84                USART6_IRQHandler
+                0x08001d84                DMA2_Stream0_IRQHandler
+                0x08001d84                TIM4_IRQHandler
+                0x08001d84                I2C1_EV_IRQHandler
+                0x08001d84                DMA1_Stream6_IRQHandler
+                0x08001d84                DMA1_Stream1_IRQHandler
+                0x08001d84                TIM3_IRQHandler
+                0x08001d84                RCC_IRQHandler
+                0x08001d84                Default_Handler
+                0x08001d84                EXTI15_10_IRQHandler
+                0x08001d84                ADC_IRQHandler
+                0x08001d84                DMA1_Stream7_IRQHandler
+                0x08001d84                TIM5_IRQHandler
+                0x08001d84                DMA2_Stream7_IRQHandler
+                0x08001d84                I2C3_EV_IRQHandler
+                0x08001d84                EXTI9_5_IRQHandler
+                0x08001d84                RTC_WKUP_IRQHandler
+                0x08001d84                SPI2_IRQHandler
+                0x08001d84                DMA1_Stream0_IRQHandler
+                0x08001d84                EXTI4_IRQHandler
+                0x08001d84                WWDG_IRQHandler
+                0x08001d84                TIM2_IRQHandler
+                0x08001d84                OTG_FS_WKUP_IRQHandler
+                0x08001d84                TIM1_TRG_COM_TIM11_IRQHandler
+                0x08001d84                EXTI1_IRQHandler
+                0x08001d84                USART2_IRQHandler
+                0x08001d84                I2C2_ER_IRQHandler
+                0x08001d84                DMA2_Stream1_IRQHandler
+                0x08001d84                FLASH_IRQHandler
+                0x08001d84                DMA2_Stream4_IRQHandler
+                0x08001d84                USART1_IRQHandler
+                0x08001d84                OTG_FS_IRQHandler
+                0x08001d84                SPI3_IRQHandler
+                0x08001d84                DMA1_Stream4_IRQHandler
+                0x08001d84                I2C1_ER_IRQHandler
+                0x08001d84                DMA2_Stream6_IRQHandler
+                0x08001d84                DMA1_Stream3_IRQHandler
+ *fill*         0x08001d86        0x2 
  .text.__libc_init_array
-                0x08001340       0x4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-init.o)
-                0x08001340                __libc_init_array
- .text.memset   0x0800138c       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-memset.o)
-                0x0800138c                memset
+                0x08001d88       0x4c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-init.o)
+                0x08001d88                __libc_init_array
+ .text.memset   0x08001dd4       0x10 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-memset.o)
+                0x08001dd4                memset
  *(.glue_7)
- .glue_7        0x0800139c        0x0 linker stubs
+ .glue_7        0x08001de4        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0800139c        0x0 linker stubs
+ .glue_7t       0x08001de4        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0800139c        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+ .eh_frame      0x08001de4        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
  *(.init)
- .init          0x0800139c        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crti.o
-                0x0800139c                _init
- .init          0x080013a0        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtn.o
+ .init          0x08001de4        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crti.o
+                0x08001de4                _init
+ .init          0x08001de8        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtn.o
  *(.fini)
- .fini          0x080013a8        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crti.o
-                0x080013a8                _fini
- .fini          0x080013ac        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtn.o
-                0x080013b4                . = ALIGN (0x4)
-                0x080013b4                _etext = .
+ .fini          0x08001df0        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crti.o
+                0x08001df0                _fini
+ .fini          0x08001df4        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtn.o
+                0x08001dfc                . = ALIGN (0x4)
+                0x08001dfc                _etext = .
 
-.vfp11_veneer   0x080013b4        0x0
- .vfp11_veneer  0x080013b4        0x0 linker stubs
+.vfp11_veneer   0x08001dfc        0x0
+ .vfp11_veneer  0x08001dfc        0x0 linker stubs
 
-.v4_bx          0x080013b4        0x0
- .v4_bx         0x080013b4        0x0 linker stubs
+.v4_bx          0x08001dfc        0x0
+ .v4_bx         0x08001dfc        0x0 linker stubs
 
-.iplt           0x080013b4        0x0
- .iplt          0x080013b4        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+.iplt           0x08001dfc        0x0
+ .iplt          0x08001dfc        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
 
-.rodata         0x080013b4       0x18
-                0x080013b4                . = ALIGN (0x4)
+.rodata         0x08001dfc       0x60
+                0x08001dfc                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.AHBPrescTable
-                0x080013b4       0x10 build/system_stm32f4xx.o
-                0x080013b4                AHBPrescTable
+                0x08001dfc       0x10 build/system_stm32f4xx.o
+                0x08001dfc                AHBPrescTable
  .rodata.APBPrescTable
-                0x080013c4        0x8 build/system_stm32f4xx.o
-                0x080013c4                APBPrescTable
-                0x080013cc                . = ALIGN (0x4)
+                0x08001e0c        0x8 build/system_stm32f4xx.o
+                0x08001e0c                APBPrescTable
+ .rodata.u8g_dev_ssd13xx_sleep_off
+                0x08001e14        0xb build/u8g_dev_ssd1306_128x64.o
+ *fill*         0x08001e1f        0x1 
+ .rodata.u8g_dev_ssd13xx_sleep_on
+                0x08001e20        0x9 build/u8g_dev_ssd1306_128x64.o
+ *fill*         0x08001e29        0x3 
+ .rodata.u8g_dev_ssd1306_128x64_adafruit3_init_seq
+                0x08001e2c       0x26 build/u8g_dev_ssd1306_128x64.o
+ *fill*         0x08001e52        0x2 
+ .rodata.u8g_dev_ssd1306_128x64_data_start
+                0x08001e54        0x8 build/u8g_dev_ssd1306_128x64.o
+                0x08001e5c                . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x080013cc        0x8
-                0x080013cc                __exidx_start = .
+.ARM            0x08001e5c        0x8
+                0x08001e5c                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x080013cc        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_udivmoddi4.o)
-                0x080013d4                __exidx_end = .
+ .ARM.exidx     0x08001e5c        0x8 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_udivmoddi4.o)
+                0x08001e64                __exidx_end = .
 
-.rel.dyn        0x080013d4        0x0
- .rel.iplt      0x080013d4        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+.rel.dyn        0x08001e64        0x0
+ .rel.iplt      0x08001e64        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
 
-.preinit_array  0x080013d4        0x0
-                0x080013d4                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x08001e64        0x0
+                0x08001e64                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x080013d4                PROVIDE (__preinit_array_end, .)
+                0x08001e64                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x080013d4        0x4
-                0x080013d4                PROVIDE (__init_array_start, .)
+.init_array     0x08001e64        0x4
+                0x08001e64                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
- .init_array    0x080013d4        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
-                0x080013d8                PROVIDE (__init_array_end, .)
+ .init_array    0x08001e64        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+                0x08001e68                PROVIDE (__init_array_end, .)
 
-.fini_array     0x080013d8        0x4
+.fini_array     0x08001e68        0x4
                 [!provide]                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080013d8        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+ .fini_array    0x08001e68        0x4 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
                 [!provide]                PROVIDE (__fini_array_end, .)
-                0x080013dc                _sidata = LOADADDR (.data)
+                0x08001e6c                _sidata = LOADADDR (.data)
 
-.data           0x20000000        0xc load address 0x080013dc
+.data           0x20000000       0x24 load address 0x08001e6c
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -2461,41 +2499,57 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
  .data.SystemCoreClock
                 0x20000008        0x4 build/system_stm32f4xx.o
                 0x20000008                SystemCoreClock
-                0x2000000c                . = ALIGN (0x4)
-                0x2000000c                _edata = .
+ .data.u8g_dev_ssd1306_128x64_2x_i2c
+                0x2000000c        0xc build/u8g_dev_ssd1306_128x64.o
+                0x2000000c                u8g_dev_ssd1306_128x64_2x_i2c
+ .data.u8g_dev_ssd1306_128x64_2x_pb
+                0x20000018        0xc build/u8g_dev_ssd1306_128x64.o
+                0x20000018                u8g_dev_ssd1306_128x64_2x_pb
+                0x20000024                . = ALIGN (0x4)
+                0x20000024                _edata = .
 
-.jcr            0x2000000c        0x0 load address 0x080013e8
- .jcr           0x2000000c        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+.jcr            0x20000024        0x0 load address 0x08001e90
+ .jcr           0x20000024        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
 
-.igot.plt       0x2000000c        0x0 load address 0x080013e8
- .igot.plt      0x2000000c        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
-                0x2000000c                . = ALIGN (0x4)
+.igot.plt       0x20000024        0x0 load address 0x08001e90
+ .igot.plt      0x20000024        0x0 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+                0x20000024                . = ALIGN (0x4)
 
-.bss            0x2000000c       0x74 load address 0x080013e8
-                0x2000000c                _sbss = .
-                0x2000000c                __bss_start__ = _sbss
+.bss            0x20000024      0x234 load address 0x08001e90
+                0x20000024                _sbss = .
+                0x20000024                __bss_start__ = _sbss
  *(.bss)
- .bss           0x2000000c       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+ .bss           0x20000024       0x1c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
  *(.bss*)
+ .bss.buffer.7909
+                0x20000040       0x80 build/u8g_com_stm32_hw_i2c_hal.o
+ .bss.buf_idx.7910
+                0x200000c0        0x1 build/u8g_com_stm32_hw_i2c_hal.o
+ *fill*         0x200000c1        0x3 
+ .bss.u8g_dev_ssd1306_128x64_2x_buf
+                0x200000c4      0x100 build/u8g_dev_ssd1306_128x64.o
+                0x200000c4                u8g_dev_ssd1306_128x64_2x_buf
  *(COMMON)
- COMMON         0x20000028       0x54 build/main.o
-                0x20000028                hi2c1
- COMMON         0x2000007c        0x4 build/stm32f4xx_hal.o
-                0x2000007c                uwTick
-                0x20000080                . = ALIGN (0x4)
-                0x20000080                _ebss = .
-                0x20000080                __bss_end__ = _ebss
+ COMMON         0x200001c4       0x54 build/main.o
+                0x200001c4                hi2c1
+ COMMON         0x20000218       0x3c build/mysetp.o
+                0x20000218                u8g
+ COMMON         0x20000254        0x4 build/stm32f4xx_hal.o
+                0x20000254                uwTick
+                0x20000258                . = ALIGN (0x4)
+                0x20000258                _ebss = .
+                0x20000258                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000080      0x600 load address 0x080013e8
-                0x20000080                . = ALIGN (0x8)
+                0x20000258      0x600 load address 0x08001e90
+                0x20000258                . = ALIGN (0x8)
                 [!provide]                PROVIDE (end, .)
                 [!provide]                PROVIDE (_end, .)
-                0x20000280                . = (. + _Min_Heap_Size)
- *fill*         0x20000080      0x200 
-                0x20000680                . = (. + _Min_Stack_Size)
- *fill*         0x20000280      0x400 
-                0x20000680                . = ALIGN (0x8)
+                0x20000458                . = (. + _Min_Heap_Size)
+ *fill*         0x20000258      0x200 
+                0x20000858                . = (. + _Min_Stack_Size)
+ *fill*         0x20000458      0x400 
+                0x20000858                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -2512,141 +2566,252 @@ LOAD c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm
  .ARM.attributes
                 0x00000056       0x39 build/main.o
  .ARM.attributes
-                0x0000008f       0x39 build/stm32f4xx_it.o
+                0x0000008f       0x39 build/mysetp.o
  .ARM.attributes
-                0x000000c8       0x39 build/stm32f4xx_hal_msp.o
+                0x000000c8       0x39 build/stm32f4xx_it.o
  .ARM.attributes
-                0x00000101       0x39 build/stm32f4xx_hal_rcc.o
+                0x00000101       0x39 build/stm32f4xx_hal_msp.o
  .ARM.attributes
-                0x0000013a       0x39 build/stm32f4xx_hal_gpio.o
+                0x0000013a       0x39 build/stm32f4xx_hal_rcc.o
  .ARM.attributes
-                0x00000173       0x39 build/stm32f4xx_hal_cortex.o
+                0x00000173       0x39 build/stm32f4xx_hal_gpio.o
  .ARM.attributes
-                0x000001ac       0x39 build/stm32f4xx_hal.o
+                0x000001ac       0x39 build/stm32f4xx_hal_cortex.o
  .ARM.attributes
-                0x000001e5       0x39 build/system_stm32f4xx.o
+                0x000001e5       0x39 build/stm32f4xx_hal.o
  .ARM.attributes
-                0x0000021e       0x39 build/stm32f4xx_hal_i2c.o
+                0x0000021e       0x39 build/system_stm32f4xx.o
  .ARM.attributes
-                0x00000257       0x21 build/startup_stm32f401xc.o
+                0x00000257       0x39 build/u8g_font.o
  .ARM.attributes
-                0x00000278       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-init.o)
+                0x00000290       0x39 build/u8g_ll_api.o
  .ARM.attributes
-                0x000002ac       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-memset.o)
+                0x000002c9       0x39 build/u8g_page.o
  .ARM.attributes
-                0x000002e0       0x22 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_aeabi_uldivmod.o)
+                0x00000302       0x39 build/u8g_pb.o
  .ARM.attributes
-                0x00000302       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_udivmoddi4.o)
+                0x0000033b       0x39 build/u8g_pb16v1.o
  .ARM.attributes
-                0x00000336       0x22 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_dvmd_tls.o)
+                0x00000374       0x39 build/u8g_state.o
  .ARM.attributes
-                0x00000358       0x22 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtn.o
+                0x000003ad       0x39 build/u8g_com_api.o
+ .ARM.attributes
+                0x000003e6       0x39 build/u8g_com_stm32_hw_i2c_hal.o
+ .ARM.attributes
+                0x0000041f       0x39 build/u8g_dev_ssd1306_128x64.o
+ .ARM.attributes
+                0x00000458       0x39 build/stm32f4xx_hal_i2c.o
+ .ARM.attributes
+                0x00000491       0x21 build/startup_stm32f401xc.o
+ .ARM.attributes
+                0x000004b2       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-init.o)
+ .ARM.attributes
+                0x000004e6       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x0000051a       0x22 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_aeabi_uldivmod.o)
+ .ARM.attributes
+                0x0000053c       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_udivmoddi4.o)
+ .ARM.attributes
+                0x00000570       0x22 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00000592       0x22 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtn.o
 OUTPUT(build/401CCU-Demo.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x82a5
- .debug_info    0x00000000      0xe4e build/main.o
- .debug_info    0x00000e4e      0x185 build/stm32f4xx_it.o
- .debug_info    0x00000fd3      0xac5 build/stm32f4xx_hal_msp.o
- .debug_info    0x00001a98      0xb5b build/stm32f4xx_hal_rcc.o
- .debug_info    0x000025f3      0x7ee build/stm32f4xx_hal_gpio.o
- .debug_info    0x00002de1      0xf52 build/stm32f4xx_hal_cortex.o
- .debug_info    0x00003d33      0x9ed build/stm32f4xx_hal.o
- .debug_info    0x00004720      0x59f build/system_stm32f4xx.o
- .debug_info    0x00004cbf     0x3575 build/stm32f4xx_hal_i2c.o
- .debug_info    0x00008234       0x71 build/startup_stm32f401xc.o
+.debug_info     0x00000000    0x10671
+ .debug_info    0x00000000      0xdf1 build/main.o
+ .debug_info    0x00000df1      0x4cb build/mysetp.o
+ .debug_info    0x000012bc      0x185 build/stm32f4xx_it.o
+ .debug_info    0x00001441      0xac5 build/stm32f4xx_hal_msp.o
+ .debug_info    0x00001f06      0xb5b build/stm32f4xx_hal_rcc.o
+ .debug_info    0x00002a61      0x7ee build/stm32f4xx_hal_gpio.o
+ .debug_info    0x0000324f      0xf52 build/stm32f4xx_hal_cortex.o
+ .debug_info    0x000041a1      0x9ed build/stm32f4xx_hal.o
+ .debug_info    0x00004b8e      0x59f build/system_stm32f4xx.o
+ .debug_info    0x0000512d     0x2ac7 build/u8g_font.o
+ .debug_info    0x00007bf4     0x137b build/u8g_ll_api.o
+ .debug_info    0x00008f6f      0x1bc build/u8g_page.o
+ .debug_info    0x0000912b      0x803 build/u8g_pb.o
+ .debug_info    0x0000992e      0x898 build/u8g_pb16v1.o
+ .debug_info    0x0000a1c6      0x4d9 build/u8g_state.o
+ .debug_info    0x0000a69f      0x945 build/u8g_com_api.o
+ .debug_info    0x0000afe4      0xb66 build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_info    0x0000bb4a     0x1541 build/u8g_dev_ssd1306_128x64.o
+ .debug_info    0x0000d08b     0x3575 build/stm32f4xx_hal_i2c.o
+ .debug_info    0x00010600       0x71 build/startup_stm32f401xc.o
 
-.debug_abbrev   0x00000000     0x121f
+.debug_abbrev   0x00000000     0x23ac
  .debug_abbrev  0x00000000      0x225 build/main.o
- .debug_abbrev  0x00000225       0xbb build/stm32f4xx_it.o
- .debug_abbrev  0x000002e0      0x18f build/stm32f4xx_hal_msp.o
- .debug_abbrev  0x0000046f      0x28b build/stm32f4xx_hal_rcc.o
- .debug_abbrev  0x000006fa      0x211 build/stm32f4xx_hal_gpio.o
- .debug_abbrev  0x0000090b      0x313 build/stm32f4xx_hal_cortex.o
- .debug_abbrev  0x00000c1e      0x21a build/stm32f4xx_hal.o
- .debug_abbrev  0x00000e38      0x103 build/system_stm32f4xx.o
- .debug_abbrev  0x00000f3b      0x2d2 build/stm32f4xx_hal_i2c.o
- .debug_abbrev  0x0000120d       0x12 build/startup_stm32f401xc.o
+ .debug_abbrev  0x00000225      0x12d build/mysetp.o
+ .debug_abbrev  0x00000352       0xbb build/stm32f4xx_it.o
+ .debug_abbrev  0x0000040d      0x18f build/stm32f4xx_hal_msp.o
+ .debug_abbrev  0x0000059c      0x28b build/stm32f4xx_hal_rcc.o
+ .debug_abbrev  0x00000827      0x211 build/stm32f4xx_hal_gpio.o
+ .debug_abbrev  0x00000a38      0x313 build/stm32f4xx_hal_cortex.o
+ .debug_abbrev  0x00000d4b      0x21a build/stm32f4xx_hal.o
+ .debug_abbrev  0x00000f65      0x103 build/system_stm32f4xx.o
+ .debug_abbrev  0x00001068      0x2e9 build/u8g_font.o
+ .debug_abbrev  0x00001351      0x292 build/u8g_ll_api.o
+ .debug_abbrev  0x000015e3      0x10e build/u8g_page.o
+ .debug_abbrev  0x000016f1      0x1b0 build/u8g_pb.o
+ .debug_abbrev  0x000018a1      0x1a3 build/u8g_pb16v1.o
+ .debug_abbrev  0x00001a44      0x154 build/u8g_state.o
+ .debug_abbrev  0x00001b98      0x168 build/u8g_com_api.o
+ .debug_abbrev  0x00001d00      0x20f build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_abbrev  0x00001f0f      0x1b9 build/u8g_dev_ssd1306_128x64.o
+ .debug_abbrev  0x000020c8      0x2d2 build/stm32f4xx_hal_i2c.o
+ .debug_abbrev  0x0000239a       0x12 build/startup_stm32f401xc.o
 
-.debug_loc      0x00000000     0x5944
+.debug_loc      0x00000000     0xb5fd
  .debug_loc     0x00000000       0xb1 build/main.o
- .debug_loc     0x000000b1       0x20 build/stm32f4xx_it.o
- .debug_loc     0x000000d1       0xdd build/stm32f4xx_hal_msp.o
- .debug_loc     0x000001ae      0x603 build/stm32f4xx_hal_rcc.o
- .debug_loc     0x000007b1      0x420 build/stm32f4xx_hal_gpio.o
- .debug_loc     0x00000bd1      0x5c0 build/stm32f4xx_hal_cortex.o
- .debug_loc     0x00001191      0x1bb build/stm32f4xx_hal.o
- .debug_loc     0x0000134c      0x132 build/system_stm32f4xx.o
- .debug_loc     0x0000147e     0x44c6 build/stm32f4xx_hal_i2c.o
+ .debug_loc     0x000000b1       0x20 build/mysetp.o
+ .debug_loc     0x000000d1       0x20 build/stm32f4xx_it.o
+ .debug_loc     0x000000f1       0xdd build/stm32f4xx_hal_msp.o
+ .debug_loc     0x000001ce      0x603 build/stm32f4xx_hal_rcc.o
+ .debug_loc     0x000007d1      0x420 build/stm32f4xx_hal_gpio.o
+ .debug_loc     0x00000bf1      0x5c0 build/stm32f4xx_hal_cortex.o
+ .debug_loc     0x000011b1      0x1bb build/stm32f4xx_hal.o
+ .debug_loc     0x0000136c      0x132 build/system_stm32f4xx.o
+ .debug_loc     0x0000149e     0x3118 build/u8g_font.o
+ .debug_loc     0x000045b6     0x10cc build/u8g_ll_api.o
+ .debug_loc     0x00005682      0x129 build/u8g_page.o
+ .debug_loc     0x000057ab      0x48a build/u8g_pb.o
+ .debug_loc     0x00005c35      0x568 build/u8g_pb16v1.o
+ .debug_loc     0x0000619d       0x62 build/u8g_state.o
+ .debug_loc     0x000061ff      0x5ae build/u8g_com_api.o
+ .debug_loc     0x000067ad      0x1e2 build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_loc     0x0000698f      0x7a8 build/u8g_dev_ssd1306_128x64.o
+ .debug_loc     0x00007137     0x44c6 build/stm32f4xx_hal_i2c.o
 
-.debug_aranges  0x00000000      0x638
+.debug_aranges  0x00000000      0xc20
  .debug_aranges
                 0x00000000       0x40 build/main.o
  .debug_aranges
-                0x00000040       0x60 build/stm32f4xx_it.o
+                0x00000040       0x20 build/mysetp.o
  .debug_aranges
-                0x000000a0       0x30 build/stm32f4xx_hal_msp.o
+                0x00000060       0x60 build/stm32f4xx_it.o
  .debug_aranges
-                0x000000d0       0x88 build/stm32f4xx_hal_rcc.o
+                0x000000c0       0x30 build/stm32f4xx_hal_msp.o
  .debug_aranges
-                0x00000158       0x58 build/stm32f4xx_hal_gpio.o
+                0x000000f0       0x88 build/stm32f4xx_hal_rcc.o
  .debug_aranges
-                0x000001b0       0xa8 build/stm32f4xx_hal_cortex.o
+                0x00000178       0x58 build/stm32f4xx_hal_gpio.o
  .debug_aranges
-                0x00000258       0xf0 build/stm32f4xx_hal.o
+                0x000001d0       0xa8 build/stm32f4xx_hal_cortex.o
  .debug_aranges
-                0x00000348       0x28 build/system_stm32f4xx.o
+                0x00000278       0xf0 build/stm32f4xx_hal.o
  .debug_aranges
-                0x00000370      0x2a0 build/stm32f4xx_hal_i2c.o
+                0x00000368       0x28 build/system_stm32f4xx.o
  .debug_aranges
-                0x00000610       0x28 build/startup_stm32f401xc.o
+                0x00000390      0x2a8 build/u8g_font.o
+ .debug_aranges
+                0x00000638      0x140 build/u8g_ll_api.o
+ .debug_aranges
+                0x00000778       0x30 build/u8g_page.o
+ .debug_aranges
+                0x000007a8       0x50 build/u8g_pb.o
+ .debug_aranges
+                0x000007f8       0x50 build/u8g_pb16v1.o
+ .debug_aranges
+                0x00000848       0x30 build/u8g_state.o
+ .debug_aranges
+                0x00000878       0x68 build/u8g_com_api.o
+ .debug_aranges
+                0x000008e0       0x38 build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_aranges
+                0x00000918       0x40 build/u8g_dev_ssd1306_128x64.o
+ .debug_aranges
+                0x00000958      0x2a0 build/stm32f4xx_hal_i2c.o
+ .debug_aranges
+                0x00000bf8       0x28 build/startup_stm32f401xc.o
 
-.debug_ranges   0x00000000      0x5d0
+.debug_ranges   0x00000000      0xb90
  .debug_ranges  0x00000000       0x30 build/main.o
- .debug_ranges  0x00000030       0x50 build/stm32f4xx_it.o
- .debug_ranges  0x00000080       0x20 build/stm32f4xx_hal_msp.o
- .debug_ranges  0x000000a0       0x90 build/stm32f4xx_hal_rcc.o
- .debug_ranges  0x00000130       0x48 build/stm32f4xx_hal_gpio.o
- .debug_ranges  0x00000178       0x98 build/stm32f4xx_hal_cortex.o
- .debug_ranges  0x00000210       0xe0 build/stm32f4xx_hal.o
- .debug_ranges  0x000002f0       0x18 build/system_stm32f4xx.o
- .debug_ranges  0x00000308      0x2a8 build/stm32f4xx_hal_i2c.o
- .debug_ranges  0x000005b0       0x20 build/startup_stm32f401xc.o
+ .debug_ranges  0x00000030       0x10 build/mysetp.o
+ .debug_ranges  0x00000040       0x50 build/stm32f4xx_it.o
+ .debug_ranges  0x00000090       0x20 build/stm32f4xx_hal_msp.o
+ .debug_ranges  0x000000b0       0x90 build/stm32f4xx_hal_rcc.o
+ .debug_ranges  0x00000140       0x48 build/stm32f4xx_hal_gpio.o
+ .debug_ranges  0x00000188       0x98 build/stm32f4xx_hal_cortex.o
+ .debug_ranges  0x00000220       0xe0 build/stm32f4xx_hal.o
+ .debug_ranges  0x00000300       0x18 build/system_stm32f4xx.o
+ .debug_ranges  0x00000318      0x310 build/u8g_font.o
+ .debug_ranges  0x00000628      0x130 build/u8g_ll_api.o
+ .debug_ranges  0x00000758       0x20 build/u8g_page.o
+ .debug_ranges  0x00000778       0x40 build/u8g_pb.o
+ .debug_ranges  0x000007b8       0x40 build/u8g_pb16v1.o
+ .debug_ranges  0x000007f8       0x20 build/u8g_state.o
+ .debug_ranges  0x00000818       0x58 build/u8g_com_api.o
+ .debug_ranges  0x00000870       0x28 build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_ranges  0x00000898       0x30 build/u8g_dev_ssd1306_128x64.o
+ .debug_ranges  0x000008c8      0x2a8 build/stm32f4xx_hal_i2c.o
+ .debug_ranges  0x00000b70       0x20 build/startup_stm32f401xc.o
 
-.debug_line     0x00000000     0x2fbc
- .debug_line    0x00000000      0x2ca build/main.o
- .debug_line    0x000002ca      0x1ed build/stm32f4xx_it.o
- .debug_line    0x000004b7      0x227 build/stm32f4xx_hal_msp.o
- .debug_line    0x000006de      0x4d8 build/stm32f4xx_hal_rcc.o
- .debug_line    0x00000bb6      0x32d build/stm32f4xx_hal_gpio.o
- .debug_line    0x00000ee3      0x3ed build/stm32f4xx_hal_cortex.o
- .debug_line    0x000012d0      0x400 build/stm32f4xx_hal.o
- .debug_line    0x000016d0      0x198 build/system_stm32f4xx.o
- .debug_line    0x00001868     0x16de build/stm32f4xx_hal_i2c.o
- .debug_line    0x00002f46       0x76 build/startup_stm32f401xc.o
+.debug_line     0x00000000     0x4a82
+ .debug_line    0x00000000      0x2d0 build/main.o
+ .debug_line    0x000002d0      0x13f build/mysetp.o
+ .debug_line    0x0000040f      0x1ed build/stm32f4xx_it.o
+ .debug_line    0x000005fc      0x227 build/stm32f4xx_hal_msp.o
+ .debug_line    0x00000823      0x4d8 build/stm32f4xx_hal_rcc.o
+ .debug_line    0x00000cfb      0x32d build/stm32f4xx_hal_gpio.o
+ .debug_line    0x00001028      0x3ed build/stm32f4xx_hal_cortex.o
+ .debug_line    0x00001415      0x400 build/stm32f4xx_hal.o
+ .debug_line    0x00001815      0x198 build/system_stm32f4xx.o
+ .debug_line    0x000019ad      0x96f build/u8g_font.o
+ .debug_line    0x0000231c      0x3e0 build/u8g_ll_api.o
+ .debug_line    0x000026fc      0x14a build/u8g_page.o
+ .debug_line    0x00002846      0x1b8 build/u8g_pb.o
+ .debug_line    0x000029fe      0x1f4 build/u8g_pb16v1.o
+ .debug_line    0x00002bf2      0x138 build/u8g_state.o
+ .debug_line    0x00002d2a      0x1e8 build/u8g_com_api.o
+ .debug_line    0x00002f12      0x23b build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_line    0x0000314d      0x1e1 build/u8g_dev_ssd1306_128x64.o
+ .debug_line    0x0000332e     0x16de build/stm32f4xx_hal_i2c.o
+ .debug_line    0x00004a0c       0x76 build/startup_stm32f401xc.o
 
-.debug_str      0x00000000     0x2277
- .debug_str     0x00000000      0x9ba build/main.o
-                                0xa5c (size before relaxing)
- .debug_str     0x000009ba       0xb4 build/stm32f4xx_it.o
+.debug_str      0x00000000     0x38a5
+ .debug_str     0x00000000      0x9b5 build/main.o
+                                0xa57 (size before relaxing)
+ .debug_str     0x000009b5      0x204 build/mysetp.o
+                                0x435 (size before relaxing)
+ .debug_str     0x00000bb9       0xb4 build/stm32f4xx_it.o
                                 0x25c (size before relaxing)
- .debug_str     0x00000a6e       0x60 build/stm32f4xx_hal_msp.o
+ .debug_str     0x00000c6d       0x60 build/stm32f4xx_hal_msp.o
                                 0x89d (size before relaxing)
- .debug_str     0x00000ace      0x23f build/stm32f4xx_hal_rcc.o
+ .debug_str     0x00000ccd      0x23f build/stm32f4xx_hal_rcc.o
                                 0x734 (size before relaxing)
- .debug_str     0x00000d0d      0x125 build/stm32f4xx_hal_gpio.o
+ .debug_str     0x00000f0c      0x125 build/stm32f4xx_hal_gpio.o
                                 0x51f (size before relaxing)
- .debug_str     0x00000e32      0x893 build/stm32f4xx_hal_cortex.o
+ .debug_str     0x00001031      0x893 build/stm32f4xx_hal_cortex.o
                                 0xae5 (size before relaxing)
- .debug_str     0x000016c5      0x295 build/stm32f4xx_hal.o
+ .debug_str     0x000018c4      0x29f build/stm32f4xx_hal.o
                                 0xa37 (size before relaxing)
- .debug_str     0x0000195a       0x47 build/system_stm32f4xx.o
+ .debug_str     0x00001b63       0x47 build/system_stm32f4xx.o
                                 0x3b4 (size before relaxing)
- .debug_str     0x000019a1      0x8d6 build/stm32f4xx_hal_i2c.o
+ .debug_str     0x00001baa      0x77d build/u8g_font.o
+                                0xb94 (size before relaxing)
+ .debug_str     0x00002327      0x290 build/u8g_ll_api.o
+                                0x6ce (size before relaxing)
+ .debug_str     0x000025b7       0x72 build/u8g_page.o
+                                0x228 (size before relaxing)
+ .debug_str     0x00002629       0xd4 build/u8g_pb.o
+                                0x507 (size before relaxing)
+ .debug_str     0x000026fd       0xb2 build/u8g_pb16v1.o
+                                0x535 (size before relaxing)
+ .debug_str     0x000027af       0x55 build/u8g_state.o
+                                0x428 (size before relaxing)
+ .debug_str     0x00002804       0xcc build/u8g_com_api.o
+                                0x4bf (size before relaxing)
+ .debug_str     0x000028d0       0x8b build/u8g_com_stm32_hw_i2c_hal.o
+                                0x9ba (size before relaxing)
+ .debug_str     0x0000295b      0x68c build/u8g_dev_ssd1306_128x64.o
+                                0xb5d (size before relaxing)
+ .debug_str     0x00002fe7      0x8be build/stm32f4xx_hal_i2c.o
                                0x1062 (size before relaxing)
 
 .comment        0x00000000       0x6e
  .comment       0x00000000       0x6e build/main.o
                                  0x6f (size before relaxing)
+ .comment       0x0000006e       0x6f build/mysetp.o
  .comment       0x0000006e       0x6f build/stm32f4xx_it.o
  .comment       0x0000006e       0x6f build/stm32f4xx_hal_msp.o
  .comment       0x0000006e       0x6f build/stm32f4xx_hal_rcc.o
@@ -2654,22 +2819,41 @@ OUTPUT(build/401CCU-Demo.elf elf32-littlearm)
  .comment       0x0000006e       0x6f build/stm32f4xx_hal_cortex.o
  .comment       0x0000006e       0x6f build/stm32f4xx_hal.o
  .comment       0x0000006e       0x6f build/system_stm32f4xx.o
+ .comment       0x0000006e       0x6f build/u8g_font.o
+ .comment       0x0000006e       0x6f build/u8g_ll_api.o
+ .comment       0x0000006e       0x6f build/u8g_page.o
+ .comment       0x0000006e       0x6f build/u8g_pb.o
+ .comment       0x0000006e       0x6f build/u8g_pb16v1.o
+ .comment       0x0000006e       0x6f build/u8g_state.o
+ .comment       0x0000006e       0x6f build/u8g_com_api.o
+ .comment       0x0000006e       0x6f build/u8g_com_stm32_hw_i2c_hal.o
+ .comment       0x0000006e       0x6f build/u8g_dev_ssd1306_128x64.o
  .comment       0x0000006e       0x6f build/stm32f4xx_hal_i2c.o
 
-.debug_frame    0x00000000     0x127c
+.debug_frame    0x00000000     0x2560
  .debug_frame   0x00000000       0x9c build/main.o
- .debug_frame   0x0000009c       0xac build/stm32f4xx_it.o
- .debug_frame   0x00000148       0x6c build/stm32f4xx_hal_msp.o
- .debug_frame   0x000001b4      0x19c build/stm32f4xx_hal_rcc.o
- .debug_frame   0x00000350       0xd4 build/stm32f4xx_hal_gpio.o
- .debug_frame   0x00000424      0x164 build/stm32f4xx_hal_cortex.o
- .debug_frame   0x00000588      0x200 build/stm32f4xx_hal.o
- .debug_frame   0x00000788       0x30 build/system_stm32f4xx.o
- .debug_frame   0x000007b8      0xa18 build/stm32f4xx_hal_i2c.o
- .debug_frame   0x000011d0       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-init.o)
- .debug_frame   0x000011fc       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-memset.o)
- .debug_frame   0x0000121c       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x00001248       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x0000009c       0x2c build/mysetp.o
+ .debug_frame   0x000000c8       0xac build/stm32f4xx_it.o
+ .debug_frame   0x00000174       0x6c build/stm32f4xx_hal_msp.o
+ .debug_frame   0x000001e0      0x19c build/stm32f4xx_hal_rcc.o
+ .debug_frame   0x0000037c       0xd4 build/stm32f4xx_hal_gpio.o
+ .debug_frame   0x00000450      0x164 build/stm32f4xx_hal_cortex.o
+ .debug_frame   0x000005b4      0x200 build/stm32f4xx_hal.o
+ .debug_frame   0x000007b4       0x30 build/system_stm32f4xx.o
+ .debug_frame   0x000007e4      0xa00 build/u8g_font.o
+ .debug_frame   0x000011e4      0x3fc build/u8g_ll_api.o
+ .debug_frame   0x000015e0       0x58 build/u8g_page.o
+ .debug_frame   0x00001638       0xb4 build/u8g_pb.o
+ .debug_frame   0x000016ec       0xe4 build/u8g_pb16v1.o
+ .debug_frame   0x000017d0       0x4c build/u8g_state.o
+ .debug_frame   0x0000181c      0x134 build/u8g_com_api.o
+ .debug_frame   0x00001950       0x6c build/u8g_com_stm32_hw_i2c_hal.o
+ .debug_frame   0x000019bc       0xe0 build/u8g_dev_ssd1306_128x64.o
+ .debug_frame   0x00001a9c      0xa18 build/stm32f4xx_hal_i2c.o
+ .debug_frame   0x000024b4       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-init.o)
+ .debug_frame   0x000024e0       0x20 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc_nano.a(lib_a-memset.o)
+ .debug_frame   0x00002500       0x2c c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x0000252c       0x34 c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu\libgcc.a(_udivmoddi4.o)
 
 Cross Reference Table
 
@@ -2742,7 +2926,6 @@ HAL_DMA_UnRegisterCallback                        build/stm32f4xx_hal_dma.o
 HAL_DeInit                                        build/stm32f4xx_hal.o
 HAL_Delay                                         build/stm32f4xx_hal.o
                                                   build/u8g_com_stm32_hw_i2c_hal.o
-                                                  build/main.o
 HAL_DisableCompensationCell                       build/stm32f4xx_hal.o
 HAL_EXTI_ClearConfigLine                          build/stm32f4xx_hal_exti.o
 HAL_EXTI_ClearPending                             build/stm32f4xx_hal_exti.o
@@ -3111,6 +3294,8 @@ pFlash                                            build/stm32f4xx_hal_flash.o
 pg_AddPolygonXY                                   build/u8g_polygon.o
 pg_ClearPolygonXY                                 build/u8g_polygon.o
 pg_DrawPolygon                                    build/u8g_polygon.o
+setp                                              build/mysetp.o
+                                                  build/main.o
 software_init_hook                                c:/program files (x86)/gnu tools arm embedded/5.4 2016q3/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7e-m/fpu/crt0.o
 stack_GetCurrElement                              build/chessengine.o
 stack_Init                                        build/chessengine.o
@@ -3118,6 +3303,7 @@ stack_InitCurrElement                             build/chessengine.o
 stack_Pop                                         build/chessengine.o
 stack_Push                                        build/chessengine.o
 stack_SetMove                                     build/chessengine.o
+u8g                                               build/mysetp.o
 u8g_10MicroDelay                                  build/u8g_com_stm32_hw_i2c_hal.o
 u8g_AddPolygonXY                                  build/u8g_polygon.o
 u8g_AddToVirtualScreen                            build/u8g_virtual_screen.o
@@ -3220,7 +3406,9 @@ u8g_GetWidthLL                                    build/u8g_ll_api.o
                                                   build/u8g_rot.o
 u8g_Init                                          build/u8g_ll_api.o
 u8g_InitCom                                       build/u8g_com_api.o
+                                                  build/u8g_dev_ssd1306_128x64.o
 u8g_InitComFn                                     build/u8g_ll_api.o
+                                                  build/mysetp.o
 u8g_InitLL                                        build/u8g_ll_api.o
 u8g_IsBBXIntersection                             build/u8g_clip.o
                                                   build/u8g_bitmap.o
@@ -3233,7 +3421,9 @@ u8g_MicroDelay                                    build/u8g_com_stm32_hw_i2c_hal
 u8g_NextPage                                      build/u8g_ll_api.o
 u8g_NextPageLL                                    build/u8g_ll_api.o
 u8g_SetAddress                                    build/u8g_com_api.o
+                                                  build/u8g_dev_ssd1306_128x64.o
 u8g_SetChipSelect                                 build/u8g_com_api.o
+                                                  build/u8g_dev_ssd1306_128x64.o
 u8g_SetColorEntry                                 build/u8g_ll_api.o
 u8g_SetColorIndex                                 build/u8g_ll_api.o
                                                   build/u8g_cursor.o
@@ -3281,10 +3471,13 @@ u8g_UpdateDimension                               build/u8g_ll_api.o
                                                   build/u8g_rot.o
 u8g_UpdateRefHeight                               build/u8g_font.o
 u8g_WriteByte                                     build/u8g_com_api.o
+                                                  build/u8g_dev_ssd1306_128x64.o
 u8g_WriteByte4LTo16GrDevice                       build/u8g_com_api_16gr.o
 u8g_WriteByteBWTo16GrDevice                       build/u8g_com_api_16gr.o
 u8g_WriteEscSeqP                                  build/u8g_com_api.o
+                                                  build/u8g_dev_ssd1306_128x64.o
 u8g_WriteSequence                                 build/u8g_com_api.o
+                                                  build/u8g_dev_ssd1306_128x64.o
                                                   build/u8g_pb.o
 u8g_WriteSequence4LTo16GrDevice                   build/u8g_com_api_16gr.o
 u8g_WriteSequenceBWTo16GrDevice                   build/u8g_com_api_16gr.o
@@ -3295,10 +3488,13 @@ u8g_call_dev_fn                                   build/u8g_ll_api.o
                                                   build/u8g_scale.o
                                                   build/u8g_rot.o
 u8g_com_hw_i2c_fn                                 build/u8g_com_stm32_hw_i2c_hal.o
+                                                  build/mysetp.o
+u8g_com_null_fn                                   build/u8g_dev_ssd1306_128x64.o
 u8g_dev_pb14v1_base_fn                            build/u8g_pb14v1.o
 u8g_dev_pb16h1_base_fn                            build/u8g_pb16h1.o
 u8g_dev_pb16h2_base_fn                            build/u8g_pb16h2.o
 u8g_dev_pb16v1_base_fn                            build/u8g_pb16v1.o
+                                                  build/u8g_dev_ssd1306_128x64.o
 u8g_dev_pb16v2_base_fn                            build/u8g_pb16v2.o
 u8g_dev_pb32h1_base_fn                            build/u8g_pb32h1.o
 u8g_dev_pb8h1_base_fn                             build/u8g_pb8h1.o
@@ -3306,6 +3502,7 @@ u8g_dev_pb8h1f_base_fn                            build/u8g_pb8h1f.o
 u8g_dev_pb8h2_base_fn                             build/u8g_pb8h2.o
 u8g_dev_pb8h8_base_fn                             build/u8g_pb8h8.o
 u8g_dev_pb8v1_base_fn                             build/u8g_pb8v1.o
+                                                  build/u8g_dev_ssd1306_128x64.o
 u8g_dev_pb8v2_base_fn                             build/u8g_pb8v2.o
 u8g_dev_pbxh16_base_fn                            build/u8g_pbxh16.o
 u8g_dev_pbxh24_base_fn                            build/u8g_pbxh24.o
@@ -3316,6 +3513,49 @@ u8g_dev_rot90_fn                                  build/u8g_rot.o
 u8g_dev_rot_dummy_fn                              build/u8g_rot.o
 u8g_dev_scale                                     build/u8g_scale.o
 u8g_dev_scale_2x2_fn                              build/u8g_scale.o
+u8g_dev_sh1106_128x64_2x_buf                      build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_2x_fn                       build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_2x_hw_spi                   build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_2x_i2c                      build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_2x_pb                       build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_2x_sw_spi                   build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_fn                          build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_hw_spi                      build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_hw_spi_buf                  build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_hw_spi_pb                   build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_i2c                         build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_i2c_buf                     build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_i2c_pb                      build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_sw_spi                      build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_sw_spi_buf                  build/u8g_dev_ssd1306_128x64.o
+u8g_dev_sh1106_128x64_sw_spi_pb                   build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_2x_buf                     build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_2x_fn                      build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_2x_hw_spi                  build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_2x_i2c                     build/u8g_dev_ssd1306_128x64.o
+                                                  build/mysetp.o
+u8g_dev_ssd1306_128x64_2x_pb                      build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_2x_sw_spi                  build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_fn                         build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_hw_spi                     build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_hw_spi_buf                 build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_hw_spi_pb                  build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_i2c                        build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_i2c_buf                    build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_i2c_pb                     build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_sw_spi                     build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_sw_spi_buf                 build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_128x64_sw_spi_pb                  build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_adafruit_128x64_fn                build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_adafruit_128x64_hw_spi            build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_adafruit_128x64_hw_spi_buf        build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_adafruit_128x64_hw_spi_pb         build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_adafruit_128x64_i2c               build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_adafruit_128x64_i2c_buf           build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_adafruit_128x64_i2c_pb            build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_adafruit_128x64_sw_spi            build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_adafruit_128x64_sw_spi_buf        build/u8g_dev_ssd1306_128x64.o
+u8g_dev_ssd1306_adafruit_128x64_sw_spi_pb         build/u8g_dev_ssd1306_128x64.o
 u8g_dev_vs                                        build/u8g_virtual_screen.o
 u8g_dev_vs_fn                                     build/u8g_virtual_screen.o
 u8g_draw_aa_glyph                                 build/u8g_font.o
@@ -3488,6 +3728,7 @@ u8g_pb_IsIntersection                             build/u8g_pb.o
 u8g_pb_IsXIntersection                            build/u8g_pb.o
 u8g_pb_IsYIntersection                            build/u8g_pb.o
 u8g_pb_WriteBuffer                                build/u8g_pb.o
+                                                  build/u8g_dev_ssd1306_128x64.o
 u8g_pbxh16_Clear                                  build/u8g_pbxh16.o
 u8g_pbxh16_Init                                   build/u8g_pbxh16.o
 u8g_pbxh16_Set8Pixel                              build/u8g_pbxh16.o

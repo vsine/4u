@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
   28:u8glib/chessengine.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
   29:u8glib/chessengine.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
   30:u8glib/chessengine.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 2
 
 
   31:u8glib/chessengine.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
   85:u8glib/chessengine.c ****         - end condition: if KING is under attack and if KING can not move to a field which is under
   86:u8glib/chessengine.c **** 	      then the game is lost. What will be returned by the Eval procedure? is it -INF?
   87:u8glib/chessengine.c **** 	    --> finished
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 3
 
 
   88:u8glib/chessengine.c **** 	    
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  142:u8glib/chessengine.c **** /* chess half move stack: twice the number of undo's, a user can do */ 
  143:u8glib/chessengine.c **** #define CHM_USER_SIZE 6
  144:u8glib/chessengine.c **** 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 4
 
 
  145:u8glib/chessengine.c **** /* the CHM_LIST_SIZE must be larger than the maximum search depth */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  199:u8glib/chessengine.c **** 
  200:u8glib/chessengine.c **** typedef struct _chm_struct chm_t;
  201:u8glib/chessengine.c **** typedef struct _chm_struct *chm_p;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 5
 
 
  202:u8glib/chessengine.c **** 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  256:u8glib/chessengine.c ****   uint8_t check_src_pos;
  257:u8glib/chessengine.c ****   uint8_t check_mode;		/* CHECK_MODE_NONE, CHECK_MODE_MOVEABLE, CHECK_MODE_TARGET_MOVE */
  258:u8glib/chessengine.c ****   
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 6
 
 
  259:u8glib/chessengine.c ****   
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  313:u8glib/chessengine.c **** uint8_t cu_NextPos(uint8_t pos) U8G_NOINLINE;
  314:u8glib/chessengine.c **** static uint8_t cu_gpos2bpos(uint8_t gpos);
  315:u8glib/chessengine.c **** static uint8_t cp_Construct(uint8_t color, uint8_t piece);
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 7
 
 
  316:u8glib/chessengine.c **** static uint8_t cp_GetPiece(uint8_t cp);
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  370:u8glib/chessengine.c **** {
  371:u8glib/chessengine.c ****   stack_element_p e = stack_GetCurrElement();
  372:u8glib/chessengine.c ****   e->best_eval = EVAL_T_MIN;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 8
 
 
  373:u8glib/chessengine.c ****   e->best_from_pos = ILLEGAL_POSITION;
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  427:u8glib/chessengine.c **** 
  428:u8glib/chessengine.c **** uint8_t cu_PrevPos(uint8_t pos)
  429:u8glib/chessengine.c **** {
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 9
 
 
  430:u8glib/chessengine.c ****   /* calculate prev gpos */
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
   49 000e 00BF     		.section	.text.cp_Construct,"ax",%progbits
   50              		.align	2
   51              		.thumb
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 10
 
 
   52              		.thumb_func
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
   82              		.cfi_startproc
   83              		@ args = 0, pretend = 0, frame = 0
   84              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 11
 
 
   85              		@ link register save eliminated.
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  514:u8glib/chessengine.c ****   return lrc_obj.board[cu_gpos2bpos(pos)];
  515:u8glib/chessengine.c **** }
  516:u8glib/chessengine.c **** 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 12
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 12
 
 
  517:u8glib/chessengine.c **** /*
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  571:u8glib/chessengine.c ****   uint8_t i;
  572:u8glib/chessengine.c ****   register uint8_t bp, wp;
  573:u8glib/chessengine.c ****   
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 13
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 13
 
 
  574:u8glib/chessengine.c ****   /* clear the board */
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  628:u8glib/chessengine.c ****   board_cp = cp_GetFromBoard(pos);
  629:u8glib/chessengine.c ****   /* check if hit our own pieces */
  630:u8glib/chessengine.c ****   if ( board_cp != 0 ) 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 14
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 14
 
 
  631:u8glib/chessengine.c ****     if ( cp_GetColor(board_cp) == my_color )
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  685:u8glib/chessengine.c **** 	if ( cp_GetPiece(cp) == PIECE_KING  )
  686:u8glib/chessengine.c **** 	  is_my_king_present = 1;
  687:u8glib/chessengine.c **** 	material_my_color += ce_piece_weight[cp_GetPiece(cp)];
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 15
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 15
 
 
  688:u8glib/chessengine.c **** 	if ( cp_GetPiece(cp) == PIECE_PAWN || cp_GetPiece(cp) == PIECE_KNIGHT  )
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  742:u8glib/chessengine.c ****     for(;;)
  743:u8glib/chessengine.c ****     {
  744:u8glib/chessengine.c ****       if ( i+2 >= lrc_obj.chm_pos )
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 16
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 16
 
 
  745:u8glib/chessengine.c **** 	break;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  799:u8glib/chessengine.c ****   chm->castling_possible = lrc_obj.castling_possible;
  800:u8glib/chessengine.c ****   return chm;
  801:u8glib/chessengine.c **** }
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 17
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 17
 
 
  802:u8glib/chessengine.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  155              		@ link register save eliminated.
  346:u8glib/chessengine.c **** 
  156              		.loc 1 346 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 18
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 18
 
 
  157 0000 014B     		ldr	r3, .L7
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  206              	.LVL17:
  207 002c 8470     		strb	r4, [r0, #2]
  359:u8glib/chessengine.c **** }
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 19
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 19
 
 
  208              		.loc 1 359 0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  261              		.global	stack_InitCurrElement
  262              		.thumb
  263              		.thumb_func
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 20
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 20
 
 
  265              	stack_InitCurrElement:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  313              		.loc 1 381 0
  314 000a 04F15802 		add	r2, r4, #88
  315 000e 6265     		str	r2, [r4, #84]
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 21
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 21
 
 
  382:u8glib/chessengine.c ****   lrc_obj.check_mode = CHECK_MODE_NONE;
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  365 0006 FFF7FEFF 		bl	stack_GetCurrElement
  366              	.LVL26:
  394:u8glib/chessengine.c ****   {
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 22
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 22
 
 
  367              		.loc 1 394 0
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  414 0018 00D0     		beq	.L30
  424:u8glib/chessengine.c ****   return pos;
  415              		.loc 1 424 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 23
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 23
 
 
  416 001a 0020     		movs	r0, #0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  463              		.cfi_endproc
  464              	.LFE7:
  466 001e 00BF     		.section	.text.cp_GetFromBoard,"ax",%progbits
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 24
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 24
 
 
  467              		.align	2
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  519 0004 FFF7FEFF 		bl	cu_gpos2bpos
  520              	.LVL41:
  521 0008 014B     		ldr	r3, .L41
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 25
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 25
 
 
  522 000a 1844     		add	r0, r0, r3
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  571              		.loc 1 626 0
  572 001c 0125     		movs	r5, #1
  573              	.LVL46:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 26
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 26
 
 
  574              	.L44:
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  621              		.loc 1 664 0
  622 0012 0194     		str	r4, [sp, #4]
  623              	.LVL48:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 27
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 27
 
 
  624              	.L54:
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  669 0050 04F00703 		and	r3, r4, #7
  670 0054 1E4A     		ldr	r2, .L61+4
  671 0056 D15C     		ldrb	r1, [r2, r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 28
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 28
 
 
  672 0058 C4F30213 		ubfx	r3, r4, #4, #3
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  718 009e 0446     		mov	r4, r0
  719 00a0 0028     		cmp	r0, #0
  720 00a2 B7D1     		bne	.L54
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 29
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 29
 
 
  710:u8glib/chessengine.c ****     return EVAL_T_MIN;	/*_LOST*/
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  767              		.cfi_endproc
  768              	.LFE18:
  770              		.section	.text.cu_ClearMoveHistory,"ax",%progbits
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 30
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 30
 
 
  771              		.align	2
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  535:u8glib/chessengine.c ****     lrc_obj.board[i] = PIECE_NONE;
  823              		.loc 1 535 0 discriminator 3
  824 000e 0133     		adds	r3, r3, #1
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 31
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 31
 
 
  825              	.LVL78:
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  871              		.cfi_startproc
  872              		@ args = 0, pretend = 0, frame = 0
  873              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 32
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 32
 
 
  874 0000 10B5     		push	{r4, lr}
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  923              		.global	chess_SetupBoard
  924              		.thumb
  925              		.thumb_func
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 33
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 33
 
 
  927              	chess_SetupBoard:
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  973              	.LVL93:
  974 0030 DBB2     		uxtb	r3, r3
  975              	.LVL94:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 34
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 34
 
 
  976              	.L77:
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1021 0074 6572     		strb	r5, [r4, #9]
  599:u8glib/chessengine.c ****   lrc_obj.board[1+7*8] = cp_Construct(COLOR_BLACK, PIECE_KNIGHT);
  1022              		.loc 1 599 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 35
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 35
 
 
  1023 0076 0421     		movs	r1, #4
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1071              		.global	cu_ReduceHistoryByFullMove
  1072              		.thumb
  1073              		.thumb_func
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 36
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 36
 
 
  1075              	cu_ReduceHistoryByFullMove:
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1122              	.LVL110:
  1123              	.L83:
  739:u8glib/chessengine.c ****   {
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 37
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 37
 
 
  1124              		.loc 1 739 0
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1174 0018 5C18     		adds	r4, r3, r1
  1175              	.LVL111:
  764:u8glib/chessengine.c ****   lrc_obj.pawn_dbl_move[1] = chm->pawn_dbl_move[1];
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 38
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 38
 
 
  1176              		.loc 1 764 0
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1222              		.align	2
  1223              	.L95:
  1224 0058 00000000 		.word	lrc_obj
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 39
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 39
 
 
  1225              		.cfi_endproc
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1273              	.LFE22:
  1275              		.section	.text.cu_GetHalfMoveStr,"ax",%progbits
  1276              		.align	2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 40
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 40
 
 
  1277              		.global	cu_GetHalfMoveStr
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1318              	.LVL124:
  1319              	.L107:
  829:u8glib/chessengine.c ****   chm = lrc_obj.chm_list+idx;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 41
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 41
 
 
  1320              		.loc 1 829 0
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  847:u8glib/chessengine.c ****   *p = '\0';
  1363              		.loc 1 847 0
  1364 0052 0023     		movs	r3, #0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 42
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 42
 
 
  1365 0054 0370     		strb	r3, [r0]
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  881:u8glib/chessengine.c **** void cu_Move(uint8_t src, uint8_t dest)
  882:u8glib/chessengine.c **** {  
  1388              		.loc 1 882 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 43
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 43
 
 
  1389              		.cfi_startproc
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1425 001e 2770     		strb	r7, [r4]
  901:u8glib/chessengine.c ****   chm->main_src = src;
  1426              		.loc 1 901 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 44
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 44
 
 
  1427 0020 6670     		strb	r6, [r4, #1]
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1460 004c 80F84250 		strb	r5, [r0, #66]
  912:u8glib/chessengine.c ****   
  1461              		.loc 1 912 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 45
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 45
 
 
  1462 0050 4FF0000A 		mov	r10, #0
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  938:u8glib/chessengine.c ****       if (  cp_GetPiece(cp_dest) == PIECE_NONE )
  1496              		.loc 1 938 0
  1497 0082 4046     		mov	r0, r8
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 46
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 46
 
 
  1498 0084 FFF7FEFF 		bl	cp_GetPiece
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  956:u8glib/chessengine.c ****       /* if white KING has moved, disallow castling for white */
  957:u8glib/chessengine.c ****       lrc_obj.castling_possible &= 0x0c;
  1533              		.loc 1 957 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 47
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 47
 
 
  1534 00c4 4C4A     		ldr	r2, .L133
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1568 010a 5CE0     		b	.L115
  1569              	.LVL160:
  1570              	.L121:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 48
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 48
 
 
  978:u8glib/chessengine.c ****     }
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1600 013a 36B9     		cbnz	r6, .L122
 1003:u8glib/chessengine.c ****       lrc_obj.castling_possible &= ~0x01;
  1601              		.loc 1 1003 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 49
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 49
 
 
  1602 013c 2E4A     		ldr	r2, .L133
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  911:u8glib/chessengine.c ****   set_cp2 = PIECE_NONE;			/* ROOK for castling */
  1643              		.loc 1 911 0
  1644 0190 4FF0FF08 		mov	r8, #255
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 50
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 50
 
 
  910:u8glib/chessengine.c ****   set_pos2 = ILLEGAL_POSITION;	/* only used for castling */
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1018:u8glib/chessengine.c ****   cp_SetOnBoard(dest, cp_src);
  1681              		.loc 1 1018 0
  1682 01c6 3946     		mov	r1, r7
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 51
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 51
 
 
  1683 01c8 2846     		mov	r0, r5
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1032:u8glib/chessengine.c ****   this subprocedure decides for evaluation of the current board situation or further (deeper) inves
 1033:u8glib/chessengine.c ****   Argument pos is the new target position if the current piece 
 1034:u8glib/chessengine.c **** 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 52
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 52
 
 
 1035:u8glib/chessengine.c **** */
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1089:u8glib/chessengine.c ****       }
 1090:u8glib/chessengine.c ****     }
 1091:u8glib/chessengine.c ****   }
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 53
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 53
 
 
 1092:u8glib/chessengine.c ****   return 1;
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1146:u8glib/chessengine.c **** 
 1147:u8glib/chessengine.c **** void ce_LoopRook(void)
 1148:u8glib/chessengine.c **** {
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 54
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 54
 
 
 1149:u8glib/chessengine.c ****   ce_LoopDirsSingleMultiStep(ce_dir_offset_rook, 1);
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1203:u8glib/chessengine.c ****   
 1204:u8glib/chessengine.c ****   /* check if fields in the desired direction are emtpy */
 1205:u8glib/chessengine.c ****   for(;;)
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 55
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 55
 
 
 1206:u8glib/chessengine.c ****   {
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1260:u8glib/chessengine.c ****       /* check for attacked fields */
 1261:u8glib/chessengine.c ****       ce_LoopRecur(stack_GetCurrElement()->current_pos+2);
 1262:u8glib/chessengine.c ****     }
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 56
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 56
 
 
 1263:u8glib/chessengine.c ****   }
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1317:u8glib/chessengine.c ****   
 1318:u8glib/chessengine.c ****   uint8_t loop_pos;
 1319:u8glib/chessengine.c ****   uint8_t line;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 57
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 57
 
 
 1320:u8glib/chessengine.c ****   
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1374:u8glib/chessengine.c **** }
 1375:u8glib/chessengine.c **** 
 1376:u8glib/chessengine.c **** /*==============================================================*/
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 58
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 58
 
 
 1377:u8glib/chessengine.c **** /* attacked */
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1403:u8glib/chessengine.c ****     
 1404:u8glib/chessengine.c ****     /* check direction */
 1405:u8glib/chessengine.c ****     do
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 59
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 59
 
 
 1406:u8glib/chessengine.c ****     {
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1789 004e 80F84B30 		strb	r3, [r0, #75]
  1790 0052 01E0     		b	.L137
  1791              	.L138:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 60
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 60
 
 
 1425:u8glib/chessengine.c **** 	}
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1833              		.cfi_def_cfa_offset 16
  1834              		.cfi_offset 3, -16
  1835              		.cfi_offset 4, -12
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 61
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 61
 
 
  1836              		.cfi_offset 5, -8
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1879 0040 00000000 		.word	lrc_obj
  1880              		.cfi_endproc
  1881              	.LFE37:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 62
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 62
 
 
  1883              		.section	.text.ce_CalculatePositionWeight,"ax",%progbits
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  1907              		.loc 1 1480 0
  1908 000a 83F84E20 		strb	r2, [r3, #78]
 1481:u8glib/chessengine.c ****   lrc_obj.find_piece_cnt[0] = 0;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 63
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 63
 
 
  1909              		.loc 1 1481 0
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1493:u8glib/chessengine.c ****   ce_FindPawnPiece(pos+17, COLOR_BLACK);
  1952              		.loc 1 1493 0
  1953 005a 04F11100 		add	r0, r4, #17
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 64
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 64
 
 
  1954 005e 0121     		movs	r1, #1
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1507:u8glib/chessengine.c **** uint8_t ce_GetPositionAttackWeight(uint8_t pos, uint8_t color)
 1508:u8glib/chessengine.c **** {
  1997              		.loc 1 1508 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 65
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 65
 
 
  1998              		.cfi_startproc
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2049 0004 174B     		ldr	r3, .L165
  2050 0006 93F84430 		ldrb	r3, [r3, #68]	@ zero_extendqisi2
  2051 000a 13EA0005 		ands	r5, r3, r0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 66
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 66
 
 
  2052 000e 25D0     		beq	.L160
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2098 0050 EDD1     		bne	.L161
 1221:u8glib/chessengine.c **** }
  2099              		.loc 1 1221 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 67
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 67
 
 
  2100 0052 0125     		movs	r5, #1
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1517:u8glib/chessengine.c **** }
  2148              		.loc 1 1517 0
  2149 000c 94F84B00 		ldrb	r0, [r4, #75]	@ zero_extendqisi2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 68
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 68
 
 
  2150 0010 10BD     		pop	{r4, pc}
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2192 0014 6070     		strb	r0, [r4, #1]
 1532:u8glib/chessengine.c ****     /* check if the position on the board is empty */
 1533:u8glib/chessengine.c ****     if ( e->current_cp != 0 )
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 69
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 69
 
 
  2193              		.loc 1 1533 0
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1551:u8glib/chessengine.c **** 	  case PIECE_BISHOP:
 1552:u8glib/chessengine.c **** 	    ce_LoopBishop();
  2230              		.loc 1 1552 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 70
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 70
 
 
  2231 0044 FFF7FEFF 		bl	ce_LoopBishop
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2271              	ce_LoopRecur:
  2272              	.LFB26:
 1037:u8glib/chessengine.c ****   eval_t eval;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 71
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 71
 
 
  2273              		.loc 1 1037 0
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2321              	.LVL242:
 1064:u8glib/chessengine.c ****     stack_Pop();
  2322              		.loc 1 1064 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 72
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 72
 
 
  2323 003a FFF7FEFF 		bl	stack_GetCurrElement
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2368 007a 0C4B     		ldr	r3, .L192
  2369 007c 93F84930 		ldrb	r3, [r3, #73]	@ zero_extendqisi2
  2370 0080 9A42     		cmp	r2, r3
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 73
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 73
 
 
  2371 0082 10D1     		bne	.L190
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2421              		.cfi_startproc
  2422              		@ args = 0, pretend = 0, frame = 0
  2423              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 74
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 74
 
 
  2424              	.LVL258:
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2470              		.loc 1 1144 0
  2471 0030 E9E7     		b	.L198
  2472              	.LVL268:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 75
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 75
 
 
  2473              	.L194:
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2527 0004 0148     		ldr	r0, .L206
  2528 0006 FFF7FEFF 		bl	ce_LoopDirsSingleMultiStep
  2529              	.LVL270:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 76
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 76
 
 
  2530 000a 08BD     		pop	{r3, pc}
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1164:u8glib/chessengine.c **** }
  2585              		.loc 1 1164 0
  2586 0002 0021     		movs	r1, #0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 77
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 77
 
 
  2587 0004 0148     		ldr	r0, .L214
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2638 0028 0121     		movs	r1, #1
  2639 002a 1046     		mov	r0, r2
  2640 002c FFF7FEFF 		bl	cu_IsKingCastling
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 78
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 78
 
 
  2641              	.LVL277:
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2689              	.LVL286:
  2690 0080 08BD     		pop	{r3, pc}
  2691              	.L223:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 79
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 79
 
 
  2692 0082 00BF     		.align	2
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2741 002a 1033     		adds	r3, r3, #16
  2742 002c A342     		cmp	r3, r4
  2743 002e 0DD1     		bne	.L224
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 80
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 80
 
 
 1297:u8glib/chessengine.c **** 	  /* note: pawn conversion/promotion can not occur */
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2796              		.cfi_offset 14, -4
 1315:u8glib/chessengine.c ****   uint8_t my_color = stack_GetCurrElement()->current_color;
  2797              		.loc 1 1315 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 81
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 81
 
 
  2798 0002 FFF7FEFF 		bl	stack_GetCurrElement
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1341:u8glib/chessengine.c ****       {
  2842              		.loc 1 1341 0 discriminator 3
  2843 003a 012E     		cmp	r6, #1
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 82
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 82
 
 
  2844 003c 10D1     		bne	.L235
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2889              	.L241:
 1365:u8glib/chessengine.c **** 
  2890              		.loc 1 1365 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 83
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 83
 
 
  2891 0070 FFF7FEFF 		bl	ce_LoopPawnSideCapture
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2925              		.cfi_startproc
  2926              		@ args = 0, pretend = 0, frame = 0
  2927              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 84
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 84
 
 
  2928              		@ link register save eliminated.
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  2972              	.LCFI38:
  2973              		.cfi_def_cfa_offset 8
  2974              		.cfi_offset 3, -8
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 85
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 85
 
 
  2975              		.cfi_offset 14, -4
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3017 0004 0020     		movs	r0, #0
  3018              	.LVL329:
  3019 0006 FFF7FEFF 		bl	stack_Init
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 86
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 86
 
 
  3020              	.LVL330:
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3062              	.LCFI40:
  3063              		.cfi_def_cfa_offset 24
  3064              		.cfi_offset 3, -24
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 87
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 87
 
 
  3065              		.cfi_offset 4, -20
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3108 0030 07D1     		bne	.L266
 1627:u8glib/chessengine.c ****   {
  3109              		.loc 1 1627 0 discriminator 2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 88
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 88
 
 
  3110 0032 0134     		adds	r4, r4, #1
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3154              		.cfi_offset 6, -12
  3155              		.cfi_offset 7, -8
  3156              		.cfi_offset 14, -4
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 89
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 89
 
 
  3157 0002 0546     		mov	r5, r0
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3190 0034 204A     		ldr	r2, .L275
  3191 0036 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
  3192 0038 03F00101 		and	r1, r3, #1
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 90
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 90
 
 
  3193 003c 1144     		add	r1, r1, r2
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1695:u8glib/chessengine.c ****     color &= 1;
  3218              		.loc 1 1695 0
  3219 0060 06F00106 		and	r6, r6, #1
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 91
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 91
 
 
  3220              	.LVL360:
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1712:u8glib/chessengine.c **** 	  {
 1713:u8glib/chessengine.c **** 	    /* KING is NOT under attack (check) but can not move: Game is a draw */
 1714:u8glib/chessengine.c **** 	    lrc_obj.is_game_end = 1;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 92
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 92
 
 
  3257              		.loc 1 1714 0
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3299 0000 08B5     		push	{r3, lr}
  3300              	.LCFI42:
  3301              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 93
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 93
 
 
  3302              		.cfi_offset 3, -8
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1755:u8glib/chessengine.c ****   "wB", 
 1756:u8glib/chessengine.c ****   
 1757:u8glib/chessengine.c ****   /* 0x04 */
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 94
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 94
 
 
 1758:u8glib/chessengine.c ****   "wR", 
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1812:u8glib/chessengine.c ****   for ( i = 0; i < 8; i++ )
 1813:u8glib/chessengine.c ****   {
 1814:u8glib/chessengine.c ****     printf("%1d ", 7-i);
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 95
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 95
 
 
 1815:u8glib/chessengine.c ****     for ( j = 0; j < 8; j++ )
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1869:u8glib/chessengine.c **** /*==============================================================*/
 1870:u8glib/chessengine.c **** 
 1871:u8glib/chessengine.c **** //#define MNU_FONT font_5x7
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 96
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 96
 
 
 1872:u8glib/chessengine.c **** #define MNU_FONT u8g_font_5x8r
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1889:u8glib/chessengine.c ****   t = u8g_DrawStrP(lrc_u8g, x, y -1, U8G_PSTR("Options"));
  3369              		.loc 1 1889 0
  3370 0022 BA1E     		subs	r2, r7, #2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 97
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 97
 
 
  3371 0024 0E4B     		ldr	r3, .L282+8
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3420              		@ args = 0, pretend = 0, frame = 0
  3421              		@ frame_needed = 0, uses_anonymous_args = 0
  3422              	.LVL387:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 98
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 98
 
 
  3423 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 1906:u8glib/chessengine.c ****     u8g_SetDefaultBackgroundColor(lrc_u8g);
  3468              		.loc 1 1906 0
  3469 0032 FFF7FEFF 		bl	u8g_SetDefaultBackgroundColor
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 99
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 99
 
 
  3470              	.LVL396:
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3515 0090 C9B2     		uxtb	r1, r1
  3516 0092 FFF7FEFF 		bl	u8g_DrawFrame
  3517              	.LVL400:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 100
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 100
 
 
  3518              	.L284:
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3562              		.loc 1 1927 0
  3563 000a 03EBC305 		add	r5, r3, r3, lsl #3
  3564 000e EDB2     		uxtb	r5, r5
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 101
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 101
 
 
  3565              	.LVL405:
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3602              	.LVL416:
  3603              	.L292:
 1945:u8glib/chessengine.c ****   {
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 102
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 102
 
 
 1946:u8glib/chessengine.c ****     y -= MNU_ENTRY_HEIGHT;
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3654              	.LFB51:
 1950:u8glib/chessengine.c **** 
 1951:u8glib/chessengine.c **** void mnu_Step(uint8_t key_cmd)
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 103
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 103
 
 
 1952:u8glib/chessengine.c **** {
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3700              		.global	chess_DrawFrame
  3701              		.thumb
  3702              		.thumb_func
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 104
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 104
 
 
  3704              	chess_DrawFrame:
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 2014:u8glib/chessengine.c **** #if defined(DOGXL160_HW_GR)
 2015:u8glib/chessengine.c **** #define BOXSIZE 13
 2016:u8glib/chessengine.c **** #define BOXOFFSET 3
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 105
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 105
 
 
 2017:u8glib/chessengine.c **** #else
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 2038:u8glib/chessengine.c ****   if ( lrc_obj.orientation != COLOR_WHITE )
  3739              		.loc 1 2038 0
  3740 001a 0BB1     		cbz	r3, .L303
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 106
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 106
 
 
 2039:u8glib/chessengine.c ****     y0 ^= 7;
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3782              	.LVL437:
  3783 005c F6B2     		uxtb	r6, r6
  3784              	.LVL438:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 107
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 107
 
 
 2052:u8glib/chessengine.c ****   
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3833              		.cfi_offset 4, -32
  3834              		.cfi_offset 5, -28
  3835              		.cfi_offset 6, -24
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 108
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 108
 
 
  3836              		.cfi_offset 7, -20
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3875              	.L311:
 2075:u8glib/chessengine.c ****         else
 2076:u8glib/chessengine.c ****           u8g_SetDefaultBackgroundColor(lrc_u8g);  
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 109
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 109
 
 
  3876              		.loc 1 2076 0
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3925 0074 F6D9     		bls	.L329
  3926 0076 80E0     		b	.L315
  3927              	.LVL455:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 110
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 110
 
 
  3928              	.L332:
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  3966 00b8 043A     		subs	r2, r2, #4
  3967 00ba D2B2     		uxtb	r2, r2
  3968 00bc 4146     		mov	r1, r8
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 111
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 111
 
 
  3969 00be 2868     		ldr	r0, [r5]
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4018              	.LVL465:
 2099:u8glib/chessengine.c ****           u8g_DrawPixel(lrc_u8g, j+6+x_offset, chess_low_edge - i-0);
  4019              		.loc 1 2099 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 112
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 112
 
 
  4020 0120 04F10708 		add	r8, r4, #7
@@ -6718,7 +6718,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4069 016e 3F2C     		cmp	r4, #63
  4070 0170 86D9     		bls	.L318
 2085:u8glib/chessengine.c ****     {
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 113
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 113
 
 
  4071              		.loc 1 2085 0 is_stmt 1 discriminator 2
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4107 01a0 9F78     		ldrb	r7, [r3, #2]	@ zero_extendqisi2
  4108              	.LVL480:
  4109              	.L322:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 114
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 114
 
 
 2120:u8glib/chessengine.c ****       }
@@ -6838,7 +6838,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4155 0200 93F84630 		ldrb	r3, [r3, #70]	@ zero_extendqisi2
  4156 0204 9842     		cmp	r0, r3
  4157 0206 1BD1     		bne	.L323
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 115
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 115
 
 
  4158              	.LVL487:
@@ -6898,7 +6898,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4204              	.LVL495:
  4205 024e F6B2     		uxtb	r6, r6
  4206              	.LVL496:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 116
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 116
 
 
  4207              	.L320:
@@ -6958,7 +6958,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4244 0288 00000000 		.word	lrc_obj
  4245 028c 00000000 		.word	.LANCHOR13
  4246 0290 00000000 		.word	.LANCHOR14
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 117
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 117
 
 
  4247 0294 00000000 		.word	.LANCHOR15
@@ -7018,7 +7018,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 2161:u8glib/chessengine.c ****   chess_low_edge--;
  4294              		.loc 1 2161 0
  4295 0008 541E     		subs	r4, r2, #1
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 118
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 118
 
 
  4296 000a 1A4B     		ldr	r3, .L343+4
@@ -7078,7 +7078,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 2186:u8glib/chessengine.c ****       chess_boxsize = 8;
  4326              		.loc 1 2186 0
  4327 0038 0822     		movs	r2, #8
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 119
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 119
 
 
  4328 003a 0F4B     		ldr	r3, .L343+8
@@ -7138,7 +7138,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4373              		.thumb
  4374              		.thumb_func
  4376              	chess_Draw:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 120
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 120
 
 
  4377              	.LFB56:
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 2213:u8glib/chessengine.c ****     chess_DrawBoard();
  4415              		.loc 1 2213 0
  4416 0022 FFF7FEFF 		bl	chess_DrawBoard
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 121
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 121
 
 
  4417              	.LVL504:
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4455 0056 FFF7FEFF 		bl	cu_GetHalfMoveStr
  4456              	.LVL510:
  4457 005a EA00     		lsls	r2, r5, #3
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 122
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 122
 
 
  4458 005c A4F12301 		sub	r1, r4, #35
@@ -7318,7 +7318,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4500 009e FFF7FEFF 		bl	mnu_DrawHome
  4501              	.LVL515:
  4502 00a2 02E0     		b	.L354
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 123
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 123
 
 
  4503              	.L355:
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4545 00e4 1A46     		mov	r2, r3
  4546 00e6 1049     		ldr	r1, .L362+32
  4547 00e8 C0B2     		uxtb	r0, r0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 124
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 124
 
 
  4548 00ea FFF7FEFF 		bl	mnu_DrawEntry
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 2263:u8glib/chessengine.c **** {
  4593              		.loc 1 2263 0
  4594              		.cfi_startproc
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 125
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 125
 
 
  4595              		@ args = 0, pretend = 0, frame = 0
@@ -7498,7 +7498,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4637              	.L368:
 2276:u8glib/chessengine.c ****   {
 2277:u8glib/chessengine.c ****     case CHESS_STATE_MENU:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 126
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 126
 
 
 2278:u8glib/chessengine.c ****       mnu_Step(chess_key_cmd);
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4678 0074 1A70     		strb	r2, [r3]
  4679 0076 10BD     		pop	{r4, pc}
  4680              	.L376:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 127
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 127
 
 
 2292:u8glib/chessengine.c **** 	}
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4719 00ae 4D4B     		ldr	r3, .L389+8
  4720 00b0 1A70     		strb	r2, [r3]
  4721 00b2 10BD     		pop	{r4, pc}
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 128
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 128
 
 
  4722              	.LVL530:
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4761 00e8 2070     		strb	r0, [r4]
  4762 00ea 10BD     		pop	{r4, pc}
  4763              	.LVL537:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 129
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 129
 
 
  4764              	.L379:
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4802 011e 0021     		movs	r1, #0
  4803 0120 FF20     		movs	r0, #255
  4804 0122 FFF7FEFF 		bl	chess_GetNextMarked
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 130
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 130
 
 
  4805              	.LVL543:
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4845              		.loc 1 2352 0
  4846 015a 042B     		cmp	r3, #4
  4847 015c 0AD1     		bne	.L384
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 131
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 131
 
 
 2353:u8glib/chessengine.c ****       {
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4889 0198 1A70     		strb	r2, [r3]
  4890              	.L386:
 2366:u8glib/chessengine.c **** 	/* clear marks as some kind of feedback to the user... it simply looks better */
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 132
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 132
 
 
 2367:u8glib/chessengine.c **** 	chess_source_pos = ILLEGAL_POSITION;
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
 2382:u8glib/chessengine.c **** 	chess_state = CHESS_STATE_MENU;  
  4930              		.loc 1 2382 0
  4931 01ce 0022     		movs	r2, #0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 133
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 133
 
 
  4932 01d0 044B     		ldr	r3, .L389+8
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  4991 0001 01       		.byte	1
  4992 0002 03       		.byte	3
  4993 0003 03       		.byte	3
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 134
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 134
 
 
  4994 0004 05       		.byte	5
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  5058              		.set	.LANCHOR17,. + 0
  5061              	chess_target_pos:
  5062 0000 FF       		.byte	-1
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 135
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 135
 
 
  5063              		.section	.rodata.chess_black_pieces_bm,"a",%progbits
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  5121              	mnu_max:
  5122 0000 04       		.byte	4
  5123              		.section	.bss.chess_state,"aw",%nobits
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 136
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 136
 
 
  5124              		.set	.LANCHOR18,. + 0
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  5158              		.set	.LANCHOR9,. + 0
  5161              	mnu_title:
  5162 0000 68000000 		.word	.LC8
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 137
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 137
 
 
  5163              		.section	.data.chess_boxsize,"aw",%progbits
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  5228 0017 00       		.byte	0
  5229 0018 00       		.byte	0
  5230 0019 00       		.byte	0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 138
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 138
 
 
  5231 001a 00       		.byte	0
@@ -8261,223 +8261,223 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 1
  5272              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  5273              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  5274              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 139
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 139
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 chessengine.c
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:22     .text.cu_gpos2bpos:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:26     .text.cu_gpos2bpos:00000000 cu_gpos2bpos
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:50     .text.cp_Construct:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:54     .text.cp_Construct:00000000 cp_Construct
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:75     .text.cp_GetPiece:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:79     .text.cp_GetPiece:00000000 cp_GetPiece
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:95     .text.cp_GetColor:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:99     .text.cp_GetColor:00000000 cp_GetColor
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:115    .text.cu_add_pos:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:119    .text.cu_add_pos:00000000 cu_add_pos
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:144    .text.stack_GetCurrElement:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:149    .text.stack_GetCurrElement:00000000 stack_GetCurrElement
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:163    .text.stack_GetCurrElement:00000008 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:22     .text.cu_gpos2bpos:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:26     .text.cu_gpos2bpos:00000000 cu_gpos2bpos
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:50     .text.cp_Construct:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:54     .text.cp_Construct:00000000 cp_Construct
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:75     .text.cp_GetPiece:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:79     .text.cp_GetPiece:00000000 cp_GetPiece
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:95     .text.cp_GetColor:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:99     .text.cp_GetColor:00000000 cp_GetColor
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:115    .text.cu_add_pos:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:119    .text.cu_add_pos:00000000 cu_add_pos
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:144    .text.stack_GetCurrElement:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:149    .text.stack_GetCurrElement:00000000 stack_GetCurrElement
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:163    .text.stack_GetCurrElement:00000008 $d
                             *COM*:000000f8 lrc_obj
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:168    .text.stack_Push:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:173    .text.stack_Push:00000000 stack_Push
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:224    .text.stack_Push:00000038 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:229    .text.stack_Pop:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:234    .text.stack_Pop:00000000 stack_Pop
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:255    .text.stack_Pop:0000001c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:260    .text.stack_InitCurrElement:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:265    .text.stack_InitCurrElement:00000000 stack_InitCurrElement
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:292    .text.stack_Init:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:297    .text.stack_Init:00000000 stack_Init
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:338    .text.stack_Init:00000034 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:343    .text.stack_SetMove:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:348    .text.stack_SetMove:00000000 stack_SetMove
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:384    .text.cu_NextPos:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:389    .text.cu_NextPos:00000000 cu_NextPos
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:425    .text.cu_PrevPos:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:430    .text.cu_PrevPos:00000000 cu_PrevPos
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:467    .text.cp_GetFromBoard:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:472    .text.cp_GetFromBoard:00000000 cp_GetFromBoard
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:495    .text.cp_GetFromBoard:00000010 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:500    .text.cp_SetOnBoard:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:505    .text.cp_SetOnBoard:00000000 cp_SetOnBoard
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:528    .text.cp_SetOnBoard:00000010 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:533    .text.cu_IsIllegalPosition:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:538    .text.cu_IsIllegalPosition:00000000 cu_IsIllegalPosition
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:582    .text.ce_Eval:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:587    .text.ce_Eval:00000000 ce_Eval
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:764    .text.ce_Eval:000000cc $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:771    .text.cu_ClearMoveHistory:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:776    .text.cu_ClearMoveHistory:00000000 cu_ClearMoveHistory
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:791    .text.cu_ClearMoveHistory:00000008 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:796    .text.cu_ClearBoard:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:801    .text.cu_ClearBoard:00000000 cu_ClearBoard
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:858    .text.cu_ClearBoard:00000040 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:863    .text.chess_SetupBoardTest01:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:868    .text.chess_SetupBoardTest01:00000000 chess_SetupBoardTest01
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:917    .text.chess_SetupBoardTest01:00000044 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:922    .text.chess_SetupBoard:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:927    .text.chess_SetupBoard:00000000 chess_SetupBoard
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1065   .text.chess_SetupBoard:000000c8 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1070   .text.cu_ReduceHistoryByFullMove:00000000 $t
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 140
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:168    .text.stack_Push:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:173    .text.stack_Push:00000000 stack_Push
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:224    .text.stack_Push:00000038 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:229    .text.stack_Pop:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:234    .text.stack_Pop:00000000 stack_Pop
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:255    .text.stack_Pop:0000001c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:260    .text.stack_InitCurrElement:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:265    .text.stack_InitCurrElement:00000000 stack_InitCurrElement
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:292    .text.stack_Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:297    .text.stack_Init:00000000 stack_Init
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:338    .text.stack_Init:00000034 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:343    .text.stack_SetMove:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:348    .text.stack_SetMove:00000000 stack_SetMove
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:384    .text.cu_NextPos:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:389    .text.cu_NextPos:00000000 cu_NextPos
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:425    .text.cu_PrevPos:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:430    .text.cu_PrevPos:00000000 cu_PrevPos
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:467    .text.cp_GetFromBoard:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:472    .text.cp_GetFromBoard:00000000 cp_GetFromBoard
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:495    .text.cp_GetFromBoard:00000010 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:500    .text.cp_SetOnBoard:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:505    .text.cp_SetOnBoard:00000000 cp_SetOnBoard
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:528    .text.cp_SetOnBoard:00000010 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:533    .text.cu_IsIllegalPosition:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:538    .text.cu_IsIllegalPosition:00000000 cu_IsIllegalPosition
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:582    .text.ce_Eval:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:587    .text.ce_Eval:00000000 ce_Eval
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:764    .text.ce_Eval:000000cc $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:771    .text.cu_ClearMoveHistory:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:776    .text.cu_ClearMoveHistory:00000000 cu_ClearMoveHistory
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:791    .text.cu_ClearMoveHistory:00000008 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:796    .text.cu_ClearBoard:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:801    .text.cu_ClearBoard:00000000 cu_ClearBoard
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:858    .text.cu_ClearBoard:00000040 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:863    .text.chess_SetupBoardTest01:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:868    .text.chess_SetupBoardTest01:00000000 chess_SetupBoardTest01
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:917    .text.chess_SetupBoardTest01:00000044 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:922    .text.chess_SetupBoard:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:927    .text.chess_SetupBoard:00000000 chess_SetupBoard
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1065   .text.chess_SetupBoard:000000c8 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1070   .text.cu_ReduceHistoryByFullMove:00000000 $t
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 140
 
 
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1075   .text.cu_ReduceHistoryByFullMove:00000000 cu_ReduceHistoryByFullMove
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1140   .text.cu_ReduceHistoryByFullMove:00000048 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1145   .text.cu_UndoHalfMove:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1150   .text.cu_UndoHalfMove:00000000 cu_UndoHalfMove
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1224   .text.cu_UndoHalfMove:00000058 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1229   .text.cu_PushHalfMove:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1234   .text.cu_PushHalfMove:00000000 cu_PushHalfMove
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1271   .text.cu_PushHalfMove:0000002c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1276   .text.cu_GetHalfMoveStr:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1281   .text.cu_GetHalfMoveStr:00000000 cu_GetHalfMoveStr
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1374   .text.cu_GetHalfMoveStr:0000005c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1381   .text.cu_Move:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1386   .text.cu_Move:00000000 cu_Move
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1714   .text.cu_Move:000001f8 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1719   .text.ce_FindPieceByStep:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1724   .text.ce_FindPieceByStep:00000000 ce_FindPieceByStep
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1809   .text.ce_FindPieceByStep:00000060 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1815   .text.ce_FindPawnPiece:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1820   .text.ce_FindPawnPiece:00000000 ce_FindPawnPiece
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1879   .text.ce_FindPawnPiece:00000040 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1884   .text.ce_CalculatePositionWeight:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1889   .text.ce_CalculatePositionWeight:00000000 ce_CalculatePositionWeight
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1981   .text.ce_CalculatePositionWeight:0000008c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1990   .text.ce_GetPositionAttackWeight:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:1995   .text.ce_GetPositionAttackWeight:00000000 ce_GetPositionAttackWeight
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2020   .text.ce_GetPositionAttackWeight:00000014 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2025   .text.cu_IsKingCastling:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2030   .text.cu_IsKingCastling:00000000 cu_IsKingCastling
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2119   .text.cu_IsKingCastling:00000064 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2124   .text.ce_GetPositionAttackCount:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2129   .text.ce_GetPositionAttackCount:00000000 ce_GetPositionAttackCount
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2154   .text.ce_GetPositionAttackCount:00000014 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2159   .text.ce_LoopPieces:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2164   .text.ce_LoopPieces:00000000 ce_LoopPieces
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2210   .text.ce_LoopPieces:00000032 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2216   .text.ce_LoopPieces:00000038 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2782   .text.ce_LoopPawn:00000000 ce_LoopPawn
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2574   .text.ce_LoopKnight:00000000 ce_LoopKnight
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2514   .text.ce_LoopBishop:00000000 ce_LoopBishop
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2484   .text.ce_LoopRook:00000000 ce_LoopRook
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2544   .text.ce_LoopQueen:00000000 ce_LoopQueen
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2604   .text.ce_LoopKing:00000000 ce_LoopKing
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2266   .text.ce_LoopRecur:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2271   .text.ce_LoopRecur:00000000 ce_LoopRecur
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2408   .text.ce_LoopRecur:000000ac $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2413   .text.ce_LoopDirsSingleMultiStep:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2418   .text.ce_LoopDirsSingleMultiStep:00000000 ce_LoopDirsSingleMultiStep
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2479   .text.ce_LoopRook:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2504   .text.ce_LoopRook:0000000c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2509   .text.ce_LoopBishop:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2534   .text.ce_LoopBishop:0000000c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2539   .text.ce_LoopQueen:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2564   .text.ce_LoopQueen:0000000c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2569   .text.ce_LoopKnight:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2594   .text.ce_LoopKnight:0000000c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2599   .text.ce_LoopKing:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2694   .text.ce_LoopKing:00000084 $d
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 141
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1075   .text.cu_ReduceHistoryByFullMove:00000000 cu_ReduceHistoryByFullMove
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1140   .text.cu_ReduceHistoryByFullMove:00000048 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1145   .text.cu_UndoHalfMove:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1150   .text.cu_UndoHalfMove:00000000 cu_UndoHalfMove
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1224   .text.cu_UndoHalfMove:00000058 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1229   .text.cu_PushHalfMove:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1234   .text.cu_PushHalfMove:00000000 cu_PushHalfMove
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1271   .text.cu_PushHalfMove:0000002c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1276   .text.cu_GetHalfMoveStr:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1281   .text.cu_GetHalfMoveStr:00000000 cu_GetHalfMoveStr
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1374   .text.cu_GetHalfMoveStr:0000005c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1381   .text.cu_Move:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1386   .text.cu_Move:00000000 cu_Move
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1714   .text.cu_Move:000001f8 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1719   .text.ce_FindPieceByStep:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1724   .text.ce_FindPieceByStep:00000000 ce_FindPieceByStep
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1809   .text.ce_FindPieceByStep:00000060 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1815   .text.ce_FindPawnPiece:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1820   .text.ce_FindPawnPiece:00000000 ce_FindPawnPiece
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1879   .text.ce_FindPawnPiece:00000040 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1884   .text.ce_CalculatePositionWeight:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1889   .text.ce_CalculatePositionWeight:00000000 ce_CalculatePositionWeight
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1981   .text.ce_CalculatePositionWeight:0000008c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1990   .text.ce_GetPositionAttackWeight:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:1995   .text.ce_GetPositionAttackWeight:00000000 ce_GetPositionAttackWeight
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2020   .text.ce_GetPositionAttackWeight:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2025   .text.cu_IsKingCastling:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2030   .text.cu_IsKingCastling:00000000 cu_IsKingCastling
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2119   .text.cu_IsKingCastling:00000064 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2124   .text.ce_GetPositionAttackCount:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2129   .text.ce_GetPositionAttackCount:00000000 ce_GetPositionAttackCount
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2154   .text.ce_GetPositionAttackCount:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2159   .text.ce_LoopPieces:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2164   .text.ce_LoopPieces:00000000 ce_LoopPieces
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2210   .text.ce_LoopPieces:00000032 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2216   .text.ce_LoopPieces:00000038 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2782   .text.ce_LoopPawn:00000000 ce_LoopPawn
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2574   .text.ce_LoopKnight:00000000 ce_LoopKnight
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2514   .text.ce_LoopBishop:00000000 ce_LoopBishop
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2484   .text.ce_LoopRook:00000000 ce_LoopRook
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2544   .text.ce_LoopQueen:00000000 ce_LoopQueen
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2604   .text.ce_LoopKing:00000000 ce_LoopKing
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2266   .text.ce_LoopRecur:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2271   .text.ce_LoopRecur:00000000 ce_LoopRecur
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2408   .text.ce_LoopRecur:000000ac $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2413   .text.ce_LoopDirsSingleMultiStep:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2418   .text.ce_LoopDirsSingleMultiStep:00000000 ce_LoopDirsSingleMultiStep
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2479   .text.ce_LoopRook:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2504   .text.ce_LoopRook:0000000c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2509   .text.ce_LoopBishop:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2534   .text.ce_LoopBishop:0000000c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2539   .text.ce_LoopQueen:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2564   .text.ce_LoopQueen:0000000c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2569   .text.ce_LoopKnight:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2594   .text.ce_LoopKnight:0000000c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2599   .text.ce_LoopKing:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2694   .text.ce_LoopKing:00000084 $d
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 141
 
 
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2699   .text.ce_LoopPawnSideCapture:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2704   .text.ce_LoopPawnSideCapture:00000000 ce_LoopPawnSideCapture
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2772   .text.ce_LoopPawnSideCapture:00000050 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2777   .text.ce_LoopPawn:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2917   .text.chess_ClearMarks:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2922   .text.chess_ClearMarks:00000000 chess_ClearMarks
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2955   .text.chess_ClearMarks:0000001c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2960   .text.chess_MarkMovable:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2965   .text.chess_MarkMovable:00000000 chess_MarkMovable
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2991   .text.chess_MarkMovable:00000018 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:2996   .text.chess_MarkTargetMoves:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3001   .text.chess_MarkTargetMoves:00000000 chess_MarkTargetMoves
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3044   .text.chess_MarkTargetMoves:00000030 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3049   .text.chess_GetNextMarked:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3054   .text.chess_GetNextMarked:00000000 chess_GetNextMarked
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3136   .text.chess_ManualMove:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3141   .text.chess_ManualMove:00000000 chess_ManualMove
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3281   .text.chess_ManualMove:000000b8 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3287   .text.chess_ComputerMove:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3292   .text.chess_ComputerMove:00000000 chess_ComputerMove
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3325   .text.mnu_DrawHome:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3330   .text.mnu_DrawHome:00000000 mnu_DrawHome
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3404   .text.mnu_DrawHome:00000058 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2699   .text.ce_LoopPawnSideCapture:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2704   .text.ce_LoopPawnSideCapture:00000000 ce_LoopPawnSideCapture
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2772   .text.ce_LoopPawnSideCapture:00000050 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2777   .text.ce_LoopPawn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2917   .text.chess_ClearMarks:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2922   .text.chess_ClearMarks:00000000 chess_ClearMarks
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2955   .text.chess_ClearMarks:0000001c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2960   .text.chess_MarkMovable:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2965   .text.chess_MarkMovable:00000000 chess_MarkMovable
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2991   .text.chess_MarkMovable:00000018 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:2996   .text.chess_MarkTargetMoves:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3001   .text.chess_MarkTargetMoves:00000000 chess_MarkTargetMoves
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3044   .text.chess_MarkTargetMoves:00000030 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3049   .text.chess_GetNextMarked:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3054   .text.chess_GetNextMarked:00000000 chess_GetNextMarked
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3136   .text.chess_ManualMove:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3141   .text.chess_ManualMove:00000000 chess_ManualMove
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3281   .text.chess_ManualMove:000000b8 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3287   .text.chess_ComputerMove:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3292   .text.chess_ComputerMove:00000000 chess_ComputerMove
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3325   .text.mnu_DrawHome:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3330   .text.mnu_DrawHome:00000000 mnu_DrawHome
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3404   .text.mnu_DrawHome:00000058 $d
                             *COM*:00000004 lrc_u8g
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3411   .text.mnu_DrawEntry:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3416   .text.mnu_DrawEntry:00000000 mnu_DrawEntry
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3529   .text.mnu_DrawEntry:0000009c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3535   .text.mnu_Draw:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3540   .text.mnu_Draw:00000000 mnu_Draw
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3639   .text.mnu_Draw:00000068 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3648   .text.mnu_Step:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3653   .text.mnu_Step:00000000 mnu_Step
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3693   .text.mnu_Step:0000002c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3699   .text.chess_DrawFrame:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3704   .text.chess_DrawFrame:00000000 chess_DrawFrame
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3811   .text.chess_DrawFrame:00000084 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3411   .text.mnu_DrawEntry:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3416   .text.mnu_DrawEntry:00000000 mnu_DrawEntry
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3529   .text.mnu_DrawEntry:0000009c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3535   .text.mnu_Draw:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3540   .text.mnu_Draw:00000000 mnu_Draw
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3639   .text.mnu_Draw:00000068 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3648   .text.mnu_Step:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3653   .text.mnu_Step:00000000 mnu_Step
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3693   .text.mnu_Step:0000002c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3699   .text.chess_DrawFrame:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3704   .text.chess_DrawFrame:00000000 chess_DrawFrame
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3811   .text.chess_DrawFrame:00000084 $d
                             *COM*:00000001 chess_low_edge
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3819   .text.chess_DrawBoard:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:3824   .text.chess_DrawBoard:00000000 chess_DrawBoard
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4241   .text.chess_DrawBoard:0000027c $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4254   .text.chess_Thinking:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4259   .text.chess_Thinking:00000000 chess_Thinking
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4271   .text.chess_Init:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4276   .text.chess_Init:00000000 chess_Init
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4362   .text.chess_Init:00000070 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4371   .text.chess_Draw:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4376   .text.chess_Draw:00000000 chess_Draw
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4572   .text.chess_Draw:00000108 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4586   .text.chess_Step:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4591   .text.chess_Step:00000000 chess_Step
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4630   .text.chess_Step:0000002a $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4636   .text.chess_Step:00000036 $t
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4942   .text.chess_Step:000001dc $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5257   .data.chess_boxoffset:00000000 chess_boxoffset
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5167   .data.chess_boxsize:00000000 chess_boxsize
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5068   .rodata.chess_black_pieces_bm:00000000 chess_black_pieces_bm
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5204   .rodata.chess_pieces_body_bm:00000000 chess_pieces_body_bm
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s 			page 142
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3819   .text.chess_DrawBoard:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:3824   .text.chess_DrawBoard:00000000 chess_DrawBoard
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4241   .text.chess_DrawBoard:0000027c $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4254   .text.chess_Thinking:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4259   .text.chess_Thinking:00000000 chess_Thinking
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4271   .text.chess_Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4276   .text.chess_Init:00000000 chess_Init
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4362   .text.chess_Init:00000070 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4371   .text.chess_Draw:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4376   .text.chess_Draw:00000000 chess_Draw
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4572   .text.chess_Draw:00000108 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4586   .text.chess_Step:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4591   .text.chess_Step:00000000 chess_Step
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4630   .text.chess_Step:0000002a $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4636   .text.chess_Step:00000036 $t
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4942   .text.chess_Step:000001dc $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5257   .data.chess_boxoffset:00000000 chess_boxoffset
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5167   .data.chess_boxsize:00000000 chess_boxsize
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5068   .rodata.chess_black_pieces_bm:00000000 chess_black_pieces_bm
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5204   .rodata.chess_pieces_body_bm:00000000 chess_pieces_body_bm
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccT4SaY8.s 			page 142
 
 
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5061   .data.chess_target_pos:00000000 chess_target_pos
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5184   .data.chess_source_pos:00000000 chess_source_pos
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5127   .bss.chess_state:00000000 chess_state
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5197   .bss.chess_key_cmd:00000000 chess_key_cmd
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4975   .bss.chess_key_code:00000000 chess_key_code
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5121   .data.mnu_max:00000000 mnu_max
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5026   .bss.mnu_pos:00000000 mnu_pos
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5017   .data.mnu_list:00000000 mnu_list
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5161   .data.mnu_title:00000000 mnu_title
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4982   .data.chess_piece_to_char:00000000 chess_piece_to_char
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5033   .data.ce_pos_weight:00000000 ce_pos_weight
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4989   .data.ce_piece_weight:00000000 ce_piece_weight
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4976   .bss.chess_key_code:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4978   .data.chess_piece_to_char:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4985   .data.ce_piece_weight:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:4998   .rodata.ce_dir_offset_queen:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5002   .rodata.ce_dir_offset_queen:00000000 ce_dir_offset_queen
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5013   .data.mnu_list:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5027   .bss.mnu_pos:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5029   .data.ce_pos_weight:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5043   .rodata.ce_dir_offset_knight:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5047   .rodata.ce_dir_offset_knight:00000000 ce_dir_offset_knight
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5064   .rodata.chess_black_pieces_bm:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5128   .bss.chess_state:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5130   .rodata.str1.4:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5157   .data.mnu_title:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5170   .rodata.ce_dir_offset_bishop:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5174   .rodata.ce_dir_offset_bishop:00000000 ce_dir_offset_bishop
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5187   .bss.buf.6076:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5191   .bss.buf.6076:00000000 buf.6076
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5198   .bss.chess_key_cmd:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5200   .rodata.chess_pieces_body_bm:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5260   .rodata.ce_dir_offset_rook:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccX9Xi6c.s:5264   .rodata.ce_dir_offset_rook:00000000 ce_dir_offset_rook
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5061   .data.chess_target_pos:00000000 chess_target_pos
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5184   .data.chess_source_pos:00000000 chess_source_pos
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5127   .bss.chess_state:00000000 chess_state
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5197   .bss.chess_key_cmd:00000000 chess_key_cmd
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4975   .bss.chess_key_code:00000000 chess_key_code
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5121   .data.mnu_max:00000000 mnu_max
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5026   .bss.mnu_pos:00000000 mnu_pos
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5017   .data.mnu_list:00000000 mnu_list
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5161   .data.mnu_title:00000000 mnu_title
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4982   .data.chess_piece_to_char:00000000 chess_piece_to_char
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5033   .data.ce_pos_weight:00000000 ce_pos_weight
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4989   .data.ce_piece_weight:00000000 ce_piece_weight
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4976   .bss.chess_key_code:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4978   .data.chess_piece_to_char:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4985   .data.ce_piece_weight:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:4998   .rodata.ce_dir_offset_queen:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5002   .rodata.ce_dir_offset_queen:00000000 ce_dir_offset_queen
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5013   .data.mnu_list:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5027   .bss.mnu_pos:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5029   .data.ce_pos_weight:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5043   .rodata.ce_dir_offset_knight:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5047   .rodata.ce_dir_offset_knight:00000000 ce_dir_offset_knight
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5064   .rodata.chess_black_pieces_bm:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5128   .bss.chess_state:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5130   .rodata.str1.4:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5157   .data.mnu_title:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5170   .rodata.ce_dir_offset_bishop:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5174   .rodata.ce_dir_offset_bishop:00000000 ce_dir_offset_bishop
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5187   .bss.buf.6076:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5191   .bss.buf.6076:00000000 buf.6076
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5198   .bss.chess_key_cmd:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5200   .rodata.chess_pieces_body_bm:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5260   .rodata.ce_dir_offset_rook:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccT4SaY8.s:5264   .rodata.ce_dir_offset_rook:00000000 ce_dir_offset_rook
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
