@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccpBG8pT.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 1
   27:u8glib/u8g_state.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
   28:u8glib/u8g_state.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
   29:u8glib/u8g_state.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccpBG8pT.s 			page 2
 
 
   30:u8glib/u8g_state.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 1
   57              		.cfi_offset 3, -8
   58              		.cfi_offset 14, -4
   59:u8glib/u8g_state.c ****   u8g->state_cb = backup_cb;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccpBG8pT.s 			page 3
 
 
   59              		.loc 1 59 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 1
   97:u8glib/u8g_state.c ****   if ( U8G_STATE_MSG_IS_BACKUP(msg) )
   98:u8glib/u8g_state.c ****   {
   99:u8glib/u8g_state.c ****     u8g_state_avr_spi_memory[U8G_STATE_MSG_GET_IDX(msg)] = SPCR;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccpBG8pT.s 			page 4
 
 
  100:u8glib/u8g_state.c ****   }
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 1
  154:u8glib/u8g_state.c **** void u8g_backup_spi(uint8_t msg)
  155:u8glib/u8g_state.c **** {
   78              		.loc 1 155 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccpBG8pT.s 			page 5
 
 
   79              		.cfi_startproc
@@ -254,17 +254,17 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 1
   90              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
   91              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
   92              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccucYbro.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccpBG8pT.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_state.c
-C:\Users\master\AppData\Local\Temp\ccucYbro.s:22     .text.u8g_state_dummy_cb:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccucYbro.s:27     .text.u8g_state_dummy_cb:00000000 u8g_state_dummy_cb
-C:\Users\master\AppData\Local\Temp\ccucYbro.s:41     .text.u8g_SetHardwareBackup:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccucYbro.s:46     .text.u8g_SetHardwareBackup:00000000 u8g_SetHardwareBackup
-C:\Users\master\AppData\Local\Temp\ccucYbro.s:71     .text.u8g_backup_spi:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccucYbro.s:76     .text.u8g_backup_spi:00000000 u8g_backup_spi
+C:\Users\master\AppData\Local\Temp\ccpBG8pT.s:22     .text.u8g_state_dummy_cb:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccpBG8pT.s:27     .text.u8g_state_dummy_cb:00000000 u8g_state_dummy_cb
+C:\Users\master\AppData\Local\Temp\ccpBG8pT.s:41     .text.u8g_SetHardwareBackup:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccpBG8pT.s:46     .text.u8g_SetHardwareBackup:00000000 u8g_SetHardwareBackup
+C:\Users\master\AppData\Local\Temp\ccpBG8pT.s:71     .text.u8g_backup_spi:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccpBG8pT.s:76     .text.u8g_backup_spi:00000000 u8g_backup_spi
                      .debug_frame:00000010 $d
 
 NO UNDEFINED SYMBOLS

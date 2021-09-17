@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccGPdVo0.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 1
   27:u8glib/u8g_clip.c ****   DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
   28:u8glib/u8g_clip.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
   29:u8glib/u8g_clip.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccGPdVo0.s 			page 2
 
 
   30:u8glib/u8g_clip.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 1
   84:u8glib/u8g_clip.c ****   
   85:u8glib/u8g_clip.c ****   tmp = c1;
   86:u8glib/u8g_clip.c ****   c1 &= c2;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccGPdVo0.s 			page 3
 
 
   87:u8glib/u8g_clip.c ****   c2 &= c3;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 1
  141:u8glib/u8g_clip.c **** uint8_t u8g_IsBBXIntersection(u8g_t *u8g, u8g_uint_t x, u8g_uint_t y, u8g_uint_t w, u8g_uint_t h)
  142:u8glib/u8g_clip.c **** {
   30              		.loc 1 142 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccGPdVo0.s 			page 4
 
 
   31              		.cfi_startproc
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 1
   75 0026 AC42     		cmp	r4, r5
   76 0028 07D3     		bcc	.L9
  124:u8glib/u8g_clip.c ****       {
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccGPdVo0.s 			page 5
 
 
   77              		.loc 1 124 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 1
  121 0048 DBB2     		uxtb	r3, r3
  122              	.LVL21:
  153:u8glib/u8g_clip.c ****   return u8g_is_intersection_decision_tree(u8g->current_page.x0, u8g->current_page.x1, x, tmp);
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccGPdVo0.s 			page 6
 
 
  123              		.loc 1 153 0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 1
  135:u8glib/u8g_clip.c ****     }
  168              		.loc 1 135 0
  169 0076 0022     		movs	r2, #0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccGPdVo0.s 			page 7
 
 
  170              	.LVL31:
@@ -390,13 +390,13 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 1
  195              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  196              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  197              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccdRSsCr.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccGPdVo0.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_clip.c
-C:\Users\master\AppData\Local\Temp\ccdRSsCr.s:22     .text.u8g_IsBBXIntersection:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccdRSsCr.s:27     .text.u8g_IsBBXIntersection:00000000 u8g_IsBBXIntersection
+C:\Users\master\AppData\Local\Temp\ccGPdVo0.s:22     .text.u8g_IsBBXIntersection:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccGPdVo0.s:27     .text.u8g_IsBBXIntersection:00000000 u8g_IsBBXIntersection
                      .debug_frame:00000010 $d
 
 NO UNDEFINED SYMBOLS

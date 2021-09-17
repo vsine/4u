@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
   27:u8glib/u8g_pb.c ****   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
   28:u8glib/u8g_pb.c ****   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
   29:u8glib/u8g_pb.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 2
 
 
   30:u8glib/u8g_pb.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
   65              	u8g_pb_IsYIntersection:
   66              	.LFB1:
   51:u8glib/u8g_pb.c **** 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 3
 
 
   52:u8glib/u8g_pb.c **** /* the following procedure does not work. why? Can be checked with descpic */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
   79 0004 8C42     		cmp	r4, r1
   80 0006 34BF     		ite	cc
   81 0008 0024     		movcc	r4, #0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 4
 
 
   82 000a 0124     		movcs	r4, #1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
  117              		.align	2
  118              		.global	u8g_pb_IsXIntersection
  119              		.thumb
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 5
 
 
  120              		.thumb_func
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
  154 0014 7047     		bx	lr
  155              		.cfi_endproc
  156              	.LFE2:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 6
 
 
  158 0016 00BF     		.section	.text.u8g_pb_IsIntersection,"ax",%progbits
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
  199              	.LVL25:
  148:u8glib/u8g_pb.c ****   tmp += bbx->w;
  200              		.loc 1 148 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 7
 
 
  201 001c AA78     		ldrb	r2, [r5, #2]	@ zero_extendqisi2
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
  160:u8glib/u8g_pb.c ****   box->y1 = pb->p.page_y1;
  246              		.loc 1 160 0
  247 000e C378     		ldrb	r3, [r0, #3]	@ zero_extendqisi2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 8
 
 
  248 0010 CB70     		strb	r3, [r1, #3]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
  289              	.L16:
  176:u8glib/u8g_pb.c ****     case 2:  
  177:u8glib/u8g_pb.c ****       break;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 9
 
 
  178:u8glib/u8g_pb.c ****     case 3: 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
  333 0002 0C46     		mov	r4, r1
  334 0004 1146     		mov	r1, r2
  335              	.LVL40:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 10
 
 
  189:u8glib/u8g_pb.c ****   return u8g_WriteSequence(u8g, dev, b->width, b->buf);  
@@ -560,25 +560,25 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 1
  351              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  352              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  353              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB7uR0j.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccESZNXJ.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_pb.c
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:22     .text.u8g_pb_Clear:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:27     .text.u8g_pb_Clear:00000000 u8g_pb_Clear
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:60     .text.u8g_pb_IsYIntersection:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:65     .text.u8g_pb_IsYIntersection:00000000 u8g_pb_IsYIntersection
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:117    .text.u8g_pb_IsXIntersection:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:122    .text.u8g_pb_IsXIntersection:00000000 u8g_pb_IsXIntersection
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:159    .text.u8g_pb_IsIntersection:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:164    .text.u8g_pb_IsIntersection:00000000 u8g_pb_IsIntersection
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:222    .text.u8g_pb_GetPageBox:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:227    .text.u8g_pb_GetPageBox:00000000 u8g_pb_GetPageBox
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:254    .text.u8g_pb_Is8PixelVisible:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:259    .text.u8g_pb_Is8PixelVisible:00000000 u8g_pb_Is8PixelVisible
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:316    .text.u8g_pb_WriteBuffer:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccB7uR0j.s:321    .text.u8g_pb_WriteBuffer:00000000 u8g_pb_WriteBuffer
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:22     .text.u8g_pb_Clear:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:27     .text.u8g_pb_Clear:00000000 u8g_pb_Clear
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:60     .text.u8g_pb_IsYIntersection:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:65     .text.u8g_pb_IsYIntersection:00000000 u8g_pb_IsYIntersection
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:117    .text.u8g_pb_IsXIntersection:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:122    .text.u8g_pb_IsXIntersection:00000000 u8g_pb_IsXIntersection
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:159    .text.u8g_pb_IsIntersection:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:164    .text.u8g_pb_IsIntersection:00000000 u8g_pb_IsIntersection
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:222    .text.u8g_pb_GetPageBox:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:227    .text.u8g_pb_GetPageBox:00000000 u8g_pb_GetPageBox
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:254    .text.u8g_pb_Is8PixelVisible:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:259    .text.u8g_pb_Is8PixelVisible:00000000 u8g_pb_Is8PixelVisible
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:316    .text.u8g_pb_WriteBuffer:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccESZNXJ.s:321    .text.u8g_pb_WriteBuffer:00000000 u8g_pb_WriteBuffer
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

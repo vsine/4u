@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
   27:u8glib/u8g_scale.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
   28:u8glib/u8g_scale.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
   29:u8glib/u8g_scale.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 2
 
 
   30:u8glib/u8g_scale.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
   46              		.cfi_offset 14, -4
   47 0004 83B0     		sub	sp, sp, #12
   48              	.LCFI1:
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 3
 
 
   49              		.cfi_def_cfa_offset 48
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
   95 003b 19       		.byte	(.L2-.L4)/2
   96 003c 19       		.byte	(.L2-.L4)/2
   97 003d 19       		.byte	(.L2-.L4)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 4
 
 
   98 003e 19       		.byte	(.L2-.L4)/2
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
   92:u8glib/u8g_scale.c ****       return 1;
   93:u8glib/u8g_scale.c ****     case U8G_DEV_MSG_SET_PIXEL:
   94:u8glib/u8g_scale.c ****       x = ((u8g_dev_arg_pixel_t *)arg)->x;
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 5
 
 
   95:u8glib/u8g_scale.c ****       x *= 2;
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
  149:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->x = xx;
  150:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = yy;
  151:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->dir = dir;
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 6
 
 
  152:u8glib/u8g_scale.c ****       u8g_call_dev_fn(u8g, chain, msg, arg);    
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
   84:u8glib/u8g_scale.c ****     case U8G_DEV_MSG_GET_PAGE_BOX:
  153              		.loc 1 84 0
  154 007a D1E0     		b	.L9
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 7
 
 
  155              	.LVL15:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
  199 00b2 6D00     		lsls	r5, r5, #1
  200              	.LVL24:
  201 00b4 EDB2     		uxtb	r5, r5
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 8
 
 
  202              	.LVL25:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
  245 00f4 3846     		mov	r0, r7
  246 00f6 FFF7FEFF 		bl	u8g_call_dev_fn
  247              	.LVL33:
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 9
 
 
  110:u8glib/u8g_scale.c ****       ((u8g_dev_arg_pixel_t *)arg)->y = y;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
  290              	.L11:
  125:u8glib/u8g_scale.c ****       }
  291              		.loc 1 125 0 discriminator 2
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 10
 
 
  292 012a 5200     		lsls	r2, r2, #1
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
  336 0160 09F10103 		add	r3, r9, #1
  337              	.LVL55:
  338 0164 DFB2     		uxtb	r7, r3
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 11
 
 
  339              	.LVL56:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
  382 01a6 02       		.byte	(.L16-.L17)/2
  383 01a7 0B       		.byte	(.L18-.L17)/2
  384 01a8 13       		.byte	(.L19-.L17)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 12
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 12
 
 
  385 01a9 1C       		.byte	(.L20-.L17)/2
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
  429 01de A9F10809 		sub	r9, r9, #8
  430              	.LVL72:
  431 01e2 5FFA89F9 		uxtb	r9, r9
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 13
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 13
 
 
  432              	.LVL73:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
  476              		@ sp needed
  477 0222 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
  478              		.cfi_endproc
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 14
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 14
 
 
  479              	.LFE2:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
  532 0000 08B5     		push	{r3, lr}
  533              	.LCFI4:
  534              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 15
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 15
 
 
  535              		.cfi_offset 3, -8
@@ -886,27 +886,27 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 1
  575              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  576              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  577              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc0m9M5c.s 			page 16
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_scale.c
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:22     .text.u8g_dev_scale_2x2_fn:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:27     .text.u8g_dev_scale_2x2_fn:00000000 u8g_dev_scale_2x2_fn
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:64     .text.u8g_dev_scale_2x2_fn:0000001c $d
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:382    .text.u8g_dev_scale_2x2_fn:000001a6 $d
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:386    .text.u8g_dev_scale_2x2_fn:000001aa $t
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:482    .text.u8g_UndoScale:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:487    .text.u8g_UndoScale:00000000 u8g_UndoScale
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:515    .text.u8g_UndoScale:00000014 $d
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:520    .text.u8g_SetScale2x2:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:525    .text.u8g_SetScale2x2:00000000 u8g_SetScale2x2
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:558    .text.u8g_SetScale2x2:0000001c $d
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:569    .data.u8g_dev_scale:00000000 u8g_dev_scale
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:565    .data.u8g_dev_scale:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:22     .text.u8g_dev_scale_2x2_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:27     .text.u8g_dev_scale_2x2_fn:00000000 u8g_dev_scale_2x2_fn
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:64     .text.u8g_dev_scale_2x2_fn:0000001c $d
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:382    .text.u8g_dev_scale_2x2_fn:000001a6 $d
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:386    .text.u8g_dev_scale_2x2_fn:000001aa $t
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:482    .text.u8g_UndoScale:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:487    .text.u8g_UndoScale:00000000 u8g_UndoScale
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:515    .text.u8g_UndoScale:00000014 $d
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:520    .text.u8g_SetScale2x2:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:525    .text.u8g_SetScale2x2:00000000 u8g_SetScale2x2
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:558    .text.u8g_SetScale2x2:0000001c $d
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:569    .data.u8g_dev_scale:00000000 u8g_dev_scale
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:565    .data.u8g_dev_scale:00000000 $d
                      .debug_frame:00000010 $d
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:113    .text.u8g_dev_scale_2x2_fn:0000004d $d
-C:\Users\master\AppData\Local\Temp\cc0m9M5c.s:113    .text.u8g_dev_scale_2x2_fn:0000004e $t
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:113    .text.u8g_dev_scale_2x2_fn:0000004d $d
+C:\Users\master\AppData\Local\Temp\ccJn5Z6G.s:113    .text.u8g_dev_scale_2x2_fn:0000004e $t
 
 UNDEFINED SYMBOLS
 u8g_call_dev_fn

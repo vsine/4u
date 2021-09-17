@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\cchAfT3y.s 			page 1
 
 
    1              		.syntax unified
@@ -33,7 +33,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 1
    2:u8glib/u8g_com_stm32_hw_i2c_hal.c **** #include "main.h"
    3:u8glib/u8g_com_stm32_hw_i2c_hal.c **** extern I2C_HandleTypeDef hi2c1;
    4:u8glib/u8g_com_stm32_hw_i2c_hal.c ****  static uint8_t control = 0;  
-   5:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
+   5:u8glib/u8g_com_stm32_hw_i2c_hal.c **** uint8_t buffer[1000]; 
    6:u8glib/u8g_com_stm32_hw_i2c_hal.c **** void u8g_Delay(uint16_t val)
    7:u8glib/u8g_com_stm32_hw_i2c_hal.c ****  {
   30              		.loc 1 7 0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 1
   49              		.global	u8g_MicroDelay
   50              		.thumb
   51              		.thumb_func
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cchAfT3y.s 			page 2
 
 
   53              	u8g_MicroDelay:
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 1
   97              		.loc 1 20 0 is_stmt 0 discriminator 3
   98 0004 0133     		adds	r3, r3, #1
   99              	.LVL7:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\cchAfT3y.s 			page 3
 
 
  100              	.L7:
@@ -145,7 +145,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 1
   26:u8glib/u8g_com_stm32_hw_i2c_hal.c **** {
  118              		.loc 1 26 0
  119              		.cfi_startproc
- 120              		@ args = 0, pretend = 0, frame = 1000
+ 120              		@ args = 0, pretend = 0, frame = 0
  121              		@ frame_needed = 0, uses_anonymous_args = 0
  122              	.LVL8:
  123 0000 10B5     		push	{r4, lr}
@@ -153,32 +153,32 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 1
  125              		.cfi_def_cfa_offset 8
  126              		.cfi_offset 4, -8
  127              		.cfi_offset 14, -4
- 128 0002 ADF57C7D 		sub	sp, sp, #1008
+ 128 0002 82B0     		sub	sp, sp, #8
  129              	.LCFI2:
- 130              		.cfi_def_cfa_offset 1016
+ 130              		.cfi_def_cfa_offset 16
   27:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
   28:u8glib/u8g_com_stm32_hw_i2c_hal.c ****   switch(msg)
  131              		.loc 1 28 0
- 132 0006 0239     		subs	r1, r1, #2
+ 132 0004 0239     		subs	r1, r1, #2
  133              	.LVL9:
- 134 0008 0529     		cmp	r1, #5
- 135 000a 32D8     		bhi	.L10
- 136 000c DFE801F0 		tbb	[pc, r1]
+ 134 0006 0529     		cmp	r1, #5
+ 135 0008 31D8     		bhi	.L10
+ 136 000a DFE801F0 		tbb	[pc, r1]
  137              	.LVL10:
  138              	.L12:
- 139 0010 03       		.byte	(.L11-.L12)/2
- 140 0011 31       		.byte	(.L10-.L12)/2
- 141 0012 31       		.byte	(.L10-.L12)/2
- 142 0013 0B       		.byte	(.L13-.L12)/2
- 143 0014 1B       		.byte	(.L14-.L12)/2
- 144 0015 1B       		.byte	(.L14-.L12)/2
+ 139 000e 03       		.byte	(.L11-.L12)/2
+ 140 000f 30       		.byte	(.L10-.L12)/2
+ 141 0010 30       		.byte	(.L10-.L12)/2
+ 142 0011 0B       		.byte	(.L13-.L12)/2
+ 143 0012 1A       		.byte	(.L14-.L12)/2
+ 144 0013 1A       		.byte	(.L14-.L12)/2
  145              		.p2align 1
  146              	.L11:
   29:u8glib/u8g_com_stm32_hw_i2c_hal.c ****   {
   30:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_INIT:
   31:u8glib/u8g_com_stm32_hw_i2c_hal.c ****         u8g_MicroDelay();  
   32:u8glib/u8g_com_stm32_hw_i2c_hal.c ****       break;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\cchAfT3y.s 			page 4
 
 
   33:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_STOP:
@@ -188,27 +188,26 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 1
   37:u8glib/u8g_com_stm32_hw_i2c_hal.c ****         u8g_10MicroDelay();  
   38:u8glib/u8g_com_stm32_hw_i2c_hal.c ****         if (arg_val == 0)  
  147              		.loc 1 38 0
- 148 0016 12B9     		cbnz	r2, .L15
+ 148 0014 12B9     		cbnz	r2, .L15
   39:u8glib/u8g_com_stm32_hw_i2c_hal.c ****          control = 0;  
  149              		.loc 1 39 0
- 150 0018 184B     		ldr	r3, .L19
+ 150 0016 174B     		ldr	r3, .L19
  151              	.LVL11:
- 152 001a 1A70     		strb	r2, [r3]
- 153 001c 29E0     		b	.L10
+ 152 0018 1A70     		strb	r2, [r3]
+ 153 001a 28E0     		b	.L10
  154              	.LVL12:
  155              	.L15:
   40:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     else  
   41:u8glib/u8g_com_stm32_hw_i2c_hal.c ****          control = 0x40;  
  156              		.loc 1 41 0
- 157 001e 4022     		movs	r2, #64
+ 157 001c 4022     		movs	r2, #64
  158              	.LVL13:
- 159 0020 164B     		ldr	r3, .L19
+ 159 001e 154B     		ldr	r3, .L19
  160              	.LVL14:
- 161 0022 1A70     		strb	r2, [r3]
- 162 0024 25E0     		b	.L10
+ 161 0020 1A70     		strb	r2, [r3]
+ 162 0022 24E0     		b	.L10
  163              	.LVL15:
  164              	.L13:
- 165              	.LBB2:
   42:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     break;
   43:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
   44:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_CHIP_SELECT:
@@ -220,94 +219,95 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 1
   50:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
   51:u8glib/u8g_com_stm32_hw_i2c_hal.c **** 
   52:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_WRITE_BYTE:{
-  53:u8glib/u8g_com_stm32_hw_i2c_hal.c ****         uint8_t buffer[2];  
+  53:u8glib/u8g_com_stm32_hw_i2c_hal.c ****      
   54:u8glib/u8g_com_stm32_hw_i2c_hal.c ****         buffer[0] = control;  
- 166              		.loc 1 54 0
- 167 0026 154B     		ldr	r3, .L19
+ 165              		.loc 1 54 0
+ 166 0024 1449     		ldr	r1, .L19+4
+ 167 0026 134B     		ldr	r3, .L19
  168              	.LVL16:
  169 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 170 002a 8DF80830 		strb	r3, [sp, #8]
+ 170 002a 0B70     		strb	r3, [r1]
   55:u8glib/u8g_com_stm32_hw_i2c_hal.c ****         buffer[1] = arg_val;  
  171              		.loc 1 55 0
- 172 002e 8DF80920 		strb	r2, [sp, #9]
+ 172 002c 4A70     		strb	r2, [r1, #1]
   56:u8glib/u8g_com_stm32_hw_i2c_hal.c ****         HAL_I2C_Master_Transmit(&hi2c1, 0x78, (uint8_t*) buffer, 2, 1000);  
  173              		.loc 1 56 0
- 174 0032 4FF47A73 		mov	r3, #1000
- 175 0036 0093     		str	r3, [sp]
- 176 0038 0223     		movs	r3, #2
- 177 003a 02AA     		add	r2, sp, #8
+ 174 002e 4FF47A73 		mov	r3, #1000
+ 175 0032 0093     		str	r3, [sp]
+ 176 0034 0223     		movs	r3, #2
+ 177 0036 0A46     		mov	r2, r1
  178              	.LVL17:
- 179 003c 7821     		movs	r1, #120
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 5
+ 179 0038 7821     		movs	r1, #120
+ARM GAS  C:\Users\master\AppData\Local\Temp\cchAfT3y.s 			page 5
 
 
- 180 003e 1048     		ldr	r0, .L19+4
- 181 0040 FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+ 180 003a 1048     		ldr	r0, .L19+8
+ 181 003c FFF7FEFF 		bl	HAL_I2C_Master_Transmit
  182              	.LVL18:
- 183              	.LBE2:
   57:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     }
   58:u8glib/u8g_com_stm32_hw_i2c_hal.c ****       break;
- 184              		.loc 1 58 0
- 185 0044 15E0     		b	.L10
- 186              	.LVL19:
- 187              	.L14:
- 188              	.LBB3:
+ 183              		.loc 1 58 0
+ 184 0040 15E0     		b	.L10
+ 185              	.LVL19:
+ 186              	.L14:
+ 187              	.LBB2:
   59:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_WRITE_SEQ:
   60:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     case U8G_COM_MSG_WRITE_SEQ_P:
   61:u8glib/u8g_com_stm32_hw_i2c_hal.c ****     {
-  62:u8glib/u8g_com_stm32_hw_i2c_hal.c ****         uint8_t buffer[1000];  
+  62:u8glib/u8g_com_stm32_hw_i2c_hal.c ****        
   63:u8glib/u8g_com_stm32_hw_i2c_hal.c ****            uint8_t *ptr = arg_ptr;  
   64:u8glib/u8g_com_stm32_hw_i2c_hal.c ****            buffer[0] = control;  
- 189              		.loc 1 64 0
- 190 0046 0D49     		ldr	r1, .L19
- 191 0048 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
- 192 004a 8DF80810 		strb	r1, [sp, #8]
+ 188              		.loc 1 64 0
+ 189 0042 0C49     		ldr	r1, .L19
+ 190 0044 0878     		ldrb	r0, [r1]	@ zero_extendqisi2
+ 191 0046 0C49     		ldr	r1, .L19+4
+ 192 0048 0870     		strb	r0, [r1]
  193              	.LVL20:
- 194              	.LBB4:
+ 194              	.LBB3:
   65:u8glib/u8g_com_stm32_hw_i2c_hal.c ****            for (int i = 1; i <= arg_val; i++)  
  195              		.loc 1 65 0
- 196 004e 0121     		movs	r1, #1
- 197 0050 04E0     		b	.L16
+ 196 004a 0121     		movs	r1, #1
+ 197 004c 04E0     		b	.L16
  198              	.LVL21:
  199              	.L17:
   66:u8glib/u8g_com_stm32_hw_i2c_hal.c ****            {  
   67:u8glib/u8g_com_stm32_hw_i2c_hal.c ****                 buffer[i] = *(ptr++);  
  200              		.loc 1 67 0 discriminator 3
- 201 0052 1C78     		ldrb	r4, [r3]	@ zero_extendqisi2
- 202 0054 02A8     		add	r0, sp, #8
- 203 0056 4454     		strb	r4, [r0, r1]
+ 201 004e 1C78     		ldrb	r4, [r3]	@ zero_extendqisi2
+ 202 0050 0948     		ldr	r0, .L19+4
+ 203 0052 4454     		strb	r4, [r0, r1]
   65:u8glib/u8g_com_stm32_hw_i2c_hal.c ****            for (int i = 1; i <= arg_val; i++)  
  204              		.loc 1 65 0 discriminator 3
- 205 0058 0131     		adds	r1, r1, #1
+ 205 0054 0131     		adds	r1, r1, #1
  206              	.LVL22:
  207              		.loc 1 67 0 discriminator 3
- 208 005a 0133     		adds	r3, r3, #1
+ 208 0056 0133     		adds	r3, r3, #1
  209              	.LVL23:
  210              	.L16:
   65:u8glib/u8g_com_stm32_hw_i2c_hal.c ****            for (int i = 1; i <= arg_val; i++)  
  211              		.loc 1 65 0 discriminator 1
- 212 005c 9142     		cmp	r1, r2
- 213 005e F8DD     		ble	.L17
- 214              	.LBE4:
+ 212 0058 9142     		cmp	r1, r2
+ 213 005a F8DD     		ble	.L17
+ 214              	.LBE3:
   68:u8glib/u8g_com_stm32_hw_i2c_hal.c ****            }  
   69:u8glib/u8g_com_stm32_hw_i2c_hal.c ****            HAL_I2C_Master_Transmit(&hi2c1, 0x78, (uint8_t *)buffer, arg_val, 1000);  
  215              		.loc 1 69 0
- 216 0060 4FF47A73 		mov	r3, #1000
+ 216 005c 4FF47A73 		mov	r3, #1000
  217              	.LVL24:
- 218 0064 0093     		str	r3, [sp]
- 219 0066 1346     		mov	r3, r2
- 220 0068 02AA     		add	r2, sp, #8
+ 218 0060 0093     		str	r3, [sp]
+ 219 0062 1346     		mov	r3, r2
+ 220 0064 044A     		ldr	r2, .L19+4
  221              	.LVL25:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\cchAfT3y.s 			page 6
 
 
- 222 006a 7821     		movs	r1, #120
+ 222 0066 7821     		movs	r1, #120
  223              	.LVL26:
- 224 006c 0448     		ldr	r0, .L19+4
- 225 006e FFF7FEFF 		bl	HAL_I2C_Master_Transmit
+ 224 0068 0448     		ldr	r0, .L19+8
+ 225 006a FFF7FEFF 		bl	HAL_I2C_Master_Transmit
  226              	.LVL27:
  227              	.L10:
- 228              	.LBE3:
+ 228              	.LBE2:
   70:u8glib/u8g_com_stm32_hw_i2c_hal.c ****    
   71:u8glib/u8g_com_stm32_hw_i2c_hal.c ****    }
   72:u8glib/u8g_com_stm32_hw_i2c_hal.c ****       break;
@@ -315,52 +315,55 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 1
   74:u8glib/u8g_com_stm32_hw_i2c_hal.c ****   return 1;
   75:u8glib/u8g_com_stm32_hw_i2c_hal.c **** }...
  229              		.loc 1 75 0
- 230 0072 0120     		movs	r0, #1
- 231 0074 0DF57C7D 		add	sp, sp, #1008
+ 230 006e 0120     		movs	r0, #1
+ 231 0070 02B0     		add	sp, sp, #8
  232              	.LCFI3:
  233              		.cfi_def_cfa_offset 8
  234              		@ sp needed
- 235 0078 10BD     		pop	{r4, pc}
+ 235 0072 10BD     		pop	{r4, pc}
  236              	.L20:
- 237 007a 00BF     		.align	2
+ 237              		.align	2
  238              	.L19:
- 239 007c 00000000 		.word	.LANCHOR0
- 240 0080 00000000 		.word	hi2c1
- 241              		.cfi_endproc
- 242              	.LFE133:
- 244              		.section	.bss.control,"aw",%nobits
- 245              		.set	.LANCHOR0,. + 0
- 248              	control:
- 249 0000 00       		.space	1
- 250              		.text
- 251              	.Letext0:
- 252              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
- 253              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
- 254              		.file 4 "u8glib/u8g.h"
- 255              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
- 256              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 257              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 258              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
- 259              		.file 9 "Drivers/CMSIS/Include/core_cm4.h"
- 260              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccSvzvAg.s 			page 7
+ 239 0074 00000000 		.word	.LANCHOR0
+ 240 0078 00000000 		.word	buffer
+ 241 007c 00000000 		.word	hi2c1
+ 242              		.cfi_endproc
+ 243              	.LFE133:
+ 245              		.comm	buffer,1000,4
+ 246              		.section	.bss.control,"aw",%nobits
+ 247              		.set	.LANCHOR0,. + 0
+ 250              	control:
+ 251 0000 00       		.space	1
+ 252              		.text
+ 253              	.Letext0:
+ 254              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 255              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 256              		.file 4 "u8glib/u8g.h"
+ 257              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 258              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 259              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 260              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 261              		.file 9 "Drivers/CMSIS/Include/core_cm4.h"
+ 262              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\cchAfT3y.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_com_stm32_hw_i2c_hal.c
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:22     .text.u8g_Delay:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:27     .text.u8g_Delay:00000000 u8g_Delay
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:48     .text.u8g_MicroDelay:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:53     .text.u8g_MicroDelay:00000000 u8g_MicroDelay
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:79     .text.u8g_10MicroDelay:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:84     .text.u8g_10MicroDelay:00000000 u8g_10MicroDelay
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:111    .text.u8g_com_hw_i2c_fn:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:116    .text.u8g_com_hw_i2c_fn:00000000 u8g_com_hw_i2c_fn
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:139    .text.u8g_com_hw_i2c_fn:00000010 $d
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:145    .text.u8g_com_hw_i2c_fn:00000016 $t
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:239    .text.u8g_com_hw_i2c_fn:0000007c $d
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:248    .bss.control:00000000 control
-C:\Users\master\AppData\Local\Temp\ccSvzvAg.s:249    .bss.control:00000000 $d
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:22     .text.u8g_Delay:00000000 $t
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:27     .text.u8g_Delay:00000000 u8g_Delay
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:48     .text.u8g_MicroDelay:00000000 $t
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:53     .text.u8g_MicroDelay:00000000 u8g_MicroDelay
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:79     .text.u8g_10MicroDelay:00000000 $t
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:84     .text.u8g_10MicroDelay:00000000 u8g_10MicroDelay
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:111    .text.u8g_com_hw_i2c_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:116    .text.u8g_com_hw_i2c_fn:00000000 u8g_com_hw_i2c_fn
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:139    .text.u8g_com_hw_i2c_fn:0000000e $d
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:145    .text.u8g_com_hw_i2c_fn:00000014 $t
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:239    .text.u8g_com_hw_i2c_fn:00000074 $d
+                            *COM*:000003e8 buffer
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:250    .bss.control:00000000 control
+C:\Users\master\AppData\Local\Temp\cchAfT3y.s:251    .bss.control:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

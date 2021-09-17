@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
   27:u8glib/u8g_virtual_screen.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
   28:u8glib/u8g_virtual_screen.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
   29:u8glib/u8g_virtual_screen.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 2
 
 
   30:u8glib/u8g_virtual_screen.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
   57 0017 26       		.byte	(.L14-.L4)/2
   58 0018 26       		.byte	(.L14-.L4)/2
   59 0019 26       		.byte	(.L14-.L4)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 3
 
 
   60 001a 26       		.byte	(.L14-.L4)/2
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
  107              		.loc 1 63 0 discriminator 3
  108 0046 504B     		ldr	r3, .L20
  109 0048 03EBC403 		add	r3, r3, r4, lsl #3
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 4
 
 
  110 004c 5868     		ldr	r0, [r3, #4]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
  154 0080 2B46     		mov	r3, r5
  155 0082 3246     		mov	r2, r6
  156 0084 4168     		ldr	r1, [r0, #4]
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 5
 
 
  157              	.LVL10:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
  200 00be 9342     		cmp	r3, r2
  201 00c0 5DD2     		bcs	.L17
   81:u8glib/u8g_virtual_screen.c **** 	  return 0;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 6
 
 
   82:u8glib/u8g_virtual_screen.c **** 	return u8g_call_dev_fn(u8g_vs_list[u8g_vs_current].u8g, u8g_vs_list[u8g_vs_current].u8g->dev, U8G_
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
  220              		.loc 1 117 0
  221 00dc 0120     		movs	r0, #1
  222              	.LVL21:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 7
 
 
   86:u8glib/u8g_virtual_screen.c ****       break;
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
  269              		.loc 1 96 0
  270 0122 04EBC204 		add	r4, r4, r2, lsl #3
  271 0126 6278     		ldrb	r2, [r4, #1]	@ zero_extendqisi2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 8
 
 
  272 0128 6B78     		ldrb	r3, [r5, #1]	@ zero_extendqisi2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
  316 0162 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  317 0164 02EBC303 		add	r3, r2, r3, lsl #3
  318 0168 5978     		ldrb	r1, [r3, #1]	@ zero_extendqisi2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 9
 
 
  319 016a 6A78     		ldrb	r2, [r5, #1]	@ zero_extendqisi2
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
  124:u8glib/u8g_virtual_screen.c **** void u8g_SetVirtualScreenDimension(u8g_t *vs_u8g, u8g_uint_t width, u8g_uint_t height)
  125:u8glib/u8g_virtual_screen.c **** {
  367              		.loc 1 125 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 10
 
 
  368              		.cfi_startproc
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
  415              		.loc 1 134 0
  416 0002 4468     		ldr	r4, [r0, #4]
  417 0004 0B48     		ldr	r0, .L31
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 11
 
 
  418              	.LVL42:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
  461              	.L31:
  462 0034 00000000 		.word	.LANCHOR1
  463 0038 00000000 		.word	.LANCHOR0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 12
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 12
 
 
  464 003c 00000000 		.word	u8g_vs_list
@@ -686,30 +686,30 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 1
  491              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  492              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  493              		.file 4 "u8glib/u8g.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccs9U6LU.s 			page 13
+ARM GAS  C:\Users\master\AppData\Local\Temp\cccGMIjf.s 			page 13
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g_virtual_screen.c
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:22     .text.u8g_dev_vs_fn:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:27     .text.u8g_dev_vs_fn:00000000 u8g_dev_vs_fn
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:52     .text.u8g_dev_vs_fn:00000012 $d
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:104    .text.u8g_dev_vs_fn:00000046 $t
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:351    .text.u8g_dev_vs_fn:00000188 $d
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:22     .text.u8g_dev_vs_fn:00000000 $t
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:27     .text.u8g_dev_vs_fn:00000000 u8g_dev_vs_fn
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:52     .text.u8g_dev_vs_fn:00000012 $d
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:104    .text.u8g_dev_vs_fn:00000046 $t
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:351    .text.u8g_dev_vs_fn:00000188 $d
                             *COM*:00000020 u8g_vs_list
                             *COM*:00000001 u8g_vs_current
                             *COM*:00000001 u8g_vs_width
                             *COM*:00000001 u8g_vs_height
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:360    .text.u8g_SetVirtualScreenDimension:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:365    .text.u8g_SetVirtualScreenDimension:00000000 u8g_SetVirtualScreenDimension
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:390    .text.u8g_SetVirtualScreenDimension:00000014 $d
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:397    .text.u8g_AddToVirtualScreen:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:402    .text.u8g_AddToVirtualScreen:00000000 u8g_AddToVirtualScreen
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:462    .text.u8g_AddToVirtualScreen:00000034 $d
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:485    .data.u8g_dev_vs:00000000 u8g_dev_vs
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:478    .bss.u8g_vs_cnt:00000000 u8g_vs_cnt
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:479    .bss.u8g_vs_cnt:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccs9U6LU.s:481    .data.u8g_dev_vs:00000000 $d
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:360    .text.u8g_SetVirtualScreenDimension:00000000 $t
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:365    .text.u8g_SetVirtualScreenDimension:00000000 u8g_SetVirtualScreenDimension
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:390    .text.u8g_SetVirtualScreenDimension:00000014 $d
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:397    .text.u8g_AddToVirtualScreen:00000000 $t
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:402    .text.u8g_AddToVirtualScreen:00000000 u8g_AddToVirtualScreen
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:462    .text.u8g_AddToVirtualScreen:00000034 $d
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:485    .data.u8g_dev_vs:00000000 u8g_dev_vs
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:478    .bss.u8g_vs_cnt:00000000 u8g_vs_cnt
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:479    .bss.u8g_vs_cnt:00000000 $d
+C:\Users\master\AppData\Local\Temp\cccGMIjf.s:481    .data.u8g_dev_vs:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
