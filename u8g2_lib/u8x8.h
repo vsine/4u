@@ -114,7 +114,7 @@
 #include <limits.h>
 
 #if defined(__GNUC__) && defined(__AVR__)
-#include <avr/pgmspace.h>
+//#include <avr/pgmspace.h>
 #endif 
 
 /*==========================================*/
