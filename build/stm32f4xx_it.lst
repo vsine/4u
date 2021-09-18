@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccKVjcML.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
   27:Core/Src/stm32f4xx_it.c **** 
   28:Core/Src/stm32f4xx_it.c **** /* Private typedef -----------------------------------------------------------*/
   29:Core/Src/stm32f4xx_it.c **** /* USER CODE BEGIN TD */
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccKVjcML.s 			page 2
 
 
   30:Core/Src/stm32f4xx_it.c **** 
@@ -90,7 +90,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
   56:Core/Src/stm32f4xx_it.c **** /* USER CODE END 0 */
   57:Core/Src/stm32f4xx_it.c **** 
   58:Core/Src/stm32f4xx_it.c **** /* External variables --------------------------------------------------------*/
-  59:Core/Src/stm32f4xx_it.c **** extern I2C_HandleTypeDef hi2c1;
+  59:Core/Src/stm32f4xx_it.c **** extern SPI_HandleTypeDef hspi1;
   60:Core/Src/stm32f4xx_it.c **** /* USER CODE BEGIN EV */
   61:Core/Src/stm32f4xx_it.c **** 
   62:Core/Src/stm32f4xx_it.c **** /* USER CODE END EV */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
   43              		.global	HardFault_Handler
   44              		.thumb
   45              		.thumb_func
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccKVjcML.s 			page 3
 
 
   47              	HardFault_Handler:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
   73              		@ link register save eliminated.
   74              	.L6:
   75 0000 FEE7     		b	.L6
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccKVjcML.s 			page 4
 
 
   76              		.cfi_endproc
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
  130:Core/Src/stm32f4xx_it.c **** void UsageFault_Handler(void)
  131:Core/Src/stm32f4xx_it.c **** {
  106              		.loc 1 131 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccKVjcML.s 			page 5
 
 
  107              		.cfi_startproc
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
  155:Core/Src/stm32f4xx_it.c **** /**
  156:Core/Src/stm32f4xx_it.c ****   * @brief This function handles Debug monitor.
  157:Core/Src/stm32f4xx_it.c ****   */
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccKVjcML.s 			page 6
 
 
  158:Core/Src/stm32f4xx_it.c **** void DebugMon_Handler(void)
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
  182:Core/Src/stm32f4xx_it.c ****   * @brief This function handles System tick timer.
  183:Core/Src/stm32f4xx_it.c ****   */
  184:Core/Src/stm32f4xx_it.c **** void SysTick_Handler(void)
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccKVjcML.s 			page 7
 
 
  185:Core/Src/stm32f4xx_it.c **** {
@@ -382,12 +382,12 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
  189 0006 08BD     		pop	{r3, pc}
  190              		.cfi_endproc
  191              	.LFE138:
- 193              		.section	.text.I2C1_EV_IRQHandler,"ax",%progbits
+ 193              		.section	.text.SPI1_IRQHandler,"ax",%progbits
  194              		.align	2
- 195              		.global	I2C1_EV_IRQHandler
+ 195              		.global	SPI1_IRQHandler
  196              		.thumb
  197              		.thumb_func
- 199              	I2C1_EV_IRQHandler:
+ 199              	SPI1_IRQHandler:
  200              	.LFB139:
  190:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 1 */
  191:Core/Src/stm32f4xx_it.c **** 
@@ -402,9 +402,9 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
  200:Core/Src/stm32f4xx_it.c **** /******************************************************************************/
  201:Core/Src/stm32f4xx_it.c **** 
  202:Core/Src/stm32f4xx_it.c **** /**
- 203:Core/Src/stm32f4xx_it.c ****   * @brief This function handles I2C1 event interrupt.
+ 203:Core/Src/stm32f4xx_it.c ****   * @brief This function handles SPI1 global interrupt.
  204:Core/Src/stm32f4xx_it.c ****   */
- 205:Core/Src/stm32f4xx_it.c **** void I2C1_EV_IRQHandler(void)
+ 205:Core/Src/stm32f4xx_it.c **** void SPI1_IRQHandler(void)
  206:Core/Src/stm32f4xx_it.c **** {
  201              		.loc 1 206 0
  202              		.cfi_startproc
@@ -415,111 +415,63 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 1
  207              		.cfi_def_cfa_offset 8
  208              		.cfi_offset 3, -8
  209              		.cfi_offset 14, -4
- 207:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN I2C1_EV_IRQn 0 */
+ 207:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SPI1_IRQn 0 */
  208:Core/Src/stm32f4xx_it.c **** 
- 209:Core/Src/stm32f4xx_it.c ****   /* USER CODE END I2C1_EV_IRQn 0 */
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 8
+ 209:Core/Src/stm32f4xx_it.c ****   /* USER CODE END SPI1_IRQn 0 */
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccKVjcML.s 			page 8
 
 
- 210:Core/Src/stm32f4xx_it.c ****   HAL_I2C_EV_IRQHandler(&hi2c1);
+ 210:Core/Src/stm32f4xx_it.c ****   HAL_SPI_IRQHandler(&hspi1);
  210              		.loc 1 210 0
  211 0002 0248     		ldr	r0, .L18
- 212 0004 FFF7FEFF 		bl	HAL_I2C_EV_IRQHandler
+ 212 0004 FFF7FEFF 		bl	HAL_SPI_IRQHandler
  213              	.LVL1:
  214 0008 08BD     		pop	{r3, pc}
  215              	.L19:
  216 000a 00BF     		.align	2
  217              	.L18:
- 218 000c 00000000 		.word	hi2c1
+ 218 000c 00000000 		.word	hspi1
  219              		.cfi_endproc
  220              	.LFE139:
- 222              		.section	.text.I2C1_ER_IRQHandler,"ax",%progbits
- 223              		.align	2
- 224              		.global	I2C1_ER_IRQHandler
- 225              		.thumb
- 226              		.thumb_func
- 228              	I2C1_ER_IRQHandler:
- 229              	.LFB140:
- 211:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN I2C1_EV_IRQn 1 */
- 212:Core/Src/stm32f4xx_it.c **** 
- 213:Core/Src/stm32f4xx_it.c ****   /* USER CODE END I2C1_EV_IRQn 1 */
- 214:Core/Src/stm32f4xx_it.c **** }
- 215:Core/Src/stm32f4xx_it.c **** 
- 216:Core/Src/stm32f4xx_it.c **** /**
- 217:Core/Src/stm32f4xx_it.c ****   * @brief This function handles I2C1 error interrupt.
- 218:Core/Src/stm32f4xx_it.c ****   */
- 219:Core/Src/stm32f4xx_it.c **** void I2C1_ER_IRQHandler(void)
- 220:Core/Src/stm32f4xx_it.c **** {
- 230              		.loc 1 220 0
- 231              		.cfi_startproc
- 232              		@ args = 0, pretend = 0, frame = 0
- 233              		@ frame_needed = 0, uses_anonymous_args = 0
- 234 0000 08B5     		push	{r3, lr}
- 235              	.LCFI2:
- 236              		.cfi_def_cfa_offset 8
- 237              		.cfi_offset 3, -8
- 238              		.cfi_offset 14, -4
- 221:Core/Src/stm32f4xx_it.c ****   /* USER CODE BEGIN I2C1_ER_IRQn 0 */
- 222:Core/Src/stm32f4xx_it.c **** 
- 223:Core/Src/stm32f4xx_it.c ****   /* USER CODE END I2C1_ER_IRQn 0 */
- 224:Core/Src/stm32f4xx_it.c ****   HAL_I2C_ER_IRQHandler(&hi2c1);
- 239              		.loc 1 224 0
- 240 0002 0248     		ldr	r0, .L22
- 241 0004 FFF7FEFF 		bl	HAL_I2C_ER_IRQHandler
- 242              	.LVL2:
- 243 0008 08BD     		pop	{r3, pc}
- 244              	.L23:
- 245 000a 00BF     		.align	2
- 246              	.L22:
- 247 000c 00000000 		.word	hi2c1
- 248              		.cfi_endproc
- 249              	.LFE140:
- 251              		.text
- 252              	.Letext0:
- 253              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
- 254              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 9
-
-
- 255              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
- 256              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 257              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 258              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
- 259              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
- 260              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc8XAu8P.s 			page 10
+ 222              		.text
+ 223              	.Letext0:
+ 224              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 225              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 226              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 227              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 228              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 229              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 230              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
+ 231              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccKVjcML.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_it.c
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:22     .text.NMI_Handler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:27     .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:42     .text.HardFault_Handler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:47     .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:61     .text.MemManage_Handler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:66     .text.MemManage_Handler:00000000 MemManage_Handler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:80     .text.BusFault_Handler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:85     .text.BusFault_Handler:00000000 BusFault_Handler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:99     .text.UsageFault_Handler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:104    .text.UsageFault_Handler:00000000 UsageFault_Handler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:118    .text.SVC_Handler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:123    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:135    .text.DebugMon_Handler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:140    .text.DebugMon_Handler:00000000 DebugMon_Handler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:152    .text.PendSV_Handler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:157    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:169    .text.SysTick_Handler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:174    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:194    .text.I2C1_EV_IRQHandler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:199    .text.I2C1_EV_IRQHandler:00000000 I2C1_EV_IRQHandler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:218    .text.I2C1_EV_IRQHandler:0000000c $d
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:223    .text.I2C1_ER_IRQHandler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:228    .text.I2C1_ER_IRQHandler:00000000 I2C1_ER_IRQHandler
-C:\Users\master\AppData\Local\Temp\cc8XAu8P.s:247    .text.I2C1_ER_IRQHandler:0000000c $d
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:22     .text.NMI_Handler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:27     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:42     .text.HardFault_Handler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:47     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:61     .text.MemManage_Handler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:66     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:80     .text.BusFault_Handler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:85     .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:99     .text.UsageFault_Handler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:104    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:118    .text.SVC_Handler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:123    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:135    .text.DebugMon_Handler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:140    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:152    .text.PendSV_Handler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:157    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:169    .text.SysTick_Handler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:174    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:194    .text.SPI1_IRQHandler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:199    .text.SPI1_IRQHandler:00000000 SPI1_IRQHandler
+C:\Users\master\AppData\Local\Temp\ccKVjcML.s:218    .text.SPI1_IRQHandler:0000000c $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick
-HAL_I2C_EV_IRQHandler
-hi2c1
-HAL_I2C_ER_IRQHandler
+HAL_SPI_IRQHandler
+hspi1

@@ -3,10 +3,17 @@
 u8g2_t u8g2;
 int now=1;
 int aim=360;
+
+
 void setp(){
-    HAL_Delay(100);
+
+    HAL_Delay(1000);
     u8g2Init(&u8g2);
-    
+    HAL_Delay(1000);
+
+
+
+  
     while (1)
     {
 
@@ -66,3 +73,4 @@ void showTemp(int temp){
 
 
 }
+

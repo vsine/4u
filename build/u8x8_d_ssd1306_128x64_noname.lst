@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
   28:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
   29:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
   30:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 2
 
 
   31:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
   85:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_CA(0x0d5, 0x080),		/* clock divide ratio (0x00=1) and oscillator frequency (0x8) */
   86:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_CA(0x0a8, 0x03f),		/* multiplex ratio */
   87:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_CA(0x0d3, 0x000),		/* display offset */
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 3
 
 
   88:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_C(0x040),		                /* set display start line to 0 */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  142:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_C(0x02e),				/* Deactivate scroll */ 
  143:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_C(0x0a4),				/* output ram to display */
  144:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_C(0x0a6),				/* none inverted normal display mode */
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 4
 
 
  145:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****     
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  199:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_START_TRANSFER(),             	/* enable chip, delay is part of the transfer start */
  200:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_C(0x0a0),				/* segment remap a0/a1*/
  201:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_C(0x0c0),				/* c0: scan dir normal, c8: reverse */
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 5
 
 
  202:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   U8X8_END_TRANSFER(),             	/* disable chip */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  224:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****     case U8X8_MSG_DISPLAY_SET_POWER_SAVE:
  225:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****       if ( arg_int == 0 )
   61              		.loc 1 225 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 6
 
 
   62 0018 22B9     		cbnz	r2, .L8
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  275:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c **** 	*/
  276:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c **** 	arg_int--;
  277:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****       } while( arg_int > 0 );
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 7
 
 
  278:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****       
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  108              	.L6:
  244:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****       u8x8_cad_SendCmd(u8x8, 0x081 );
  109              		.loc 1 244 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 8
 
 
  110 0054 FFF7FEFF 		bl	u8x8_cad_StartTransfer
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  154              		.loc 1 258 0
  155 008c 3909     		lsrs	r1, r7, #4
  156 008e 41F01001 		orr	r1, r1, #16
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 9
 
 
  157 0092 2846     		mov	r0, r5
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  285:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c **** }
  202              		.loc 1 285 0
  203 00d2 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 10
 
 
  204              	.LVL33:
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  232              		.cfi_offset 4, -12
  233              		.cfi_offset 5, -8
  234              		.cfi_offset 14, -4
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 11
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 11
 
 
  235 0002 0546     		mov	r5, r0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  269 0032 00E0     		b	.L16
  270              	.L19:
  316:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 12
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 12
 
 
  271              		.loc 1 316 0
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  340:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   {
  341:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****     case U8X8_MSG_DISPLAY_INIT:
  342:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****       u8x8_d_helper_display_init(u8x8);
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 13
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 13
 
 
  318              		.loc 1 342 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  359              		.global	u8x8_d_ssd1306_128x64_alt0
  360              		.thumb
  361              		.thumb_func
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 14
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 14
 
 
  363              	u8x8_d_ssd1306_128x64_alt0:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  372:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   return 1;
  398              		.loc 1 372 0
  399 0024 0123     		movs	r3, #1
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 15
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 15
 
 
  365:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****       break;
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  389:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   /* i2c_bus_clock_100kHz = */ 4,
  390:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   /* data_setup_time_ns = */ 40,
  391:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   /* write_pulse_width_ns = */ 150,	/* SSD1306: cycle time is 300ns, so use 300/2 = 150 */
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 16
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 16
 
 
  392:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****   /* tile_width = */ 16,
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  413:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****       break;
  414:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****     case U8X8_MSG_DISPLAY_SETUP_MEMORY:
  415:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****       u8x8_d_helper_display_setup_memory(u8x8, &u8x8_sh1106_128x64_noname_display_info);
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 17
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 17
 
 
  416:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****       break;
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  511              	.LVL58:
  512 0000 38B5     		push	{r3, r4, r5, lr}
  513              	.LCFI5:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 18
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 18
 
 
  514              		.cfi_def_cfa_offset 16
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  550              		.loc 1 441 0
  551 0030 0123     		movs	r3, #1
  437:u8g2_lib/u8x8_d_ssd1306_128x64_noname.c ****     default:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 19
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 19
 
 
  552              		.loc 1 437 0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  598 000e 092C     		cmp	r4, #9
  599 0010 0AD0     		beq	.L57
  600 0012 0A2C     		cmp	r4, #10
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 20
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 20
 
 
  601 0014 0FD1     		bne	.L56
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  637 0040 00000000 		.word	.LANCHOR8
  638              		.cfi_endproc
  639              	.LFE6:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 21
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 21
 
 
  641              		.section	.rodata.u8x8_d_sh1106_128x64_winstar_init_seq,"a",%progbits
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  699 0001 01       		.byte	1
  700 0002 14       		.byte	20
  701 0003 0A       		.byte	10
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 22
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 22
 
 
  702 0004 64       		.byte	100
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  758 0023 16       		.byte	22
  759 0024 EF       		.byte	-17
  760 0025 15       		.byte	21
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 23
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 23
 
 
  761 0026 D9       		.byte	-39
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  821 0011 15       		.byte	21
  822 0012 8D       		.byte	-115
  823 0013 16       		.byte	22
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 24
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 24
 
 
  824 0014 14       		.byte	20
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  880 0014 8000     		.short	128
  881 0016 4000     		.short	64
  882              		.section	.rodata.u8x8_d_ssd1306_128x64_noname_flip0_seq,"a",%progbits
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 25
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 25
 
 
  883              		.align	2
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  941 0028 F1       		.byte	-15
  942 0029 15       		.byte	21
  943 002a DB       		.byte	-37
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 26
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 26
 
 
  944 002b 16       		.byte	22
@@ -1527,56 +1527,56 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 1
  969              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  970              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  971              		.file 4 "u8g2_lib/u8x8.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 27
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 27
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8x8_d_ssd1306_128x64_noname.c
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:22     .text.u8x8_d_ssd1306_sh1106_generic:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:26     .text.u8x8_d_ssd1306_sh1106_generic:00000000 u8x8_d_ssd1306_sh1106_generic
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:54     .text.u8x8_d_ssd1306_sh1106_generic:00000012 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:208    .text.u8x8_d_ssd1306_sh1106_generic:000000d4 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:216    .text.u8x8_d_ssd1306_128x64_noname:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:221    .text.u8x8_d_ssd1306_128x64_noname:00000000 u8x8_d_ssd1306_128x64_noname
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:281    .text.u8x8_d_ssd1306_128x64_noname:0000003c $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:287    .text.u8x8_d_ssd1306_128x64_vcomh0:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:292    .text.u8x8_d_ssd1306_128x64_vcomh0:00000000 u8x8_d_ssd1306_128x64_vcomh0
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:352    .text.u8x8_d_ssd1306_128x64_vcomh0:0000003c $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:358    .text.u8x8_d_ssd1306_128x64_alt0:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:363    .text.u8x8_d_ssd1306_128x64_alt0:00000000 u8x8_d_ssd1306_128x64_alt0
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:423    .text.u8x8_d_ssd1306_128x64_alt0:0000003c $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:429    .text.u8x8_d_sh1106_128x64_noname:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:434    .text.u8x8_d_sh1106_128x64_noname:00000000 u8x8_d_sh1106_128x64_noname
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:494    .text.u8x8_d_sh1106_128x64_noname:0000003c $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:500    .text.u8x8_d_sh1106_128x64_vcomh0:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:505    .text.u8x8_d_sh1106_128x64_vcomh0:00000000 u8x8_d_sh1106_128x64_vcomh0
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:565    .text.u8x8_d_sh1106_128x64_vcomh0:0000003c $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:571    .text.u8x8_d_sh1106_128x64_winstar:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:576    .text.u8x8_d_sh1106_128x64_winstar:00000000 u8x8_d_sh1106_128x64_winstar
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:636    .text.u8x8_d_sh1106_128x64_winstar:0000003c $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:642    .rodata.u8x8_d_sh1106_128x64_winstar_init_seq:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:646    .rodata.u8x8_d_sh1106_128x64_winstar_init_seq:00000000 u8x8_d_sh1106_128x64_winstar_init_seq
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:693    .rodata.u8x8_sh1106_128x64_noname_display_info:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:697    .rodata.u8x8_sh1106_128x64_noname_display_info:00000000 u8x8_sh1106_128x64_noname_display_info
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:718    .rodata.u8x8_d_ssd1306_128x64_vcomh0_init_seq:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:722    .rodata.u8x8_d_ssd1306_128x64_vcomh0_init_seq:00000000 u8x8_d_ssd1306_128x64_vcomh0_init_seq
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:777    .rodata.u8x8_d_ssd1306_128x64_noname_powersave0_seq:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:781    .rodata.u8x8_d_ssd1306_128x64_noname_powersave0_seq:00000000 u8x8_d_ssd1306_128x64_noname_powersave0_seq
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:788    .rodata.u8x8_d_ssd1306_128x64_noname_powersave1_seq:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:792    .rodata.u8x8_d_ssd1306_128x64_noname_powersave1_seq:00000000 u8x8_d_ssd1306_128x64_noname_powersave1_seq
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:799    .rodata.u8x8_d_ssd1306_128x64_alt0_init_seq:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:803    .rodata.u8x8_d_ssd1306_128x64_alt0_init_seq:00000000 u8x8_d_ssd1306_128x64_alt0_init_seq
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:858    .rodata.u8x8_ssd1306_128x64_noname_display_info:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:862    .rodata.u8x8_ssd1306_128x64_noname_display_info:00000000 u8x8_ssd1306_128x64_noname_display_info
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:883    .rodata.u8x8_d_ssd1306_128x64_noname_flip0_seq:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:887    .rodata.u8x8_d_ssd1306_128x64_noname_flip0_seq:00000000 u8x8_d_ssd1306_128x64_noname_flip0_seq
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:896    .rodata.u8x8_d_ssd1306_128x64_noname_init_seq:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:900    .rodata.u8x8_d_ssd1306_128x64_noname_init_seq:00000000 u8x8_d_ssd1306_128x64_noname_init_seq
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:955    .rodata.u8x8_d_ssd1306_128x64_noname_flip1_seq:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:959    .rodata.u8x8_d_ssd1306_128x64_noname_flip1_seq:00000000 u8x8_d_ssd1306_128x64_noname_flip1_seq
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:22     .text.u8x8_d_ssd1306_sh1106_generic:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:26     .text.u8x8_d_ssd1306_sh1106_generic:00000000 u8x8_d_ssd1306_sh1106_generic
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:54     .text.u8x8_d_ssd1306_sh1106_generic:00000012 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:208    .text.u8x8_d_ssd1306_sh1106_generic:000000d4 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:216    .text.u8x8_d_ssd1306_128x64_noname:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:221    .text.u8x8_d_ssd1306_128x64_noname:00000000 u8x8_d_ssd1306_128x64_noname
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:281    .text.u8x8_d_ssd1306_128x64_noname:0000003c $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:287    .text.u8x8_d_ssd1306_128x64_vcomh0:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:292    .text.u8x8_d_ssd1306_128x64_vcomh0:00000000 u8x8_d_ssd1306_128x64_vcomh0
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:352    .text.u8x8_d_ssd1306_128x64_vcomh0:0000003c $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:358    .text.u8x8_d_ssd1306_128x64_alt0:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:363    .text.u8x8_d_ssd1306_128x64_alt0:00000000 u8x8_d_ssd1306_128x64_alt0
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:423    .text.u8x8_d_ssd1306_128x64_alt0:0000003c $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:429    .text.u8x8_d_sh1106_128x64_noname:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:434    .text.u8x8_d_sh1106_128x64_noname:00000000 u8x8_d_sh1106_128x64_noname
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:494    .text.u8x8_d_sh1106_128x64_noname:0000003c $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:500    .text.u8x8_d_sh1106_128x64_vcomh0:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:505    .text.u8x8_d_sh1106_128x64_vcomh0:00000000 u8x8_d_sh1106_128x64_vcomh0
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:565    .text.u8x8_d_sh1106_128x64_vcomh0:0000003c $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:571    .text.u8x8_d_sh1106_128x64_winstar:00000000 $t
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:576    .text.u8x8_d_sh1106_128x64_winstar:00000000 u8x8_d_sh1106_128x64_winstar
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:636    .text.u8x8_d_sh1106_128x64_winstar:0000003c $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:642    .rodata.u8x8_d_sh1106_128x64_winstar_init_seq:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:646    .rodata.u8x8_d_sh1106_128x64_winstar_init_seq:00000000 u8x8_d_sh1106_128x64_winstar_init_seq
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:693    .rodata.u8x8_sh1106_128x64_noname_display_info:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:697    .rodata.u8x8_sh1106_128x64_noname_display_info:00000000 u8x8_sh1106_128x64_noname_display_info
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:718    .rodata.u8x8_d_ssd1306_128x64_vcomh0_init_seq:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:722    .rodata.u8x8_d_ssd1306_128x64_vcomh0_init_seq:00000000 u8x8_d_ssd1306_128x64_vcomh0_init_seq
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:777    .rodata.u8x8_d_ssd1306_128x64_noname_powersave0_seq:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:781    .rodata.u8x8_d_ssd1306_128x64_noname_powersave0_seq:00000000 u8x8_d_ssd1306_128x64_noname_powersave0_seq
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:788    .rodata.u8x8_d_ssd1306_128x64_noname_powersave1_seq:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:792    .rodata.u8x8_d_ssd1306_128x64_noname_powersave1_seq:00000000 u8x8_d_ssd1306_128x64_noname_powersave1_seq
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:799    .rodata.u8x8_d_ssd1306_128x64_alt0_init_seq:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:803    .rodata.u8x8_d_ssd1306_128x64_alt0_init_seq:00000000 u8x8_d_ssd1306_128x64_alt0_init_seq
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:858    .rodata.u8x8_ssd1306_128x64_noname_display_info:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:862    .rodata.u8x8_ssd1306_128x64_noname_display_info:00000000 u8x8_ssd1306_128x64_noname_display_info
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:883    .rodata.u8x8_d_ssd1306_128x64_noname_flip0_seq:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:887    .rodata.u8x8_d_ssd1306_128x64_noname_flip0_seq:00000000 u8x8_d_ssd1306_128x64_noname_flip0_seq
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:896    .rodata.u8x8_d_ssd1306_128x64_noname_init_seq:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:900    .rodata.u8x8_d_ssd1306_128x64_noname_init_seq:00000000 u8x8_d_ssd1306_128x64_noname_init_seq
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:955    .rodata.u8x8_d_ssd1306_128x64_noname_flip1_seq:00000000 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:959    .rodata.u8x8_d_ssd1306_128x64_noname_flip1_seq:00000000 u8x8_d_ssd1306_128x64_noname_flip1_seq
                      .debug_frame:00000010 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:59     .text.u8x8_d_ssd1306_sh1106_generic:00000017 $d
-C:\Users\master\AppData\Local\Temp\ccWUHDaF.s:59     .text.u8x8_d_ssd1306_sh1106_generic:00000018 $t
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:59     .text.u8x8_d_ssd1306_sh1106_generic:00000017 $d
+C:\Users\master\AppData\Local\Temp\cczTMDtb.s:59     .text.u8x8_d_ssd1306_sh1106_generic:00000018 $t
 
 UNDEFINED SYMBOLS
 u8x8_cad_SendSequence
@@ -1587,6 +1587,6 @@ u8x8_cad_EndTransfer
 u8x8_cad_SendData
 u8x8_d_helper_display_init
 u8x8_d_helper_display_setup_memory
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccWUHDaF.s 			page 28
+ARM GAS  C:\Users\master\AppData\Local\Temp\cczTMDtb.s 			page 28
 
 
