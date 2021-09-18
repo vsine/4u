@@ -1,0 +1,483 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc1Kdcer.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"u8g2_com_stm32_hw_spi_hal.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.u8x8_byte_4wire_hw_spi,"ax",%progbits
+  22              		.align	2
+  23              		.global	u8x8_byte_4wire_hw_spi
+  24              		.thumb
+  25              		.thumb_func
+  27              	u8x8_byte_4wire_hw_spi:
+  28              	.LFB130:
+  29              		.file 1 "u8g2_lib/u8g2_com_stm32_hw_spi_hal.c"
+   1:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** #include "u8g2_com_stm32_hw_spi_hal.h"
+   2:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** extern SPI_HandleTypeDef hspi1;
+   3:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** uint8_t u8x8_byte_4wire_hw_spi(u8x8_t *u8x8, uint8_t msg, uint8_t arg_int,void *arg_ptr)
+   4:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** {
+  30              		.loc 1 4 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              	.LVL0:
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+   5:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** 
+   6:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     static uint8_t buffer[128];
+   7:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     static uint8_t buf_idx;
+   8:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     uint8_t *data;
+   9:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     switch (msg)
+  40              		.loc 1 9 0
+  41 0002 1439     		subs	r1, r1, #20
+  42              	.LVL1:
+  43 0004 0C29     		cmp	r1, #12
+  44 0006 08D8     		bhi	.L2
+  45 0008 DFE801F0 		tbb	[pc, r1]
+  46              	.LVL2:
+  47              	.L4:
+  48 000c 36       		.byte	(.L11-.L4)/2
+  49 000d 07       		.byte	(.L2-.L4)/2
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc1Kdcer.s 			page 2
+
+
+  50 000e 07       		.byte	(.L2-.L4)/2
+  51 000f 13       		.byte	(.L5-.L4)/2
+  52 0010 1D       		.byte	(.L6-.L4)/2
+  53 0011 22       		.byte	(.L7-.L4)/2
+  54 0012 07       		.byte	(.L2-.L4)/2
+  55 0013 07       		.byte	(.L2-.L4)/2
+  56 0014 07       		.byte	(.L2-.L4)/2
+  57 0015 07       		.byte	(.L2-.L4)/2
+  58 0016 07       		.byte	(.L2-.L4)/2
+  59 0017 07       		.byte	(.L2-.L4)/2
+  60 0018 17       		.byte	(.L8-.L4)/2
+  61 0019 00       		.p2align 1
+  62              	.L2:
+  10:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     {
+  11:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         case U8X8_MSG_BYTE_SEND:
+  12:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             data = (uint8_t *)arg_ptr;
+  13:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             while (arg_int > 0)
+  14:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             {
+  15:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****                 buffer[buf_idx++] = *data;
+  16:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****                 data++;
+  17:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****                 arg_int--;
+  18:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             }
+  19:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         break;
+  20:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         case U8X8_MSG_BYTE_INIT:
+  21:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         break;
+  22:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         case U8X8_MSG_BYTE_SET_DC:
+  23:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             HAL_GPIO_WritePin(OLED_DC_GPIO_Port, OLED_DC_Pin, arg_int);
+  24:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         break;
+  25:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         case U8X8_MSG_BYTE_START_TRANSFER:
+  26:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             buf_idx = 0;
+  27:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         break;
+  28:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         case U8X8_MSG_BYTE_END_TRANSFER:
+  29:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             while(HAL_SPI_GetState(&hspi1)== HAL_SPI_STATE_READY);
+  30:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             HAL_SPI_Transmit(&hspi1,buffer,buf_idx,1000);
+  31:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             while(HAL_SPI_GetState(&hspi1)== HAL_SPI_STATE_BUSY){}
+  32:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         break;
+  33:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         default:
+  34:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     return 0;
+  63              		.loc 1 34 0
+  64 001a 0020     		movs	r0, #0
+  65 001c 10BD     		pop	{r4, pc}
+  66              	.LVL3:
+  67              	.L9:
+  15:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****                 data++;
+  68              		.loc 1 15 0
+  69 001e 1748     		ldr	r0, .L13
+  70 0020 0178     		ldrb	r1, [r0]	@ zero_extendqisi2
+  71 0022 4C1C     		adds	r4, r1, #1
+  72 0024 0470     		strb	r4, [r0]
+  73 0026 13F8014B 		ldrb	r4, [r3], #1	@ zero_extendqisi2
+  74              	.LVL4:
+  75 002a 1548     		ldr	r0, .L13+4
+  76 002c 4454     		strb	r4, [r0, r1]
+  77              	.LVL5:
+  17:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             }
+  78              		.loc 1 17 0
+  79 002e 013A     		subs	r2, r2, #1
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc1Kdcer.s 			page 3
+
+
+  80              	.LVL6:
+  81 0030 D2B2     		uxtb	r2, r2
+  82              	.LVL7:
+  83              	.L5:
+  13:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             {
+  84              		.loc 1 13 0
+  85 0032 002A     		cmp	r2, #0
+  86 0034 F3D1     		bne	.L9
+  35:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   }
+  36:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   return 1;
+  87              		.loc 1 36 0
+  88 0036 0120     		movs	r0, #1
+  89 0038 10BD     		pop	{r4, pc}
+  90              	.LVL8:
+  91              	.L8:
+  23:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         break;
+  92              		.loc 1 23 0
+  93 003a 4021     		movs	r1, #64
+  94 003c 1148     		ldr	r0, .L13+8
+  95 003e FFF7FEFF 		bl	HAL_GPIO_WritePin
+  96              	.LVL9:
+  97              		.loc 1 36 0
+  98 0042 0120     		movs	r0, #1
+  24:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         case U8X8_MSG_BYTE_START_TRANSFER:
+  99              		.loc 1 24 0
+ 100 0044 10BD     		pop	{r4, pc}
+ 101              	.LVL10:
+ 102              	.L6:
+  26:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         break;
+ 103              		.loc 1 26 0
+ 104 0046 0022     		movs	r2, #0
+ 105              	.LVL11:
+ 106 0048 0C4B     		ldr	r3, .L13
+ 107              	.LVL12:
+ 108 004a 1A70     		strb	r2, [r3]
+ 109              		.loc 1 36 0
+ 110 004c 0120     		movs	r0, #1
+  27:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         case U8X8_MSG_BYTE_END_TRANSFER:
+ 111              		.loc 1 27 0
+ 112 004e 10BD     		pop	{r4, pc}
+ 113              	.L7:
+  29:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             HAL_SPI_Transmit(&hspi1,buffer,buf_idx,1000);
+ 114              		.loc 1 29 0 discriminator 1
+ 115 0050 0D48     		ldr	r0, .L13+12
+ 116 0052 FFF7FEFF 		bl	HAL_SPI_GetState
+ 117              	.LVL13:
+ 118 0056 0128     		cmp	r0, #1
+ 119 0058 FAD0     		beq	.L7
+  30:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****             while(HAL_SPI_GetState(&hspi1)== HAL_SPI_STATE_BUSY){}
+ 120              		.loc 1 30 0
+ 121 005a 4FF47A73 		mov	r3, #1000
+ 122 005e 074A     		ldr	r2, .L13
+ 123 0060 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 124 0062 0749     		ldr	r1, .L13+4
+ 125 0064 0848     		ldr	r0, .L13+12
+ 126 0066 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 127              	.LVL14:
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc1Kdcer.s 			page 4
+
+
+ 128              	.L10:
+  31:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         break;
+ 129              		.loc 1 31 0 discriminator 1
+ 130 006a 0748     		ldr	r0, .L13+12
+ 131 006c FFF7FEFF 		bl	HAL_SPI_GetState
+ 132              	.LVL15:
+ 133 0070 0228     		cmp	r0, #2
+ 134 0072 FAD0     		beq	.L10
+ 135              		.loc 1 36 0
+ 136 0074 0120     		movs	r0, #1
+ 137 0076 10BD     		pop	{r4, pc}
+ 138              	.LVL16:
+ 139              	.L11:
+ 140 0078 0120     		movs	r0, #1
+  37:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** }
+ 141              		.loc 1 37 0
+ 142 007a 10BD     		pop	{r4, pc}
+ 143              	.L14:
+ 144              		.align	2
+ 145              	.L13:
+ 146 007c 00000000 		.word	.LANCHOR0
+ 147 0080 00000000 		.word	.LANCHOR1
+ 148 0084 00000240 		.word	1073872896
+ 149 0088 00000000 		.word	hspi1
+ 150              		.cfi_endproc
+ 151              	.LFE130:
+ 153              		.section	.text.u8x8_stm32_gpio_and_delay,"ax",%progbits
+ 154              		.align	2
+ 155              		.global	u8x8_stm32_gpio_and_delay
+ 156              		.thumb
+ 157              		.thumb_func
+ 159              	u8x8_stm32_gpio_and_delay:
+ 160              	.LFB131:
+  38:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** 
+  39:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** uint8_t u8x8_stm32_gpio_and_delay(U8X8_UNUSED u8x8_t *u8x8,
+  40:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     U8X8_UNUSED uint8_t msg, U8X8_UNUSED uint8_t arg_int,
+  41:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     U8X8_UNUSED void *arg_ptr)
+  42:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** {
+ 161              		.loc 1 42 0
+ 162              		.cfi_startproc
+ 163              		@ args = 0, pretend = 0, frame = 0
+ 164              		@ frame_needed = 0, uses_anonymous_args = 0
+ 165              	.LVL17:
+ 166 0000 10B5     		push	{r4, lr}
+ 167              	.LCFI1:
+ 168              		.cfi_def_cfa_offset 8
+ 169              		.cfi_offset 4, -8
+ 170              		.cfi_offset 14, -4
+ 171 0002 1446     		mov	r4, r2
+  43:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   switch (msg)
+ 172              		.loc 1 43 0
+ 173 0004 2839     		subs	r1, r1, #40
+ 174              	.LVL18:
+ 175 0006 2329     		cmp	r1, #35
+ 176 0008 29D8     		bhi	.L16
+ 177 000a DFE801F0 		tbb	[pc, r1]
+ 178              	.LVL19:
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc1Kdcer.s 			page 5
+
+
+ 179              	.L18:
+ 180 000e 12       		.byte	(.L17-.L18)/2
+ 181 000f 16       		.byte	(.L19-.L18)/2
+ 182 0010 28       		.byte	(.L16-.L18)/2
+ 183 0011 28       		.byte	(.L16-.L18)/2
+ 184 0012 28       		.byte	(.L16-.L18)/2
+ 185 0013 28       		.byte	(.L16-.L18)/2
+ 186 0014 28       		.byte	(.L16-.L18)/2
+ 187 0015 28       		.byte	(.L16-.L18)/2
+ 188 0016 28       		.byte	(.L16-.L18)/2
+ 189 0017 28       		.byte	(.L16-.L18)/2
+ 190 0018 28       		.byte	(.L16-.L18)/2
+ 191 0019 28       		.byte	(.L16-.L18)/2
+ 192 001a 28       		.byte	(.L16-.L18)/2
+ 193 001b 28       		.byte	(.L16-.L18)/2
+ 194 001c 28       		.byte	(.L16-.L18)/2
+ 195 001d 28       		.byte	(.L16-.L18)/2
+ 196 001e 28       		.byte	(.L16-.L18)/2
+ 197 001f 28       		.byte	(.L16-.L18)/2
+ 198 0020 28       		.byte	(.L16-.L18)/2
+ 199 0021 28       		.byte	(.L16-.L18)/2
+ 200 0022 28       		.byte	(.L16-.L18)/2
+ 201 0023 28       		.byte	(.L16-.L18)/2
+ 202 0024 28       		.byte	(.L16-.L18)/2
+ 203 0025 28       		.byte	(.L16-.L18)/2
+ 204 0026 28       		.byte	(.L16-.L18)/2
+ 205 0027 28       		.byte	(.L16-.L18)/2
+ 206 0028 28       		.byte	(.L16-.L18)/2
+ 207 0029 28       		.byte	(.L16-.L18)/2
+ 208 002a 28       		.byte	(.L16-.L18)/2
+ 209 002b 28       		.byte	(.L16-.L18)/2
+ 210 002c 28       		.byte	(.L16-.L18)/2
+ 211 002d 28       		.byte	(.L16-.L18)/2
+ 212 002e 28       		.byte	(.L16-.L18)/2
+ 213 002f 1A       		.byte	(.L20-.L18)/2
+ 214 0030 1E       		.byte	(.L21-.L18)/2
+ 215 0031 24       		.byte	(.L22-.L18)/2
+ 216              		.p2align 1
+ 217              	.L17:
+  44:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   {
+  45:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   case U8X8_MSG_GPIO_AND_DELAY_INIT:
+  46:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****      HAL_Delay(1);
+ 218              		.loc 1 46 0
+ 219 0032 0120     		movs	r0, #1
+ 220              	.LVL20:
+ 221 0034 FFF7FEFF 		bl	HAL_Delay
+ 222              	.LVL21:
+  47:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         //LL_mDelay(1);
+  48:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     break;
+ 223              		.loc 1 48 0
+ 224 0038 11E0     		b	.L16
+ 225              	.LVL22:
+ 226              	.L19:
+  49:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   case U8X8_MSG_DELAY_MILLI:
+  50:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     //LL_mDelay(arg_int);
+  51:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     HAL_Delay(1);
+ 227              		.loc 1 51 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc1Kdcer.s 			page 6
+
+
+ 228 003a 0120     		movs	r0, #1
+ 229              	.LVL23:
+ 230 003c FFF7FEFF 		bl	HAL_Delay
+ 231              	.LVL24:
+  52:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     break;
+ 232              		.loc 1 52 0
+ 233 0040 0DE0     		b	.L16
+ 234              	.LVL25:
+ 235              	.L20:
+  53:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     case U8X8_MSG_GPIO_CS:
+  54:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         HAL_GPIO_WritePin(OLED_CS_GPIO_Port, OLED_CS_Pin, arg_int);
+ 236              		.loc 1 54 0
+ 237 0042 0221     		movs	r1, #2
+ 238 0044 0748     		ldr	r0, .L24
+ 239              	.LVL26:
+ 240 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 241              	.LVL27:
+ 242              	.L21:
+  55:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   case U8X8_MSG_GPIO_DC:
+  56:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         
+  57:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** //    HAL_GPIO_WritePin(OLED_DC_GPIO_Port, OLED_DC_Pin, arg_int);
+  58:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         HAL_GPIO_WritePin(OLED_DC_GPIO_Port, OLED_DC_Pin, arg_int);
+ 243              		.loc 1 58 0
+ 244 004a 2246     		mov	r2, r4
+ 245 004c 4021     		movs	r1, #64
+ 246 004e 0648     		ldr	r0, .L24+4
+ 247 0050 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 248              	.LVL28:
+  59:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     break;
+ 249              		.loc 1 59 0
+ 250 0054 03E0     		b	.L16
+ 251              	.LVL29:
+ 252              	.L22:
+  60:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   case U8X8_MSG_GPIO_RESET:
+  61:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** //    HAL_GPIO_WritePin(OLED_RES_GPIO_Port, OLED_RES_Pin, arg_int);
+  62:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, arg_int);
+ 253              		.loc 1 62 0
+ 254 0056 0121     		movs	r1, #1
+ 255 0058 0248     		ldr	r0, .L24
+ 256              	.LVL30:
+ 257 005a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 258              	.LVL31:
+ 259              	.L16:
+  63:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     break;
+  64:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   }
+  65:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   return 1;
+  66:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** }
+ 260              		.loc 1 66 0
+ 261 005e 0120     		movs	r0, #1
+ 262 0060 10BD     		pop	{r4, pc}
+ 263              	.L25:
+ 264 0062 00BF     		.align	2
+ 265              	.L24:
+ 266 0064 00040240 		.word	1073873920
+ 267 0068 00000240 		.word	1073872896
+ 268              		.cfi_endproc
+ 269              	.LFE131:
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc1Kdcer.s 			page 7
+
+
+ 271              		.section	.text.u8g2Init,"ax",%progbits
+ 272              		.align	2
+ 273              		.global	u8g2Init
+ 274              		.thumb
+ 275              		.thumb_func
+ 277              	u8g2Init:
+ 278              	.LFB132:
+  67:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** 
+  68:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** 
+  69:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** void u8g2Init(u8g2_t *u8g2)
+  70:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** {
+ 279              		.loc 1 70 0
+ 280              		.cfi_startproc
+ 281              		@ args = 0, pretend = 0, frame = 0
+ 282              		@ frame_needed = 0, uses_anonymous_args = 0
+ 283              	.LVL32:
+ 284 0000 10B5     		push	{r4, lr}
+ 285              	.LCFI2:
+ 286              		.cfi_def_cfa_offset 8
+ 287              		.cfi_offset 4, -8
+ 288              		.cfi_offset 14, -4
+ 289 0002 0446     		mov	r4, r0
+  71:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     u8g2_Setup_ssd1306_128x64_noname_1(u8g2, U8G2_R0, u8x8_byte_4wire_hw_spi, u8x8_stm32_gpio_and_d
+ 290              		.loc 1 71 0
+ 291 0004 074B     		ldr	r3, .L28
+ 292 0006 084A     		ldr	r2, .L28+4
+ 293 0008 0849     		ldr	r1, .L28+8
+ 294 000a FFF7FEFF 		bl	u8g2_Setup_ssd1306_128x64_noname_1
+ 295              	.LVL33:
+  72:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     u8g2_InitDisplay(u8g2);                                                                       /
+ 296              		.loc 1 72 0
+ 297 000e 2046     		mov	r0, r4
+ 298 0010 FFF7FEFF 		bl	u8x8_InitDisplay
+ 299              	.LVL34:
+  73:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     u8g2_SetPowerSave(u8g2, 0);                                                                   /
+ 300              		.loc 1 73 0
+ 301 0014 0021     		movs	r1, #0
+ 302 0016 2046     		mov	r0, r4
+ 303 0018 FFF7FEFF 		bl	u8x8_SetPowerSave
+ 304              	.LVL35:
+  74:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****     u8g2_ClearBuffer(u8g2);
+ 305              		.loc 1 74 0
+ 306 001c 2046     		mov	r0, r4
+ 307 001e FFF7FEFF 		bl	u8g2_ClearBuffer
+ 308              	.LVL36:
+ 309 0022 10BD     		pop	{r4, pc}
+ 310              	.LVL37:
+ 311              	.L29:
+ 312              		.align	2
+ 313              	.L28:
+ 314 0024 00000000 		.word	u8x8_stm32_gpio_and_delay
+ 315 0028 00000000 		.word	u8x8_byte_4wire_hw_spi
+ 316 002c 00000000 		.word	u8g2_cb_r0
+ 317              		.cfi_endproc
+ 318              	.LFE132:
+ 320              		.section	.bss.buf_idx.13591,"aw",%nobits
+ 321              		.set	.LANCHOR0,. + 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc1Kdcer.s 			page 8
+
+
+ 324              	buf_idx.13591:
+ 325 0000 00       		.space	1
+ 326              		.section	.bss.buffer.13590,"aw",%nobits
+ 327              		.align	2
+ 328              		.set	.LANCHOR1,. + 0
+ 331              	buffer.13590:
+ 332 0000 00000000 		.space	128
+ 332      00000000 
+ 332      00000000 
+ 332      00000000 
+ 332      00000000 
+ 333              		.text
+ 334              	.Letext0:
+ 335              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 336              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 337              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 338              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 339              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 340              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 341              		.file 8 "u8g2_lib/u8x8.h"
+ 342              		.file 9 "u8g2_lib/u8g2.h"
+ 343              		.file 10 "Drivers/CMSIS/Include/core_cm4.h"
+ 344              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 345              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc1Kdcer.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 u8g2_com_stm32_hw_spi_hal.c
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:22     .text.u8x8_byte_4wire_hw_spi:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:27     .text.u8x8_byte_4wire_hw_spi:00000000 u8x8_byte_4wire_hw_spi
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:48     .text.u8x8_byte_4wire_hw_spi:0000000c $d
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:146    .text.u8x8_byte_4wire_hw_spi:0000007c $d
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:154    .text.u8x8_stm32_gpio_and_delay:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:159    .text.u8x8_stm32_gpio_and_delay:00000000 u8x8_stm32_gpio_and_delay
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:180    .text.u8x8_stm32_gpio_and_delay:0000000e $d
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:216    .text.u8x8_stm32_gpio_and_delay:00000032 $t
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:266    .text.u8x8_stm32_gpio_and_delay:00000064 $d
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:272    .text.u8g2Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:277    .text.u8g2Init:00000000 u8g2Init
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:314    .text.u8g2Init:00000024 $d
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:324    .bss.buf_idx.13591:00000000 buf_idx.13591
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:325    .bss.buf_idx.13591:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:327    .bss.buffer.13590:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:331    .bss.buffer.13590:00000000 buffer.13590
+                     .debug_frame:00000010 $d
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:61     .text.u8x8_byte_4wire_hw_spi:00000019 $d
+C:\Users\master\AppData\Local\Temp\cc1Kdcer.s:61     .text.u8x8_byte_4wire_hw_spi:0000001a $t
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+HAL_SPI_GetState
+HAL_SPI_Transmit
+hspi1
+HAL_Delay
+u8g2_Setup_ssd1306_128x64_noname_1
+u8x8_InitDisplay
+u8x8_SetPowerSave
+u8g2_ClearBuffer
+u8g2_cb_r0

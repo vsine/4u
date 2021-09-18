@@ -24,7 +24,8 @@ build/u8g2_com_stm32_hw_i2c_hal.o: u8g2_lib/u8g2_com_stm32_hw_i2c_hal.c \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
- Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h u8g2_lib/u8g2.h \
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h u8g2_lib/u8g2.h \
  u8g2_lib/u8x8.h
 
 u8g2_lib/u8g2_com_stm32_hw_i2c_hal.h:
@@ -84,6 +85,8 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
+
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
 
 u8g2_lib/u8g2.h:
 

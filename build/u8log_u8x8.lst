@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 1
   28:u8g2_lib/u8log_u8x8.c ****   NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
   29:u8g2_lib/u8log_u8x8.c ****   LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
   30:u8g2_lib/u8log_u8x8.c ****   CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s 			page 2
 
 
   31:u8g2_lib/u8log_u8x8.c ****   STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 1
   66 001e 4846     		mov	r0, r9
   67 0020 FFF7FEFF 		bl	u8x8_DrawGlyph
   68              	.LVL6:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s 			page 3
 
 
   48:u8g2_lib/u8log_u8x8.c ****     disp_x++;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 1
  117 000c 1E46     		mov	r6, r3
  118              	.LVL12:
   54:u8g2_lib/u8log_u8x8.c ****   uint8_t buf_y;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s 			page 4
 
 
   55:u8g2_lib/u8log_u8x8.c ****   for( buf_y = 0; buf_y < u8log->height; buf_y++ )
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 1
   64:u8g2_lib/u8log_u8x8.c **** {
  164              		.loc 1 64 0
  165              		.cfi_startproc
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s 			page 5
 
 
  166              		@ args = 0, pretend = 0, frame = 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 1
  210              		.cfi_def_cfa_offset 8
  211              		@ sp needed
  212 002c 10BD     		pop	{r4, pc}
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s 			page 6
 
 
  213              		.cfi_endproc
@@ -308,17 +308,17 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 1
  218              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
  219              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
  220              		.file 4 "u8g2_lib/u8x8.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccJmR9zH.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8log_u8x8.c
-C:\Users\master\AppData\Local\Temp\ccJmR9zH.s:22     .text.u8x8_DrawLogLine:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccJmR9zH.s:26     .text.u8x8_DrawLogLine:00000000 u8x8_DrawLogLine
-C:\Users\master\AppData\Local\Temp\ccJmR9zH.s:90     .text.u8x8_DrawLog:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccJmR9zH.s:95     .text.u8x8_DrawLog:00000000 u8x8_DrawLog
-C:\Users\master\AppData\Local\Temp\ccJmR9zH.s:157    .text.u8log_u8x8_cb:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccJmR9zH.s:162    .text.u8log_u8x8_cb:00000000 u8log_u8x8_cb
+C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s:22     .text.u8x8_DrawLogLine:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s:26     .text.u8x8_DrawLogLine:00000000 u8x8_DrawLogLine
+C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s:90     .text.u8x8_DrawLog:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s:95     .text.u8x8_DrawLog:00000000 u8x8_DrawLog
+C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s:157    .text.u8log_u8x8_cb:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccoe6CZ6.s:162    .text.u8log_u8x8_cb:00000000 u8log_u8x8_cb
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
