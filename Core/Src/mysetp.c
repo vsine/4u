@@ -6,7 +6,7 @@ int aim=360;
 
 
 void setp(){
-
+    
     HAL_Delay(1000);
     u8g2Init(&u8g2);
     HAL_Delay(1000);
@@ -23,8 +23,12 @@ void setp(){
         showTemp(now);
         if (now<aim)
         now+=(now/70)+1;
-        HAL_Delay(1000);
-          
+        HAL_Delay(1);
+        if (now>300)
+        {
+           now=1;
+        }
+        
         //u8g2_SetFont(&u8g2, u8g2_font_open_iconic_all_4x_t);
         //u8g2_DrawGlyph(&u8g2, 90,60,0x008D);
         u8g2_SendBuffer(&u8g2);
