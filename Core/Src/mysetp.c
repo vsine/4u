@@ -23,7 +23,7 @@ void setp(){
         showTemp(now);
         if (now<aim)
         now+=(now/70)+1;
-        HAL_Delay(1);
+        HAL_Delay(1000);
         if (now>300)
         {
            now=1;
