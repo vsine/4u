@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
   28:Core/Src/main.c **** 
   29:Core/Src/main.c **** /* Private typedef -----------------------------------------------------------*/
   30:Core/Src/main.c **** /* USER CODE BEGIN PTD */
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 2
 
 
   31:Core/Src/main.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
   85:Core/Src/main.c **** 
   86:Core/Src/main.c ****   /* USER CODE END Init */
   87:Core/Src/main.c **** 
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 3
 
 
   88:Core/Src/main.c ****   /* Configure the system clock */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  142:Core/Src/main.c **** 
  143:Core/Src/main.c ****     /* USER CODE BEGIN 3 */
  144:Core/Src/main.c **** 
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 4
 
 
  145:Core/Src/main.c ****     
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  199:Core/Src/main.c **** {
  200:Core/Src/main.c **** 
  201:Core/Src/main.c ****   /* USER CODE BEGIN SPI1_Init 0 */
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 5
 
 
  202:Core/Src/main.c **** 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
   31              		@ args = 0, pretend = 0, frame = 40
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 6
 
 
   34              	.LCFI0:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
   82 0048 02F00102 		and	r2, r2, #1
   83 004c 0392     		str	r2, [sp, #12]
   84 004e 039A     		ldr	r2, [sp, #12]
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 7
 
 
   85              	.LBE6:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  275:Core/Src/main.c ****   GPIO_InitStruct.Pin = GPIO_PIN_13;
  124              		.loc 1 275 0
  125 0096 4FF40053 		mov	r3, #8192
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 8
 
 
  126 009a 0593     		str	r3, [sp, #20]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  162              		.loc 1 293 0
  163 00c8 05A9     		add	r1, sp, #20
  164 00ca 2846     		mov	r0, r5
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 9
 
 
  165 00cc FFF7FEFF 		bl	HAL_GPIO_Init
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  216 001e 3B20     		movs	r0, #59
  217 0020 FFF7FEFF 		bl	HAL_NVIC_SetPriority
  218              	.LVL7:
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 10
 
 
  243:Core/Src/main.c **** 
@@ -597,16 +597,17 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  311:Core/Src/main.c ****   /* Infinite loop */
  312:Core/Src/main.c ****   for(;;)
  313:Core/Src/main.c ****   {
- 314:Core/Src/main.c ****     osDelay(1);
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 11
+ 314:Core/Src/main.c ****       
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 11
 
 
- 257              		.loc 1 314 0 discriminator 1
+ 315:Core/Src/main.c ****     osDelay(1);
+ 257              		.loc 1 315 0 discriminator 1
  258 0002 0120     		movs	r0, #1
  259 0004 FFF7FEFF 		bl	osDelay
  260              	.LVL11:
- 315:Core/Src/main.c ****     setp();
- 261              		.loc 1 315 0 discriminator 1
+ 316:Core/Src/main.c ****     setp();
+ 261              		.loc 1 316 0 discriminator 1
  262 0008 FFF7FEFF 		bl	setp
  263              	.LVL12:
  264 000c F9E7     		b	.L10
@@ -619,21 +620,21 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  272              		.thumb_func
  274              	HAL_TIM_PeriodElapsedCallback:
  275              	.LFB141:
- 316:Core/Src/main.c ****   }
- 317:Core/Src/main.c ****   /* USER CODE END 5 */
- 318:Core/Src/main.c **** }
- 319:Core/Src/main.c **** 
- 320:Core/Src/main.c **** /**
- 321:Core/Src/main.c ****   * @brief  Period elapsed callback in non blocking mode
- 322:Core/Src/main.c ****   * @note   This function is called  when TIM1 interrupt took place, inside
- 323:Core/Src/main.c ****   * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
- 324:Core/Src/main.c ****   * a global variable "uwTick" used as application time base.
- 325:Core/Src/main.c ****   * @param  htim : TIM handle
- 326:Core/Src/main.c ****   * @retval None
- 327:Core/Src/main.c ****   */
- 328:Core/Src/main.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
- 329:Core/Src/main.c **** {
- 276              		.loc 1 329 0
+ 317:Core/Src/main.c ****   }
+ 318:Core/Src/main.c ****   /* USER CODE END 5 */
+ 319:Core/Src/main.c **** }
+ 320:Core/Src/main.c **** 
+ 321:Core/Src/main.c **** /**
+ 322:Core/Src/main.c ****   * @brief  Period elapsed callback in non blocking mode
+ 323:Core/Src/main.c ****   * @note   This function is called  when TIM1 interrupt took place, inside
+ 324:Core/Src/main.c ****   * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+ 325:Core/Src/main.c ****   * a global variable "uwTick" used as application time base.
+ 326:Core/Src/main.c ****   * @param  htim : TIM handle
+ 327:Core/Src/main.c ****   * @retval None
+ 328:Core/Src/main.c ****   */
+ 329:Core/Src/main.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+ 330:Core/Src/main.c **** {
+ 276              		.loc 1 330 0
  277              		.cfi_startproc
  278              		@ args = 0, pretend = 0, frame = 0
  279              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -643,24 +644,24 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  283              		.cfi_def_cfa_offset 8
  284              		.cfi_offset 3, -8
  285              		.cfi_offset 14, -4
- 330:Core/Src/main.c ****   /* USER CODE BEGIN Callback 0 */
- 331:Core/Src/main.c **** 
- 332:Core/Src/main.c ****   /* USER CODE END Callback 0 */
- 333:Core/Src/main.c ****   if (htim->Instance == TIM1) {
- 286              		.loc 1 333 0
+ 331:Core/Src/main.c ****   /* USER CODE BEGIN Callback 0 */
+ 332:Core/Src/main.c **** 
+ 333:Core/Src/main.c ****   /* USER CODE END Callback 0 */
+ 334:Core/Src/main.c ****   if (htim->Instance == TIM1) {
+ 286              		.loc 1 334 0
  287 0002 0268     		ldr	r2, [r0]
  288 0004 024B     		ldr	r3, .L15
  289 0006 9A42     		cmp	r2, r3
  290 0008 01D1     		bne	.L12
- 334:Core/Src/main.c ****     HAL_IncTick();
- 291              		.loc 1 334 0
+ 335:Core/Src/main.c ****     HAL_IncTick();
+ 291              		.loc 1 335 0
  292 000a FFF7FEFF 		bl	HAL_IncTick
  293              	.LVL14:
  294              	.L12:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 12
+
+
  295 000e 08BD     		pop	{r3, pc}
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 12
-
-
  296              	.L16:
  297              		.align	2
  298              	.L15:
@@ -674,19 +675,19 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  307              		.thumb_func
  309              	Error_Handler:
  310              	.LFB142:
- 335:Core/Src/main.c ****   }
- 336:Core/Src/main.c ****   /* USER CODE BEGIN Callback 1 */
- 337:Core/Src/main.c **** 
- 338:Core/Src/main.c ****   /* USER CODE END Callback 1 */
- 339:Core/Src/main.c **** }
- 340:Core/Src/main.c **** 
- 341:Core/Src/main.c **** /**
- 342:Core/Src/main.c ****   * @brief  This function is executed in case of error occurrence.
- 343:Core/Src/main.c ****   * @retval None
- 344:Core/Src/main.c ****   */
- 345:Core/Src/main.c **** void Error_Handler(void)
- 346:Core/Src/main.c **** {
- 311              		.loc 1 346 0
+ 336:Core/Src/main.c ****   }
+ 337:Core/Src/main.c ****   /* USER CODE BEGIN Callback 1 */
+ 338:Core/Src/main.c **** 
+ 339:Core/Src/main.c ****   /* USER CODE END Callback 1 */
+ 340:Core/Src/main.c **** }
+ 341:Core/Src/main.c **** 
+ 342:Core/Src/main.c **** /**
+ 343:Core/Src/main.c ****   * @brief  This function is executed in case of error occurrence.
+ 344:Core/Src/main.c ****   * @retval None
+ 345:Core/Src/main.c ****   */
+ 346:Core/Src/main.c **** void Error_Handler(void)
+ 347:Core/Src/main.c **** {
+ 311              		.loc 1 347 0
  312              		.cfi_startproc
  313              		@ Volatile: function does not return.
  314              		@ args = 0, pretend = 0, frame = 0
@@ -717,10 +718,10 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
   20:Drivers/CMSIS/Include/cmsis_gcc.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   21:Drivers/CMSIS/Include/cmsis_gcc.h ****  * See the License for the specific language governing permissions and
   22:Drivers/CMSIS/Include/cmsis_gcc.h ****  * limitations under the License.
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 13
+
+
   23:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 13
-
-
   24:Drivers/CMSIS/Include/cmsis_gcc.h **** 
   25:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
   26:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __CMSIS_GCC_H
@@ -777,10 +778,10 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
   77:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   78:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT16_WRITE
   79:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 14
+
+
   80:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 14
-
-
   81:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   82:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_WRITE { uint16_t v; };
   83:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
@@ -837,10 +838,10 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  134:Drivers/CMSIS/Include/cmsis_gcc.h **** 
  135:Drivers/CMSIS/Include/cmsis_gcc.h **** /**
  136:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 15
+
+
  137:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 15
-
-
  138:Drivers/CMSIS/Include/cmsis_gcc.h ****            Can only be executed in Privileged modes.
  139:Drivers/CMSIS/Include/cmsis_gcc.h ****  */
  140:Drivers/CMSIS/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __disable_irq(void)
@@ -897,10 +898,10 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  214:Core/Src/main.c ****   hspi1.Init.NSS = SPI_NSS_SOFT;
  364              		.loc 1 214 0
  365 0016 4361     		str	r3, [r0, #20]
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 16
+
+
  215:Core/Src/main.c ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 16
-
-
  366              		.loc 1 215 0
  367 0018 4FF40072 		mov	r2, #512
  368 001c 8261     		str	r2, [r0, #24]
@@ -957,10 +958,10 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  413 0002 95B0     		sub	sp, sp, #84
  414              	.LCFI10:
  415              		.cfi_def_cfa_offset 88
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 17
+
+
  156:Core/Src/main.c ****   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 17
-
-
  416              		.loc 1 156 0
  417 0004 3022     		movs	r2, #48
  418 0006 0021     		movs	r1, #0
@@ -1017,10 +1018,10 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  169:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLM = 25;
  463              		.loc 1 169 0
  464 0058 4FF48002 		mov	r2, #4194304
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 18
+
+
  465 005c 0F92     		str	r2, [sp, #60]
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 18
-
-
  170:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLN = 168;
  466              		.loc 1 170 0
  467 005e 1922     		movs	r2, #25
@@ -1077,10 +1078,10 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  506 0094 FFF7FEFF 		bl	Error_Handler
  507              	.LVL21:
  508              	.L24:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 19
+
+
  191:Core/Src/main.c **** 
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 19
-
-
  509              		.loc 1 191 0
  510 0098 15B0     		add	sp, sp, #84
  511              	.LCFI11:
@@ -1137,10 +1138,10 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  558 0014 FFF7FEFF 		bl	MX_DMA_Init
  559              	.LVL26:
  105:Core/Src/main.c ****   myMutex01Handle = osMutexCreate(osMutex(myMutex01));
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 20
+
+
  560              		.loc 1 105 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 20
-
-
  561 0018 0026     		movs	r6, #0
  562 001a 0896     		str	r6, [sp, #32]
  563 001c 0996     		str	r6, [sp, #36]
@@ -1197,10 +1198,10 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  611 0010 80000000 		.word	128
  612 0014 00000000 		.word	0
  613 0018 00000000 		.word	0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 21
+
+
  614              		.section	.rodata.str1.4,"aMS",%progbits,1
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 21
-
-
  615              		.align	2
  616              	.LC0:
  617 0000 4D61696E 		.ascii	"MainTask\000"
@@ -1228,39 +1229,39 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 1
  637              		.file 20 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
  638              		.file 21 "Core/Inc/mysetp.h"
  639              		.file 22 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\cc76F7H1.s 			page 22
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccNyX21n.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:22     .text.MX_GPIO_Init:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:26     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:176    .text.MX_GPIO_Init:000000d8 $d
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:184    .text.MX_DMA_Init:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:188    .text.MX_DMA_Init:00000000 MX_DMA_Init
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:232    .text.MX_DMA_Init:00000030 $d
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:237    .text.StartMainTask:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:242    .text.StartMainTask:00000000 StartMainTask
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:269    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:274    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:299    .text.HAL_TIM_PeriodElapsedCallback:00000010 $d
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:304    .text.Error_Handler:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:309    .text.Error_Handler:00000000 Error_Handler
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:335    .text.MX_SPI1_Init:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:339    .text.MX_SPI1_Init:00000000 MX_SPI1_Init
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:392    .text.MX_SPI1_Init:00000038 $d
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:22     .text.MX_GPIO_Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:26     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:176    .text.MX_GPIO_Init:000000d8 $d
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:184    .text.MX_DMA_Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:188    .text.MX_DMA_Init:00000000 MX_DMA_Init
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:232    .text.MX_DMA_Init:00000030 $d
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:237    .text.StartMainTask:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:242    .text.StartMainTask:00000000 StartMainTask
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:269    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:274    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:299    .text.HAL_TIM_PeriodElapsedCallback:00000010 $d
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:304    .text.Error_Handler:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:309    .text.Error_Handler:00000000 Error_Handler
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:335    .text.MX_SPI1_Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:339    .text.MX_SPI1_Init:00000000 MX_SPI1_Init
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:392    .text.MX_SPI1_Init:00000038 $d
                             *COM*:00000058 hspi1
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:398    .text.SystemClock_Config:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:403    .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:518    .text.SystemClock_Config:000000a0 $d
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:524    .text.main:00000000 $t
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:529    .text.main:00000000 main
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:592    .text.main:0000004c $d
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:398    .text.SystemClock_Config:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:403    .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:518    .text.SystemClock_Config:000000a0 $d
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:524    .text.main:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:529    .text.main:00000000 main
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:592    .text.main:0000004c $d
                             *COM*:00000004 myMutex01Handle
                             *COM*:00000004 MainTaskHandle
                             *COM*:00000060 hdma_spi1_tx
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:603    .rodata:00000000 $d
-C:\Users\master\AppData\Local\Temp\cc76F7H1.s:615    .rodata.str1.4:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:603    .rodata:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccNyX21n.s:615    .rodata.str1.4:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

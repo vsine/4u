@@ -311,6 +311,7 @@ void StartMainTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+      
     osDelay(1);
     setp();
   }
