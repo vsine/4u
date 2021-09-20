@@ -55,7 +55,6 @@ void showInfo(){
         u8g2_DrawStr(&u8g2,94,46,"2.3");
         u8g2_DrawStr(&u8g2,80,59,"D:");
         u8g2_DrawStr(&u8g2,94,59,"0.8");
-        
 }
 void showTemp(int temp){
 
