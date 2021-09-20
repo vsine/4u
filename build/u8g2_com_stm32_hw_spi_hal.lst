@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 1
   50 000e 17       		.byte	(.L7-.L4)/2
   51 000f 07       		.byte	(.L2-.L4)/2
   52 0010 07       		.byte	(.L2-.L4)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s 			page 2
 
 
   53 0011 09       		.byte	(.L5-.L4)/2
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 1
   24:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****   return 1;
   88              		.loc 1 24 0
   89 0038 0120     		movs	r0, #1
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s 			page 3
 
 
   16:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c ****         case U8X8_MSG_BYTE_START_TRANSFER:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 1
  140 0010 28       		.byte	(.L13-.L15)/2
  141 0011 28       		.byte	(.L13-.L15)/2
  142 0012 28       		.byte	(.L13-.L15)/2
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s 			page 4
 
 
  143 0013 28       		.byte	(.L13-.L15)/2
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 1
  190              		.loc 1 36 0
  191 0040 0DE0     		b	.L13
  192              	.LVL22:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s 			page 5
 
 
  193              	.L17:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 1
   49:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** 
   50:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** void u8g2Init(u8g2_t *u8g2)
   51:u8g2_lib/u8g2_com_stm32_hw_spi_hal.c **** {
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s 			page 6
 
 
  237              		.loc 1 51 0
@@ -353,26 +353,26 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 1
  284              		.file 10 "Drivers/CMSIS/Include/core_cm4.h"
  285              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
  286              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccjkWXLW.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 u8g2_com_stm32_hw_spi_hal.c
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:22     .text.u8x8_byte_4wire_hw_spi:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:27     .text.u8x8_byte_4wire_hw_spi:00000000 u8x8_byte_4wire_hw_spi
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:50     .text.u8x8_byte_4wire_hw_spi:0000000e $d
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:106    .text.u8x8_byte_4wire_hw_spi:00000044 $d
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:112    .text.u8x8_stm32_gpio_and_delay:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:117    .text.u8x8_stm32_gpio_and_delay:00000000 u8x8_stm32_gpio_and_delay
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:138    .text.u8x8_stm32_gpio_and_delay:0000000e $d
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:174    .text.u8x8_stm32_gpio_and_delay:00000032 $t
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:224    .text.u8x8_stm32_gpio_and_delay:00000064 $d
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:230    .text.u8g2Init:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:235    .text.u8g2Init:00000000 u8g2Init
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:268    .text.u8g2Init:00000020 $d
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:22     .text.u8x8_byte_4wire_hw_spi:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:27     .text.u8x8_byte_4wire_hw_spi:00000000 u8x8_byte_4wire_hw_spi
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:50     .text.u8x8_byte_4wire_hw_spi:0000000e $d
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:106    .text.u8x8_byte_4wire_hw_spi:00000044 $d
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:112    .text.u8x8_stm32_gpio_and_delay:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:117    .text.u8x8_stm32_gpio_and_delay:00000000 u8x8_stm32_gpio_and_delay
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:138    .text.u8x8_stm32_gpio_and_delay:0000000e $d
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:174    .text.u8x8_stm32_gpio_and_delay:00000032 $t
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:224    .text.u8x8_stm32_gpio_and_delay:00000064 $d
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:230    .text.u8g2Init:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:235    .text.u8g2Init:00000000 u8g2Init
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:268    .text.u8g2Init:00000020 $d
                      .debug_frame:00000010 $d
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:63     .text.u8x8_byte_4wire_hw_spi:0000001b $d
-C:\Users\master\AppData\Local\Temp\ccjkWXLW.s:63     .text.u8x8_byte_4wire_hw_spi:0000001c $t
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:63     .text.u8x8_byte_4wire_hw_spi:0000001b $d
+C:\Users\master\AppData\Local\Temp\ccXTt1tQ.s:63     .text.u8x8_byte_4wire_hw_spi:0000001c $t
 
 UNDEFINED SYMBOLS
 HAL_SPI_Transmit

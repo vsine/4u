@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 1
 
 
    1              		.syntax unified
@@ -27,7 +27,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
   24              		.thumb
   25              		.thumb_func
   27              	showInfo:
-  28              	.LFB131:
+  28              	.LFB136:
   29              		.file 1 "Core/Src/mysetp.c"
    1:Core/Src/mysetp.c **** #include "mysetp.h"
    2:Core/Src/mysetp.c **** #include "stdlib.h"
@@ -54,11 +54,11 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
   23:Core/Src/mysetp.c ****         showTemp(now);
   24:Core/Src/mysetp.c ****         if (now<aim)
   25:Core/Src/mysetp.c ****         now+=(now/70)+1;
-  26:Core/Src/mysetp.c ****         HAL_Delay(1000);
+  26:Core/Src/mysetp.c ****         osDelay(1000);
   27:Core/Src/mysetp.c ****         if (now>300)
   28:Core/Src/mysetp.c ****         {
   29:Core/Src/mysetp.c ****            now=1;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 2
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 2
 
 
   30:Core/Src/mysetp.c ****         }
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
   69 0034 2B4B     		ldr	r3, .L6+20
   70 0036 0D22     		movs	r2, #13
   71 0038 0021     		movs	r1, #0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 3
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 3
 
 
   72 003a 2648     		ldr	r0, .L6+4
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  118 0084 1B4B     		ldr	r3, .L6+36
  119 0086 2122     		movs	r2, #33
  120 0088 5021     		movs	r1, #80
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 4
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 4
 
 
  121 008a 2046     		mov	r0, r4
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  169 00d4 00000000 		.word	u8g2
  170 00d8 00000000 		.word	.LANCHOR0
  171 00dc 56555555 		.word	1431655766
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 5
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 5
 
 
  172 00e0 00000000 		.word	.LC0
@@ -253,14 +253,14 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  181 0104 3C000000 		.word	.LC8
  182 0108 40000000 		.word	.LC9
  183              		.cfi_endproc
- 184              	.LFE131:
+ 184              	.LFE136:
  186              		.section	.text.showTemp,"ax",%progbits
  187              		.align	2
  188              		.global	showTemp
  189              		.thumb
  190              		.thumb_func
  192              	showTemp:
- 193              	.LFB132:
+ 193              	.LFB137:
   59:Core/Src/mysetp.c **** void showTemp(int temp){
  194              		.loc 1 59 0
  195              		.cfi_startproc
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  223              		.loc 1 63 0
  224 001c 0A22     		movs	r2, #10
  225 001e 03A9     		add	r1, sp, #12
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 6
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 6
 
 
  226 0020 2046     		mov	r0, r4
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  272 006a 0223     		movs	r3, #2
  273 006c 2322     		movs	r2, #35
  274 006e 2C21     		movs	r1, #44
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 7
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 7
 
 
  275 0070 2046     		mov	r0, r4
@@ -407,18 +407,18 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  310 00a0 00000000 		.word	u8g2_font_10x20_tr
  311 00a4 44000000 		.word	.LC10
  312              		.cfi_endproc
- 313              	.LFE132:
+ 313              	.LFE137:
  315              		.section	.text.setp,"ax",%progbits
  316              		.align	2
  317              		.global	setp
  318              		.thumb
  319              		.thumb_func
  321              	setp:
- 322              	.LFB130:
+ 322              	.LFB135:
    8:Core/Src/mysetp.c ****     
  323              		.loc 1 8 0
  324              		.cfi_startproc
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 8
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 8
 
 
  325              		@ Volatile: function does not return.
@@ -467,7 +467,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  361 002e 1B68     		ldr	r3, [r3]
  362 0030 9942     		cmp	r1, r3
  363 0032 09DA     		bge	.L16
-  25:Core/Src/mysetp.c ****         HAL_Delay(1000);
+  25:Core/Src/mysetp.c ****         osDelay(1000);
  364              		.loc 1 25 0
  365 0034 0F4B     		ldr	r3, .L20+12
  366 0036 83FB0123 		smull	r2, r3, r3, r1
@@ -478,13 +478,13 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  371 0044 0B44     		add	r3, r3, r1
  372 0046 2360     		str	r3, [r4]
  373              	.L16:
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 9
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 9
 
 
   26:Core/Src/mysetp.c ****         if (now>300)
  374              		.loc 1 26 0
  375 0048 4FF47A70 		mov	r0, #1000
- 376 004c FFF7FEFF 		bl	HAL_Delay
+ 376 004c FFF7FEFF 		bl	osDelay
  377              	.LVL33:
   27:Core/Src/mysetp.c ****         {
  378              		.loc 1 27 0
@@ -514,7 +514,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  399 0070 00000000 		.word	.LANCHOR1
  400 0074 EBA00EEA 		.word	-368140053
  401              		.cfi_endproc
- 402              	.LFE130:
+ 402              	.LFE135:
  404              		.global	aim
  405              		.global	now
  406              		.comm	u8g2,148,4
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  418              	.LC3:
  419 0024 41696D3A 		.ascii	"Aim:\000"
  419      00
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 10
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 10
 
 
  420 0029 000000   		.space	3
@@ -579,26 +579,27 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 1
  459              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\stdl
  460              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
  461              		.file 9 "u8g2_lib/u8g2_com_stm32_hw_spi_hal.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccB1sY3f.s 			page 11
+ 462              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 mysetp.c
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:22     .text.showInfo:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:27     .text.showInfo:00000000 showInfo
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:168    .text.showInfo:000000d0 $d
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:22     .text.showInfo:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:27     .text.showInfo:00000000 showInfo
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:168    .text.showInfo:000000d0 $d
                             *COM*:00000094 u8g2
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:187    .text.showTemp:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:192    .text.showTemp:00000000 showTemp
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:309    .text.showTemp:0000009c $d
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:316    .text.setp:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:321    .text.setp:00000000 setp
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:397    .text.setp:00000068 $d
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:450    .data.aim:00000000 aim
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:443    .data.now:00000000 now
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:408    .rodata.str1.4:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:439    .data.now:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccB1sY3f.s:446    .data.aim:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:187    .text.showTemp:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:192    .text.showTemp:00000000 showTemp
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:309    .text.showTemp:0000009c $d
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:316    .text.setp:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:321    .text.setp:00000000 setp
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:397    .text.setp:00000068 $d
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:450    .data.aim:00000000 aim
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:443    .data.now:00000000 now
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:408    .rodata.str1.4:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:439    .data.now:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccVA6Fdi.s:446    .data.aim:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
@@ -611,4 +612,5 @@ u8g2_font_10x20_tr
 HAL_Delay
 u8g2Init
 u8g2_ClearBuffer
+osDelay
 u8g2_SendBuffer
