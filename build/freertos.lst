@@ -1,0 +1,167 @@
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc04NTLK.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"freertos.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.vApplicationGetIdleTaskMemory,"ax",%progbits
+  22              		.align	2
+  23              		.global	vApplicationGetIdleTaskMemory
+  24              		.thumb
+  25              		.thumb_func
+  27              	vApplicationGetIdleTaskMemory:
+  28              	.LFB135:
+  29              		.file 1 "Core/Src/freertos.c"
+   1:Core/Src/freertos.c **** /* USER CODE BEGIN Header */
+   2:Core/Src/freertos.c **** /**
+   3:Core/Src/freertos.c ****   ******************************************************************************
+   4:Core/Src/freertos.c ****   * File Name          : freertos.c
+   5:Core/Src/freertos.c ****   * Description        : Code for freertos applications
+   6:Core/Src/freertos.c ****   ******************************************************************************
+   7:Core/Src/freertos.c ****   * @attention
+   8:Core/Src/freertos.c ****   *
+   9:Core/Src/freertos.c ****   * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
+  10:Core/Src/freertos.c ****   * All rights reserved.</center></h2>
+  11:Core/Src/freertos.c ****   *
+  12:Core/Src/freertos.c ****   * This software component is licensed by ST under Ultimate Liberty license
+  13:Core/Src/freertos.c ****   * SLA0044, the "License"; You may not use this file except in compliance with
+  14:Core/Src/freertos.c ****   * the License. You may obtain a copy of the License at:
+  15:Core/Src/freertos.c ****   *                             www.st.com/SLA0044
+  16:Core/Src/freertos.c ****   *
+  17:Core/Src/freertos.c ****   ******************************************************************************
+  18:Core/Src/freertos.c ****   */
+  19:Core/Src/freertos.c **** /* USER CODE END Header */
+  20:Core/Src/freertos.c **** 
+  21:Core/Src/freertos.c **** /* Includes ------------------------------------------------------------------*/
+  22:Core/Src/freertos.c **** #include "FreeRTOS.h"
+  23:Core/Src/freertos.c **** #include "task.h"
+  24:Core/Src/freertos.c **** #include "main.h"
+  25:Core/Src/freertos.c **** 
+  26:Core/Src/freertos.c **** /* Private includes ----------------------------------------------------------*/
+  27:Core/Src/freertos.c **** /* USER CODE BEGIN Includes */
+  28:Core/Src/freertos.c **** 
+  29:Core/Src/freertos.c **** /* USER CODE END Includes */
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc04NTLK.s 			page 2
+
+
+  30:Core/Src/freertos.c **** 
+  31:Core/Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
+  32:Core/Src/freertos.c **** /* USER CODE BEGIN PTD */
+  33:Core/Src/freertos.c **** 
+  34:Core/Src/freertos.c **** /* USER CODE END PTD */
+  35:Core/Src/freertos.c **** 
+  36:Core/Src/freertos.c **** /* Private define ------------------------------------------------------------*/
+  37:Core/Src/freertos.c **** /* USER CODE BEGIN PD */
+  38:Core/Src/freertos.c **** 
+  39:Core/Src/freertos.c **** /* USER CODE END PD */
+  40:Core/Src/freertos.c **** 
+  41:Core/Src/freertos.c **** /* Private macro -------------------------------------------------------------*/
+  42:Core/Src/freertos.c **** /* USER CODE BEGIN PM */
+  43:Core/Src/freertos.c **** 
+  44:Core/Src/freertos.c **** /* USER CODE END PM */
+  45:Core/Src/freertos.c **** 
+  46:Core/Src/freertos.c **** /* Private variables ---------------------------------------------------------*/
+  47:Core/Src/freertos.c **** /* USER CODE BEGIN Variables */
+  48:Core/Src/freertos.c **** 
+  49:Core/Src/freertos.c **** /* USER CODE END Variables */
+  50:Core/Src/freertos.c **** 
+  51:Core/Src/freertos.c **** /* Private function prototypes -----------------------------------------------*/
+  52:Core/Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  53:Core/Src/freertos.c **** 
+  54:Core/Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+  55:Core/Src/freertos.c **** 
+  56:Core/Src/freertos.c **** /* GetIdleTaskMemory prototype (linked to static allocation support) */
+  57:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  58:Core/Src/freertos.c **** 
+  59:Core/Src/freertos.c **** /* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
+  60:Core/Src/freertos.c **** static StaticTask_t xIdleTaskTCBBuffer;
+  61:Core/Src/freertos.c **** static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
+  62:Core/Src/freertos.c **** 
+  63:Core/Src/freertos.c **** void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskS
+  64:Core/Src/freertos.c **** {
+  30              		.loc 1 64 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  35              	.LVL0:
+  65:Core/Src/freertos.c ****   *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+  36              		.loc 1 65 0
+  37 0000 034B     		ldr	r3, .L2
+  38 0002 0360     		str	r3, [r0]
+  66:Core/Src/freertos.c ****   *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  39              		.loc 1 66 0
+  40 0004 034B     		ldr	r3, .L2+4
+  41 0006 0B60     		str	r3, [r1]
+  67:Core/Src/freertos.c ****   *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  42              		.loc 1 67 0
+  43 0008 8023     		movs	r3, #128
+  44 000a 1360     		str	r3, [r2]
+  45 000c 7047     		bx	lr
+  46              	.L3:
+  47 000e 00BF     		.align	2
+  48              	.L2:
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc04NTLK.s 			page 3
+
+
+  49 0010 00000000 		.word	.LANCHOR0
+  50 0014 00000000 		.word	.LANCHOR1
+  51              		.cfi_endproc
+  52              	.LFE135:
+  54              		.section	.bss.xIdleStack,"aw",%nobits
+  55              		.align	2
+  56              		.set	.LANCHOR1,. + 0
+  59              	xIdleStack:
+  60 0000 00000000 		.space	512
+  60      00000000 
+  60      00000000 
+  60      00000000 
+  60      00000000 
+  61              		.section	.bss.xIdleTaskTCBBuffer,"aw",%nobits
+  62              		.align	2
+  63              		.set	.LANCHOR0,. + 0
+  66              	xIdleTaskTCBBuffer:
+  67 0000 00000000 		.space	84
+  67      00000000 
+  67      00000000 
+  67      00000000 
+  67      00000000 
+  68              		.text
+  69              	.Letext0:
+  70              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+  71              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+  72              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h"
+  73              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
+  74              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\cc04NTLK.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 freertos.c
+C:\Users\master\AppData\Local\Temp\cc04NTLK.s:22     .text.vApplicationGetIdleTaskMemory:00000000 $t
+C:\Users\master\AppData\Local\Temp\cc04NTLK.s:27     .text.vApplicationGetIdleTaskMemory:00000000 vApplicationGetIdleTaskMemory
+C:\Users\master\AppData\Local\Temp\cc04NTLK.s:49     .text.vApplicationGetIdleTaskMemory:00000010 $d
+C:\Users\master\AppData\Local\Temp\cc04NTLK.s:55     .bss.xIdleStack:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc04NTLK.s:59     .bss.xIdleStack:00000000 xIdleStack
+C:\Users\master\AppData\Local\Temp\cc04NTLK.s:62     .bss.xIdleTaskTCBBuffer:00000000 $d
+C:\Users\master\AppData\Local\Temp\cc04NTLK.s:66     .bss.xIdleTaskTCBBuffer:00000000 xIdleTaskTCBBuffer
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

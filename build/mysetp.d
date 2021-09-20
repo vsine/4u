@@ -23,6 +23,8 @@ build/mysetp.o: Core/Src/mysetp.c Core/Inc/mysetp.h Core/Inc/main.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
+ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  u8g2_lib/u8g2_com_stm32_hw_spi_hal.h Core/Inc/main.h u8g2_lib/u8g2.h \
  u8g2_lib/u8x8.h
 
@@ -81,6 +83,10 @@ Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 
 Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
+
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
+
+Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 
 u8g2_lib/u8g2_com_stm32_hw_spi_hal.h:
 
