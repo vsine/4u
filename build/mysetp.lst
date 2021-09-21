@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 1
 
 
    1              		.syntax unified
@@ -31,47 +31,50 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
   29              		.file 1 "Core/Src/mysetp.c"
    1:Core/Src/mysetp.c **** #include "mysetp.h"
    2:Core/Src/mysetp.c **** #include "stdlib.h"
-   3:Core/Src/mysetp.c **** u8g2_t u8g2;
-   4:Core/Src/mysetp.c **** int now=1;
-   5:Core/Src/mysetp.c **** int aim=360;
-   6:Core/Src/mysetp.c **** 
-   7:Core/Src/mysetp.c **** 
-   8:Core/Src/mysetp.c **** void setp(){
-   9:Core/Src/mysetp.c ****     
-  10:Core/Src/mysetp.c ****     HAL_Delay(1000);
-  11:Core/Src/mysetp.c ****     u8g2Init(&u8g2);
-  12:Core/Src/mysetp.c ****     HAL_Delay(1000);
-  13:Core/Src/mysetp.c **** 
+   3:Core/Src/mysetp.c **** 
+   4:Core/Src/mysetp.c **** u8g2_t u8g2;
+   5:Core/Src/mysetp.c **** int now=1;
+   6:Core/Src/mysetp.c **** int aim=20;
+   7:Core/Src/mysetp.c **** extern TIM_HandleTypeDef htim2;
+   8:Core/Src/mysetp.c **** 
+   9:Core/Src/mysetp.c **** void setp(){
+  10:Core/Src/mysetp.c ****     
+  11:Core/Src/mysetp.c ****     HAL_Delay(1000);
+  12:Core/Src/mysetp.c ****     u8g2Init(&u8g2);
+  13:Core/Src/mysetp.c ****     HAL_Delay(1000);
   14:Core/Src/mysetp.c **** 
   15:Core/Src/mysetp.c **** 
-  16:Core/Src/mysetp.c ****   
-  17:Core/Src/mysetp.c ****     while (1)
-  18:Core/Src/mysetp.c ****     {
-  19:Core/Src/mysetp.c **** 
-  20:Core/Src/mysetp.c ****         u8g2_ClearBuffer(&u8g2);
-  21:Core/Src/mysetp.c **** 
-  22:Core/Src/mysetp.c ****         showInfo();
-  23:Core/Src/mysetp.c ****         showTemp(now);
-  24:Core/Src/mysetp.c ****         if (now<aim)
-  25:Core/Src/mysetp.c ****         now+=(now/70)+1;
-  26:Core/Src/mysetp.c ****         osDelay(1000);
-  27:Core/Src/mysetp.c ****         if (now>300)
-  28:Core/Src/mysetp.c ****         {
-  29:Core/Src/mysetp.c ****            now=1;
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 2
+  16:Core/Src/mysetp.c **** 
+  17:Core/Src/mysetp.c ****   
+  18:Core/Src/mysetp.c ****     while (1)
+  19:Core/Src/mysetp.c ****     {
+  20:Core/Src/mysetp.c **** 
+  21:Core/Src/mysetp.c ****         u8g2_ClearBuffer(&u8g2);
+  22:Core/Src/mysetp.c **** 
+  23:Core/Src/mysetp.c ****         showInfo();
+  24:Core/Src/mysetp.c ****         showTemp(now);
+  25:Core/Src/mysetp.c ****         //if (now<aim)
+  26:Core/Src/mysetp.c ****         //now+=(now/70)+1;
+  27:Core/Src/mysetp.c ****         //osDelay(1);
+  28:Core/Src/mysetp.c ****         if (now>300)
+  29:Core/Src/mysetp.c ****         {
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 2
 
 
-  30:Core/Src/mysetp.c ****         }
-  31:Core/Src/mysetp.c ****         
-  32:Core/Src/mysetp.c ****         //u8g2_SetFont(&u8g2, u8g2_font_open_iconic_all_4x_t);
-  33:Core/Src/mysetp.c ****         //u8g2_DrawGlyph(&u8g2, 90,60,0x008D);
-  34:Core/Src/mysetp.c ****         u8g2_SendBuffer(&u8g2);
-  35:Core/Src/mysetp.c ****     }
-  36:Core/Src/mysetp.c ****     
-  37:Core/Src/mysetp.c **** }
-  38:Core/Src/mysetp.c **** 
-  39:Core/Src/mysetp.c **** void showInfo(){
-  30              		.loc 1 39 0
+  30:Core/Src/mysetp.c ****            now=1;
+  31:Core/Src/mysetp.c ****         }
+  32:Core/Src/mysetp.c ****         __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_2,aim*10);
+  33:Core/Src/mysetp.c **** 
+  34:Core/Src/mysetp.c ****          //HAL_Delay(1000);
+  35:Core/Src/mysetp.c ****         //u8g2_SetFont(&u8g2, u8g2_font_open_iconic_all_4x_t);
+  36:Core/Src/mysetp.c ****         //u8g2_DrawGlyph(&u8g2, 90,60,0x008D);
+  37:Core/Src/mysetp.c ****         u8g2_SendBuffer(&u8g2);
+  38:Core/Src/mysetp.c ****     }
+  39:Core/Src/mysetp.c ****     
+  40:Core/Src/mysetp.c **** }
+  41:Core/Src/mysetp.c **** 
+  42:Core/Src/mysetp.c **** void showInfo(){
+  30              		.loc 1 42 0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 24
   33              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -83,14 +86,14 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
   39 0002 86B0     		sub	sp, sp, #24
   40              	.LCFI1:
   41              		.cfi_def_cfa_offset 32
-  40:Core/Src/mysetp.c ****         u8g2_SetFont(&u8g2, u8g2_font_6x13_tr);
-  42              		.loc 1 40 0
+  43:Core/Src/mysetp.c ****         u8g2_SetFont(&u8g2, u8g2_font_6x13_tr);
+  42              		.loc 1 43 0
   43 0004 3249     		ldr	r1, .L6
   44 0006 3348     		ldr	r0, .L6+4
   45 0008 FFF7FEFF 		bl	u8g2_SetFont
   46              	.LVL0:
-  41:Core/Src/mysetp.c ****         if (now%3==0)
-  47              		.loc 1 41 0
+  44:Core/Src/mysetp.c ****         if (now%3==0)
+  47              		.loc 1 44 0
   48 000c 324B     		ldr	r3, .L6+8
   49 000e 1A68     		ldr	r2, [r3]
   50 0010 324B     		ldr	r3, .L6+12
@@ -99,8 +102,8 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
   53 001a 03EB4303 		add	r3, r3, r3, lsl #1
   54 001e D31A     		subs	r3, r2, r3
   55 0020 06D1     		bne	.L2
-  42:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,0,13,"Heating.");
-  56              		.loc 1 42 0
+  45:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,0,13,"Heating.");
+  56              		.loc 1 45 0
   57 0022 2F4B     		ldr	r3, .L6+16
   58 0024 0D22     		movs	r2, #13
   59 0026 0021     		movs	r1, #0
@@ -109,29 +112,29 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
   62              	.LVL1:
   63 002e 10E0     		b	.L3
   64              	.L2:
-  43:Core/Src/mysetp.c ****         else if (now%3==1)
-  65              		.loc 1 43 0
+  46:Core/Src/mysetp.c ****         else if (now%3==1)
+  65              		.loc 1 46 0
   66 0030 012B     		cmp	r3, #1
   67 0032 06D1     		bne	.L4
-  44:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,0,13,"Heating..");
-  68              		.loc 1 44 0
+  47:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,0,13,"Heating..");
+  68              		.loc 1 47 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 3
+
+
   69 0034 2B4B     		ldr	r3, .L6+20
   70 0036 0D22     		movs	r2, #13
   71 0038 0021     		movs	r1, #0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 3
-
-
   72 003a 2648     		ldr	r0, .L6+4
   73 003c FFF7FEFF 		bl	u8g2_DrawStr
   74              	.LVL2:
   75 0040 07E0     		b	.L3
   76              	.L4:
-  45:Core/Src/mysetp.c ****         else if (now%3==2)
-  77              		.loc 1 45 0
+  48:Core/Src/mysetp.c ****         else if (now%3==2)
+  77              		.loc 1 48 0
   78 0042 022B     		cmp	r3, #2
   79 0044 05D1     		bne	.L3
-  46:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,0,13,"Heating...");
-  80              		.loc 1 46 0
+  49:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,0,13,"Heating...");
+  80              		.loc 1 49 0
   81 0046 284B     		ldr	r3, .L6+24
   82 0048 0D22     		movs	r2, #13
   83 004a 0021     		movs	r1, #0
@@ -139,8 +142,8 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
   85 004e FFF7FEFF 		bl	u8g2_DrawStr
   86              	.LVL3:
   87              	.L3:
-  47:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,80,13,"Aim:");
-  88              		.loc 1 47 0
+  50:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,80,13,"Aim:");
+  88              		.loc 1 50 0
   89 0052 204C     		ldr	r4, .L6+4
   90 0054 254B     		ldr	r3, .L6+28
   91 0056 0D22     		movs	r2, #13
@@ -148,85 +151,85 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
   93 005a 2046     		mov	r0, r4
   94 005c FFF7FEFF 		bl	u8g2_DrawStr
   95              	.LVL4:
-  48:Core/Src/mysetp.c ****         char kk[20]={0};
-  96              		.loc 1 48 0
+  51:Core/Src/mysetp.c ****         char kk[20]={0};
+  96              		.loc 1 51 0
   97 0060 0023     		movs	r3, #0
   98 0062 0193     		str	r3, [sp, #4]
   99 0064 0293     		str	r3, [sp, #8]
  100 0066 0393     		str	r3, [sp, #12]
  101 0068 0493     		str	r3, [sp, #16]
  102 006a 0593     		str	r3, [sp, #20]
-  49:Core/Src/mysetp.c ****         itoa(aim,kk,10);
- 103              		.loc 1 49 0
+  52:Core/Src/mysetp.c ****         itoa(aim,kk,10);
+ 103              		.loc 1 52 0
  104 006c 0A22     		movs	r2, #10
  105 006e 01A9     		add	r1, sp, #4
  106 0070 1F4B     		ldr	r3, .L6+32
  107 0072 1868     		ldr	r0, [r3]
  108 0074 FFF7FEFF 		bl	itoa
  109              	.LVL5:
-  50:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,104,13,kk);
- 110              		.loc 1 50 0
+  53:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,104,13,kk);
+ 110              		.loc 1 53 0
  111 0078 01AB     		add	r3, sp, #4
  112 007a 0D22     		movs	r2, #13
  113 007c 6821     		movs	r1, #104
  114 007e 2046     		mov	r0, r4
  115 0080 FFF7FEFF 		bl	u8g2_DrawStr
  116              	.LVL6:
-  51:Core/Src/mysetp.c **** 
-  52:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,80,33,"P:");
- 117              		.loc 1 52 0
+  54:Core/Src/mysetp.c **** 
+  55:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,80,33,"P:");
+ 117              		.loc 1 55 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 4
+
+
  118 0084 1B4B     		ldr	r3, .L6+36
  119 0086 2122     		movs	r2, #33
  120 0088 5021     		movs	r1, #80
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 4
-
-
  121 008a 2046     		mov	r0, r4
  122 008c FFF7FEFF 		bl	u8g2_DrawStr
  123              	.LVL7:
-  53:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,94,33,"0.1");
- 124              		.loc 1 53 0
+  56:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,94,33,"0.1");
+ 124              		.loc 1 56 0
  125 0090 194B     		ldr	r3, .L6+40
  126 0092 2122     		movs	r2, #33
  127 0094 5E21     		movs	r1, #94
  128 0096 2046     		mov	r0, r4
  129 0098 FFF7FEFF 		bl	u8g2_DrawStr
  130              	.LVL8:
-  54:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,80,46,"I:");
- 131              		.loc 1 54 0
+  57:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,80,46,"I:");
+ 131              		.loc 1 57 0
  132 009c 174B     		ldr	r3, .L6+44
  133 009e 2E22     		movs	r2, #46
  134 00a0 5021     		movs	r1, #80
  135 00a2 2046     		mov	r0, r4
  136 00a4 FFF7FEFF 		bl	u8g2_DrawStr
  137              	.LVL9:
-  55:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,94,46,"2.3");
- 138              		.loc 1 55 0
+  58:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,94,46,"2.3");
+ 138              		.loc 1 58 0
  139 00a8 154B     		ldr	r3, .L6+48
  140 00aa 2E22     		movs	r2, #46
  141 00ac 5E21     		movs	r1, #94
  142 00ae 2046     		mov	r0, r4
  143 00b0 FFF7FEFF 		bl	u8g2_DrawStr
  144              	.LVL10:
-  56:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,80,59,"D:");
- 145              		.loc 1 56 0
+  59:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,80,59,"D:");
+ 145              		.loc 1 59 0
  146 00b4 134B     		ldr	r3, .L6+52
  147 00b6 3B22     		movs	r2, #59
  148 00b8 5021     		movs	r1, #80
  149 00ba 2046     		mov	r0, r4
  150 00bc FFF7FEFF 		bl	u8g2_DrawStr
  151              	.LVL11:
-  57:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,94,59,"0.8");
- 152              		.loc 1 57 0
+  60:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,94,59,"0.8");
+ 152              		.loc 1 60 0
  153 00c0 114B     		ldr	r3, .L6+56
  154 00c2 3B22     		movs	r2, #59
  155 00c4 5E21     		movs	r1, #94
  156 00c6 2046     		mov	r0, r4
  157 00c8 FFF7FEFF 		bl	u8g2_DrawStr
  158              	.LVL12:
-  58:Core/Src/mysetp.c ****         ///
-  59:Core/Src/mysetp.c **** }
- 159              		.loc 1 59 0
+  61:Core/Src/mysetp.c ****         ///
+  62:Core/Src/mysetp.c **** }
+ 159              		.loc 1 62 0
  160 00cc 06B0     		add	sp, sp, #24
  161              	.LCFI2:
  162              		.cfi_def_cfa_offset 8
@@ -235,12 +238,12 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
  165              	.L7:
  166              		.align	2
  167              	.L6:
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 5
+
+
  168 00d0 00000000 		.word	u8g2_font_6x13_tr
  169 00d4 00000000 		.word	u8g2
  170 00d8 00000000 		.word	.LANCHOR0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 5
-
-
  171 00dc 56555555 		.word	1431655766
  172 00e0 00000000 		.word	.LC0
  173 00e4 0C000000 		.word	.LC1
@@ -262,8 +265,8 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
  190              		.thumb_func
  192              	showTemp:
  193              	.LFB137:
-  60:Core/Src/mysetp.c **** void showTemp(int temp){
- 194              		.loc 1 60 0
+  63:Core/Src/mysetp.c **** void showTemp(int temp){
+ 194              		.loc 1 63 0
  195              		.cfi_startproc
  196              		@ args = 0, pretend = 0, frame = 24
  197              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -278,55 +281,55 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
  206              	.LCFI4:
  207              		.cfi_def_cfa_offset 48
  208 0004 0446     		mov	r4, r0
-  61:Core/Src/mysetp.c **** 
-  62:Core/Src/mysetp.c ****         u8g2_SetFont(&u8g2, u8g2_font_10x20_tr);
- 209              		.loc 1 62 0
+  64:Core/Src/mysetp.c **** 
+  65:Core/Src/mysetp.c ****         u8g2_SetFont(&u8g2, u8g2_font_10x20_tr);
+ 209              		.loc 1 65 0
  210 0006 254D     		ldr	r5, .L13
  211 0008 2549     		ldr	r1, .L13+4
  212 000a 2846     		mov	r0, r5
  213              	.LVL14:
  214 000c FFF7FEFF 		bl	u8g2_SetFont
  215              	.LVL15:
-  63:Core/Src/mysetp.c ****         char kk[20]={0};
- 216              		.loc 1 63 0
+  66:Core/Src/mysetp.c ****         char kk[20]={0};
+ 216              		.loc 1 66 0
  217 0010 0023     		movs	r3, #0
  218 0012 0393     		str	r3, [sp, #12]
  219 0014 0493     		str	r3, [sp, #16]
  220 0016 0593     		str	r3, [sp, #20]
  221 0018 0693     		str	r3, [sp, #24]
  222 001a 0793     		str	r3, [sp, #28]
-  64:Core/Src/mysetp.c ****         itoa(temp,kk,10);
- 223              		.loc 1 64 0
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 6
+
+
+  67:Core/Src/mysetp.c ****         itoa(temp,kk,10);
+ 223              		.loc 1 67 0
  224 001c 0A22     		movs	r2, #10
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 6
-
-
  225 001e 03A9     		add	r1, sp, #12
  226 0020 2046     		mov	r0, r4
  227 0022 FFF7FEFF 		bl	itoa
  228              	.LVL16:
-  65:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,20,50,kk);
- 229              		.loc 1 65 0
+  68:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,20,50,kk);
+ 229              		.loc 1 68 0
  230 0026 03AB     		add	r3, sp, #12
  231 0028 3222     		movs	r2, #50
  232 002a 1421     		movs	r1, #20
  233 002c 2846     		mov	r0, r5
  234 002e FFF7FEFF 		bl	u8g2_DrawStr
  235              	.LVL17:
-  66:Core/Src/mysetp.c ****         if(temp<10){
- 236              		.loc 1 66 0
+  69:Core/Src/mysetp.c ****         if(temp<10){
+ 236              		.loc 1 69 0
  237 0032 092C     		cmp	r4, #9
  238 0034 0EDC     		bgt	.L9
-  67:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,35,50,"C");
- 239              		.loc 1 67 0
+  70:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,35,50,"C");
+ 239              		.loc 1 70 0
  240 0036 1B4B     		ldr	r3, .L13+8
  241 0038 3222     		movs	r2, #50
  242 003a 2321     		movs	r1, #35
  243 003c 2846     		mov	r0, r5
  244 003e FFF7FEFF 		bl	u8g2_DrawStr
  245              	.LVL18:
-  68:Core/Src/mysetp.c ****         u8g2_DrawCircle(&u8g2,34,35,2,U8G2_DRAW_ALL);
- 246              		.loc 1 68 0
+  71:Core/Src/mysetp.c ****         u8g2_DrawCircle(&u8g2,34,35,2,U8G2_DRAW_ALL);
+ 246              		.loc 1 71 0
  247 0042 0F23     		movs	r3, #15
  248 0044 0093     		str	r3, [sp]
  249 0046 0223     		movs	r3, #2
@@ -337,13 +340,13 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
  254              	.LVL19:
  255 0052 20E0     		b	.L8
  256              	.L9:
-  69:Core/Src/mysetp.c ****         }
-  70:Core/Src/mysetp.c ****         else if(temp<100){
- 257              		.loc 1 70 0
+  72:Core/Src/mysetp.c ****         }
+  73:Core/Src/mysetp.c ****         else if(temp<100){
+ 257              		.loc 1 73 0
  258 0054 632C     		cmp	r4, #99
  259 0056 0FDC     		bgt	.L11
-  71:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,45,50,"C");
- 260              		.loc 1 71 0
+  74:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,45,50,"C");
+ 260              		.loc 1 74 0
  261 0058 104C     		ldr	r4, .L13
  262              	.LVL20:
  263 005a 124B     		ldr	r3, .L13+8
@@ -352,15 +355,15 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
  266 0060 2046     		mov	r0, r4
  267 0062 FFF7FEFF 		bl	u8g2_DrawStr
  268              	.LVL21:
-  72:Core/Src/mysetp.c ****         u8g2_DrawCircle(&u8g2,44,35,2,U8G2_DRAW_ALL);
- 269              		.loc 1 72 0
+  75:Core/Src/mysetp.c ****         u8g2_DrawCircle(&u8g2,44,35,2,U8G2_DRAW_ALL);
+ 269              		.loc 1 75 0
  270 0066 0F23     		movs	r3, #15
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 7
+
+
  271 0068 0093     		str	r3, [sp]
  272 006a 0223     		movs	r3, #2
  273 006c 2322     		movs	r2, #35
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 7
-
-
  274 006e 2C21     		movs	r1, #44
  275 0070 2046     		mov	r0, r4
  276 0072 FFF7FEFF 		bl	u8g2_DrawCircle
@@ -368,10 +371,10 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
  278 0076 0EE0     		b	.L8
  279              	.LVL23:
  280              	.L11:
-  73:Core/Src/mysetp.c ****         }
-  74:Core/Src/mysetp.c ****         else{
-  75:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,55,50,"C");
- 281              		.loc 1 75 0
+  76:Core/Src/mysetp.c ****         }
+  77:Core/Src/mysetp.c ****         else{
+  78:Core/Src/mysetp.c ****         u8g2_DrawStr(&u8g2,55,50,"C");
+ 281              		.loc 1 78 0
  282 0078 084C     		ldr	r4, .L13
  283              	.LVL24:
  284 007a 0A4B     		ldr	r3, .L13+8
@@ -380,8 +383,8 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
  287 0080 2046     		mov	r0, r4
  288 0082 FFF7FEFF 		bl	u8g2_DrawStr
  289              	.LVL25:
-  76:Core/Src/mysetp.c ****         u8g2_DrawCircle(&u8g2,54,35,2,U8G2_DRAW_ALL);
- 290              		.loc 1 76 0
+  79:Core/Src/mysetp.c ****         u8g2_DrawCircle(&u8g2,54,35,2,U8G2_DRAW_ALL);
+ 290              		.loc 1 79 0
  291 0086 0F23     		movs	r3, #15
  292 0088 0093     		str	r3, [sp]
  293 008a 0223     		movs	r3, #2
@@ -391,11 +394,9 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
  297 0092 FFF7FEFF 		bl	u8g2_DrawCircle
  298              	.LVL26:
  299              	.L8:
-  77:Core/Src/mysetp.c ****         }
-  78:Core/Src/mysetp.c **** 
-  79:Core/Src/mysetp.c **** 
-  80:Core/Src/mysetp.c **** }
- 300              		.loc 1 80 0
+  80:Core/Src/mysetp.c ****         }
+  81:Core/Src/mysetp.c **** }
+ 300              		.loc 1 81 0
  301 0096 09B0     		add	sp, sp, #36
  302              	.LCFI5:
  303              		.cfi_def_cfa_offset 12
@@ -416,11 +417,11 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
  319              		.thumb_func
  321              	setp:
  322              	.LFB135:
-   8:Core/Src/mysetp.c ****     
- 323              		.loc 1 8 0
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 8
+   9:Core/Src/mysetp.c ****     
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 8
 
 
+ 323              		.loc 1 9 0
  324              		.cfi_startproc
  325              		@ Volatile: function does not return.
  326              		@ args = 0, pretend = 0, frame = 0
@@ -430,177 +431,246 @@ ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 1
  330              		.cfi_def_cfa_offset 8
  331              		.cfi_offset 3, -8
  332              		.cfi_offset 14, -4
-  10:Core/Src/mysetp.c ****     u8g2Init(&u8g2);
- 333              		.loc 1 10 0
+  11:Core/Src/mysetp.c ****     u8g2Init(&u8g2);
+ 333              		.loc 1 11 0
  334 0002 4FF47A70 		mov	r0, #1000
  335 0006 FFF7FEFF 		bl	HAL_Delay
  336              	.LVL27:
-  11:Core/Src/mysetp.c ****     HAL_Delay(1000);
- 337              		.loc 1 11 0
- 338 000a 1748     		ldr	r0, .L20
+  12:Core/Src/mysetp.c ****     HAL_Delay(1000);
+ 337              		.loc 1 12 0
+ 338 000a 1148     		ldr	r0, .L19
  339 000c FFF7FEFF 		bl	u8g2Init
  340              	.LVL28:
-  12:Core/Src/mysetp.c **** 
- 341              		.loc 1 12 0
+  13:Core/Src/mysetp.c **** 
+ 341              		.loc 1 13 0
  342 0010 4FF47A70 		mov	r0, #1000
  343 0014 FFF7FEFF 		bl	HAL_Delay
  344              	.LVL29:
- 345              	.L18:
-  20:Core/Src/mysetp.c **** 
- 346              		.loc 1 20 0
- 347 0018 1348     		ldr	r0, .L20
+ 345              	.L17:
+  21:Core/Src/mysetp.c **** 
+ 346              		.loc 1 21 0
+ 347 0018 0D48     		ldr	r0, .L19
  348 001a FFF7FEFF 		bl	u8g2_ClearBuffer
  349              	.LVL30:
-  22:Core/Src/mysetp.c ****         showTemp(now);
- 350              		.loc 1 22 0
+  23:Core/Src/mysetp.c ****         showTemp(now);
+ 350              		.loc 1 23 0
  351 001e FFF7FEFF 		bl	showInfo
  352              	.LVL31:
-  23:Core/Src/mysetp.c ****         if (now<aim)
- 353              		.loc 1 23 0
- 354 0022 124C     		ldr	r4, .L20+4
+  24:Core/Src/mysetp.c ****         //if (now<aim)
+ 353              		.loc 1 24 0
+ 354 0022 0C4C     		ldr	r4, .L19+4
  355 0024 2068     		ldr	r0, [r4]
  356 0026 FFF7FEFF 		bl	showTemp
  357              	.LVL32:
-  24:Core/Src/mysetp.c ****         now+=(now/70)+1;
- 358              		.loc 1 24 0
- 359 002a 2168     		ldr	r1, [r4]
- 360 002c 104B     		ldr	r3, .L20+8
- 361 002e 1B68     		ldr	r3, [r3]
- 362 0030 9942     		cmp	r1, r3
- 363 0032 09DA     		bge	.L16
-  25:Core/Src/mysetp.c ****         osDelay(1000);
- 364              		.loc 1 25 0
- 365 0034 0F4B     		ldr	r3, .L20+12
- 366 0036 83FB0123 		smull	r2, r3, r3, r1
- 367 003a 0B44     		add	r3, r3, r1
- 368 003c CA17     		asrs	r2, r1, #31
- 369 003e C2EBA313 		rsb	r3, r2, r3, asr #6
- 370 0042 0133     		adds	r3, r3, #1
- 371 0044 0B44     		add	r3, r3, r1
- 372 0046 2360     		str	r3, [r4]
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 9
+  28:Core/Src/mysetp.c ****         {
+ 358              		.loc 1 28 0
+ 359 002a 2368     		ldr	r3, [r4]
+ 360 002c B3F5967F 		cmp	r3, #300
+ 361 0030 01DD     		ble	.L16
+  30:Core/Src/mysetp.c ****         }
+ 362              		.loc 1 30 0
+ 363 0032 0122     		movs	r2, #1
+ 364 0034 2260     		str	r2, [r4]
+ 365              	.L16:
+  32:Core/Src/mysetp.c **** 
+ 366              		.loc 1 32 0
+ 367 0036 084B     		ldr	r3, .L19+8
+ 368 0038 1968     		ldr	r1, [r3]
+ 369 003a 084B     		ldr	r3, .L19+12
+ 370 003c 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 9
 
 
- 373              	.L16:
-  26:Core/Src/mysetp.c ****         if (now>300)
- 374              		.loc 1 26 0
- 375 0048 4FF47A70 		mov	r0, #1000
- 376 004c FFF7FEFF 		bl	osDelay
+ 371 003e 03EB8303 		add	r3, r3, r3, lsl #2
+ 372 0042 5A00     		lsls	r2, r3, #1
+ 373 0044 8A63     		str	r2, [r1, #56]
+  37:Core/Src/mysetp.c ****     }
+ 374              		.loc 1 37 0
+ 375 0046 0248     		ldr	r0, .L19
+ 376 0048 FFF7FEFF 		bl	u8g2_SendBuffer
  377              	.LVL33:
-  27:Core/Src/mysetp.c ****         {
- 378              		.loc 1 27 0
- 379 0050 064B     		ldr	r3, .L20+4
- 380 0052 1B68     		ldr	r3, [r3]
- 381 0054 B3F5967F 		cmp	r3, #300
- 382 0058 02DD     		ble	.L17
-  29:Core/Src/mysetp.c ****         }
- 383              		.loc 1 29 0
- 384 005a 0122     		movs	r2, #1
- 385 005c 034B     		ldr	r3, .L20+4
- 386 005e 1A60     		str	r2, [r3]
- 387              	.L17:
-  34:Core/Src/mysetp.c ****     }
- 388              		.loc 1 34 0
- 389 0060 0148     		ldr	r0, .L20
- 390 0062 FFF7FEFF 		bl	u8g2_SendBuffer
- 391              	.LVL34:
-  35:Core/Src/mysetp.c ****     
- 392              		.loc 1 35 0
- 393 0066 D7E7     		b	.L18
- 394              	.L21:
- 395              		.align	2
- 396              	.L20:
- 397 0068 00000000 		.word	u8g2
- 398 006c 00000000 		.word	.LANCHOR0
- 399 0070 00000000 		.word	.LANCHOR1
- 400 0074 EBA00EEA 		.word	-368140053
- 401              		.cfi_endproc
- 402              	.LFE135:
- 404              		.global	aim
- 405              		.global	now
- 406              		.comm	u8g2,148,4
- 407              		.section	.rodata.str1.4,"aMS",%progbits,1
- 408              		.align	2
- 409              	.LC0:
- 410 0000 48656174 		.ascii	"Heating.\000"
- 410      696E672E 
- 410      00
- 411 0009 000000   		.space	3
- 412              	.LC1:
- 413 000c 48656174 		.ascii	"Heating..\000"
- 413      696E672E 
- 413      2E00
- 414 0016 0000     		.space	2
- 415              	.LC2:
- 416 0018 48656174 		.ascii	"Heating...\000"
- 416      696E672E 
- 416      2E2E00
- 417 0023 00       		.space	1
- 418              	.LC3:
- 419 0024 41696D3A 		.ascii	"Aim:\000"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 10
+  38:Core/Src/mysetp.c ****     
+ 378              		.loc 1 38 0
+ 379 004c E4E7     		b	.L17
+ 380              	.L20:
+ 381 004e 00BF     		.align	2
+ 382              	.L19:
+ 383 0050 00000000 		.word	u8g2
+ 384 0054 00000000 		.word	.LANCHOR0
+ 385 0058 00000000 		.word	htim2
+ 386 005c 00000000 		.word	.LANCHOR1
+ 387              		.cfi_endproc
+ 388              	.LFE135:
+ 390              		.section	.text.HAL_GPIO_EXTI_Callback,"ax",%progbits
+ 391              		.align	2
+ 392              		.global	HAL_GPIO_EXTI_Callback
+ 393              		.thumb
+ 394              		.thumb_func
+ 396              	HAL_GPIO_EXTI_Callback:
+ 397              	.LFB138:
+  82:Core/Src/mysetp.c **** 
+  83:Core/Src/mysetp.c **** 
+  84:Core/Src/mysetp.c **** void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+ 398              		.loc 1 84 0
+ 399              		.cfi_startproc
+ 400              		@ args = 0, pretend = 0, frame = 0
+ 401              		@ frame_needed = 0, uses_anonymous_args = 0
+ 402              	.LVL34:
+ 403 0000 08B5     		push	{r3, lr}
+ 404              	.LCFI7:
+ 405              		.cfi_def_cfa_offset 8
+ 406              		.cfi_offset 3, -8
+ 407              		.cfi_offset 14, -4
+  85:Core/Src/mysetp.c **** 
+  86:Core/Src/mysetp.c ****     if (GPIO_Pin==GPIO_PIN_15)
+ 408              		.loc 1 86 0
+ 409 0002 B0F5004F 		cmp	r0, #32768
+ 410 0006 03D1     		bne	.L22
+  87:Core/Src/mysetp.c ****     {
+  88:Core/Src/mysetp.c ****         aim++;
+ 411              		.loc 1 88 0
+ 412 0008 0C4A     		ldr	r2, .L26
+ 413 000a 1368     		ldr	r3, [r2]
+ 414 000c 0133     		adds	r3, r3, #1
+ 415 000e 1360     		str	r3, [r2]
+ 416              	.L22:
+  89:Core/Src/mysetp.c **** 
+  90:Core/Src/mysetp.c **** 
+  91:Core/Src/mysetp.c ****     }
+  92:Core/Src/mysetp.c ****     if (GPIO_Pin==GPIO_PIN_13)
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 10
 
 
- 419      00
- 420 0029 000000   		.space	3
- 421              	.LC4:
- 422 002c 503A00   		.ascii	"P:\000"
- 423 002f 00       		.space	1
- 424              	.LC5:
- 425 0030 302E3100 		.ascii	"0.1\000"
- 426              	.LC6:
- 427 0034 493A00   		.ascii	"I:\000"
- 428 0037 00       		.space	1
- 429              	.LC7:
- 430 0038 322E3300 		.ascii	"2.3\000"
- 431              	.LC8:
- 432 003c 443A00   		.ascii	"D:\000"
- 433 003f 00       		.space	1
- 434              	.LC9:
- 435 0040 302E3800 		.ascii	"0.8\000"
- 436              	.LC10:
- 437 0044 4300     		.ascii	"C\000"
- 438              		.section	.data.now,"aw",%progbits
- 439              		.align	2
- 440              		.set	.LANCHOR0,. + 0
- 443              	now:
- 444 0000 01000000 		.word	1
- 445              		.section	.data.aim,"aw",%progbits
- 446              		.align	2
- 447              		.set	.LANCHOR1,. + 0
- 450              	aim:
- 451 0000 68010000 		.word	360
- 452              		.text
- 453              	.Letext0:
- 454              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
- 455              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
- 456              		.file 4 "u8g2_lib/u8x8.h"
- 457              		.file 5 "u8g2_lib/u8g2.h"
- 458              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
- 459              		.file 7 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\stdl
- 460              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 461              		.file 9 "u8g2_lib/u8g2_com_stm32_hw_spi_hal.h"
- 462              		.file 10 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
-ARM GAS  C:\Users\master\AppData\Local\Temp\ccsU5rtN.s 			page 11
+ 417              		.loc 1 92 0
+ 418 0010 B0F5005F 		cmp	r0, #8192
+ 419 0014 11D1     		bne	.L21
+  93:Core/Src/mysetp.c ****     {
+  94:Core/Src/mysetp.c ****         if (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_14))
+ 420              		.loc 1 94 0
+ 421 0016 4FF48041 		mov	r1, #16384
+ 422 001a 00F18040 		add	r0, r0, #1073741824
+ 423              	.LVL35:
+ 424 001e 00F5F230 		add	r0, r0, #123904
+ 425 0022 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 426              	.LVL36:
+ 427 0026 20B1     		cbz	r0, .L24
+  95:Core/Src/mysetp.c ****         {
+  96:Core/Src/mysetp.c ****              aim++;
+ 428              		.loc 1 96 0
+ 429 0028 044A     		ldr	r2, .L26
+ 430 002a 1368     		ldr	r3, [r2]
+ 431 002c 0133     		adds	r3, r3, #1
+ 432 002e 1360     		str	r3, [r2]
+ 433 0030 08BD     		pop	{r3, pc}
+ 434              	.L24:
+  97:Core/Src/mysetp.c ****         }else{
+  98:Core/Src/mysetp.c **** 
+  99:Core/Src/mysetp.c ****             aim--;
+ 435              		.loc 1 99 0
+ 436 0032 024A     		ldr	r2, .L26
+ 437 0034 1368     		ldr	r3, [r2]
+ 438 0036 013B     		subs	r3, r3, #1
+ 439 0038 1360     		str	r3, [r2]
+ 440              	.L21:
+ 441 003a 08BD     		pop	{r3, pc}
+ 442              	.L27:
+ 443              		.align	2
+ 444              	.L26:
+ 445 003c 00000000 		.word	.LANCHOR1
+ 446              		.cfi_endproc
+ 447              	.LFE138:
+ 449              		.global	aim
+ 450              		.global	now
+ 451              		.comm	u8g2,148,4
+ 452              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 453              		.align	2
+ 454              	.LC0:
+ 455 0000 48656174 		.ascii	"Heating.\000"
+ 455      696E672E 
+ 455      00
+ 456 0009 000000   		.space	3
+ 457              	.LC1:
+ 458 000c 48656174 		.ascii	"Heating..\000"
+ 458      696E672E 
+ 458      2E00
+ 459 0016 0000     		.space	2
+ 460              	.LC2:
+ 461 0018 48656174 		.ascii	"Heating...\000"
+ 461      696E672E 
+ 461      2E2E00
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 11
+
+
+ 462 0023 00       		.space	1
+ 463              	.LC3:
+ 464 0024 41696D3A 		.ascii	"Aim:\000"
+ 464      00
+ 465 0029 000000   		.space	3
+ 466              	.LC4:
+ 467 002c 503A00   		.ascii	"P:\000"
+ 468 002f 00       		.space	1
+ 469              	.LC5:
+ 470 0030 302E3100 		.ascii	"0.1\000"
+ 471              	.LC6:
+ 472 0034 493A00   		.ascii	"I:\000"
+ 473 0037 00       		.space	1
+ 474              	.LC7:
+ 475 0038 322E3300 		.ascii	"2.3\000"
+ 476              	.LC8:
+ 477 003c 443A00   		.ascii	"D:\000"
+ 478 003f 00       		.space	1
+ 479              	.LC9:
+ 480 0040 302E3800 		.ascii	"0.8\000"
+ 481              	.LC10:
+ 482 0044 4300     		.ascii	"C\000"
+ 483              		.section	.data.now,"aw",%progbits
+ 484              		.align	2
+ 485              		.set	.LANCHOR0,. + 0
+ 488              	now:
+ 489 0000 01000000 		.word	1
+ 490              		.section	.data.aim,"aw",%progbits
+ 491              		.align	2
+ 492              		.set	.LANCHOR1,. + 0
+ 495              	aim:
+ 496 0000 14000000 		.word	20
+ 497              		.text
+ 498              	.Letext0:
+ 499              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\mach
+ 500              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\sys\
+ 501              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
+ 502              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 503              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 504              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 505              		.file 8 "u8g2_lib/u8x8.h"
+ 506              		.file 9 "u8g2_lib/u8g2.h"
+ 507              		.file 10 "Drivers/CMSIS/Include/core_cm4.h"
+ 508              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\5.4 2016q3\\arm-none-eabi\\include\\std
+ 509              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 510              		.file 13 "u8g2_lib/u8g2_com_stm32_hw_spi_hal.h"
+ 511              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ARM GAS  C:\Users\master\AppData\Local\Temp\ccB0WTcg.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 mysetp.c
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:22     .text.showInfo:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:27     .text.showInfo:00000000 showInfo
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:168    .text.showInfo:000000d0 $d
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:22     .text.showInfo:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:27     .text.showInfo:00000000 showInfo
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:168    .text.showInfo:000000d0 $d
                             *COM*:00000094 u8g2
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:187    .text.showTemp:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:192    .text.showTemp:00000000 showTemp
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:309    .text.showTemp:0000009c $d
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:316    .text.setp:00000000 $t
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:321    .text.setp:00000000 setp
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:397    .text.setp:00000068 $d
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:450    .data.aim:00000000 aim
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:443    .data.now:00000000 now
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:408    .rodata.str1.4:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:439    .data.now:00000000 $d
-C:\Users\master\AppData\Local\Temp\ccsU5rtN.s:446    .data.aim:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:187    .text.showTemp:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:192    .text.showTemp:00000000 showTemp
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:309    .text.showTemp:0000009c $d
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:316    .text.setp:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:321    .text.setp:00000000 setp
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:383    .text.setp:00000050 $d
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:391    .text.HAL_GPIO_EXTI_Callback:00000000 $t
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:396    .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:445    .text.HAL_GPIO_EXTI_Callback:0000003c $d
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:495    .data.aim:00000000 aim
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:488    .data.now:00000000 now
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:453    .rodata.str1.4:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:484    .data.now:00000000 $d
+C:\Users\master\AppData\Local\Temp\ccB0WTcg.s:491    .data.aim:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
@@ -613,5 +683,6 @@ u8g2_font_10x20_tr
 HAL_Delay
 u8g2Init
 u8g2_ClearBuffer
-osDelay
 u8g2_SendBuffer
+htim2
+HAL_GPIO_ReadPin

@@ -1,9 +1,10 @@
 #include "mysetp.h"
 #include "stdlib.h"
+
 u8g2_t u8g2;
 int now=1;
-int aim=360;
-
+int aim=20;
+extern TIM_HandleTypeDef htim2;
 
 void setp(){
     
@@ -21,14 +22,16 @@ void setp(){
 
         showInfo();
         showTemp(now);
-        if (now<aim)
-        now+=(now/70)+1;
-        osDelay(1000);
+        //if (now<aim)
+        //now+=(now/70)+1;
+        //osDelay(1);
         if (now>300)
         {
            now=1;
         }
-        
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_2,aim*10);
+
+         //HAL_Delay(1000);
         //u8g2_SetFont(&u8g2, u8g2_font_open_iconic_all_4x_t);
         //u8g2_DrawGlyph(&u8g2, 90,60,0x008D);
         u8g2_SendBuffer(&u8g2);
@@ -75,7 +78,29 @@ void showTemp(int temp){
         u8g2_DrawStr(&u8g2,55,50,"C");
         u8g2_DrawCircle(&u8g2,54,35,2,U8G2_DRAW_ALL);
         }
+}
 
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+
+    if (GPIO_Pin==GPIO_PIN_15)
+    {
+        aim++;
+
+
+    }
+    if (GPIO_Pin==GPIO_PIN_13)
+    {
+        if (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_14))
+        {
+             aim++;
+        }else{
+
+            aim--;
+        }
+        
+    }
+    
 
 }
 
