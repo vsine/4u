@@ -7,19 +7,12 @@ int aim=20;
 extern TIM_HandleTypeDef htim2;
 
 void setp(){
-    
     HAL_Delay(1000);
     u8g2Init(&u8g2);
     HAL_Delay(1000);
-
-
-
-  
     while (1)
     {
-
         u8g2_ClearBuffer(&u8g2);
-
         showInfo();
         showTemp(now);
         //if (now<aim)
@@ -38,7 +31,6 @@ void setp(){
     }
     
 }
-
 void showInfo(){
         u8g2_SetFont(&u8g2, u8g2_font_6x13_tr);
         if (now%3==0)
@@ -86,8 +78,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
     if (GPIO_Pin==GPIO_PIN_15)
     {
         aim++;
-
-
     }
     if (GPIO_Pin==GPIO_PIN_13)
     {
@@ -100,7 +90,5 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
         }
         
     }
-    
-
 }
 
